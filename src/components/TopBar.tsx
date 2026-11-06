@@ -1,3 +1,4 @@
+import { playCue } from "../features/progress/sound";
 import { useSettings } from "../features/progress/store";
 import { href, type Route } from "../router";
 
@@ -12,7 +13,7 @@ export const TopBar = ({ route }: { route: Route }) => {
 
   return (
     <header className="sticky top-0 z-20 border-b border-line bg-paper/90 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-3 px-4 py-3 sm:px-6">
+      <div className="mx-auto flex max-w-[1500px] flex-wrap items-center gap-3 px-4 py-3 sm:px-6">
         <a href={href({ name: "learn" })} className="mr-auto flex items-center gap-2.5">
           <span className="grid h-8 w-8 place-items-center rounded-lg bg-sage text-sm font-bold text-paper">RL</span>
           <span className="leading-tight">
@@ -32,6 +33,18 @@ export const TopBar = ({ route }: { route: Route }) => {
             Luyện tập
           </a>
         </nav>
+        <button
+          type="button"
+          onClick={() => {
+            setSettings({ sound: !settings.sound });
+            if (!settings.sound) playCue("correct"); // preview, and unlocks audio on first click
+          }}
+          aria-pressed={settings.sound}
+          className="rounded-full border border-line bg-panel px-3 py-1.5 text-sm text-muted hover:text-ink"
+          aria-label="Bật hoặc tắt âm thanh khi trả lời"
+        >
+          {settings.sound ? "Âm thanh: bật" : "Âm thanh: tắt"}
+        </button>
         <button
           type="button"
           onClick={() => setSettings({ theme: settings.theme === "dark" ? "light" : "dark" })}

@@ -9,6 +9,7 @@ export interface Settings {
   sessionSize: SessionSize;
   shuffleOptions: boolean;
   autoAdvance: boolean;
+  sound: boolean;
 }
 
 export interface SessionRecord {
@@ -31,7 +32,7 @@ const defaultTheme = (): Theme =>
   typeof window !== "undefined" && window.matchMedia?.("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 
 const defaults = (): Progress => ({
-  settings: { theme: defaultTheme(), sessionSize: 10, shuffleOptions: true, autoAdvance: false },
+  settings: { theme: defaultTheme(), sessionSize: 10, shuffleOptions: true, autoAdvance: false, sound: true },
   sessions: {},
   starred: [],
   wrongTotals: {},

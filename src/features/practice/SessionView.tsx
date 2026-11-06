@@ -4,6 +4,7 @@ import { CHAPTERS } from "../../data/chapters";
 import { QUESTION_BY_ID, SOURCE_LABEL } from "../../data/questions";
 import type { Question } from "../../data/types";
 import { href, navigate } from "../../router";
+import { playCue } from "../progress/sound";
 import { toggleStar, updateProgress, useProgress, useSettings } from "../progress/store";
 import { buildDecks, sessionKey } from "./decks";
 import {
@@ -85,8 +86,9 @@ export const SessionView = ({ deckId, size, index }: { deckId: string; size: num
       const result = answerQuestion(state, chosen, question.answers);
       persist(result.state, result.correct ? undefined : question.id);
       setFeedback({ questionId: question.id, chosen, correct: result.correct });
+      if (settings.sound) playCue(!result.correct ? "wrong" : isComplete(result.state) ? "complete" : "correct");
     },
-    [question, feedback, state, persist],
+    [question, feedback, state, persist, settings.sound],
   );
 
   const goNext = useCallback(() => {
@@ -150,38 +152,53 @@ export const SessionView = ({ deckId, size, index }: { deckId: string; size: num
   const hasNext = index + 1 < sessions.length;
 
   return (
-    <div className="mx-auto max-w-3xl">
-      <div className="flex flex-wrap items-center justify-between gap-3">
+    <div className="grid gap-6 lg:grid-cols-[260px_minmax(0,1fr)] lg:items-start xl:grid-cols-[280px_minmax(0,1fr)]">
+      <aside className="rounded-2xl border border-line bg-panel p-4 lg:sticky lg:top-20">
         <a href={backHref} className="text-sm text-muted hover:text-ink">
           {deck.label}
         </a>
-        <span className="text-sm text-muted">
-          Session {index + 1}/{sessions.length} · sai {wrongSoFar} lần
-        </span>
-      </div>
+        <h1 className="mt-1 font-display text-2xl">Session {index + 1}</h1>
+        <p className="text-sm text-muted">
+          {state.solved.length}/{ids.length} câu đúng · sai {wrongSoFar} lần
+        </p>
 
-      <ol className="mt-4 flex flex-wrap gap-1.5" aria-label="Tiến độ session">
-        {state.questionIds.map((id, i) => {
-          const solved = state.solved.includes(id);
-          const missed = (state.wrongCounts[id] ?? 0) > 0;
-          const current = id === shownId && !done;
-          return (
-            <li
-              key={id}
-              title={`Câu ${i + 1}`}
-              className={`h-3 w-6 rounded-sm ${
-                solved ? (missed ? "bg-reward" : "bg-sage") : missed ? "bg-penalty" : "bg-line"
-              } ${current ? "ring-2 ring-ink ring-offset-2 ring-offset-paper" : ""}`}
-            />
-          );
-        })}
-      </ol>
-      <p className="mt-2 text-xs text-muted">
-        Xanh: đúng ngay lần đầu · Vàng: đúng sau khi làm lại · Đỏ: đang chờ làm lại
-      </p>
+        <ol className="mt-4 grid grid-cols-5 gap-1.5" aria-label="Tiến độ session">
+          {state.questionIds.map((id, i) => {
+            const solved = state.solved.includes(id);
+            const missed = (state.wrongCounts[id] ?? 0) > 0;
+            const current = id === shownId && !done;
+            return (
+              <li
+                key={id}
+                title={`Câu ${i + 1}`}
+                className={`grid aspect-square place-items-center rounded-md text-xs font-semibold ${
+                  solved
+                    ? missed
+                      ? "bg-reward text-paper"
+                      : "bg-sage text-paper"
+                    : missed
+                      ? "bg-penalty text-paper"
+                      : "bg-line text-muted"
+                } ${current ? "ring-2 ring-ink ring-offset-2 ring-offset-panel" : ""}`}
+              >
+                {i + 1}
+              </li>
+            );
+          })}
+        </ol>
+        <ul className="mt-4 space-y-1 text-xs text-muted">
+          <li>Xanh: đúng ngay lần đầu</li>
+          <li>Vàng: đúng sau khi làm lại</li>
+          <li>Đỏ: đang chờ làm lại</li>
+        </ul>
+        <p className="mt-4 hidden border-t border-line pt-3 text-xs text-muted lg:block">
+          Phím tắt: 1–4 hoặc A–D để chọn, Enter để tiếp tục.
+        </p>
+      </aside>
 
+      <div className="min-w-0">
       {done && !feedback ? (
-        <section className="mt-8 rounded-2xl border border-sage bg-panel p-6 sm:p-8">
+        <section className="rounded-2xl border border-sage bg-panel p-6 sm:p-8">
           <p className="font-display text-5xl text-reward">+1</p>
           <h1 className="mt-2 font-display text-3xl">Xong session {index + 1}</h1>
           <p className="mt-2 text-muted">
@@ -209,7 +226,7 @@ export const SessionView = ({ deckId, size, index }: { deckId: string; size: num
         </section>
       ) : (
         question && (
-          <section className="mt-6 rounded-2xl border border-line bg-panel p-5 sm:p-7">
+          <section className="rounded-2xl border border-line bg-panel p-5 sm:p-7">
             <div className="flex items-start justify-between gap-3 text-sm text-muted">
               <span>
                 {SOURCE_LABEL[question.source]}
@@ -293,7 +310,7 @@ export const SessionView = ({ deckId, size, index }: { deckId: string; size: num
           </section>
         )
       )}
-      <p className="mt-4 text-xs text-muted">Phím tắt: 1–4 hoặc A–D để chọn, Enter để tiếp tục.</p>
+      </div>
     </div>
   );
 };
