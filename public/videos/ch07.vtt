@@ -1,0 +1,177 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.962
+Chào bạn, đến với chương bảy: điều khiển bằng Temporal Difference.
+
+2
+00:00:04.962 --> 00:00:17.016
+Chương này gộp ba bài: TD for Control với Sarsa, Q-learning, và Expected Sarsa. Đây là ba thuật toán rất hay xuất hiện trong đề thi, nên hãy chú ý sự khác nhau giữa chúng.
+
+3
+00:00:17.816 --> 00:00:26.954
+Nhắc lại GPI: xen kẽ đánh giá và cải thiện policy. Monte Carlo control cải thiện policy sau mỗi episode.
+
+4
+00:00:26.954 --> 00:00:31.341
+Với TD, ta có thể cải thiện policy sau từng bước một.
+
+5
+00:00:31.341 --> 00:00:38.441
+Để chọn hành động mà không cần mô hình, ta học action value Q, chuyển từ cặp trạng thái hành động này sang cặp kế tiếp.
+
+6
+00:00:38.441 --> 00:00:43.376
+Bước cải thiện policy chính là hành động epsilon-greedy theo Q hiện tại.
+
+7
+00:00:44.176 --> 00:00:55.738
+Sarsa là thuật toán TD control on-policy. Tên gọi đến từ bộ năm phần tử: S t, A t, R t cộng một, S t cộng một, A t cộng một.
+
+8
+00:00:55.738 --> 00:01:04.189
+Target của Sarsa dùng Q của trạng thái kế tiếp với hành động kế tiếp A t cộng một, là hành động thực sự được policy epsilon-greedy chọn.
+
+9
+00:01:04.189 --> 00:01:11.656
+Vì vậy Sarsa là on-policy: nó học giá trị của chính policy mà nó đang đi theo, kể cả các bước khám phá.
+
+10
+00:01:12.456 --> 00:01:18.131
+Các bước của Sarsa: khởi tạo Q tuỳ ý, riêng trạng thái kết thúc có Q bằng không.
+
+11
+00:01:18.131 --> 00:01:22.094
+Chọn hành động A từ trạng thái S theo epsilon-greedy.
+
+12
+00:01:22.094 --> 00:01:30.818
+Thực hiện A, quan sát R và S phẩy. Sau đó chọn ngay hành động kế tiếp A phẩy, cũng theo epsilon-greedy.
+
+13
+00:01:30.818 --> 00:01:38.018
+Cập nhật Q của S và A bằng TD error với target là R cộng gamma Q của S phẩy và A phẩy.
+
+14
+00:01:38.018 --> 00:01:48.696
+Cuối cùng gán S bằng S phẩy, A bằng A phẩy, và lặp lại. Chú ý: A phẩy được chọn trước khi cập nhật, và chính A phẩy sẽ được thực hiện ở bước sau.
+
+15
+00:01:49.496 --> 00:02:00.608
+Q-learning là thuật toán off-policy. Điểm khác duy nhất so với Sarsa nằm ở target: dùng max theo mọi hành động ở trạng thái kế tiếp, thay vì hành động thực sự được chọn.
+
+16
+00:02:00.608 --> 00:02:07.771
+Behavior policy vẫn là epsilon-greedy để khám phá, nhưng target policy là greedy policy.
+
+17
+00:02:07.771 --> 00:02:15.196
+Nhờ vậy Q-learning xấp xỉ trực tiếp q sao, bất kể agent đang đi theo policy nào, miễn là mọi cặp vẫn được ghé thăm.
+
+18
+00:02:15.196 --> 00:02:24.176
+Có thể xem Q-learning là phiên bản lấy mẫu của phương trình Bellman tối ưu cho action value, còn Sarsa là phiên bản lấy mẫu của phương trình Bellman kỳ vọng.
+
+19
+00:02:24.976 --> 00:02:30.988
+Q-learning dạng bảng lưu một Q-table: mỗi hàng là một trạng thái, mỗi cột là một hành động.
+
+20
+00:02:30.988 --> 00:02:42.251
+Ví dụ tính toán: agent ở trạng thái Idle, alpha bằng không phẩy năm, gamma bằng không phẩy chín. Nó đi sang phải, nhận reward một, và tới trạng thái Hole.
+
+21
+00:02:42.251 --> 00:02:45.314
+Giá trị lớn nhất ở hàng Hole là hai.
+
+22
+00:02:45.314 --> 00:02:56.056
+Q của Idle và hành động sang phải đang là hai, nên giá trị mới bằng hai cộng không phẩy năm nhân, một cộng không phẩy chín nhân hai trừ hai. Kết quả là hai phẩy bốn.
+
+23
+00:02:56.856 --> 00:03:00.668
+Hình này đặt hai thuật toán cạnh phương trình Bellman tương ứng.
+
+24
+00:03:00.668 --> 00:03:06.706
+Sarsa lấy mẫu phương trình Bellman kỳ vọng cho q pi: hành động kế tiếp được lấy theo policy.
+
+25
+00:03:06.706 --> 00:03:18.432
+Q-learning lấy mẫu phương trình Bellman tối ưu cho q sao: hành động kế tiếp được thay bằng phép max. Vì thế Q-learning học trực tiếp q sao mà không cần xen kẽ đánh giá và cải thiện policy.
+
+26
+00:03:19.232 --> 00:03:24.144
+So sánh trong ví dụ kinh điển cliff walking: đi dọc mép vực để tới đích.
+
+27
+00:03:24.144 --> 00:03:30.494
+Sarsa tính đến việc mình vẫn sẽ khám phá ngẫu nhiên, nên học một đường đi an toàn, tránh xa mép vực.
+
+28
+00:03:30.494 --> 00:03:41.070
+Q-learning học đường đi tối ưu sát mép vực. Nhưng vì vẫn hành động epsilon-greedy, thỉnh thoảng nó rơi xuống vực, nên tổng reward trong lúc học lại thấp hơn Sarsa.
+
+29
+00:03:41.070 --> 00:03:56.240
+Về hội tụ: Q-learning hội tụ về q sao. Sarsa hội tụ về policy epsilon-greedy tốt nhất, và về q sao nếu epsilon giảm dần về không. Tóm lại, Sarsa an toàn hơn khi khám phá có thể nguy hiểm.
+
+30
+00:03:57.040 --> 00:03:57.640
+Expected Sarsa thay giá trị của một hành động kế tiếp được lấy mẫu bằng kỳ vọng theo policy: tổng theo mọi hành động a phẩy, của xác suất pi nhân Q.
+
+31
+00:03:57.640 --> 00:04:15.215
+Nhờ loại bỏ yếu tố ngẫu nhiên khi chọn A t cộng một, Expected Sarsa có phương sai thấp hơn và cập nhật ổn định hơn Sarsa. Nó thường cho phép dùng step size lớn hơn.
+
+32
+00:04:15.215 --> 00:04:20.080
+Đổi lại, mỗi bước tốn nhiều tính toán hơn vì phải cộng trên mọi hành động.
+
+33
+00:04:20.880 --> 00:04:29.505
+Ví dụ: ở trạng thái kế tiếp có ba hành động với Q lần lượt là bốn, hai và không. Hành động đầu tiên là greedy.
+
+34
+00:04:29.505 --> 00:04:43.642
+Policy epsilon-greedy với epsilon bằng không phẩy một lăm cho xác suất không phẩy chín, không phẩy không năm và không phẩy không năm. Kỳ vọng bằng không phẩy chín nhân bốn, cộng không phẩy không năm nhân hai, cộng không, bằng ba phẩy bảy.
+
+35
+00:04:43.642 --> 00:04:53.688
+So sánh: Sarsa chỉ dùng Q của một hành động được lấy mẫu, có thể là bốn, hai hoặc không. Còn Q-learning luôn dùng giá trị lớn nhất là bốn.
+
+36
+00:04:54.488 --> 00:05:01.063
+Điểm quan trọng: nếu target policy là greedy, kỳ vọng theo policy chính là giá trị lớn nhất.
+
+37
+00:05:01.063 --> 00:05:08.713
+Khi đó Expected Sarsa trở thành đúng Q-learning. Vì vậy ta nói Expected Sarsa tổng quát hoá Q-learning.
+
+38
+00:05:08.713 --> 00:05:18.713
+Expected Sarsa có thể dùng on-policy, khi target policy trùng behavior policy, hoặc off-policy, khi target policy khác behavior policy.
+
+39
+00:05:18.713 --> 00:05:24.824
+Nhìn chung, Expected Sarsa ổn định hơn Sarsa và bao gồm Q-learning như một trường hợp đặc biệt.
+
+40
+00:05:25.624 --> 00:05:34.574
+Tóm tắt chương bảy. Sarsa dùng target R cộng gamma Q của S phẩy và A phẩy, là on-policy và an toàn hơn.
+
+41
+00:05:34.574 --> 00:05:40.512
+Q-learning dùng target với max theo hành động, là off-policy và học trực tiếp q sao.
+
+42
+00:05:40.512 --> 00:05:44.849
+Expected Sarsa dùng kỳ vọng theo policy ở trạng thái kế tiếp.
+
+43
+00:05:44.849 --> 00:05:51.024
+Expected Sarsa có phương sai thấp hơn, và trở thành Q-learning khi target policy là greedy.
+
+44
+00:05:51.024 --> 00:05:59.392
+Cả ba đều là TD control trong khung GPI. Chương sau, ta tìm hiểu cách dùng mô hình để lập kế hoạch với Dyna.

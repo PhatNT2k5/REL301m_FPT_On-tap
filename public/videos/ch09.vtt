@@ -1,0 +1,241 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:05.300
+Chào bạn, đến với chương chín: dự đoán on-policy với xấp xỉ hàm.
+
+2
+00:00:05.300 --> 00:00:21.816
+Chương này gộp năm bài từ ba chấm một đến ba chấm năm: value function như supervised learning, mục tiêu Mean Squared Value Error, mục tiêu của TD, linear TD, và xây dựng đặc trưng. Đây là bước chuyển từ bảng giá trị sang các bài toán thật với rất nhiều trạng thái.
+
+3
+00:00:22.616 --> 00:00:31.128
+Đến giờ, ta lưu giá trị mỗi trạng thái trong một bảng. Với không gian trạng thái khổng lồ hoặc liên tục, cách này không khả thi.
+
+4
+00:00:31.128 --> 00:00:39.628
+Thay vào đó, ta xấp xỉ value function bằng một hàm có tham số, v mũ của s và w, với w là vector trọng số. Ví dụ trong grid, v mũ bằng w một nhân X cộng w hai nhân Y.
+
+5
+00:00:39.628 --> 00:00:49.454
+Ta chỉ cần lưu các trọng số, và số trọng số nhỏ hơn rất nhiều so với số trạng thái.
+
+6
+00:00:49.454 --> 00:00:54.824
+Hệ quả: thay đổi một trọng số sẽ làm thay đổi giá trị của nhiều trạng thái cùng lúc.
+
+7
+00:00:55.624 --> 00:00:56.224
+Dạng phổ biến nhất là xấp xỉ tuyến tính: giá trị bằng tổng các trọng số nhân với đặc trưng của trạng thái, tức tích vô hướng giữa w và vector đặc trưng x của s.
+
+8
+00:00:56.224 --> 00:00:56.724
+Một tính chất rất tiện: gradient của v mũ theo w chính là vector đặc trưng x của s.
+
+9
+00:00:56.724 --> 00:01:15.280
+Hạn chế: chỉ biểu diễn được quan hệ tuyến tính theo đặc trưng, và hiệu quả phụ thuộc nhiều vào việc chọn đặc trưng tốt.
+
+10
+00:01:16.080 --> 00:01:27.205
+Hai khái niệm quan trọng. Generalization, khái quát hoá: cập nhật một trạng thái cũng làm thay đổi giá trị của các trạng thái tương tự. Điều này giúp học nhanh hơn.
+
+11
+00:01:27.205 --> 00:01:32.868
+Discrimination, khả năng phân biệt: gán được giá trị khác nhau cho các trạng thái khác nhau.
+
+12
+00:01:32.868 --> 00:01:36.980
+Dạng bảng có khả năng phân biệt hoàn hảo nhưng không khái quát hoá.
+
+13
+00:01:36.980 --> 00:01:42.655
+Ngược lại, gộp tất cả trạng thái làm một thì khái quát hoá tối đa nhưng không phân biệt được gì.
+
+14
+00:01:42.655 --> 00:01:59.112
+Mục tiêu là cân bằng hai yếu tố. Ta có thể xem ước lượng giá trị như bài toán supervised learning: input là trạng thái, nhãn là target. Nhưng khác supervised learning thông thường, dữ liệu RL không độc lập, và target thay đổi liên tục.
+
+15
+00:01:59.912 --> 00:02:05.762
+Để đo xấp xỉ tốt đến đâu, ta dùng Mean Squared Value Error, ký hiệu VE gạch ngang.
+
+16
+00:02:05.762 --> 00:02:06.262
+Đó là tổng bình phương sai số giữa giá trị thật và giá trị xấp xỉ, có trọng số mu của s.
+
+17
+00:02:06.262 --> 00:02:21.150
+Mu của s là on-policy distribution, tỉ lệ thời gian agent ở trạng thái s khi đi theo pi. Trạng thái nào hay được ghé thăm thì sai số ở đó quan trọng hơn.
+
+18
+00:02:21.150 --> 00:02:29.984
+Với số trọng số hạn chế, ta không thể đúng hoàn hảo ở mọi nơi. Cải thiện ở trạng thái này có thể làm tệ đi ở trạng thái khác.
+
+19
+00:02:30.784 --> 00:02:31.384
+Để giảm VE, ta dùng gradient descent: di chuyển trọng số ngược hướng gradient của hàm mục tiêu J.
+
+20
+00:02:31.384 --> 00:02:41.634
+Gradient descent có thể dừng ở cực tiểu địa phương, không nhất thiết là cực tiểu toàn cục.
+
+21
+00:02:41.634 --> 00:02:50.224
+Vì không thể tính tổng trên mọi trạng thái, ta dùng stochastic gradient descent: mỗi lần chỉ dùng một mẫu, là trạng thái agent vừa gặp.
+
+22
+00:02:51.024 --> 00:03:01.412
+Trong gradient của VE có giá trị thật v pi, mà ta không biết. Gradient Monte Carlo thay nó bằng return G t, một mẫu không chệch của v pi.
+
+23
+00:03:01.412 --> 00:03:09.912
+Nếu sai số dương, tức giá trị thật cao hơn ước lượng, ta dịch trọng số theo hướng làm tăng v mũ. Nếu âm thì ngược lại.
+
+24
+00:03:09.912 --> 00:03:17.640
+Vì target không chệch, gradient Monte Carlo hội tụ về một cực tiểu địa phương của VE, với step size giảm dần phù hợp.
+
+25
+00:03:18.440 --> 00:03:25.590
+State aggregation là cách xấp xỉ đơn giản: gom các trạng thái tương tự thành nhóm, mỗi nhóm có một giá trị.
+
+26
+00:03:25.590 --> 00:03:30.952
+Ví dụ tám trạng thái chia thành hai nhóm bốn, ta chỉ cần hai trọng số thay vì tám.
+
+27
+00:03:30.952 --> 00:03:35.265
+Khi cập nhật một trạng thái, giá trị của cả nhóm thay đổi theo.
+
+28
+00:03:35.265 --> 00:03:43.952
+State aggregation là trường hợp đặc biệt của xấp xỉ tuyến tính: mỗi nhóm có một đặc trưng, bằng một nếu trạng thái thuộc nhóm đó và bằng không nếu không.
+
+29
+00:03:44.752 --> 00:03:53.527
+Ta có thể thay G t bằng bất kỳ ước lượng nào của giá trị. Dùng TD target, ta được semi-gradient TD zero.
+
+30
+00:03:53.527 --> 00:04:02.314
+Vấn đề: TD target chứa v mũ của trạng thái kế tiếp, nên phụ thuộc vào chính w. Khi lấy gradient, ta bỏ qua phần phụ thuộc này.
+
+31
+00:04:02.314 --> 00:04:15.232
+Vì gradient của target khác không, cập nhật TD không phải là stochastic gradient descent thật sự trên sai số bình phương. Đó là lý do nó được gọi là semi-gradient, tức nửa gradient.
+
+32
+00:04:16.032 --> 00:04:24.070
+So sánh hai phương pháp. Gradient Monte Carlo dùng target không chệch, nên hội tụ về cực tiểu địa phương của VE.
+
+33
+00:04:24.070 --> 00:04:33.794
+Semi-gradient TD dùng target có chệch, vì ước lượng ở trạng thái kế tiếp có thể chưa chính xác. Nên không đảm bảo hội tụ về cực tiểu của VE.
+
+34
+00:04:33.794 --> 00:04:39.857
+Bù lại, TD có phương sai thấp hơn, học online, và thường hội tụ nhanh hơn nhiều.
+
+35
+00:04:39.857 --> 00:04:45.288
+Trong thực tế TD thường được ưu tiên, dù sai số cuối cùng có thể cao hơn một chút.
+
+36
+00:04:46.088 --> 00:04:50.426
+Với xấp xỉ tuyến tính, gradient chính là vector đặc trưng. Nên cập nhật TD là: w cộng alpha nhân TD error nhân x của S t.
+
+37
+00:04:50.426 --> 00:05:01.963
+Mỗi trọng số thay đổi tỉ lệ với đặc trưng tương ứng. Đặc trưng nào bằng không thì trọng số đó không đổi.
+
+38
+00:05:01.963 --> 00:05:16.088
+Nếu đặc trưng là one-hot, mỗi trạng thái có một đặc trưng riêng, thì x của S t chọn đúng một trọng số, chính là V của S t. Cập nhật trở thành TD dạng bảng. Vậy tabular TD là trường hợp đặc biệt của linear TD.
+
+39
+00:05:16.088 --> 00:05:21.944
+Tương tự, TD với state aggregation cũng là trường hợp đặc biệt của linear TD.
+
+40
+00:05:22.744 --> 00:05:31.119
+Kỳ vọng của cập nhật linear TD có thể viết thành alpha nhân b trừ A nhân w, với A và b là các kỳ vọng theo đặc trưng và reward.
+
+41
+00:05:31.119 --> 00:05:31.619
+Linear TD hội tụ tới điểm mà kỳ vọng cập nhật bằng không, gọi là TD fixed point, w TD bằng A nghịch đảo nhân b.
+
+42
+00:05:31.619 --> 00:05:43.944
+Tại điểm này, VE không vượt quá một chia một trừ gamma, nhân với VE nhỏ nhất có thể.
+
+43
+00:05:43.944 --> 00:05:53.008
+Nghĩa là khi gamma gần một, nghiệm của TD có thể cách xa nghiệm tối ưu theo VE. Khi gamma gần không, hai nghiệm rất gần nhau.
+
+44
+00:05:53.808 --> 00:06:02.608
+State aggregation dùng các vùng không chồng lấn. Nếu cho phép các vùng chồng lấn nhau, ta có coarse coding, linh hoạt hơn.
+
+45
+00:06:02.608 --> 00:06:11.233
+Ví dụ vị trí chú cá trong hồ được phủ bởi nhiều vòng tròn chồng lên nhau. Mỗi vòng tròn là một đặc trưng, gọi là receptive field.
+
+46
+00:06:11.233 --> 00:06:20.508
+Đặc trưng bằng một nếu trạng thái nằm trong vòng tròn đó, bằng không nếu không. Vector đặc trưng là nhị phân, có nhiều phần tử bằng một cùng lúc.
+
+47
+00:06:20.508 --> 00:06:26.448
+Các trạng thái gần nhau có nhiều đặc trưng chung đang bật, nên học ở một chỗ sẽ lan sang chỗ gần đó.
+
+48
+00:06:27.248 --> 00:06:30.936
+Kích thước và hình dạng đặc trưng ảnh hưởng mạnh đến việc học.
+
+49
+00:06:30.936 --> 00:06:34.798
+Đặc trưng lớn thì khái quát hoá rộng, học nhanh lúc đầu.
+
+50
+00:06:34.798 --> 00:06:45.411
+Đặc trưng nhỏ thì phân biệt tốt hơn, giá trị cuối cùng chính xác hơn. Quá nhiều phân biệt có thể dẫn tới overfitting, quá nhiều khái quát hoá dẫn tới underfitting.
+
+51
+00:06:45.411 --> 00:06:52.784
+Hình dạng quyết định hướng khái quát hoá. Dùng nhiều đặc trưng chồng lấn có thể vừa khái quát rộng vừa phân biệt tinh.
+
+52
+00:06:53.584 --> 00:06:58.472
+Tile coding là dạng coarse coding hiệu quả về tính toán, rất phổ biến.
+
+53
+00:06:58.472 --> 00:07:07.297
+Ta dùng nhiều tiling, mỗi tiling là một lưới chia không gian trạng thái thành các ô gọi là tile. Các tiling được dịch lệch nhau một chút.
+
+54
+00:07:07.297 --> 00:07:19.009
+Trong mỗi tiling, trạng thái rơi vào đúng một tile. Vì vậy số đặc trưng đang bật luôn bằng số tiling, giúp chọn step size dễ dàng, ví dụ alpha bằng một phần mười chia số tiling.
+
+55
+00:07:19.009 --> 00:07:24.808
+Đặc trưng nhị phân nên tính toán rất nhanh, và thường được dùng cùng linear TD hoặc Sarsa.
+
+56
+00:07:25.608 --> 00:07:27.521
+Tóm tắt chương chín. Ta xấp xỉ value function bằng hàm có tham số, dạng tuyến tính là tích vô hướng w với x của s.
+
+57
+00:07:27.521 --> 00:07:38.696
+Mục tiêu là cực tiểu Mean Squared Value Error, có trọng số theo on-policy distribution.
+
+58
+00:07:38.696 --> 00:07:46.321
+Gradient Monte Carlo dùng target không chệch. Semi-gradient TD dùng target có chệch nhưng nhanh hơn.
+
+59
+00:07:46.321 --> 00:07:52.483
+Linear TD hội tụ về TD fixed point, và tabular TD là trường hợp đặc biệt.
+
+60
+00:07:52.483 --> 00:08:02.136
+Các cách xây dựng đặc trưng gồm state aggregation, coarse coding và tile coding. Chương sau, ta dùng xấp xỉ hàm cho bài toán control.

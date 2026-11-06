@@ -1,0 +1,233 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:06.338
+Chào bạn, đây là chương một của môn REL301m, Reinforcement Learning.
+
+2
+00:00:06.338 --> 00:00:18.888
+Chương này gộp ba bài: K-Armed Bandit Problem, Estimating Action Values, và Exploration versus Exploitation. Đây là nền móng cho toàn bộ môn học, nên mình sẽ đi chậm và chắc.
+
+3
+00:00:19.688 --> 00:00:24.063
+Mục tiêu đầu tiên là hiểu reward, tức phần thưởng, là gì.
+
+4
+00:00:24.063 --> 00:00:27.551
+Thứ hai, nắm được bài toán k-armed bandit.
+
+5
+00:00:27.551 --> 00:00:32.876
+Thứ ba, biết định nghĩa và ước lượng action value, giá trị của một hành động.
+
+6
+00:00:32.876 --> 00:00:38.864
+Và cuối cùng, biết cân bằng giữa khám phá và khai thác, với phương pháp epsilon-greedy.
+
+7
+00:00:39.664 --> 00:00:46.289
+Reward là một tín hiệu phản hồi dạng số vô hướng, tức một con số duy nhất, mà môi trường gửi cho agent.
+
+8
+00:00:46.289 --> 00:00:51.689
+Nó cho biết agent đang làm tốt đến mức nào tại một trạng thái và một thời điểm cụ thể.
+
+9
+00:00:51.689 --> 00:00:58.144
+Reward là cơ chế chính định hướng hành vi của agent: agent học để tối đa hoá tổng phần thưởng nhận được.
+
+10
+00:00:58.944 --> 00:01:04.157
+Hãy tưởng tượng một người chơi đứng trước một dãy máy đánh bạc, mỗi máy có một cần gạt.
+
+11
+00:01:04.157 --> 00:01:08.744
+Mỗi máy trả thưởng theo một phân phối xác suất mà người chơi không hề biết trước.
+
+12
+00:01:08.744 --> 00:01:13.182
+Mục tiêu là tối đa hoá tổng phần thưởng sau một số lượt chơi hữu hạn.
+
+13
+00:01:13.182 --> 00:01:20.256
+Bài toán này xuất hiện rất nhiều trong thực tế, ví dụ thử nghiệm lâm sàng, quảng cáo trực tuyến, hay hệ gợi ý.
+
+14
+00:01:21.056 --> 00:01:26.081
+Trong k-armed bandit, ở mỗi bước thời gian agent chọn một trong k hành động.
+
+15
+00:01:26.081 --> 00:01:30.894
+Sau đó agent nhận một reward được lấy mẫu từ phân phối của hành động đó.
+
+16
+00:01:30.894 --> 00:01:41.931
+Điểm quan trọng: hành động không ảnh hưởng đến tình huống tiếp theo. Môi trường không có trạng thái, không có dynamics. Reward chỉ phụ thuộc vào hành động hiện tại.
+
+17
+00:01:41.931 --> 00:01:54.584
+Ví dụ trên hình: một bác sĩ là agent, ba loại thuốc là ba hành động, và sức khoẻ của bệnh nhân sau điều trị chính là reward. Đây là dạng đơn giản nhất của ra quyết định tuần tự trong điều kiện bất định.
+
+18
+00:01:55.384 --> 00:01:55.984
+Để biết hành động nào tốt nhất, ta định nghĩa giá trị của mỗi hành động, gọi là action value, ký hiệu q sao của a.
+
+19
+00:01:55.984 --> 00:01:56.484
+q sao của a là kỳ vọng của reward R t, với điều kiện ta đã chọn hành động a.
+
+20
+00:01:56.484 --> 00:01:56.984
+Cụ thể, đó là tổng theo mọi giá trị reward r có thể, của xác suất nhận được r nhân với chính r.
+
+21
+00:01:56.984 --> 00:02:21.040
+Nếu biết chính xác q sao, bài toán rất dễ: chỉ cần luôn chọn hành động có q sao lớn nhất. Khó khăn là ta không biết q sao.
+
+22
+00:02:21.840 --> 00:02:28.290
+Ví dụ: thuốc thứ nhất cho reward âm mười một với xác suất một nửa, và chín với xác suất một nửa.
+
+23
+00:02:28.290 --> 00:02:34.690
+Vậy q sao của hành động một bằng không phẩy năm nhân âm mười một, cộng không phẩy năm nhân chín, bằng âm một.
+
+24
+00:02:34.690 --> 00:02:43.690
+Thuốc thứ hai có phân phối đối xứng quanh một, nên q sao bằng một. Thuốc thứ ba phân phối đều từ một đến năm, nên q sao bằng ba.
+
+25
+00:02:43.690 --> 00:02:53.928
+Vậy hành động tốt nhất là thuốc thứ ba, dù thuốc thứ nhất có lúc cho reward cao tới chín. Ghi nhớ: ta so sánh kỳ vọng, không so sánh giá trị lớn nhất.
+
+26
+00:02:54.728 --> 00:03:03.078
+Vì q sao chưa biết, ta phải ước lượng nó. Ước lượng tại thời điểm t được ký hiệu Q t của a, chữ Q viết hoa.
+
+27
+00:03:03.078 --> 00:03:03.578
+Cách tự nhiên nhất là sample-average: lấy tổng reward nhận được mỗi khi chọn a, chia cho số lần đã chọn a.
+
+28
+00:03:03.578 --> 00:03:15.608
+Theo luật số lớn, khi hành động a được thử càng nhiều lần, Q t của a càng tiến gần đến q sao của a.
+
+29
+00:03:16.408 --> 00:03:23.183
+Quay lại ví dụ bác sĩ. Nếu bệnh nhân khỏi bệnh, reward bằng một, ngược lại bằng không.
+
+30
+00:03:23.183 --> 00:03:27.483
+Ban đầu, giá trị ước lượng của cả ba loại thuốc đều bằng không.
+
+31
+00:03:27.483 --> 00:03:38.420
+Bệnh nhân đầu tiên dùng thuốc P và khỏi bệnh, nên Q của P bằng một. Bệnh nhân thứ hai cũng dùng P nhưng không khỏi, nên Q của P bằng một chia hai, tức không phẩy năm.
+
+32
+00:03:38.420 --> 00:03:43.696
+Sau khi mỗi loại thuốc được thử nhiều lần, các ước lượng sẽ tiến dần đến giá trị thật.
+
+33
+00:03:44.496 --> 00:03:56.008
+Tính trung bình bằng cách lưu toàn bộ reward thì tốn bộ nhớ. Ta có thể cập nhật tăng dần: Q mới bằng Q cũ cộng một phần n nhân với sai số, tức reward mới trừ Q cũ.
+
+34
+00:03:56.008 --> 00:04:03.258
+Dạng tổng quát này sẽ lặp lại suốt môn học: ước lượng mới bằng ước lượng cũ cộng step size nhân với target trừ ước lượng cũ.
+
+35
+00:04:03.258 --> 00:04:07.308
+Ta chỉ cần lưu Q và số lần n cho mỗi hành động.
+
+36
+00:04:07.308 --> 00:04:19.056
+Nếu thay một phần n bằng hằng số alpha, các reward gần đây sẽ có trọng số lớn hơn. Điều này hữu ích khi bài toán non-stationary, tức phân phối reward thay đổi theo thời gian.
+
+37
+00:04:19.856 --> 00:04:29.644
+Greedy action là hành động có giá trị ước lượng lớn nhất hiện tại, A t bằng argmax theo a của Q t của a. Trong hình, đó là hành động có Q bằng không phẩy bảy lăm.
+
+38
+00:04:29.644 --> 00:04:34.918
+Chọn greedy action nghĩa là agent đang exploit, tức khai thác kiến thức hiện có.
+
+39
+00:04:34.918 --> 00:04:45.416
+Ngược lại, agent có thể chọn một hành động non-greedy để explore, tức khám phá. Agent hy sinh reward trước mắt để thu thêm thông tin về các hành động khác.
+
+40
+00:04:46.216 --> 00:04:54.716
+Exploration là thử những lựa chọn mới hoặc ít quen thuộc, để có ước lượng chính xác hơn. Lợi ích của nó là về lâu dài.
+
+41
+00:04:54.716 --> 00:05:02.879
+Exploitation là chọn hành động tốt nhất theo hiểu biết hiện tại, để tối đa hoá reward ngay lập tức. Lợi ích ngắn hạn.
+
+42
+00:05:02.879 --> 00:05:11.216
+Ở mỗi bước, ta không thể vừa explore vừa exploit. Đó chính là thế lưỡng nan exploration-exploitation.
+
+43
+00:05:11.216 --> 00:05:16.528
+Nếu chỉ exploit, agent có thể không bao giờ tìm ra hành động thực sự tốt nhất.
+
+44
+00:05:17.328 --> 00:05:27.991
+Ví dụ ở nhà hàng: lần đầu chọn món một, nhận reward cộng năm. Các món khác có giá trị ước lượng bằng không, nên món một trở thành greedy action mãi mãi.
+
+45
+00:05:27.991 --> 00:05:33.428
+Món hai và món ba không bao giờ được thử, N bằng không, Q vẫn bằng không.
+
+46
+00:05:33.428 --> 00:05:42.984
+Nhưng thật ra món hai có q sao bằng bốn, tốt hơn món một với q sao bằng ba. Agent tham lam hoàn toàn sẽ không bao giờ phát hiện ra điều này.
+
+47
+00:05:43.784 --> 00:05:52.447
+Giải pháp đơn giản và phổ biến nhất là epsilon-greedy: phần lớn thời gian thì exploit, nhưng với xác suất nhỏ epsilon thì explore.
+
+48
+00:05:52.447 --> 00:06:02.372
+Ví dụ, ta tung xúc xắc. Nếu ra mặt một thì explore, còn lại thì chọn greedy. Khi đó epsilon bằng một phần sáu.
+
+49
+00:06:02.372 --> 00:06:14.984
+Công thức: với xác suất một trừ epsilon, chọn argmax của Q. Với xác suất epsilon, chọn ngẫu nhiên đều trong k hành động. Lưu ý, lựa chọn ngẫu nhiên này vẫn có thể trùng với greedy action.
+
+50
+00:06:15.784 --> 00:06:27.547
+Một mẹo hay gặp trong đề thi: xác suất chọn greedy action trong epsilon-greedy là một trừ epsilon, cộng epsilon chia k. Phần cộng thêm là vì lựa chọn ngẫu nhiên cũng có thể rơi vào greedy action.
+
+51
+00:06:27.547 --> 00:06:28.047
+Mỗi hành động non-greedy có xác suất epsilon chia k.
+
+52
+00:06:28.047 --> 00:06:35.597
+Epsilon bằng không là greedy thuần, epsilon bằng một là chọn ngẫu nhiên hoàn toàn.
+
+53
+00:06:35.597 --> 00:06:43.192
+Epsilon lớn thì khám phá nhiều, học nhanh lúc đầu, nhưng về lâu dài tổng reward thấp hơn vì vẫn liên tục chọn hành động kém.
+
+54
+00:06:43.992 --> 00:06:51.367
+Tóm tắt chương một. Reward là tín hiệu phản hồi dạng số, và agent luôn muốn tối đa hoá tổng reward.
+
+55
+00:06:51.367 --> 00:06:56.755
+K-armed bandit có k hành động với phân phối reward chưa biết, và không có trạng thái.
+
+56
+00:06:56.755 --> 00:06:57.255
+Giá trị hành động q sao là kỳ vọng reward, được ước lượng bằng trung bình mẫu Q t.
+
+57
+00:06:57.255 --> 00:07:10.792
+Quy tắc cập nhật tăng dần: ước lượng mới bằng ước lượng cũ cộng step size nhân sai số. Công thức này sẽ quay lại trong Monte Carlo và TD.
+
+58
+00:07:10.792 --> 00:07:24.120
+Cuối cùng, greedy là khai thác, còn epsilon-greedy giúp cân bằng giữa khám phá và khai thác. Ở chương sau, ta thêm khái niệm trạng thái để đi tới Markov Decision Process. Hẹn gặp lại!

@@ -1,0 +1,49 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:19.688
+Multi-armed Bandits
+
+00:00:19.688 --> 00:00:39.664
+Learning objectives
+
+00:00:39.664 --> 00:00:58.944
+What is a reward?
+
+00:00:58.944 --> 00:01:21.056
+The bandit problem
+
+00:01:21.056 --> 00:01:55.384
+The k-armed bandit
+
+00:01:55.384 --> 00:02:21.840
+Action value q_*(a)
+
+00:02:21.840 --> 00:02:54.728
+Example: computing q_*(a)
+
+00:02:54.728 --> 00:03:16.408
+Estimating action values: sample-average
+
+00:03:16.408 --> 00:03:44.496
+Clinical trial example
+
+00:03:44.496 --> 00:04:19.856
+Incremental update rule
+
+00:04:19.856 --> 00:04:46.216
+Greedy action
+
+00:04:46.216 --> 00:05:17.328
+Exploration vs. exploitation
+
+00:05:17.328 --> 00:05:43.784
+When pure greed fails
+
+00:05:43.784 --> 00:06:15.784
+\epsilon-greedy action selection
+
+00:06:15.784 --> 00:06:43.992
+Exam tips: \epsilon-greedy
+
+00:06:43.992 --> 00:07:24.920
+Chapter 1 summary

@@ -1,0 +1,169 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:06.138
+Chào bạn, đến với chương mười một, chương cuối: Policy Gradient và Actor-Critic.
+
+2
+00:00:06.138 --> 00:00:21.528
+Chương này gộp bốn bài: Learning Parameterized Policies, Policy Gradient for Continuing Tasks, Actor-Critic for Continuing Tasks, và Policy Parameterizations. Thay vì học value rồi suy ra policy, ta sẽ học trực tiếp policy.
+
+3
+00:00:22.328 --> 00:00:30.416
+Ta biểu diễn policy trực tiếp bằng một hàm có tham số, ký hiệu theta, để phân biệt với trọng số w của value function.
+
+4
+00:00:30.416 --> 00:00:35.803
+Cho trạng thái và hành động, hàm trả về xác suất chọn hành động đó ở trạng thái đó.
+
+5
+00:00:35.803 --> 00:00:42.080
+Ràng buộc: mọi xác suất phải không âm, và tổng theo mọi hành động phải bằng một, ở mỗi trạng thái.
+
+6
+00:00:42.880 --> 00:00:52.918
+Cách phổ biến cho hành động rời rạc là softmax policy. Hàm h của s, a, theta gọi là action preference, mức ưa thích hành động.
+
+7
+00:00:52.918 --> 00:01:03.018
+Ta lấy e mũ preference, rồi chia cho tổng e mũ preference của mọi hành động. Kết quả luôn là phân phối hợp lệ, kể cả khi preference âm.
+
+8
+00:01:03.018 --> 00:01:14.368
+Lưu ý quan trọng: action preference không phải action value. Chỉ hiệu giữa các preference là có ý nghĩa, và preference không cần hội tụ về giá trị cụ thể nào.
+
+9
+00:01:15.168 --> 00:01:27.980
+Ưu điểm thứ nhất: policy có tham số có thể tiến dần tới deterministic, vì preference của hành động tốt nhất có thể tăng mãi. Epsilon-greedy thì luôn giữ xác suất epsilon cho hành động ngẫu nhiên.
+
+10
+00:01:27.980 --> 00:01:36.543
+Thứ hai: học được policy tối ưu dạng stochastic, cần thiết khi agent không phân biệt được một số trạng thái, gọi là state aliasing.
+
+11
+00:01:36.543 --> 00:01:42.030
+Thứ ba: đôi khi policy đơn giản hơn value function nên dễ xấp xỉ hơn.
+
+12
+00:01:42.030 --> 00:01:46.200
+Và thứ tư: xử lý tự nhiên không gian hành động liên tục.
+
+13
+00:01:47.000 --> 00:01:58.362
+Mục tiêu của agent được hình thức hoá thành hàm mục tiêu. Với episodic task là tổng reward của episode, với continuing task là discounted return hoặc average reward.
+
+14
+00:01:58.362 --> 00:02:09.712
+Trong phần này ta dùng average reward r của pi. Mục tiêu là tìm theta làm r của pi lớn nhất, nên ta dùng gradient ascent, đi theo hướng gradient.
+
+15
+00:02:09.712 --> 00:02:21.176
+Khó khăn chính: thay đổi theta không chỉ làm đổi policy mà còn đổi phân phối trạng thái mu. Khác với value function approximation, nơi mu không phụ thuộc trọng số w.
+
+16
+00:02:21.976 --> 00:02:33.626
+Policy gradient theorem giải quyết khó khăn đó. Gradient của average reward bằng tổng theo trạng thái của mu của s, nhân tổng theo hành động của gradient của pi nhân q pi.
+
+17
+00:02:33.626 --> 00:02:41.251
+Điểm then chốt: công thức không cần gradient của mu. Nhờ vậy ta có thể ước lượng gradient từ kinh nghiệm.
+
+18
+00:02:41.251 --> 00:02:46.988
+Tổng bên trong đẩy xác suất của hành động có giá trị cao lên, và kéo hành động giá trị thấp xuống.
+
+19
+00:02:46.988 --> 00:02:51.088
+Tổng bên ngoài có trọng số theo tần suất ghé thăm các trạng thái.
+
+20
+00:02:51.888 --> 00:02:58.413
+Để có cập nhật từ mẫu, ta dùng các trạng thái gặp được khi đi theo pi, vốn đã tuân theo phân phối mu.
+
+21
+00:02:58.413 --> 00:03:03.963
+Thay tổng theo hành động bằng một hành động được lấy mẫu, chia cho xác suất của nó để bù lại.
+
+22
+00:03:03.963 --> 00:03:16.608
+Vì gradient của pi chia pi bằng gradient của ln pi, ta có cập nhật: theta cộng alpha nhân gradient ln pi của hành động đã chọn, nhân q pi. Đây gọi là log-likelihood trick.
+
+23
+00:03:17.408 --> 00:03:32.208
+Ta không biết q pi, nên cần ước lượng. Actor-critic gồm hai thành phần. Actor là policy có tham số, quyết định hành động. Critic là value function, đánh giá hành động đó tốt hay tệ.
+
+24
+00:03:32.208 --> 00:03:42.920
+Critic học v mũ bằng semi-gradient TD, trong bài toán average reward nên TD error có R trừ R gạch ngang, và R gạch ngang cũng được cập nhật bằng delta.
+
+25
+00:03:42.920 --> 00:03:54.283
+Actor dùng chính TD error delta thay cho q pi. Delta dương nghĩa là hành động vừa rồi tốt hơn mong đợi, nên tăng xác suất của nó. Delta âm thì giảm.
+
+26
+00:03:54.283 --> 00:04:01.208
+Việc trừ v mũ của S đóng vai trò baseline: không làm thay đổi gradient kỳ vọng nhưng giảm phương sai đáng kể.
+
+27
+00:04:02.008 --> 00:04:02.608
+Một cài đặt cụ thể: critic tuyến tính theo đặc trưng trạng thái, nên cập nhật critic là w cộng alpha w nhân delta nhân x của s.
+
+28
+00:04:02.608 --> 00:04:16.471
+Actor dùng preference tuyến tính, theta nhân đặc trưng x h của s và a, với stacked features cho mỗi hành động.
+
+29
+00:04:16.471 --> 00:04:24.616
+Gradient của ln pi với softmax có dạng rất đẹp: đặc trưng của hành động đã chọn, trừ đi trung bình đặc trưng của mọi hành động theo pi.
+
+30
+00:04:25.416 --> 00:04:35.604
+Với hành động liên tục, ví dụ lực hay góc lái, ta dùng Gaussian policy: phân phối chuẩn trên hành động với trung bình mu và độ lệch chuẩn sigma, cả hai phụ thuộc trạng thái.
+
+31
+00:04:35.604 --> 00:04:47.254
+Mu là hàm tuyến tính của đặc trưng. Sigma phải dương, nên dùng e mũ của một hàm tuyến tính. Tham số theta gồm hai phần, theta mu và theta sigma.
+
+32
+00:04:47.254 --> 00:04:55.904
+Sigma điều khiển mức độ khám phá. Thường khởi tạo sigma lớn để thử nhiều hành động, rồi sigma nhỏ dần khi agent học được.
+
+33
+00:04:55.904 --> 00:05:03.192
+Ưu điểm của hành động liên tục: không cần rời rạc hoá, điều khiển tinh hơn, và khái quát hoá giữa các hành động gần nhau.
+
+34
+00:05:03.992 --> 00:05:13.792
+Tổng kết ba nhóm phương pháp. Value-based như Sarsa và Q-learning học action value, policy được suy ra, ví dụ epsilon-greedy.
+
+35
+00:05:13.792 --> 00:05:18.767
+Policy-based học trực tiếp policy có tham số bằng gradient ascent.
+
+36
+00:05:18.767 --> 00:05:25.680
+Actor-critic kết hợp cả hai: critic học value, và TD error của critic dẫn đường cho actor.
+
+37
+00:05:25.680 --> 00:05:34.880
+Policy gradient phù hợp với policy stochastic và hành động liên tục. Value-based đơn giản và hiệu quả với hành động rời rạc.
+
+38
+00:05:35.680 --> 00:05:42.992
+Tóm tắt chương mười một. Policy có tham số theta, với softmax trên các action preference.
+
+39
+00:05:42.992 --> 00:05:51.018
+Mục tiêu là average reward, và policy gradient theorem cho phép tính gradient mà không cần đạo hàm của phân phối trạng thái.
+
+40
+00:05:51.018 --> 00:05:56.530
+Cập nhật policy: theta cộng alpha nhân gradient ln pi nhân q pi.
+
+41
+00:05:56.530 --> 00:06:00.818
+Actor-critic dùng TD error của critic thay cho q pi.
+
+42
+00:06:00.818 --> 00:06:10.288
+Và Gaussian policy xử lý hành động liên tục. Đây là chương cuối của môn học. Chúc bạn ôn tập hiệu quả và thi thật tốt!

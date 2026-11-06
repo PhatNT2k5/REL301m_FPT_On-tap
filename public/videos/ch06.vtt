@@ -1,0 +1,141 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:06.062
+Chào bạn, đến với chương sáu: Temporal Difference Learning, gọi tắt là TD.
+
+2
+00:00:06.062 --> 00:00:16.320
+Chương này gộp hai bài: Introduction to TD Learning và Advantages of TD. TD là ý tưởng trung tâm và độc đáo nhất của reinforcement learning.
+
+3
+00:00:17.120 --> 00:00:22.182
+TD learning kết hợp ý tưởng của Monte Carlo và dynamic programming.
+
+4
+00:00:22.182 --> 00:00:27.382
+Giống Monte Carlo, TD không cần mô hình, học trực tiếp từ kinh nghiệm.
+
+5
+00:00:27.382 --> 00:00:33.245
+Giống dynamic programming, TD bootstrap, tức cập nhật ước lượng dựa trên ước lượng khác.
+
+6
+00:00:33.245 --> 00:00:38.120
+Kết quả là TD cập nhật sau từng bước, không cần chờ hết episode.
+
+7
+00:00:38.920 --> 00:00:47.208
+Monte Carlo với step size hằng số alpha cập nhật V của S t về phía return G t. Nhưng G t chỉ biết khi episode kết thúc.
+
+8
+00:00:47.208 --> 00:00:58.958
+TD thay G t bằng một ước lượng: reward kế tiếp cộng gamma nhân giá trị ước lượng của trạng thái kế tiếp. Ý tưởng đến từ công thức G t bằng R t cộng một cộng gamma G t cộng một.
+
+9
+00:00:58.958 --> 00:01:05.584
+Alpha là step size, hay learning rate, quyết định mức độ dịch chuyển về phía target ở mỗi lần cập nhật.
+
+10
+00:01:06.384 --> 00:01:12.484
+TD target là reward ngay lập tức cộng giá trị ước lượng của trạng thái kế tiếp, nhân gamma.
+
+11
+00:01:12.484 --> 00:01:22.496
+TD error, ký hiệu delta t, là hiệu giữa TD target và ước lượng hiện tại. Nó đo mức chênh giữa dự đoán và những gì vừa quan sát được.
+
+12
+00:01:22.496 --> 00:01:22.996
+Quy tắc cập nhật: V của S t cộng thêm alpha nhân delta t.
+
+13
+00:01:22.996 --> 00:01:37.632
+Nếu delta dương, kết quả tốt hơn mong đợi, nên tăng giá trị. Nếu delta âm thì giảm. Lưu ý TD error ở thời điểm t chỉ tính được ở bước t cộng một.
+
+14
+00:01:38.432 --> 00:01:45.807
+Thuật toán TD zero cho bài toán prediction: khởi tạo V tuỳ ý, riêng trạng thái kết thúc có giá trị bằng không.
+
+15
+00:01:45.807 --> 00:01:52.307
+Ở mỗi bước, chọn hành động theo policy pi, quan sát reward R và trạng thái mới S phẩy.
+
+16
+00:01:52.307 --> 00:01:56.032
+Cập nhật V của S ngay lập tức bằng TD error.
+
+17
+00:01:56.032 --> 00:02:03.584
+Gán S bằng S phẩy rồi lặp lại cho tới khi gặp trạng thái kết thúc. Mỗi cập nhật chỉ cần một transition.
+
+18
+00:02:04.384 --> 00:02:10.496
+Ví dụ: agent ở trạng thái A, đi sang phải tới B là đích, nhận reward cộng một.
+
+19
+00:02:10.496 --> 00:02:19.784
+Ban đầu V của A bằng không, B là trạng thái kết thúc nên V của B bằng không. Alpha bằng không phẩy một, gamma bằng không phẩy chín.
+
+20
+00:02:19.784 --> 00:02:27.459
+TD error bằng một cộng không phẩy chín nhân không trừ không, bằng một. Vậy V của A mới bằng không phẩy một.
+
+21
+00:02:27.459 --> 00:02:43.888
+Một ví dụ khác: V của A bằng không phẩy năm, chuyển tới C có giá trị hai, reward bằng một. Delta bằng một cộng một phẩy tám trừ không phẩy năm, bằng hai phẩy ba. V của A mới bằng không phẩy năm cộng không phẩy hai ba, bằng không phẩy bảy ba.
+
+22
+00:02:44.688 --> 00:02:49.788
+Ưu điểm thứ nhất: TD học online và tăng dần, cập nhật sau mỗi bước.
+
+23
+00:02:49.788 --> 00:02:57.225
+Thứ hai: TD dùng được cho continuing task và các chuỗi chưa hoàn chỉnh, trong khi Monte Carlo cần episode kết thúc.
+
+24
+00:02:57.225 --> 00:03:01.926
+Thứ ba: TD không cần mô hình, khác với dynamic programming.
+
+25
+00:03:01.926 --> 00:03:08.038
+Thứ tư: trong thực nghiệm, TD thường hội tụ nhanh hơn Monte Carlo với alpha hằng số.
+
+26
+00:03:08.038 --> 00:03:17.232
+Và thứ năm: TD target chỉ phụ thuộc một reward và một ước lượng, nên phương sai thấp hơn Monte Carlo, đổi lại là có độ chệch do bootstrap.
+
+27
+00:03:18.032 --> 00:03:26.894
+So sánh ba phương pháp. Dynamic programming cần mô hình, bootstrap, và cập nhật theo kỳ vọng đầy đủ trên mọi trạng thái kế tiếp.
+
+28
+00:03:26.894 --> 00:03:35.132
+Monte Carlo không cần mô hình, không bootstrap, phải chờ hết episode. Target không chệch nhưng phương sai cao.
+
+29
+00:03:35.132 --> 00:03:41.844
+TD không cần mô hình, có bootstrap, cập nhật mỗi bước. Phương sai thấp nhưng có chệch.
+
+30
+00:03:41.844 --> 00:03:51.776
+Với bảng giá trị và alpha giảm dần phù hợp, TD zero đã được chứng minh hội tụ về v pi. Đây là các ý thường xuất hiện trong câu hỏi so sánh.
+
+31
+00:03:52.576 --> 00:04:00.701
+Tóm tắt chương sáu. TD kết hợp lấy mẫu không cần mô hình của Monte Carlo với bootstrapping của dynamic programming.
+
+32
+00:04:00.701 --> 00:04:05.626
+TD target là reward kế tiếp cộng gamma nhân giá trị trạng thái kế tiếp.
+
+33
+00:04:05.626 --> 00:04:09.326
+TD error là target trừ ước lượng hiện tại.
+
+34
+00:04:09.326 --> 00:04:12.688
+TD zero cập nhật online sau từng bước.
+
+35
+00:04:12.688 --> 00:04:23.488
+TD có phương sai thấp hơn và thường học nhanh hơn Monte Carlo. Chương sau, ta dùng TD cho bài toán control với Sarsa, Q-learning và Expected Sarsa.

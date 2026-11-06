@@ -1,0 +1,48 @@
+[
+  {
+    "id": "extra-ch1-01",
+    "chapter": 1,
+    "sourceLesson": "1.3",
+    "source": "Extra",
+    "question": "With $\\epsilon$-greedy action selection over $k = 4$ actions and $\\epsilon = 0.2$, what is the probability of selecting the greedy action?",
+    "options": ["0.80", "0.85", "0.20", "0.95"],
+    "answers": [1],
+    "multi": false,
+    "answerSource": "verified-by-slides",
+    "explanation": "Xác suất chọn greedy action là $1 - \\epsilon + \\epsilon/k = 0.8 + 0.05 = 0.85$, vì lựa chọn ngẫu nhiên cũng có thể rơi vào greedy action."
+  },
+  {
+    "id": "extra-ch6-01",
+    "chapter": 6,
+    "sourceLesson": "2.5",
+    "source": "Extra",
+    "question": "What is the TD error $\\delta_t$ in TD(0)?",
+    "options": [
+      "$G_t - V(S_t)$",
+      "$R_{t+1} + \\gamma V(S_{t+1}) - V(S_t)$",
+      "$R_{t+1} - V(S_t)$",
+      "$V(S_{t+1}) - V(S_t)$"
+    ],
+    "answers": [1],
+    "multi": false,
+    "answerSource": "verified-by-slides",
+    "explanation": "TD error = TD target $R_{t+1} + \\gamma V(S_{t+1})$ trừ ước lượng hiện tại $V(S_t)$."
+  },
+  {
+    "id": "extra-ch7-01",
+    "chapter": 7,
+    "sourceLesson": "2.8",
+    "source": "Extra",
+    "question": "Which statements about Q-learning are correct? (Choose 2)",
+    "options": [
+      "It is an off-policy method",
+      "Its target uses the action actually taken in the next state",
+      "Its target uses $\\max_a Q(S_{t+1}, a)$",
+      "It requires a model of the environment"
+    ],
+    "answers": [0, 2],
+    "multi": true,
+    "answerSource": "verified-by-slides",
+    "explanation": "Q-learning là off-policy, target dùng max theo hành động ở trạng thái kế tiếp và không cần mô hình."
+  }
+]

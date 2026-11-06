@@ -1,0 +1,209 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:06.250
+Chào bạn, đến với chương hai: Markov Decision Process, viết tắt là MDP.
+
+2
+00:00:06.250 --> 00:00:19.056
+Chương này gộp ba bài: Introduction to MDP, Goal of Reinforcement Learning, và Continuing Tasks. Ta sẽ chuyển từ bài toán bandit không có trạng thái sang bài toán ra quyết định tuần tự đầy đủ.
+
+3
+00:00:19.856 --> 00:00:30.118
+Ví dụ chú thỏ đi tìm thức ăn. Bên phải là cà rốt cho reward cộng mười, bên trái là bông cải cho cộng ba. Thỏ nên đi sang phải.
+
+4
+00:00:30.118 --> 00:00:36.056
+Nhưng nếu lần sau cà rốt nằm bên trái, bông cải nằm bên phải, thì thỏ nên đi sang trái.
+
+5
+00:00:36.056 --> 00:00:40.344
+Như vậy, mỗi tình huống khác nhau đòi hỏi một hành động khác nhau.
+
+6
+00:00:40.344 --> 00:00:46.352
+Bài toán bandit không tính đến tình huống, tức trạng thái, nên nó không đủ để mô tả điều này.
+
+7
+00:00:47.152 --> 00:00:50.764
+Bây giờ thêm một con hổ đứng ngay sau củ cà rốt.
+
+8
+00:00:50.764 --> 00:00:58.915
+Một chú thỏ kiểu bandit chỉ nhìn reward trước mắt, sẽ lao tới ăn cà rốt, và sau đó có thể bị hổ bắt, nhận reward âm rất lớn.
+
+9
+00:00:58.915 --> 00:01:05.127
+Nếu tính đến hệ quả dài hạn, thỏ nên đi sang trái, chấp nhận bông cải để có cơ hội thoát thân.
+
+10
+00:01:05.127 --> 00:01:13.672
+Đây là ý chính của MDP: hành động không chỉ ảnh hưởng reward ngay lập tức, mà còn ảnh hưởng trạng thái tiếp theo và các reward trong tương lai.
+
+11
+00:01:14.472 --> 00:01:20.910
+MDP là một khung toán học mô hình hoá việc agent tương tác với môi trường qua các bước thời gian rời rạc.
+
+12
+00:01:20.910 --> 00:01:29.985
+Ở mỗi bước t, agent quan sát trạng thái S t và chọn hành động A t. Môi trường phản hồi bằng reward R t cộng một và trạng thái mới S t cộng một.
+
+13
+00:01:29.985 --> 00:01:44.616
+Chuỗi tương tác tạo thành một trajectory: S zero, A zero, R một, S một, A một, R hai, và cứ thế tiếp tục. Chú ý chỉ số: reward sau hành động A t được ký hiệu là R t cộng một.
+
+14
+00:01:45.416 --> 00:01:50.954
+Ôn lại các thành phần chính. Agent là thực thể học và ra quyết định.
+
+15
+00:01:50.954 --> 00:01:54.791
+Environment là mọi thứ bên ngoài mà agent tương tác.
+
+16
+00:01:54.791 --> 00:01:59.429
+State mô tả tình huống hiện tại, chứa thông tin cần thiết để ra quyết định.
+
+17
+00:01:59.429 --> 00:02:02.829
+Action là lựa chọn của agent tại mỗi bước.
+
+18
+00:02:02.829 --> 00:02:06.704
+Reward là tín hiệu phản hồi dạng số sau mỗi hành động.
+
+19
+00:02:06.704 --> 00:02:18.656
+Và policy là chiến lược, ánh xạ từ trạng thái sang hành động. Ví dụ robot di chuyển trong grid world: mỗi ô là một state, các hành động là lên, xuống, trái, phải.
+
+20
+00:02:19.456 --> 00:02:26.181
+Khi agent thực hiện hành động a ở trạng thái s, có thể xảy ra nhiều trạng thái tiếp theo và nhiều reward khác nhau.
+
+21
+00:02:26.181 --> 00:02:26.681
+Hàm dynamics p của s phẩy, r, với điều kiện s và a, cho biết xác suất đồng thời của trạng thái tiếp theo s phẩy và reward r.
+
+22
+00:02:26.681 --> 00:02:42.664
+Vì p là một phân phối xác suất, nó luôn không âm, và tổng theo mọi s phẩy và mọi r phải bằng một, với mỗi cặp s và a.
+
+23
+00:02:43.464 --> 00:02:48.127
+Tính chất quan trọng nhất của MDP là Markov property.
+
+24
+00:02:48.127 --> 00:02:57.302
+Trạng thái tiếp theo và reward chỉ phụ thuộc vào trạng thái hiện tại và hành động hiện tại. Biết thêm các trạng thái trước đó không giúp dự đoán tốt hơn.
+
+25
+00:02:57.302 --> 00:03:04.992
+Nói gọn: tương lai độc lập với quá khứ, khi đã biết hiện tại. Đây là câu hay xuất hiện trong đề thi.
+
+26
+00:03:05.792 --> 00:03:14.042
+So sánh với học có giám sát. Supervised learning học ánh xạ từ input sang nhãn, dựa trên dữ liệu đã gán nhãn.
+
+27
+00:03:14.042 --> 00:03:19.455
+Reinforcement learning học một policy từ reward, thông qua tương tác với môi trường.
+
+28
+00:03:19.455 --> 00:03:26.842
+RL không có nhãn đúng sai. Phản hồi chỉ cho biết hành động tốt đến đâu, và thường bị trễ.
+
+29
+00:03:26.842 --> 00:03:33.584
+RL phù hợp với bài toán ra quyết định tuần tự như chơi cờ vây, điều khiển robot hay lái xe tự động.
+
+30
+00:03:34.384 --> 00:03:44.859
+Mục tiêu của agent không phải là reward ngay lập tức, mà là return, ký hiệu G t: tổng các reward trong tương lai, từ R t cộng một đến R T ở bước cuối.
+
+31
+00:03:44.859 --> 00:03:52.534
+Vì môi trường ngẫu nhiên, G t là biến ngẫu nhiên. Do đó mục tiêu là tối đa hoá kỳ vọng của return.
+
+32
+00:03:52.534 --> 00:03:59.536
+Ý tưởng này gọi là reward hypothesis: mọi mục tiêu đều có thể diễn đạt bằng việc tối đa hoá tổng reward tích luỹ.
+
+33
+00:04:00.336 --> 00:04:05.061
+Episodic task là bài toán mà tương tác được chia thành từng episode.
+
+34
+00:04:05.061 --> 00:04:13.924
+Mỗi episode kết thúc ở một trạng thái kết thúc, gọi là terminal state, tại thời điểm T. Sau đó môi trường được reset để bắt đầu episode mới.
+
+35
+00:04:13.924 --> 00:04:19.486
+Các episode độc lập với nhau: kết quả episode trước không ảnh hưởng episode sau.
+
+36
+00:04:19.486 --> 00:04:24.672
+Ví dụ: một ván cờ, một lần đi mê cung, hay giải một câu đố.
+
+37
+00:04:25.472 --> 00:04:31.097
+Continuing task là bài toán mà tương tác kéo dài mãi mãi, không có terminal state.
+
+38
+00:04:31.097 --> 00:04:38.797
+Ví dụ máy điều nhiệt thông minh. Trạng thái gồm nhiệt độ hiện tại, thời gian trong ngày, số người trong toà nhà.
+
+39
+00:04:38.797 --> 00:04:51.522
+Hành động chỉ có bật hoặc tắt máy sưởi. Reward bằng âm một mỗi khi có người phải chỉnh tay, và bằng không nếu không ai chỉnh. Để tránh reward âm, máy sẽ học cách đoán trước sở thích người dùng.
+
+40
+00:04:51.522 --> 00:04:58.784
+Vấn đề là nếu cộng reward mãi mãi, return có thể tiến tới vô cùng. Vậy giải pháp là gì?
+
+41
+00:04:59.584 --> 00:05:09.197
+Giải pháp là discounting, chiết khấu. Ta nhân reward ở tương lai xa bằng gamma mũ k, với gamma nằm trong đoạn từ không đến nhỏ hơn một.
+
+42
+00:05:09.197 --> 00:05:12.072
+Reward càng xa thì đóng góp càng ít.
+
+43
+00:05:12.072 --> 00:05:20.622
+Nếu reward bị chặn bởi R max, thì return không vượt quá R max chia cho một trừ gamma. Vậy tổng luôn hữu hạn.
+
+44
+00:05:20.622 --> 00:05:31.096
+Một dạng rất quan trọng: G t bằng R t cộng một, cộng gamma nhân G t cộng một. Công thức đệ quy này là nền tảng của phương trình Bellman ở chương sau.
+
+45
+00:05:31.896 --> 00:05:43.984
+Gamma ảnh hưởng trực tiếp đến hành vi của agent. Khi gamma bằng không, return chỉ còn là reward kế tiếp. Agent trở nên thiển cận, chỉ quan tâm phần thưởng ngay lập tức.
+
+46
+00:05:43.984 --> 00:05:51.484
+Khi gamma tiến gần một, reward hiện tại và tương lai có trọng số gần như bằng nhau. Agent nhìn xa hơn.
+
+47
+00:05:51.484 --> 00:06:06.600
+Thử tính nhanh: gamma bằng không phẩy năm, các reward lần lượt là một, hai, bốn. Return bằng một, cộng không phẩy năm nhân hai, cộng không phẩy hai lăm nhân bốn, bằng ba. Dạng bài tính return này rất hay ra thi.
+
+48
+00:06:07.400 --> 00:06:09.363
+Tóm tắt chương hai. MDP gồm trạng thái, hành động, reward và hàm dynamics p.
+
+49
+00:06:09.363 --> 00:06:18.188
+Markov property nói rằng trạng thái hiện tại là đủ để dự đoán tương lai.
+
+50
+00:06:18.188 --> 00:06:22.363
+Mục tiêu của agent là tối đa hoá kỳ vọng của return.
+
+51
+00:06:22.363 --> 00:06:27.588
+Episodic task kết thúc ở thời điểm T, continuing task kéo dài mãi mãi.
+
+52
+00:06:27.588 --> 00:06:40.904
+Và discounting giúp return luôn hữu hạn, với dạng đệ quy G t bằng R t cộng một cộng gamma G t cộng một. Chương sau, ta dùng return để định nghĩa policy, value function và phương trình Bellman.

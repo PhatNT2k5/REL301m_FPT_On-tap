@@ -1,0 +1,49 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:22.616
+On-policy Prediction with Function Approximation
+
+00:00:22.616 --> 00:00:55.624
+From tables to parameterized functions
+
+00:00:55.624 --> 00:01:16.080
+Linear value function approximation
+
+00:01:16.080 --> 00:01:59.912
+Generalization vs. discrimination
+
+00:01:59.912 --> 00:02:30.784
+Mean squared value error \overline{VE}
+
+00:02:30.784 --> 00:02:51.024
+Gradient descent
+
+00:02:51.024 --> 00:03:18.440
+Gradient Monte Carlo
+
+00:03:18.440 --> 00:03:44.752
+State aggregation
+
+00:03:44.752 --> 00:04:16.032
+Semi-gradient TD(0)
+
+00:04:16.032 --> 00:04:46.088
+TD vs. gradient Monte Carlo
+
+00:04:46.088 --> 00:05:22.744
+Linear TD and the tabular special case
+
+00:05:22.744 --> 00:05:53.808
+The TD fixed point
+
+00:05:53.808 --> 00:06:27.248
+Coarse coding
+
+00:06:27.248 --> 00:06:53.584
+Shape and size of features
+
+00:06:53.584 --> 00:07:25.608
+Tile coding
+
+00:07:25.608 --> 00:08:02.936
+Chapter 9 summary

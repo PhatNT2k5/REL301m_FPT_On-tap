@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --paper: #eef2ec;
+  --panel: #f8faf6;
+  --ink: #1e2a24;
+  --muted: #5d6d64;
+  --line: #cfd9d1;
+  --sage: #3e7c5a;
+  --sage-soft: #d9e8dd;
+  --reward: #b97a12;
+  --reward-soft: #f6e6c2;
+  --penalty: #b5402f;
+  --penalty-soft: #f5d9d3;
+  --grid: rgba(62, 124, 90, 0.07);
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --paper: #121c17;
+  --panel: #19261f;
+  --ink: #e4ede6;
+  --muted: #9cb0a3;
+  --line: #2c3d33;
+  --sage: #8cc9a2;
+  --sage-soft: #23392c;
+  --reward: #e6b54f;
+  --reward-soft: #3a3020;
+  --penalty: #ec8473;
+  --penalty-soft: #3d2420;
+  --grid: rgba(140, 201, 162, 0.05);
+  color-scheme: dark;
+}
+
+html,
+body {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+body {
+  font-family: "Be Vietnam Pro", system-ui, sans-serif;
+  /* graph-paper grid: the "grid world" the agent lives in */
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 28px 28px;
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--sage);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.katex {
+  font-size: 1.05em;
+}
+
+.katex-display {
+  margin: 0.4em 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+video::cue {
+  font-family: "Be Vietnam Pro", system-ui, sans-serif;
+  font-size: 0.95rem;
+  background: rgba(10, 20, 14, 0.78);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

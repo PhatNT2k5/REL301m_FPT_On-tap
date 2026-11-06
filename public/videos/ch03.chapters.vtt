@@ -1,0 +1,43 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:18.320
+Policies, Value Functions & Bellman Equations
+
+00:00:18.320 --> 00:00:39.520
+Deterministic policy \pi(s) = a
+
+00:00:39.520 --> 00:01:04.896
+Stochastic policy \pi(a \mid s)
+
+00:01:04.896 --> 00:01:34.832
+State-value and action-value functions
+
+00:01:34.832 --> 00:02:12.976
+Value function example (grid world)
+
+00:02:12.976 --> 00:02:38.904
+Bellman expectation equation for v_\pi
+
+00:02:38.904 --> 00:03:01.280
+Bellman expectation equation for q_\pi
+
+00:03:01.280 --> 00:03:53.392
+Example: solving Bellman equations
+
+00:03:53.392 --> 00:04:12.360
+Limits of solving directly
+
+00:04:12.360 --> 00:04:37.736
+Optimal policy \pi_*
+
+00:04:37.736 --> 00:05:22.216
+Which policy is optimal? It depends on \gamma
+
+00:05:22.216 --> 00:05:50.160
+Bellman optimality equations
+
+00:05:50.160 --> 00:06:14.216
+From v_* / q_* to an optimal policy
+
+00:06:14.216 --> 00:06:47.224
+Chapter 3 summary

@@ -1,0 +1,43 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:20.288
+Monte Carlo Methods
+
+00:00:20.288 --> 00:00:49.432
+Learning from sampled experience
+
+00:00:49.432 --> 00:01:12.720
+Monte Carlo prediction
+
+00:01:12.720 --> 00:01:52.160
+Computing returns backward
+
+00:01:52.160 --> 00:02:21.592
+First-visit MC prediction
+
+00:02:21.592 --> 00:03:01.824
+Blackjack as an MDP
+
+00:03:01.824 --> 00:03:32.000
+MC for action values
+
+00:03:32.000 --> 00:04:11.368
+Exploring starts & MC control (GPI)
+
+00:04:11.368 --> 00:04:33.696
+Why exploring starts can fail
+
+00:04:33.696 --> 00:05:07.208
+\epsilon-soft policies
+
+00:05:07.208 --> 00:05:47.416
+On-policy vs. off-policy
+
+00:05:47.416 --> 00:06:23.904
+Importance sampling
+
+00:06:23.904 --> 00:06:54.656
+Off-policy Monte Carlo prediction
+
+00:06:54.656 --> 00:07:30.352
+Chapter 5 summary

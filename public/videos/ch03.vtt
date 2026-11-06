@@ -1,0 +1,209 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.988
+Chào bạn, đến với chương ba, một trong những chương quan trọng nhất của môn học.
+
+2
+00:00:04.988 --> 00:00:17.520
+Chương này gộp ba bài: Policies and Value Functions, Bellman Equations, và Optimal Policies and Value Functions. Gần như mọi thuật toán phía sau đều xây dựng trên các khái niệm ở đây.
+
+3
+00:00:18.320 --> 00:00:25.270
+Policy là ánh xạ từ trạng thái sang hành động. Nó quyết định toàn bộ hành vi của agent.
+
+4
+00:00:25.270 --> 00:00:31.208
+Với deterministic policy, ở mỗi trạng thái agent chọn đúng một hành động một cách chắc chắn. Ta viết pi của s bằng a.
+
+5
+00:00:31.208 --> 00:00:38.720
+Ví dụ trong grid world: các mũi tên cho biết ở mỗi ô agent nên đi hướng nào để về nhà.
+
+6
+00:00:39.520 --> 00:00:44.470
+Stochastic policy cho mỗi trạng thái một phân phối xác suất trên các hành động.
+
+7
+00:00:44.470 --> 00:00:53.170
+Pi của a với điều kiện s là xác suất chọn hành động a khi đang ở trạng thái s. Ví dụ ở hàng dưới, đi lên hoặc sang phải với xác suất năm mươi phần trăm.
+
+8
+00:00:53.170 --> 00:01:04.096
+Hai điều kiện: mỗi xác suất không âm, và tổng xác suất theo mọi hành động bằng một, với từng trạng thái. Lưu ý thêm, policy chỉ phụ thuộc vào trạng thái hiện tại.
+
+9
+00:01:04.896 --> 00:01:11.371
+Value function đo mức độ tốt của một trạng thái, hoặc một cặp trạng thái và hành động, về lâu dài.
+
+10
+00:01:11.371 --> 00:01:17.284
+v pi của s là kỳ vọng của return khi bắt đầu từ trạng thái s rồi đi theo policy pi.
+
+11
+00:01:17.284 --> 00:01:24.858
+q pi của s và a là kỳ vọng của return khi ở trạng thái s, thực hiện hành động a, rồi sau đó mới đi theo pi.
+
+12
+00:01:24.858 --> 00:01:34.032
+Nhờ value function, ta có thể đánh giá và so sánh các policy với nhau. Nhớ rằng value luôn gắn với một policy cụ thể.
+
+13
+00:01:34.832 --> 00:01:46.257
+Ví dụ grid world: đâm vào tường nhận âm một. Mọi hành động ở ô A cho cộng mười và chuyển tới A phẩy. Ở ô B cho cộng năm và chuyển tới B phẩy.
+
+14
+00:01:46.257 --> 00:01:52.369
+Policy là chọn ngẫu nhiên đều bốn hướng, đây là continuing task với gamma bằng không phẩy chín.
+
+15
+00:01:52.369 --> 00:01:52.869
+Các ô ở hàng dưới có giá trị âm, vì agent dễ đâm vào tường trước khi tới được A hoặc B.
+
+16
+00:01:52.869 --> 00:02:04.944
+Ô A có giá trị tám phẩy tám, thấp hơn mười, vì sau khi nhảy tới A phẩy, agent ở sát tường dưới và dễ bị phạt.
+
+17
+00:02:04.944 --> 00:02:12.176
+Ngược lại ô B có giá trị năm phẩy ba, lớn hơn năm, vì B phẩy nằm ở giữa, gần cả A và B.
+
+18
+00:02:12.976 --> 00:02:18.564
+Phương trình Bellman biểu diễn giá trị của một trạng thái thông qua giá trị của các trạng thái kế tiếp.
+
+19
+00:02:18.564 --> 00:02:24.801
+Nó đến từ dạng đệ quy của return: G t bằng R t cộng một cộng gamma G t cộng một.
+
+20
+00:02:24.801 --> 00:02:30.838
+Giá trị của s bằng kỳ vọng của reward ngay lập tức, cộng gamma nhân giá trị của trạng thái kế tiếp.
+
+21
+00:02:30.838 --> 00:02:38.104
+Ta lấy trung bình hai lớp: lớp ngoài theo xác suất chọn hành động của policy, lớp trong theo dynamics p của môi trường.
+
+22
+00:02:38.904 --> 00:02:46.229
+Tương tự với action value. Vì hành động a đã được chọn, ta lấy trung bình theo dynamics trước.
+
+23
+00:02:46.229 --> 00:02:52.892
+Sau đó, ở trạng thái kế tiếp s phẩy, lấy trung bình theo hành động kế tiếp a phẩy mà policy chọn.
+
+24
+00:02:52.892 --> 00:03:00.480
+Mối liên hệ cần nhớ: v pi của s bằng tổng theo a của pi của a với điều kiện s, nhân q pi của s và a.
+
+25
+00:03:01.280 --> 00:03:13.455
+Ví dụ có bốn trạng thái A, B, C, D, policy ngẫu nhiên đều, gamma bằng không phẩy bảy. Reward bằng cộng năm mỗi khi agent đi vào B, còn lại bằng không.
+
+26
+00:03:13.455 --> 00:03:19.980
+Mỗi hành động chỉ dẫn tới một trạng thái duy nhất, nên tổng theo s phẩy và r rút gọn còn một số hạng.
+
+27
+00:03:19.980 --> 00:03:35.080
+Từ A: đi phải tới B nhận năm, xác suất một phần tư. Đi xuống tới C, một phần tư. Đi lên hoặc sang trái thì ở lại A, tổng cộng một nửa. Ta có phương trình cho v của A như trên màn hình.
+
+28
+00:03:35.080 --> 00:03:52.592
+Viết tương tự cho B, C, D, ta được hệ bốn phương trình tuyến tính. Giải ra: v A bằng bốn phẩy hai, v B bằng sáu phẩy một, v C bằng hai phẩy hai, v D bằng bốn phẩy hai. Bellman đã biến một tổng vô hạn thành một bài toán đại số tuyến tính.
+
+29
+00:03:53.392 --> 00:03:57.354
+Giải trực tiếp nghĩa là mỗi trạng thái cho một phương trình tuyến tính.
+
+30
+00:03:57.354 --> 00:04:00.092
+Với bốn trạng thái thì rất dễ.
+
+31
+00:04:00.092 --> 00:04:05.167
+Nhưng cờ vua có khoảng mười mũ bốn lăm trạng thái, giải trực tiếp là không thể.
+
+32
+00:04:05.167 --> 00:04:11.560
+Vì vậy ta cần các phương pháp lặp như dynamic programming ở chương sau, và các phương pháp học từ kinh nghiệm.
+
+33
+00:04:12.360 --> 00:04:19.948
+Policy pi một tốt hơn hoặc bằng pi hai khi và chỉ khi giá trị của pi một lớn hơn hoặc bằng giá trị của pi hai tại mọi trạng thái.
+
+34
+00:04:19.948 --> 00:04:26.148
+Optimal policy, ký hiệu pi sao, là policy tốt hơn hoặc bằng mọi policy khác.
+
+35
+00:04:26.148 --> 00:04:31.972
+Luôn tồn tại ít nhất một optimal policy, và có thể có nhiều optimal policy.
+
+36
+00:04:31.972 --> 00:04:36.936
+Hơn nữa, luôn tồn tại một optimal policy dạng deterministic.
+
+37
+00:04:37.736 --> 00:04:50.386
+Ví dụ MDP hai lựa chọn. Policy pi một đi từ X sang Y nhận cộng một ngay. Policy pi hai đi từ X sang Z nhận không, rồi từ Z quay về X nhận cộng hai.
+
+38
+00:04:50.386 --> 00:04:59.811
+Nếu gamma bằng không, chỉ reward trước mắt quan trọng. v pi một của X bằng một, v pi hai bằng không. Pi một tối ưu.
+
+39
+00:04:59.811 --> 00:05:08.124
+Nếu gamma bằng không phẩy chín, pi một nhận cộng một ở các bước chẵn, nên giá trị bằng một chia cho một trừ không phẩy tám mốt, khoảng năm phẩy ba.
+
+40
+00:05:08.124 --> 00:05:21.416
+Pi hai nhận cộng hai ở các bước lẻ, giá trị bằng không phẩy chín nhân hai chia cho không phẩy một chín, khoảng chín phẩy năm. Vậy pi hai tối ưu. Kết luận: policy tối ưu phụ thuộc vào gamma.
+
+41
+00:05:22.216 --> 00:05:30.904
+Mọi optimal policy chia sẻ cùng một value function tối ưu: v sao và q sao, là giá trị lớn nhất có thể trên mọi policy.
+
+42
+00:05:30.904 --> 00:05:38.228
+Phương trình Bellman tối ưu có dạng giống phương trình kỳ vọng, nhưng thay việc lấy trung bình theo policy bằng phép lấy max theo hành động.
+
+43
+00:05:38.228 --> 00:05:43.704
+Với q sao, phép max nằm ở bên trong, áp dụng cho hành động kế tiếp a phẩy.
+
+44
+00:05:43.704 --> 00:05:49.360
+Vì có phép max nên hệ phương trình là phi tuyến, không giải đơn giản bằng đại số tuyến tính được.
+
+45
+00:05:50.160 --> 00:05:56.910
+Khi đã có value function tối ưu, ta suy ra optimal policy bằng cách hành động tham lam đối với nó.
+
+46
+00:05:56.910 --> 00:06:03.122
+Nếu có v sao, ta cần nhìn trước một bước, và cần biết mô hình p của môi trường để tính argmax.
+
+47
+00:06:03.122 --> 00:06:13.416
+Nếu có q sao thì đơn giản hơn nhiều: chỉ cần chọn hành động có q sao lớn nhất, không cần mô hình. Đây là lý do các thuật toán như Q-learning học q sao.
+
+48
+00:06:14.216 --> 00:06:20.191
+Tóm tắt chương ba. Policy có thể là deterministic hoặc stochastic.
+
+49
+00:06:20.191 --> 00:06:24.954
+v pi và q pi là kỳ vọng của return khi đi theo policy pi.
+
+50
+00:06:24.954 --> 00:06:31.104
+Phương trình Bellman kỳ vọng: giá trị bằng reward cộng gamma nhân giá trị kế tiếp, lấy trung bình.
+
+51
+00:06:31.104 --> 00:06:35.991
+Phương trình Bellman tối ưu thay trung bình theo policy bằng phép max theo hành động.
+
+52
+00:06:35.991 --> 00:06:46.424
+Và optimal policy là policy tham lam đối với v sao hoặc q sao. Chương sau, ta dùng dynamic programming để tính các giá trị này bằng phương pháp lặp.

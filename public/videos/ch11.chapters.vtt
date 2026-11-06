@@ -1,0 +1,37 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:22.328
+Policy Gradient & Actor-Critic
+
+00:00:22.328 --> 00:00:42.880
+Parameterized policies \pi(a \mid s, \boldsymbol{\theta})
+
+00:00:42.880 --> 00:01:15.168
+Softmax policy
+
+00:01:15.168 --> 00:01:47.000
+Advantages of policy parameterization
+
+00:01:47.000 --> 00:02:21.976
+Objective: average reward
+
+00:02:21.976 --> 00:02:51.888
+The policy gradient theorem
+
+00:02:51.888 --> 00:03:17.408
+From the theorem to a sample update
+
+00:03:17.408 --> 00:04:02.008
+Actor-critic
+
+00:04:02.008 --> 00:04:25.416
+Actor-critic with softmax and linear features
+
+00:04:25.416 --> 00:05:03.992
+Gaussian policies for continuous actions
+
+00:05:03.992 --> 00:05:35.680
+Value-based vs. policy-based vs. actor-critic
+
+00:05:35.680 --> 00:06:11.088
+Chapter 11 summary

@@ -1,0 +1,5748 @@
+[
+ {
+  "id": "su26fe-01",
+  "chapter": 8,
+  "sourceLesson": "2.12",
+  "source": "SU26-FE",
+  "examNo": 1,
+  "question": "What does the Dyna architecture primarily combine?",
+  "options": [
+   "Direct RL updates and planning updates",
+   "Supervised learning and unsupervised learning",
+   "Neural networks and decision trees",
+   "Clustering and regression"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Dyna kết hợp direct RL (học từ kinh nghiệm thật) với planning (cập nhật từ kinh nghiệm mô phỏng bởi mô hình đã học)."
+ },
+ {
+  "id": "su26fe-02",
+  "chapter": 8,
+  "sourceLesson": "2.11",
+  "source": "SU26-FE",
+  "examNo": 2,
+  "question": "Why is it problematic to predict the outcomes of star exploration missions?",
+  "options": [
+   "There is too much public interest.",
+   "The lack of advanced computer models.",
+   "Uncertainties and unknown variables in space.",
+   "Predicting outcomes is unnecessary."
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Câu ví dụ trong slide về mô hình/planning: môi trường không gian có nhiều yếu tố bất định và chưa biết, nên khó có mô hình chính xác để dự đoán kết quả."
+ },
+ {
+  "id": "su26fe-03",
+  "chapter": 8,
+  "sourceLesson": "2.12",
+  "source": "SU26-FE",
+  "examNo": 3,
+  "question": "What is the primary difference between Dyna-Q and Q-learning?",
+  "options": [
+   "Dyna-Q uses a model of the environment",
+   "Q-learning updates Q-values online",
+   "Q-learning is model-free, while Dyna-Q is model-based",
+   "Dyna-Q is less prone to overestimation bias"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Q-learning không dùng mô hình (model-free); Dyna-Q học thêm mô hình và dùng nó để planning (model-based). Đáp án C mô tả đầy đủ sự khác biệt."
+ },
+ {
+  "id": "su26fe-04",
+  "chapter": 5,
+  "sourceLesson": "2.4",
+  "source": "SU26-FE",
+  "examNo": 4,
+  "question": "What is the target policy in off policy learning?",
+  "options": [
+   "The policy used to select actions",
+   "The policy that the agent is learning about",
+   "The policy that generates data",
+   "The policy that evaluates the value function"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Target policy $\\pi$ là policy mà agent muốn học giá trị/cải thiện; behavior policy $b$ mới là policy chọn hành động và sinh dữ liệu."
+ },
+ {
+  "id": "su26fe-05",
+  "chapter": 5,
+  "sourceLesson": "2.4",
+  "source": "SU26-FE",
+  "examNo": 5,
+  "question": "What role does the target policy play in off-policy learning?",
+  "options": [
+   "It defines the behavior policy",
+   "It defines the policy being learned and improved",
+   "It defines the reward function",
+   "It defines the exploration strategy"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Target policy là policy đang được học và cải thiện; việc khám phá do behavior policy đảm nhận."
+ },
+ {
+  "id": "su26fe-06",
+  "chapter": 8,
+  "sourceLesson": "2.10",
+  "source": "SU26-FE",
+  "examNo": 6,
+  "question": "What is a significant drawback of distribution models in reinforcement learning?",
+  "options": [
+   "They cannot handle large state spaces",
+   "They require extensive prior knowledge of the environment",
+   "They are not scalable to real-world applications",
+   "They converge slower than sample-based models"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Distribution model phải mô tả xác suất của mọi kết quả, nên cần rất nhiều hiểu biết về môi trường và khó xây dựng (ví dụ 5 đồng xu cần liệt kê 32 kết quả)."
+ },
+ {
+  "id": "su26fe-07",
+  "chapter": 5,
+  "sourceLesson": "2.4",
+  "source": "SU26-FE",
+  "examNo": 7,
+  "question": "Which of the following is a potential drawback of off-policy learning?",
+  "options": [
+   "It requires extensive domain knowledge",
+   "It can lead to instability in learning",
+   "It is computationally inefficient",
+   "It is only suitable for discrete action spaces"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Off-policy learning dùng importance sampling, có thể cho phương sai rất lớn và làm việc học kém ổn định."
+ },
+ {
+  "id": "su26fe-08",
+  "chapter": 7,
+  "sourceLesson": "2.8",
+  "source": "SU26-FE",
+  "examNo": 8,
+  "question": "What is the typical initial value for the Q-table in Q-learning?",
+  "options": [
+   "Random values",
+   "Infinity",
+   "Zero",
+   "One"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Q-table thường được khởi tạo bằng 0 (Step 1: Initialize Q-table), trừ trạng thái kết thúc luôn bằng 0."
+ },
+ {
+  "id": "su26fe-09",
+  "chapter": 4,
+  "sourceLesson": "1.12",
+  "source": "SU26-FE",
+  "examNo": 9,
+  "question": "What does the curse of dimensionality refer to in reinforcement learning?",
+  "options": [
+   "The increase in the number of actions available",
+   "The exponential growth of the state space as the number of state variables increases",
+   "The difficulty of finding an optimal policy",
+   "The limitation of using Monte Carlo methods"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Curse of dimensionality: số trạng thái tăng theo hàm mũ khi số biến trạng thái tăng."
+ },
+ {
+  "id": "su26fe-10",
+  "chapter": 5,
+  "sourceLesson": "2.1",
+  "source": "SU26-FE",
+  "examNo": 10,
+  "question": "In Monte Carlo prediction, what is typically used to estimate the value of a state?",
+  "options": [
+   "The maximum reward observed during operation",
+   "The average return observed from that state",
+   "The sum of immediate rewards",
+   "The minimum reward observed"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Monte Carlo ước lượng $v_\\pi(s)$ bằng trung bình các return quan sát được sau khi ghé thăm $s$."
+ },
+ {
+  "id": "su26fe-11",
+  "chapter": 7,
+  "sourceLesson": "2.8",
+  "source": "SU26-FE",
+  "examNo": 11,
+  "question": "Which of the following statements is true about Q-learning?",
+  "options": [
+   "It is a sample-based version of policy iteration.",
+   "It uses the Bellman equation for action values.",
+   "It can converge to the optimal value function with sufficient exploration.",
+   "It requires prior knowledge of the environment's dynamics."
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Q-learning hội tụ về $q_*$ nếu mọi cặp trạng thái-hành động tiếp tục được ghé thăm. Nó dựa trên phương trình Bellman tối ưu (không phải phương trình Bellman thường) và không cần mô hình."
+ },
+ {
+  "id": "su26fe-12",
+  "chapter": 8,
+  "sourceLesson": "2.12",
+  "source": "SU26-FE",
+  "examNo": 12,
+  "question": "The concept of Dyna Architecture is closely associated with which field?",
+  "options": [
+   "Artificial Intelligence",
+   "Cybersecurity",
+   "Software Engineering",
+   "Network Management"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Dyna (Sutton, 1990) là kiến trúc của reinforcement learning, thuộc lĩnh vực trí tuệ nhân tạo."
+ },
+ {
+  "id": "su26fe-13",
+  "chapter": 8,
+  "sourceLesson": "2.11",
+  "source": "SU26-FE",
+  "examNo": 13,
+  "question": "Which of the following is a potential disadvantage of Random Tabular Q-planning?",
+  "options": [
+   "It requires a model of the environment.",
+   "It may converge slower due to random updates.",
+   "It is not applicable to large state spaces.",
+   "It cannot handle stochastic environments."
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Q-planning chọn cặp trạng thái-hành động ngẫu nhiên nên nhiều cập nhật bị lãng phí, có thể hội tụ chậm."
+ },
+ {
+  "id": "su26fe-14",
+  "chapter": 8,
+  "sourceLesson": "2.11",
+  "source": "SU26-FE",
+  "examNo": 14,
+  "question": "Why is it difficult to ensure accurate navigation for star exploration missions?",
+  "options": [
+   "Stars are invisible from Earth.",
+   "There is no way to measure distances accurately in space.",
+   "The vast distances cause significant deviations from intended paths.",
+   "Spacecraft cannot carry enough fuel."
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Khoảng cách rất lớn khiến sai lệch nhỏ tích luỹ thành lệch quỹ đạo đáng kể, nên mô hình/kế hoạch khó chính xác."
+ },
+ {
+  "id": "su26fe-15",
+  "chapter": 1,
+  "sourceLesson": "1.3",
+  "source": "SU26-FE",
+  "examNo": 15,
+  "question": "What is the role of the exploration constant C in the Upper Confidence Bound formula used in MCTS?",
+  "options": [
+   "It determines the rate at which new nodes are expanded",
+   "It scales the reward values",
+   "It balances the trade-off between exploration and exploitation",
+   "It controls the depth of the search tree"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Hằng số $c$ trong UCB điều chỉnh độ lớn của phần thưởng khám phá, tức cân bằng giữa exploration và exploitation."
+ },
+ {
+  "id": "su26fe-16",
+  "chapter": 5,
+  "sourceLesson": "2.4",
+  "source": "SU26-FE",
+  "examNo": 16,
+  "question": "In Off-policy Learning, why must the behavior policy b cover the target policy π?",
+  "options": [
+   "To ensure equal probability for all actions in each state.",
+   "To guarantee that actions used by π can also be sampled by b.",
+   "To force the behavior policy to match the target policy exactly.",
+   "To ensure that each state is visited only once during training."
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Coverage: nếu $\\pi(a|s) > 0$ thì $b(a|s) > 0$, để mọi hành động target policy có thể chọn đều xuất hiện trong dữ liệu của $b$."
+ },
+ {
+  "id": "su26fe-17",
+  "chapter": 8,
+  "sourceLesson": "2.12",
+  "source": "SU26-FE",
+  "examNo": 17,
+  "question": "During the first episode, how does the robot update its action values?",
+  "options": [
+   "Using simulated experience",
+   "By exploring all possible actions",
+   "Through direct RL updates from real experience",
+   "By following a fixed policy"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Ở episode đầu, mô hình gần như chưa có gì nên agent Dyna chủ yếu cập nhật bằng direct RL từ kinh nghiệm thật."
+ },
+ {
+  "id": "su26fe-18",
+  "chapter": 8,
+  "sourceLesson": "2.10",
+  "source": "SU26-FE",
+  "examNo": 18,
+  "question": "What is the primary focus of sample-based models in reinforcement learning?",
+  "options": [
+   "Modeling the environment's entire distribution",
+   "Learning from direct interactions with the environment",
+   "Using theoretical distributions for decision-making",
+   "Predicting future states without actual sampling"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Sample model sinh ra một kết quả cụ thể (học được từ các tương tác đã quan sát) thay vì mô tả toàn bộ phân phối như distribution model."
+ },
+ {
+  "id": "su26fe-19",
+  "chapter": 5,
+  "sourceLesson": "2.4",
+  "source": "SU26-FE",
+  "examNo": 19,
+  "question": "In Importance Sampling, why can estimates become highly variable when the behavior policy b differs significantly from the target policy π?",
+  "options": [
+   "Because rewards are always stochastic.",
+   "Because large weights appear when b(x) is small.",
+   "Because policies become deterministic over time.",
+   "Because value functions cannot be normalized properly."
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Tỉ số $\\rho = \\pi(x)/b(x)$ rất lớn khi $b(x)$ nhỏ, nên một vài mẫu có trọng số khổng lồ làm ước lượng dao động mạnh."
+ },
+ {
+  "id": "su26fe-20",
+  "chapter": 6,
+  "sourceLesson": "2.6",
+  "source": "SU26-FE",
+  "examNo": 20,
+  "question": "Why does this TD update allow faster propagation of value information across states?",
+  "options": [
+   "Because it waits until the full return is observed.",
+   "Because it uses estimated future values during each update.",
+   "Because it eliminates the need for rewards in the update rule.",
+   "Because it requires complete knowledge of all transitions in the environment."
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "TD bootstrap: dùng giá trị ước lượng của trạng thái kế tiếp ngay ở mỗi bước, nên thông tin lan truyền mà không phải chờ hết episode."
+ },
+ {
+  "id": "su26fe-21",
+  "chapter": 10,
+  "sourceLesson": "3.7",
+  "source": "SU26-FE",
+  "examNo": 21,
+  "question": "When using function approximation with optimistic initial values, which type of function approximation method can be used?",
+  "options": [
+   "Linear function approximation",
+   "Neural networks",
+   "Decision trees",
+   "All of the above"
+  ],
+  "answers": [
+   3
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Về nguyên tắc có thể khởi tạo lạc quan với bất kỳ bộ xấp xỉ nào (chọn trọng số sao cho giá trị ban đầu cao), dù với neural network thì khó duy trì."
+ },
+ {
+  "id": "su26fe-22",
+  "chapter": 9,
+  "sourceLesson": "3.1",
+  "source": "SU26-FE",
+  "examNo": 22,
+  "question": "What is the common parameterized function used in reinforcement learning to approximate value functions?",
+  "options": [
+   "Linear regression",
+   "Polynomial regression",
+   "Neural networks",
+   "Decision trees"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Theo đáp án đề: neural network là hàm có tham số phổ biến để xấp xỉ value function (bên cạnh dạng tuyến tính với đặc trưng)."
+ },
+ {
+  "id": "su26fe-23",
+  "chapter": 11,
+  "sourceLesson": "3.10",
+  "source": "SU26-FE",
+  "examNo": 23,
+  "question": "Which factor influences the stability of policy gradient algorithms during training?",
+  "options": [
+   "Learning rate",
+   "Discount factor",
+   "Exploration rate",
+   "Entropy regularization"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Step size (learning rate) quá lớn làm cập nhật policy dao động và mất ổn định; quá nhỏ thì học chậm."
+ },
+ {
+  "id": "su26fe-24",
+  "chapter": 9,
+  "sourceLesson": "3.5",
+  "source": "SU26-FE",
+  "examNo": 24,
+  "question": "What is the main shape used in tile coding to partition the state space?",
+  "options": [
+   "Circles",
+   "Triangles",
+   "Squares",
+   "Hexagons"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Tile coding chia không gian trạng thái thành lưới các ô vuông/chữ nhật (tile); coarse coding mới hay dùng hình tròn."
+ },
+ {
+  "id": "su26fe-25",
+  "chapter": 11,
+  "sourceLesson": "3.12",
+  "source": "SU26-FE",
+  "examNo": 25,
+  "question": "How is the variance parameter typically represented in a Gaussian policy?",
+  "options": [
+   "Scalar value",
+   "Vector",
+   "Matrix",
+   "Tensor"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Với hành động một chiều, $\\sigma(s, \\theta)$ là một số vô hướng dương, thường được tham số hoá bằng $\\exp(\\theta_\\sigma^\\top x(s))$."
+ },
+ {
+  "id": "su26fe-26",
+  "chapter": 10,
+  "sourceLesson": "3.6",
+  "source": "SU26-FE",
+  "examNo": 26,
+  "question": "Why is the discount factor (γ) important in reinforcement learning algorithms like Episodic Sarsa?",
+  "options": [
+   "It controls the agent's learning rate",
+   "It balances immediate and future rewards",
+   "It dictates the exploration strategy",
+   "It scales the state transition probabilities"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "$\\gamma$ quyết định trọng số của reward tương lai so với reward hiện tại; step size $\\alpha$ mới là learning rate."
+ },
+ {
+  "id": "su26fe-27",
+  "chapter": 10,
+  "sourceLesson": "3.6",
+  "source": "SU26-FE",
+  "examNo": 27,
+  "question": "What does the Q-learning update with function approximation replace in expected Sarsa?",
+  "options": [
+   "The action value with a random value",
+   "The expectation with the maximum action value",
+   "The weight vector with a fixed value",
+   "The target policy with a uniform policy"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Từ Expected Sarsa sang Q-learning: thay kỳ vọng $\\sum_{a'} \\pi(a'|S')\\hat q(S', a')$ bằng $\\max_{a'} \\hat q(S', a')$."
+ },
+ {
+  "id": "su26fe-28",
+  "chapter": 9,
+  "sourceLesson": "3.1",
+  "source": "SU26-FE",
+  "examNo": 28,
+  "question": "Which principle explains why a person might fear all dogs after being bitten by one?",
+  "options": [
+   "Extinction",
+   "Generalization",
+   "Discrimination",
+   "Spontaneous recovery"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Generalization: kinh nghiệm ở một trường hợp được áp dụng cho các trường hợp tương tự. Discrimination là khả năng phân biệt chúng."
+ },
+ {
+  "id": "su26fe-29",
+  "chapter": 9,
+  "sourceLesson": "3.2",
+  "source": "SU26-FE",
+  "examNo": 29,
+  "question": "Why is it important to specify an objective in policy evaluation under function approximation?",
+  "options": [
+   "To ensure the algorithm runs faster",
+   "To adapt weights for minimizing value error",
+   "To increase the complexity of the model",
+   "To avoid overfitting"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Khi xấp xỉ hàm, không thể đúng ở mọi trạng thái, nên cần mục tiêu như $\\overline{VE}$ để biết điều chỉnh trọng số theo hướng nào nhằm giảm sai số."
+ },
+ {
+  "id": "su26fe-30",
+  "chapter": 11,
+  "sourceLesson": "3.12",
+  "source": "SU26-FE",
+  "examNo": 30,
+  "question": "Which parameter determines the degree of exploration in Actor-Critic with Softmax Policies?",
+  "options": [
+   "Learning rate",
+   "Temperature parameter",
+   "Discount factor",
+   "Advantage function"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Trong softmax, nhiệt độ $\\tau$ quyết định độ \"phẳng\" của phân phối: $\\tau$ lớn thì gần ngẫu nhiên (khám phá nhiều), $\\tau$ nhỏ thì gần greedy."
+ },
+ {
+  "id": "su26fe-31",
+  "chapter": 1,
+  "sourceLesson": "1.3",
+  "source": "SU26-FE",
+  "examNo": 31,
+  "question": "How does the Epsilon-greedy strategy decide whether to explore or exploit?",
+  "options": [
+   "It uses a random number generator to choose between exploring or exploiting",
+   "It always explores for the first half of the time and exploits for the second half",
+   "It explores if a randomly generated number is less than epsilon",
+   "It exploits if a randomly generated number is less than epsilon"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Sinh số ngẫu nhiên trong [0, 1): nếu nhỏ hơn $\\epsilon$ thì explore (chọn ngẫu nhiên), ngược lại exploit (chọn greedy)."
+ },
+ {
+  "id": "su26fe-32",
+  "chapter": 9,
+  "sourceLesson": "3.1",
+  "source": "SU26-FE",
+  "examNo": 32,
+  "question": "What is discrimination in the context of learning and behavior?",
+  "options": [
+   "The process by which a response spreads from one specific stimulus to other stimuli that resemble the original.",
+   "The ability to respond differently to similar but distinct stimuli.",
+   "The reinforcement of a behavior in order to increase its frequency.",
+   "The gradual weakening and disappearance of a conditioned response."
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Discrimination là khả năng phản ứng khác nhau với các kích thích giống nhau nhưng khác biệt; đáp án A mô tả generalization."
+ },
+ {
+  "id": "su26fe-33",
+  "chapter": 9,
+  "sourceLesson": "3.1",
+  "source": "SU26-FE",
+  "examNo": 33,
+  "question": "When a child learns to use a specific greeting for different individuals (e.g., 'Hi' for peers, 'Good morning' for teachers), this is an example of:",
+  "options": [
+   "Generalization",
+   "Discrimination",
+   "Extinction",
+   "Classical conditioning"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Đứa trẻ phân biệt được các tình huống khác nhau để phản ứng khác nhau, đó là discrimination."
+ },
+ {
+  "id": "su26fe-34",
+  "chapter": 9,
+  "sourceLesson": "3.2",
+  "source": "SU26-FE",
+  "examNo": 34,
+  "question": "In which type of environments is state aggregation particularly useful?",
+  "options": [
+   "Environments with a very small state space.",
+   "Environments with deterministic transitions.",
+   "Environments with a very large or continuous state space.",
+   "Environments with no reward structure."
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "State aggregation gom các trạng thái tương tự thành nhóm để giảm số giá trị cần học, hữu ích khi không gian trạng thái rất lớn hoặc liên tục."
+ },
+ {
+  "id": "su26fe-35",
+  "chapter": 9,
+  "sourceLesson": "3.5",
+  "source": "SU26-FE",
+  "examNo": 35,
+  "question": "How does coarse coding help in handling large state spaces in reinforcement learning?",
+  "options": [
+   "By dividing the state space into non-overlapping regions",
+   "By using a high-dimensional binary feature vector for each state",
+   "By approximating value functions over a coarsely divided state space",
+   "By applying a hierarchical approach to action selection"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Coarse coding biểu diễn trạng thái bằng vector đặc trưng nhị phân nhiều chiều, mỗi đặc trưng là một vùng (receptive field) chồng lấn. Vùng không chồng lấn là state aggregation."
+ },
+ {
+  "id": "su26fe-36",
+  "chapter": 2,
+  "sourceLesson": "1.5",
+  "source": "SU26-FE",
+  "examNo": 36,
+  "question": "Which type of task is more likely to involve checkpoints or milestones?",
+  "options": [
+   "Episodic tasks.",
+   "Continuing tasks.",
+   "Both episodic and continuing tasks.",
+   "Neither episodic nor continuing tasks."
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Episodic task có điểm bắt đầu và kết thúc rõ ràng, hướng tới một mục tiêu cụ thể, nên thường có các mốc (milestone)."
+ },
+ {
+  "id": "su26fe-37",
+  "chapter": 4,
+  "sourceLesson": "1.11",
+  "source": "SU26-FE",
+  "examNo": 37,
+  "question": "Which of the following statements is true about dynamic programming in reinforcement learning?",
+  "options": [
+   "It is only applicable to problems with discrete action spaces",
+   "It always guarantees convergence to the globally optimal policy",
+   "It is computationally efficient for problems with continuous state spaces",
+   "It is primarily used for deep reinforcement learning tasks"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Với MDP hữu hạn và mô hình hoàn hảo, policy iteration/value iteration đảm bảo hội tụ về policy tối ưu."
+ },
+ {
+  "id": "su26fe-38",
+  "chapter": 2,
+  "sourceLesson": "1.4",
+  "source": "SU26-FE",
+  "examNo": 38,
+  "question": "Which property ensures that all states can be reached from any other state in an MDP?",
+  "options": [
+   "Completeness",
+   "Determinism",
+   "Ergodicity",
+   "Consistency"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "MDP ergodic: từ bất kỳ trạng thái nào cũng có thể tới mọi trạng thái khác; đây cũng là giả định để average reward không phụ thuộc trạng thái đầu."
+ },
+ {
+  "id": "su26fe-39",
+  "chapter": 7,
+  "sourceLesson": "2.8",
+  "source": "SU26-FE",
+  "examNo": 39,
+  "question": "Which algorithm is commonly used to estimate action values in model-free reinforcement learning?",
+  "options": [
+   "Monte Carlo Methods",
+   "Value Iteration",
+   "Q-Learning",
+   "Policy Gradient Methods"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Q-learning là thuật toán model-free phổ biến nhất để học action value; value iteration cần mô hình."
+ },
+ {
+  "id": "su26fe-40",
+  "chapter": 4,
+  "sourceLesson": "1.11",
+  "source": "SU26-FE",
+  "examNo": 40,
+  "question": "Which dynamic programming method iteratively improves both the policy and the value function?",
+  "options": [
+   "Policy iteration",
+   "Value iteration",
+   "Monte Carlo methods",
+   "Q-learning"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Policy iteration xen kẽ policy evaluation (cập nhật value function) và policy improvement (cập nhật policy)."
+ },
+ {
+  "id": "su26fe-41",
+  "chapter": 1,
+  "sourceLesson": "1.1",
+  "source": "SU26-FE",
+  "examNo": 41,
+  "question": "What is the primary goal when maintaining a website with millions of hits a day in the context of the k-armed bandit problem?",
+  "options": [
+   "To increase the number of ads displayed",
+   "To display the ad that generates the most money",
+   "To reduce the loading time of the website",
+   "To track user behavior"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Mỗi quảng cáo là một \"cần gạt\"; mục tiêu bandit là chọn quảng cáo cho tổng doanh thu (reward) lớn nhất."
+ },
+ {
+  "id": "su26fe-42",
+  "chapter": 3,
+  "sourceLesson": "1.9",
+  "source": "SU26-FE",
+  "examNo": 42,
+  "question": "Which of the following statements is true regarding the optimal value function (v star)?",
+  "options": [
+   "It is always negative.",
+   "It can be used to derive the optimal policy.",
+   "It is independent of the dynamics function p.",
+   "It only applies to deterministic environments."
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Hành động tham lam theo $v_*$ (nhìn trước một bước bằng $p$) cho ra policy tối ưu $\\pi_*$."
+ },
+ {
+  "id": "su26fe-43",
+  "chapter": 4,
+  "sourceLesson": "1.10",
+  "source": "SU26-FE",
+  "examNo": 43,
+  "question": "In Iterative Policy Evaluation, what does the value function represent?",
+  "options": [
+   "The probability of selecting an action in a given state",
+   "The expected cumulative reward starting from a given state and following a specific policy",
+   "The policy's exploration rate",
+   "The action-value function"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "$v_\\pi(s)$ là kỳ vọng tổng reward (return) khi bắt đầu từ $s$ và đi theo policy $\\pi$."
+ },
+ {
+  "id": "su26fe-44",
+  "chapter": 4,
+  "sourceLesson": "1.10",
+  "source": "SU26-FE",
+  "examNo": 44,
+  "question": "What is the primary objective of policy control in reinforcement learning?",
+  "options": [
+   "Maximizing immediate rewards",
+   "Minimizing state-action space",
+   "Balancing exploration and exploitation",
+   "Optimizing computational resources"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Theo đáp án chính thức là C. Control là tìm policy tốt nhất; trong lúc học, agent phải cân bằng khám phá và khai thác để tìm và tận dụng policy đó."
+ },
+ {
+  "id": "su26fe-45",
+  "chapter": 10,
+  "sourceLesson": "3.6",
+  "source": "SU26-FE",
+  "examNo": 45,
+  "question": "In the context of Deep Q-Learning, what purpose does the target network serve?",
+  "options": [
+   "It helps in selecting actions based on the policy",
+   "It stabilizes training by providing consistent target values",
+   "It generates synthetic experiences for training",
+   "It models the transition probabilities between states"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Target network là bản sao trọng số cập nhật chậm, giữ target ổn định để tránh \"đuổi theo mục tiêu di động\" khi xấp xỉ bằng neural network."
+ },
+ {
+  "id": "su26fe-46",
+  "chapter": 7,
+  "sourceLesson": "2.8",
+  "source": "SU26-FE",
+  "examNo": 46,
+  "question": "In Q-learning, which term is used to update the Q-value for state s and action a?",
+  "options": [
+   "α (learning rate)",
+   "β (exploration rate)",
+   "δ (error term)",
+   "λ (decay rate)"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Theo đáp án chính thức: $Q(s,a) \\leftarrow Q(s,a) + \\alpha[\\dots]$, step size $\\alpha$ quyết định mức cập nhật."
+ },
+ {
+  "id": "su26fe-47",
+  "chapter": 4,
+  "sourceLesson": "1.10",
+  "source": "SU26-FE",
+  "examNo": 47,
+  "question": "What is the task of policy evaluation?",
+  "options": [
+   "To find a new policy that maximizes rewards",
+   "To determine the state value function for a specific policy",
+   "To compute the dynamics of the environment",
+   "To reduce the problem of finding v pi to a system of linear equations"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Policy evaluation (prediction) là tính $v_\\pi$ cho một policy $\\pi$ cho trước; tìm policy tốt hơn là control."
+ },
+ {
+  "id": "su26fe-48",
+  "chapter": 1,
+  "sourceLesson": "1.3",
+  "source": "SU26-FE",
+  "examNo": 48,
+  "question": "In reinforcement learning, what is a common downside of pure exploitation without exploration?",
+  "options": [
+   "Increased computational complexity.",
+   "Missing out on potentially better actions that haven't been tried enough.",
+   "High variance in reward estimation.",
+   "Difficulty in policy convergence to get maximum the total rewards"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Chỉ khai thác thì có thể không bao giờ thử các hành động khác, bỏ lỡ hành động thực sự tốt hơn (ví dụ món ăn có $q_*=4$ không bao giờ được thử)."
+ },
+ {
+  "id": "su26fe-49",
+  "chapter": 1,
+  "sourceLesson": "1.1",
+  "source": "SU26-FE",
+  "examNo": 49,
+  "question": "What is the primary objective in the k-armed bandit problem?",
+  "options": [
+   "To minimize the number of arms used.",
+   "To maximize the cumulative reward over time.",
+   "To balance the use of all arms equally.",
+   "To minimize the variance of rewards."
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Mục tiêu là tối đa hoá tổng reward tích luỹ sau một chuỗi lượt chơi."
+ },
+ {
+  "id": "su26fe-50",
+  "chapter": 4,
+  "sourceLesson": "1.10",
+  "source": "SU26-FE",
+  "examNo": 50,
+  "question": "Which of the following best describes the role of the two arrays (V and V prime) in the iterative policy evaluation algorithm?",
+  "options": [
+   "They store the rewards for each state",
+   "They hold the current and updated values to avoid overwriting during updates",
+   "They represent the actions taken in each state",
+   "They are used to track the exploration strategy"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "$V$ giữ giá trị cũ, $V'$ giữ giá trị mới, để tính giá trị mới từ giá trị cũ mà không bị ghi đè giữa chừng; hết lượt quét mới chép $V'$ sang $V$."
+ },
+ {
+  "id": "sp26fe-01",
+  "chapter": 6,
+  "sourceLesson": "2.5",
+  "source": "SP26-FE",
+  "examNo": 1,
+  "question": "What is the key objective of using a Temporal Difference (TD) learning algorithm? (choose the best answer/core idea of TD learning)",
+  "options": [
+   "To estimate the value of a state based on the complete return from a full episode.",
+   "To update the value function by using the difference between successive state values.",
+   "To learn the optimal value function without requiring a model of the environment's dynamics.",
+   "To approximate the total return by bootstrapping from the immediate reward and the estimated value of the next state."
+  ],
+  "answers": [
+   3
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Ý cốt lõi của TD là bootstrap: ước lượng return bằng $R_{t+1} + \\gamma V(S_{t+1})$. A là Monte Carlo; C đúng nhưng cũng đúng với MC nên không phải ý cốt lõi."
+ },
+ {
+  "id": "sp26fe-02",
+  "chapter": 8,
+  "sourceLesson": "2.10",
+  "source": "SP26-FE",
+  "examNo": 2,
+  "question": "Which of the following methods is associated with distribution models for handling uncertainty in state transitions?",
+  "options": [
+   "Markov Decision Processes (MDPs)",
+   "Policy Gradient Methods",
+   "Particle Filters",
+   "Q-Learning"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "MDP mô tả bất định trong chuyển trạng thái bằng phân phối đầy đủ $p(s', r \\mid s, a)$, đúng bản chất của distribution model."
+ },
+ {
+  "id": "sp26fe-03",
+  "chapter": 8,
+  "sourceLesson": "2.12",
+  "source": "SP26-FE",
+  "examNo": 3,
+  "question": "Which of the following is a key benefit of using Dyna Architecture?",
+  "options": [
+   "Reduced computational resources",
+   "Increased data redundancy",
+   "Improved model scalability and adaptability",
+   "Simplified system design"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Dyna dùng mô hình để planning, học nhanh hơn và thích nghi khi môi trường thay đổi. Nó tốn thêm tính toán và phức tạp hơn nên A, D sai."
+ },
+ {
+  "id": "sp26fe-04",
+  "chapter": 8,
+  "sourceLesson": "2.10",
+  "source": "SP26-FE",
+  "examNo": 4,
+  "question": "What is the relationship between sample efficiency and sample-based models?",
+  "options": [
+   "Sample-based models are more sample-efficient than distribution models",
+   "Sample-based models are generally less sample-efficient than distribution models",
+   "Both types of models have the same sample efficiency",
+   "Sample efficiency is not a concern in reinforcement learning"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Theo slide 2.10 (bảng so sánh Sample vs Distribution): sample model \"less efficient ... compared to distribution models\", vì distribution model chứa đầy đủ thông tin xác suất nên khai thác được nhiều hơn từ cùng dữ liệu. Câu này còn tranh cãi."
+ },
+ {
+  "id": "sp26fe-05",
+  "chapter": 11,
+  "sourceLesson": "3.12",
+  "source": "SP26-FE",
+  "examNo": 5,
+  "question": "What does the exploration in Gaussian policies rely on?",
+  "options": [
+   "Random noise added to the mean action",
+   "Random sampling from a uniform distribution",
+   "Fixed exploration rate",
+   "Adaptive exploration based on reward feedback"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Gaussian policy lấy mẫu hành động quanh trung bình $\\mu(s)$ với độ lệch $\\sigma(s)$, tức là thêm nhiễu Gauss vào hành động trung bình."
+ },
+ {
+  "id": "sp26fe-06",
+  "chapter": 11,
+  "sourceLesson": "3.10",
+  "source": "SP26-FE",
+  "examNo": 6,
+  "question": "Which factor influences the stability of policy gradient algorithms during training?",
+  "options": [
+   "Learning rate",
+   "Discount factor",
+   "Exploration rate",
+   "Entropy regularization"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Step size của actor quá lớn làm policy thay đổi đột ngột và mất ổn định (giống câu SU26 FE)."
+ },
+ {
+  "id": "sp26fe-07",
+  "chapter": 7,
+  "sourceLesson": "2.8",
+  "source": "SP26-FE",
+  "examNo": 7,
+  "question": "Which of the following algorithms is commonly used in reinforcement learning?",
+  "options": [
+   "k-Nearest Neighbors",
+   "Q-Learning",
+   "Principal Component Analysis",
+   "Decision Trees"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Q-learning là thuật toán RL; các lựa chọn còn lại là supervised/unsupervised learning."
+ },
+ {
+  "id": "sp26fe-08",
+  "chapter": 7,
+  "sourceLesson": "2.9",
+  "source": "SP26-FE",
+  "examNo": 8,
+  "question": "What is a potential disadvantage of using Expected Sarsa over Sarsa?",
+  "options": [
+   "It tends to have higher variance in updates",
+   "It requires knowledge of the policy's action probabilities",
+   "It converges more slowly than Sarsa",
+   "It cannot be used in online learning settings"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Expected Sarsa phải tính tổng $\\sum_{a'} \\pi(a'|S')Q(S',a')$ nên cần biết xác suất của policy và tốn tính toán hơn; phương sai của nó lại thấp hơn Sarsa."
+ },
+ {
+  "id": "sp26fe-09",
+  "chapter": 1,
+  "sourceLesson": "1.2",
+  "source": "SP26-FE",
+  "examNo": 9,
+  "question": "In the sample average method, what does the step size parameter determine?",
+  "options": [
+   "The total number of actions taken",
+   "The influence of the most recent reward on the estimate",
+   "The number of ads to display",
+   "The initial value of Q"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Trong $Q_{n+1} = Q_n + \\alpha[R_n - Q_n]$, step size quyết định reward mới nhất ảnh hưởng bao nhiêu tới ước lượng."
+ },
+ {
+  "id": "sp26fe-10",
+  "chapter": 11,
+  "sourceLesson": "3.11",
+  "source": "SP26-FE",
+  "examNo": 10,
+  "question": "Which technique is commonly used to reduce the variance of policy gradient estimates?",
+  "options": [
+   "Actor-Critic methods",
+   "Temporal Difference learning",
+   "Monte Carlo Tree Search",
+   "Model-based reinforcement learning"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Actor-critic dùng critic làm baseline (TD error thay cho return) nên giảm phương sai của gradient."
+ },
+ {
+  "id": "sp26fe-11",
+  "chapter": 3,
+  "sourceLesson": "1.7",
+  "source": "SP26-FE",
+  "examNo": 11,
+  "question": "What is the primary purpose of the state value function in reinforcement learning?",
+  "options": [
+   "To determine the probability of taking a certain action",
+   "To estimate the future rewards from a given state",
+   "To record the history of visited states",
+   "To minimize the error rate of predictions"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "$v_\\pi(s)$ ước lượng return kỳ vọng (tổng reward tương lai) khi bắt đầu từ $s$; xác suất chọn hành động là việc của policy."
+ },
+ {
+  "id": "sp26fe-12",
+  "chapter": 11,
+  "sourceLesson": "3.9",
+  "source": "SP26-FE",
+  "examNo": 12,
+  "question": "What is the main challenge associated with using parameterized policies in reinforcement learning?",
+  "options": [
+   "They are computationally expensive",
+   "They often lead to overfitting",
+   "They require a large amount of training data",
+   "They can suffer from local optima"
+  ],
+  "answers": [
+   3
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Policy gradient là gradient ascent trên $r(\\pi)$, chỉ đảm bảo tới cực trị địa phương."
+ },
+ {
+  "id": "sp26fe-13",
+  "chapter": 11,
+  "sourceLesson": "3.11",
+  "source": "SP26-FE",
+  "examNo": 13,
+  "question": "What is the advantage of using a higher number of sample points in estimating the gradient?",
+  "options": [
+   "Increased accuracy",
+   "Decreased computation time",
+   "Reduced memory usage",
+   "Smaller margin of error"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Gradient được ước lượng từ mẫu; càng nhiều mẫu thì ước lượng càng chính xác (phương sai giảm), đổi lại tốn thêm tính toán."
+ },
+ {
+  "id": "sp26fe-14",
+  "chapter": 6,
+  "sourceLesson": "2.5",
+  "source": "SP26-FE",
+  "examNo": 14,
+  "question": "Which statement best describes Tabular Temporal Difference (TD) learning?",
+  "options": [
+   "It uses a table to store values for each state-action pair.",
+   "It uses function approximation to estimate value functions.",
+   "It updates values based on rewards and state transitions without using tables.",
+   "It requires the exact model of the environment."
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "\"Tabular\" nghĩa là lưu một giá trị riêng cho mỗi trạng thái (hoặc cặp trạng thái-hành động) trong bảng; TD không cần mô hình."
+ },
+ {
+  "id": "sp26fe-15",
+  "chapter": 8,
+  "sourceLesson": "2.11",
+  "source": "SP26-FE",
+  "examNo": 15,
+  "question": "What does the Q-Learning update do in the context of planning?",
+  "options": [
+   "It generates new states.",
+   "It improves the policy based on updated action values.",
+   "It eliminates the need for a model.",
+   "It only focuses on real-world experiences."
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Trong Q-planning, cập nhật Q-learning trên transition mô phỏng làm thay đổi action value, rồi policy greedy theo Q được cải thiện."
+ },
+ {
+  "id": "sp26fe-16",
+  "chapter": 7,
+  "sourceLesson": "2.9",
+  "source": "SP26-FE",
+  "examNo": 16,
+  "question": "In expected Sarsa, the weights used in the expectation calculation are based on:",
+  "options": [
+   "The rewards received",
+   "The probability of taking each action under the agent's policy",
+   "The number of actions available",
+   "The current state of the environment"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Kỳ vọng $\\sum_{a'} \\pi(a'|S')Q(S',a')$ có trọng số là xác suất $\\pi(a'|S')$ của policy."
+ },
+ {
+  "id": "sp26fe-17",
+  "chapter": 4,
+  "sourceLesson": "1.12",
+  "source": "SP26-FE",
+  "examNo": 17,
+  "question": "Which algorithm is commonly used to solve an MDP?",
+  "options": [
+   "K-means clustering",
+   "Breadth-first search",
+   "Value iteration",
+   "Gradient descent"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Value iteration (cùng policy iteration) là thuật toán dynamic programming kinh điển để giải MDP khi biết mô hình."
+ },
+ {
+  "id": "sp26fe-18",
+  "chapter": 5,
+  "sourceLesson": "2.1",
+  "source": "SP26-FE",
+  "examNo": 18,
+  "question": "What is a common approach to reduce the variance in Monte Carlo estimates?",
+  "options": [
+   "Using a discount factor.",
+   "Using importance sampling.",
+   "Using eligibility traces.",
+   "Using linear function approximation."
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Return Monte Carlo cộng nhiều reward ngẫu nhiên; chiết khấu bằng $\\gamma < 1$ làm các reward xa ít ảnh hưởng nên giảm phương sai. Importance sampling thì thường làm phương sai tăng."
+ },
+ {
+  "id": "sp26fe-19",
+  "chapter": 6,
+  "sourceLesson": "2.6",
+  "source": "SP26-FE",
+  "examNo": 19,
+  "question": "In contrast to Dynamic Programming and Monte Carlo methods, what aspect makes Temporal Difference (TD) methods more suitable for online learning?",
+  "options": [
+   "TD methods are slower to update values.",
+   "TD methods require extensive computational resources.",
+   "TD methods update values based on incomplete sequences.",
+   "TD methods are less flexible in adapting to changing environments."
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "TD cập nhật sau từng bước từ chuỗi chưa hoàn chỉnh, không cần chờ hết episode (như MC) và không cần mô hình (như DP)."
+ },
+ {
+  "id": "sp26fe-20",
+  "chapter": 3,
+  "sourceLesson": "1.8",
+  "source": "SP26-FE",
+  "examNo": 20,
+  "question": "What is the Bellman equation used for in the context of MDPs?",
+  "options": [
+   "To determine the optimal policy.",
+   "To update the value function.",
+   "To calculate the transition probabilities.",
+   "To find the immediate reward."
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Phương trình Bellman liên hệ giá trị một trạng thái với giá trị các trạng thái kế tiếp, được dùng để tính/cập nhật value function (ví dụ iterative policy evaluation)."
+ },
+ {
+  "id": "sp26fe-21",
+  "chapter": 9,
+  "sourceLesson": "3.4",
+  "source": "SP26-FE",
+  "examNo": 21,
+  "question": "In the context of linear function approximation, what is the gradient of the value function approximation?",
+  "options": [
+   "The true value of the state",
+   "The feature vector in that state",
+   "The mean squared error",
+   "The policy value"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Với $\\hat v(s,\\mathbf w) = \\mathbf w^\\top \\mathbf x(s)$ thì $\\nabla \\hat v(s,\\mathbf w) = \\mathbf x(s)$."
+ },
+ {
+  "id": "sp26fe-22",
+  "chapter": 4,
+  "sourceLesson": "1.11",
+  "source": "SP26-FE",
+  "examNo": 22,
+  "question": "Which phase of Policy Iteration involves updating the policy based on the current value function?",
+  "options": [
+   "Policy Evaluation",
+   "Policy Improvement",
+   "Policy Initialization",
+   "Policy Iteration"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Policy improvement: greedify theo value function hiện tại để tạo policy mới."
+ },
+ {
+  "id": "sp26fe-23",
+  "chapter": 9,
+  "sourceLesson": "3.2",
+  "source": "SP26-FE",
+  "examNo": 23,
+  "question": "In the context of function approximation, what does Mu of S represent?",
+  "options": [
+   "The total number of states",
+   "The probability distribution of state visits",
+   "The error in value function approximation",
+   "The learning rate of the algorithm"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "$\\mu(s)$ là on-policy distribution: tỉ lệ thời gian agent ở trạng thái $s$, dùng làm trọng số trong $\\overline{VE}$."
+ },
+ {
+  "id": "sp26fe-24",
+  "chapter": 7,
+  "sourceLesson": "2.9",
+  "source": "SP26-FE",
+  "examNo": 24,
+  "question": "What does the term \"off-policy\" refer to in the context of Expected Sarsa?",
+  "options": [
+   "Learning from actions that are not taken by the agent.",
+   "Learning from actions that are taken by the agent.",
+   "Learning without any prior knowledge of the environment.",
+   "Learning that does not depend on the current policy."
+  ],
+  "answers": [
+   3
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Off-policy: target policy (dùng trong kỳ vọng) khác behavior policy đang chọn hành động, nên giá trị học được không phụ thuộc vào policy đang hành động."
+ },
+ {
+  "id": "sp26fe-25",
+  "chapter": 3,
+  "sourceLesson": "1.8",
+  "source": "SP26-FE",
+  "examNo": 25,
+  "question": "What is the Bellman equation used for in the context of MDPs?",
+  "options": [
+   "To calculate the shortest path between states.",
+   "To update the policy in reinforcement learning.",
+   "To express the relationship between the value of a state and the values of its successor states.",
+   "To compute the transition probabilities between states to get maximum rewards"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Đúng định nghĩa trong slide 1.8: phương trình Bellman biểu diễn giá trị của một trạng thái theo giá trị các trạng thái kế tiếp."
+ },
+ {
+  "id": "sp26fe-26",
+  "chapter": 6,
+  "sourceLesson": "2.6",
+  "source": "SP26-FE",
+  "examNo": 26,
+  "question": "What distinguishes Temporal Difference (TD) methods from Monte Carlo methods regarding the handling of incomplete episodes?",
+  "options": [
+   "TD methods require complete episodes for updating values.",
+   "TD methods update values based on incomplete episodes.",
+   "TD methods cannot handle incomplete episodes efficiently.",
+   "TD methods do not rely on experiences for learning."
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "TD học được từ chuỗi chưa hoàn chỉnh vì cập nhật sau từng bước; Monte Carlo mới cần episode hoàn chỉnh."
+ },
+ {
+  "id": "sp26fe-27",
+  "chapter": 9,
+  "sourceLesson": "3.1",
+  "source": "SP26-FE",
+  "examNo": 27,
+  "question": "Which problem arises due to the use of linear function approximation in reinforcement learning?",
+  "options": [
+   "Overfitting",
+   "Curse of dimensionality",
+   "Underfitting",
+   "Vanishing gradients"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Xấp xỉ tuyến tính có khả năng biểu diễn hạn chế (chỉ tuyến tính theo đặc trưng), nên dễ underfitting với value function phi tuyến."
+ },
+ {
+  "id": "sp26fe-28",
+  "chapter": 6,
+  "sourceLesson": "2.5",
+  "source": "SP26-FE",
+  "examNo": 28,
+  "question": "In the context of Temporal Difference (TD), Which of the following is NOT a step in the TD(0) algorithm?",
+  "options": [
+   "Prediction",
+   "Evaluation",
+   "Backpropagation",
+   "Bootstrapping"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "TD(0) dạng bảng dự đoán/đánh giá giá trị và bootstrap; backpropagation là kỹ thuật huấn luyện neural network, không thuộc TD(0)."
+ },
+ {
+  "id": "sp26fe-29",
+  "chapter": 8,
+  "sourceLesson": "2.12",
+  "source": "SP26-FE",
+  "examNo": 29,
+  "question": "What is the primary purpose of Dyna Architecture?",
+  "options": [
+   "To develop operating systems",
+   "To design scalable web servers",
+   "To model complex dynamic systems",
+   "To manage database transactions"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Dyna học mô hình của môi trường (hệ động) và dùng nó để planning song song với học trực tiếp."
+ },
+ {
+  "id": "sp26fe-30",
+  "chapter": 5,
+  "sourceLesson": "2.1",
+  "source": "SP26-FE",
+  "examNo": 30,
+  "question": "Which of the following is a key component of Monte Carlo simulations?",
+  "options": [
+   "Deterministic algorithms",
+   "Random sampling",
+   "Fixed input values",
+   "Analytical solutions"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Monte Carlo dựa vào lấy mẫu ngẫu nhiên và lấy trung bình (ví dụ tung 12 xúc xắc)."
+ },
+ {
+  "id": "sp26fe-31",
+  "chapter": 3,
+  "sourceLesson": "1.7",
+  "source": "SP26-FE",
+  "examNo": 31,
+  "question": "In reinforcement learning, the state value function V(s) represents:",
+  "options": [
+   "The immediate reward received after taking an action in state s",
+   "The total accumulated reward from state s",
+   "The expected return starting from state s",
+   "The likelihood of transitioning from state s to another state"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "$v_\\pi(s) = \\mathbb{E}_\\pi[G_t \\mid S_t = s]$: kỳ vọng return, không phải tổng reward của một lần chạy (B)."
+ },
+ {
+  "id": "sp26fe-32",
+  "chapter": 10,
+  "sourceLesson": "3.7",
+  "source": "SP26-FE",
+  "examNo": 32,
+  "question": "What is the main purpose of using optimistic initial values in function approximation?",
+  "options": [
+   "To ensure faster convergence",
+   "To encourage exploration",
+   "To minimize errors",
+   "To guarantee optimal solutions"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Giá trị ban đầu lạc quan khiến agent \"thất vọng\" với hành động đã thử và chuyển sang thử hành động khác, tức khuyến khích khám phá."
+ },
+ {
+  "id": "sp26fe-33",
+  "chapter": 5,
+  "sourceLesson": "2.1",
+  "source": "SP26-FE",
+  "examNo": 33,
+  "question": "In the Monte Carlo prediction method, what is the purpose of using the policy π?",
+  "options": [
+   "To determine the sequence of states",
+   "To generate episodes",
+   "To update the value function",
+   "To ensure convergence of the algorithm"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Bước đầu của MC prediction: \"Generate an episode following $\\pi$\", sau đó mới tính return và cập nhật giá trị."
+ },
+ {
+  "id": "sp26fe-34",
+  "chapter": 9,
+  "sourceLesson": "3.3",
+  "source": "SP26-FE",
+  "examNo": 34,
+  "question": "What does the term \"semi-gradient\" refer to in the context of linear semi-gradient Temporal Difference learning?",
+  "options": [
+   "Using gradients to update the table values.",
+   "Approximating gradients using a non-linear function.",
+   "Using part of the gradient information to update parameters.",
+   "Calculating exact gradients for function updates."
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "TD target cũng phụ thuộc $\\mathbf w$ nhưng ta bỏ qua gradient của target, chỉ dùng một phần gradient, nên gọi là semi-gradient."
+ },
+ {
+  "id": "sp26fe-35",
+  "chapter": 3,
+  "sourceLesson": "1.7",
+  "source": "SP26-FE",
+  "examNo": 35,
+  "question": "In reinforcement learning, what does a stochastic policy do?",
+  "options": [
+   "Selects actions randomly with equal probability",
+   "Selects the same action for a given state every time",
+   "Selects actions based on a probability distribution",
+   "Does not select any action"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Stochastic policy $\\pi(a|s)$ chọn hành động theo một phân phối xác suất (không nhất thiết đều như A). B là deterministic policy."
+ },
+ {
+  "id": "sp26fe-36",
+  "chapter": 4,
+  "sourceLesson": "1.11",
+  "source": "SP26-FE",
+  "examNo": 36,
+  "question": "What does the term \"greedification\" refer to in the context of policy improvement?",
+  "options": [
+   "Making a policy more random",
+   "Selecting actions that maximize the value function",
+   "Evaluating the performance of a policy",
+   "Following the original policy without changes"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Greedify: chọn hành động có giá trị lớn nhất theo value function hiện tại, đó là bước policy improvement."
+ },
+ {
+  "id": "sp26fe-37",
+  "chapter": 2,
+  "sourceLesson": "1.4",
+  "source": "SP26-FE",
+  "examNo": 37,
+  "question": "Which of the following is NOT a typical component of a reinforcement learning model?",
+  "options": [
+   "State transition probabilities",
+   "Reward function",
+   "Policy network",
+   "Action space"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Mô hình MDP gồm không gian trạng thái/hành động, xác suất chuyển và hàm reward. Policy network là cách biểu diễn policy của agent, không thuộc mô hình môi trường."
+ },
+ {
+  "id": "sp26fe-38",
+  "chapter": 9,
+  "sourceLesson": "3.1",
+  "source": "SP26-FE",
+  "examNo": 38,
+  "question": "In an experiment, a pigeon is trained to peck a key when it sees a red light but not when it sees a green light. This is an example of:",
+  "options": [
+   "Generalization",
+   "Spontaneous recovery",
+   "Discrimination",
+   "Habituation"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Con chim phản ứng khác nhau với hai kích thích khác nhau (đỏ/xanh), đó là discrimination."
+ },
+ {
+  "id": "sp26fe-39",
+  "chapter": 10,
+  "sourceLesson": "3.6",
+  "source": "SP26-FE",
+  "examNo": 39,
+  "question": "How many components does the feature vector have when there are four features and three actions in a stacked representation?",
+  "options": [
+   "4",
+   "7",
+   "12",
+   "16"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Stacked features lặp lại 4 đặc trưng trạng thái cho mỗi hành động: $4 \\times 3 = 12$."
+ },
+ {
+  "id": "sp26fe-40",
+  "chapter": 4,
+  "sourceLesson": "1.11",
+  "source": "SP26-FE",
+  "examNo": 40,
+  "question": "In policy iteration, what is the role of the policy evaluation step?",
+  "options": [
+   "To improve the policy based on current estimates of the value function",
+   "To randomly update the policy",
+   "To compute the value function of the current policy",
+   "To explore different policies without updating them"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Evaluation tính $v_\\pi$ của policy hiện tại; A là bước improvement."
+ },
+ {
+  "id": "sp26fe-41",
+  "chapter": 7,
+  "sourceLesson": "2.7",
+  "source": "SP26-FE",
+  "examNo": 41,
+  "question": "Which of the following exploration strategies is commonly used with SARSA?",
+  "options": [
+   "Softmax action selection",
+   "Upper Confidence Bound (UCB)",
+   "Epsilon-greedy",
+   "Boltzmann exploration"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Trong slide, Sarsa chọn $A$ và $A'$ bằng $\\epsilon$-greedy theo $Q$."
+ },
+ {
+  "id": "sp26fe-42",
+  "chapter": 9,
+  "sourceLesson": "3.5",
+  "source": "SP26-FE",
+  "examNo": 42,
+  "question": "What advantage does Tile Coding provide compared to a single large lookup table?",
+  "options": [
+   "Increased computational speed",
+   "Reduced overfitting",
+   "More memory efficiency",
+   "Higher resolution of state representation"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Tile coding dùng vài tiling thô chồng lấn nên số trọng số ít hơn nhiều so với một bảng rất mịn, đồng thời vẫn khái quát hoá tốt."
+ },
+ {
+  "id": "sp26fe-43",
+  "chapter": 8,
+  "sourceLesson": "2.10",
+  "source": "SP26-FE",
+  "examNo": 43,
+  "question": "Which type of reinforcement learning model typically uses Monte Carlo simulations to estimate values?",
+  "options": [
+   "Sample-based models",
+   "Distribution models",
+   "Both sample-based and distribution models",
+   "Neither sample-based nor distribution models"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Sample model sinh ra các kết quả ngẫu nhiên, nên có thể dùng mô phỏng Monte Carlo (lấy mẫu rồi lấy trung bình) để ước lượng giá trị."
+ },
+ {
+  "id": "sp26fe-44",
+  "chapter": 4,
+  "sourceLesson": "1.11",
+  "source": "SP26-FE",
+  "examNo": 44,
+  "question": "In Policy Iteration, which step involves evaluating the current policy's performance and updating the value function?",
+  "options": [
+   "Policy Evaluation",
+   "Policy Improvement",
+   "Policy Initialization",
+   "Policy Iteration"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Policy evaluation đánh giá policy hiện tại bằng cách tính/cập nhật value function của nó."
+ },
+ {
+  "id": "sp26fe-45",
+  "chapter": 8,
+  "sourceLesson": "2.10",
+  "source": "SP26-FE",
+  "examNo": 45,
+  "question": "Which of the following is a primary characteristic of a distribution model in reinforcement learning?",
+  "options": [
+   "It directly samples actions based on a policy.",
+   "It approximates the transition dynamics of the environment.",
+   "It only updates after the entire episode ends.",
+   "It requires a deterministic policy."
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Distribution model mô tả đầy đủ xác suất chuyển trạng thái và reward, tức biểu diễn dynamics của môi trường."
+ },
+ {
+  "id": "sp26fe-46",
+  "chapter": 2,
+  "sourceLesson": "1.5",
+  "source": "SP26-FE",
+  "examNo": 46,
+  "question": "Which term describes a methodical approach to handling episodic tasks?",
+  "options": [
+   "Ad hoc management",
+   "Reactive management",
+   "Proactive management",
+   "Time-blocking"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Câu hỏi lý thuyết chung trong slide 1.5/1.6: episodic task có mục tiêu và kết thúc rõ ràng nên được xử lý chủ động, có kế hoạch (proactive)."
+ },
+ {
+  "id": "sp26fe-47",
+  "chapter": 2,
+  "sourceLesson": "1.4",
+  "source": "SP26-FE",
+  "examNo": 47,
+  "question": "Which term describes the probability distribution over next states given a current state and action in an MDP?",
+  "options": [
+   "Policy",
+   "Reward function",
+   "Transition model",
+   "Value function"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Transition model (dynamics) $p(s' \\mid s, a)$ cho phân phối xác suất của trạng thái kế tiếp."
+ },
+ {
+  "id": "sp26fe-48",
+  "chapter": 5,
+  "sourceLesson": "2.4",
+  "source": "SP26-FE",
+  "examNo": 48,
+  "question": "What is the purpose of the accumulated product of important sampling ratios (W) in the off-policy Monte Carlo prediction algorithm?",
+  "options": [
+   "To store all past values of Rho",
+   "To correct the returns generated by the behavior policy",
+   "To calculate the average reward",
+   "To simplify the algorithm"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "$W = \\prod \\pi(A_k|S_k)/b(A_k|S_k)$ dùng để hiệu chỉnh return sinh bởi $b$ thành ước lượng cho target policy $\\pi$."
+ },
+ {
+  "id": "sp26fe-49",
+  "chapter": 11,
+  "sourceLesson": "3.12",
+  "source": "SP26-FE",
+  "examNo": 49,
+  "question": "What is the advantage of using policy gradient methods over value-based methods like Q-learning?",
+  "options": [
+   "Better convergence guarantees",
+   "Simpler implementation",
+   "More efficient memory usage",
+   "Ability to handle continuous action spaces"
+  ],
+  "answers": [
+   3
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Policy có tham số (ví dụ Gaussian) xử lý tự nhiên hành động liên tục, trong khi Q-learning cần $\\max_a$ trên tập hành động rời rạc."
+ },
+ {
+  "id": "sp26fe-50",
+  "chapter": 7,
+  "sourceLesson": "2.8",
+  "source": "SP26-FE",
+  "examNo": 50,
+  "question": "What differentiates off-policy Q-learning from on-policy methods like SARSA?",
+  "options": [
+   "Q-learning uses past experiences while SARSA uses future predictions.",
+   "Q-learning updates using the highest Q-value of the next state, while SARSA updates using the action actually taken.",
+   "Q-learning requires a model of the environment, while SARSA does not.",
+   "Q-learning is based on deterministic policies, while SARSA is based on stochastic policies."
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Target Q-learning: $R + \\gamma \\max_a Q(S',a)$; target Sarsa: $R + \\gamma Q(S',A')$ với $A'$ là hành động thật sự được chọn."
+ },
+ {
+  "id": "sp26re-35",
+  "chapter": 3,
+  "sourceLesson": "1.7",
+  "source": "SP26-RE",
+  "examNo": 35,
+  "question": "What is the difference between a policy and a value function in an MDP? (choose the best answer)",
+  "options": [
+   "A policy defines the reward for a state, while a value function defines the action to take.",
+   "A policy is a long-term plan, while a value function is a short-term estimate.",
+   "A policy defines the agent's behavior, while a value function estimates the desirability of a state or action.",
+   "A policy is a mapping from states to actions, while a value function estimates the future rewards from a state."
+  ],
+  "answers": [
+   3
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Định nghĩa trong slide 1.7: policy là ánh xạ từ trạng thái sang hành động; value function là kỳ vọng tổng reward tương lai (return) từ một trạng thái. C cũng gần đúng nhưng D là định nghĩa chính xác nhất."
+ },
+ {
+  "id": "sp26re-01",
+  "chapter": 5,
+  "sourceLesson": "2.4",
+  "source": "SP26-RE",
+  "examNo": 1,
+  "question": "In off-policy Monte Carlo prediction, how is the return corrected?",
+  "options": [
+   "By averaging all returns without any adjustments",
+   "By using the importance sampling ratio",
+   "By discarding the returns from the behavior policy",
+   "By applying a discount factor"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Return sinh bởi behavior policy $b$ được nhân với $\\rho = \\prod \\pi/b$ để ước lượng giá trị theo target policy."
+ },
+ {
+  "id": "sp26re-02",
+  "chapter": 8,
+  "sourceLesson": "2.12",
+  "source": "SP26-RE",
+  "examNo": 2,
+  "question": "Which method is commonly used to improve the efficiency of learning in a sample model?",
+  "options": [
+   "Bootstrapping",
+   "Experience replay",
+   "Model-free updates",
+   "Cross-entropy method"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Kinh nghiệm cũ (thật hoặc mô phỏng) được lưu lại và dùng lại nhiều lần để cập nhật, giúp học hiệu quả mẫu hơn (slide Dyna nhắc tới experience replay)."
+ },
+ {
+  "id": "sp26re-03",
+  "chapter": 8,
+  "sourceLesson": "2.12",
+  "source": "SP26-RE",
+  "examNo": 3,
+  "question": "What is the role of the model in the Dyna architecture?",
+  "options": [
+   "To replace the environment",
+   "To generate random rewards",
+   "To simulate transitions for planning",
+   "To store past experiences"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Mô hình được học từ kinh nghiệm thật và dùng để sinh transition mô phỏng cho các bước planning."
+ },
+ {
+  "id": "sp26re-04",
+  "chapter": 5,
+  "sourceLesson": "2.4",
+  "source": "SP26-RE",
+  "examNo": 4,
+  "question": "Which statistical concept is importance sampling based on?",
+  "options": [
+   "Central Limit Theorem",
+   "Law of Large Numbers",
+   "Bayes' Theorem",
+   "Markov Chain Monte Carlo"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Importance sampling ước lượng kỳ vọng bằng trung bình mẫu có trọng số; trung bình mẫu hội tụ về kỳ vọng nhờ luật số lớn."
+ },
+ {
+  "id": "sp26re-05",
+  "chapter": 8,
+  "sourceLesson": "2.11",
+  "source": "SP26-RE",
+  "examNo": 5,
+  "question": "In one-step tabular Q-learning, how is the optimal action in a state determined during the learning phase?",
+  "options": [
+   "By selecting actions randomly",
+   "By selecting the action with the highest Q-value",
+   "By using a predefined action sequence",
+   "By always choosing the first action"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Hành động tốt nhất (greedy) là $\\arg\\max_a Q(s,a)$; trong Q-planning, policy được cải thiện bằng cách greedy theo Q."
+ },
+ {
+  "id": "sp26re-06",
+  "chapter": 7,
+  "sourceLesson": "2.8",
+  "source": "SP26-RE",
+  "examNo": 6,
+  "question": "In Q-learning, what does it mean when the Q-values have converged?",
+  "options": [
+   "The agent continues to explore all possible actions",
+   "The Q-values no longer change significantly",
+   "The agent stops learning and takes random actions",
+   "The agent updates the Q-values for every action"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Hội tụ nghĩa là các cập nhật không còn làm Q thay đổi đáng kể; khi đó Q xấp xỉ $q_*$."
+ },
+ {
+  "id": "sp26re-07",
+  "chapter": 6,
+  "sourceLesson": "2.5",
+  "source": "SP26-RE",
+  "examNo": 7,
+  "question": "In which of the following scenarios would TD Prediction be most useful?",
+  "options": [
+   "When we need to find the optimal policy in a simple grid world.",
+   "When we have a large state space and need to estimate the state values for a given policy.",
+   "When we want to learn a model of the environment's transition dynamics.",
+   "When we need to solve a multi-armed bandit problem."
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "TD prediction ước lượng $v_\\pi$ cho một policy cho trước, học từ kinh nghiệm mà không cần mô hình. Tìm policy tối ưu là bài toán control."
+ },
+ {
+  "id": "sp26re-08",
+  "chapter": 8,
+  "sourceLesson": "2.11",
+  "source": "SP26-RE",
+  "examNo": 8,
+  "question": "Which algorithm is an example of a planning method in reinforcement learning?",
+  "options": [
+   "Q-learning",
+   "Deep Q-Networks (DQN)",
+   "Monte Carlo Tree Search (MCTS)",
+   "SARSA"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "MCTS dùng mô hình để mô phỏng các nhánh tương lai trước khi hành động, đó là planning. Q-learning, DQN, Sarsa là phương pháp model-free."
+ },
+ {
+  "id": "sp26re-09",
+  "chapter": 7,
+  "sourceLesson": "2.7",
+  "source": "SP26-RE",
+  "examNo": 9,
+  "question": "In the Windy Gridworld, what does the wind do to the agent's movement?",
+  "options": [
+   "It has no effect on the agent's movement.",
+   "It pushes the agent downwards.",
+   "It pushes the agent upwards as it moves through windy states.",
+   "It randomly changes the agent's direction."
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Ví dụ Windy Gridworld (Sarsa): ở các cột có gió, agent bị đẩy lên trên một số ô tuỳ theo độ mạnh của gió."
+ },
+ {
+  "id": "sp26re-10",
+  "chapter": 5,
+  "sourceLesson": "2.4",
+  "source": "SP26-RE",
+  "examNo": 10,
+  "question": "Which of the following best describes an off-policy algorithm?",
+  "options": [
+   "It optimizes the policy based on past experiences only.",
+   "It updates the policy based on the actions taken by the agent.",
+   "It learns from actions that are not necessarily taken by the current policy.",
+   "It only learns from the actions dictated by the current policy."
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Off-policy học về target policy từ dữ liệu do một behavior policy khác sinh ra. D mô tả on-policy."
+ },
+ {
+  "id": "sp26re-11",
+  "chapter": 7,
+  "sourceLesson": "2.8",
+  "source": "SP26-RE",
+  "examNo": 11,
+  "question": "What is the Bellman equation in the context of Q-learning?",
+  "options": [
+   "It provides the optimal policy directly.",
+   "It updates the policy based on rewards received.",
+   "It recursively updates the Q-values using the maximum future reward.",
+   "It sets the learning rate for the agent."
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Q-learning dựa trên phương trình Bellman tối ưu cho action value: cập nhật Q theo $R + \\gamma\\max_{a'}Q(S',a')$."
+ },
+ {
+  "id": "sp26re-12",
+  "chapter": 8,
+  "sourceLesson": "2.11",
+  "source": "SP26-RE",
+  "examNo": 12,
+  "question": "Why is it beneficial to update Q-values randomly in Random Tabular Q-planning?",
+  "options": [
+   "It ensures that all state-action pairs are updated equally.",
+   "It helps in better exploration of the state-action space.",
+   "It makes the algorithm simpler to implement.",
+   "It guarantees convergence to the optimal policy."
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Chọn ngẫu nhiên cặp trạng thái-hành động giúp các cập nhật planning trải rộng khắp không gian trạng thái-hành động thay vì chỉ tập trung vào chỗ agent đang đi qua."
+ },
+ {
+  "id": "sp26re-13",
+  "chapter": 5,
+  "sourceLesson": "2.4",
+  "source": "SP26-RE",
+  "examNo": 13,
+  "question": "In importance sampling, what role do importance weights play?",
+  "options": [
+   "They determine the probability of each sample.",
+   "They adjust the contribution of each sample to the estimate.",
+   "They control the variance of the estimator.",
+   "They are irrelevant in importance sampling."
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Trọng số $\\rho(x) = \\pi(x)/b(x)$ điều chỉnh mức đóng góp của từng mẫu để trung bình phản ánh kỳ vọng theo $\\pi$."
+ },
+ {
+  "id": "sp26re-14",
+  "chapter": 6,
+  "sourceLesson": "2.6",
+  "source": "SP26-RE",
+  "examNo": 14,
+  "question": "What does Temporal Difference offer that traditional learning environments often lack?",
+  "options": [
+   "Interactive simulations",
+   "Passive learning experiences",
+   "Inflexible scheduling",
+   "Static course content"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "TD học online, liên tục từ tương tác với môi trường (mỗi bước đều cập nhật), khác với học thụ động từ dữ liệu cố định."
+ },
+ {
+  "id": "sp26re-15",
+  "chapter": 7,
+  "sourceLesson": "2.7",
+  "source": "SP26-RE",
+  "examNo": 15,
+  "question": "What happens to SARSA's learning rate when the step size parameter (Alpha) is decreased?",
+  "options": [
+   "It learns faster.",
+   "It learns more slowly but may find a better policy.",
+   "It has no effect on learning.",
+   "It learns the same rate as before."
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "$\\alpha$ nhỏ làm mỗi cập nhật nhỏ hơn nên học chậm hơn, nhưng ước lượng ổn định hơn và có thể hội tụ tới policy tốt hơn."
+ },
+ {
+  "id": "sp26re-16",
+  "chapter": 5,
+  "sourceLesson": "2.1",
+  "source": "SP26-RE",
+  "examNo": 16,
+  "question": "What is the main goal of Monte Carlo estimation?",
+  "options": [
+   "To minimize the number of actions taken",
+   "To estimate the value of each state by computing a sample average over returns",
+   "To maximize the rewards in a single episode",
+   "To create a deterministic policy"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Monte Carlo ước lượng giá trị bằng trung bình mẫu của các return quan sát được."
+ },
+ {
+  "id": "sp26re-17",
+  "chapter": 1,
+  "sourceLesson": "1.3",
+  "source": "SP26-RE",
+  "examNo": 17,
+  "question": "What does an Epsilon greedy policy primarily do?",
+  "options": [
+   "Always selects the greedy action.",
+   "Randomly selects actions without any preference.",
+   "Mostly selects the greedy action but occasionally explores randomly.",
+   "Ignores the current action value estimates."
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Với xác suất $1-\\epsilon$ chọn greedy action, với xác suất $\\epsilon$ chọn ngẫu nhiên."
+ },
+ {
+  "id": "sp26re-18",
+  "chapter": 5,
+  "sourceLesson": "2.1",
+  "source": "SP26-RE",
+  "examNo": 18,
+  "question": "What is the primary difference between Monte Carlo methods and dynamic programming?",
+  "options": [
+   "Monte Carlo methods require a model of the environment",
+   "Dynamic programming learns directly from experience",
+   "Monte Carlo methods estimate the value of individual states independently",
+   "Dynamic programming does not use episodes"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Monte Carlo không bootstrap: ước lượng của mỗi trạng thái chỉ dựa trên return của chính nó, độc lập với ước lượng của trạng thái khác. DP thì cần mô hình và bootstrap. A, B sai vì đảo ngược vai trò."
+ },
+ {
+  "id": "sp26re-19",
+  "chapter": 7,
+  "sourceLesson": "2.9",
+  "source": "SP26-RE",
+  "examNo": 19,
+  "question": "Why might Expected Sarsa be preferred in an environment with high variance in rewards?",
+  "options": [
+   "Because it updates the Q-values less frequently.",
+   "Because it uses the expected value which smooths out the updates.",
+   "Because it disregards the rewards.",
+   "Because it focuses only on the maximum reward."
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Lấy kỳ vọng theo policy thay vì một hành động lấy mẫu giúp loại bỏ một nguồn ngẫu nhiên, cập nhật mượt và ổn định hơn."
+ },
+ {
+  "id": "sp26re-20",
+  "chapter": 9,
+  "sourceLesson": "3.2",
+  "source": "SP26-RE",
+  "examNo": 20,
+  "question": "What is one approach to aggregating states in continuous state spaces?",
+  "options": [
+   "Using discrete state spaces only.",
+   "Clustering states based on feature similarity.",
+   "Ignoring state features altogether.",
+   "Randomly grouping states."
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "State aggregation gom các trạng thái tương tự (gần nhau theo đặc trưng) vào cùng một nhóm có chung một giá trị."
+ },
+ {
+  "id": "sp26re-21",
+  "chapter": 9,
+  "sourceLesson": "3.5",
+  "source": "SP26-RE",
+  "examNo": 21,
+  "question": "How can generalization be reduced in a learning environment?",
+  "options": [
+   "By reinforcing behaviors inconsistently.",
+   "By using a variety of stimuli during training.",
+   "By providing specific cues for different responses.",
+   "By not reinforcing any behavior."
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Cung cấp tín hiệu riêng cho từng phản ứng giúp phân biệt (discrimination) tốt hơn, tức giảm khái quát hoá. Trong RL: đặc trưng nhỏ, đặc thù hơn."
+ },
+ {
+  "id": "sp26re-22",
+  "chapter": 9,
+  "sourceLesson": "3.5",
+  "source": "SP26-RE",
+  "examNo": 22,
+  "question": "Tile Coding is most commonly associated with which type of function approximation in reinforcement learning?",
+  "options": [
+   "Linear function approximation",
+   "Non-linear function approximation",
+   "Polynomial function approximation",
+   "Radial basis function approximation"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Tile coding tạo đặc trưng nhị phân cho xấp xỉ tuyến tính $\\hat v = \\mathbf w^\\top \\mathbf x(s)$ (bài 3.5 Feature Construction for Linear Methods)."
+ },
+ {
+  "id": "sp26re-23",
+  "chapter": 11,
+  "sourceLesson": "3.11",
+  "source": "SP26-RE",
+  "examNo": 23,
+  "question": "What is the main objective of Actor-Critic algorithms?",
+  "options": [
+   "To solely maximize the critic's value function",
+   "To learn both a policy (actor) and a value function (critic)",
+   "To minimize the actor's policy gradient",
+   "To eliminate the role of the critic in reinforcement learning"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Actor-critic học đồng thời policy có tham số (actor) và value function (critic); critic cung cấp TD error để cập nhật actor."
+ },
+ {
+  "id": "sp26re-24",
+  "chapter": 10,
+  "sourceLesson": "3.8",
+  "source": "SP26-RE",
+  "examNo": 24,
+  "question": "What does the average reward in reinforcement learning represent?",
+  "options": [
+   "The total reward accumulated during an episode",
+   "The reward obtained at each time step",
+   "The mean reward received over multiple episodes",
+   "The maximum reward achievable in the environment"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Average reward là phần thưởng trung bình nhận được theo thời gian dài (trung bình trên mỗi bước), khác với tổng reward (A). Trong các lựa chọn, C gần nghĩa nhất."
+ },
+ {
+  "id": "sp26re-25",
+  "chapter": 11,
+  "sourceLesson": "3.11",
+  "source": "SP26-RE",
+  "examNo": 25,
+  "question": "In which field of study is the estimation of gradients using samples commonly applied?",
+  "options": [
+   "Quantum physics",
+   "Computer graphics",
+   "Sociology",
+   "Linguistics"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Câu hỏi kiến thức chung, độ tin cậy thấp. Ước lượng gradient từ mẫu (Monte Carlo gradient) được dùng nhiều trong đồ hoạ máy tính, ví dụ render và differentiable rendering. Ý chính cần nhớ là policy gradient ước lượng gradient từ mẫu tương tác."
+ },
+ {
+  "id": "sp26re-26",
+  "chapter": 9,
+  "sourceLesson": "3.1",
+  "source": "SP26-RE",
+  "examNo": 26,
+  "question": "In linear function approximation, the value function is typically represented as a linear combination of:",
+  "options": [
+   "Rewards",
+   "Actions",
+   "Features",
+   "States"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "$\\hat v(s,\\mathbf w) = \\sum_i w_i x_i(s)$: tổ hợp tuyến tính của các đặc trưng với trọng số."
+ },
+ {
+  "id": "sp26re-27",
+  "chapter": 10,
+  "sourceLesson": "3.8",
+  "source": "SP26-RE",
+  "examNo": 27,
+  "question": "How does the concept of average reward differ from the concept of cumulative reward?",
+  "options": [
+   "Average reward considers only the rewards obtained at specific time steps",
+   "Cumulative reward is the sum of all rewards received, while average reward is the mean of those rewards",
+   "Average reward measures the total reward over all episodes, while cumulative reward measures reward at each time step",
+   "They are synonymous and can be used interchangeably"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Cumulative reward là tổng; average reward là trung bình trên mỗi bước, $r(\\pi) = \\lim_{h\\to\\infty} \\frac{1}{h}\\sum_t \\mathbb E[R_t]$."
+ },
+ {
+  "id": "sp26re-28",
+  "chapter": 9,
+  "sourceLesson": "3.1",
+  "source": "SP26-RE",
+  "examNo": 28,
+  "question": "How does context influence generalization in learning?",
+  "options": [
+   "Context always limits the ability to generalize.",
+   "Similar contexts can enhance the transfer of learning.",
+   "Different contexts prevent the application of learned knowledge.",
+   "Context has no significant effect on learning outcomes."
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Khái quát hoá xảy ra giữa các tình huống tương tự: học ở một trạng thái giúp ích cho trạng thái giống nó."
+ },
+ {
+  "id": "sp26re-29",
+  "chapter": 11,
+  "sourceLesson": "3.12",
+  "source": "SP26-RE",
+  "examNo": 29,
+  "question": "What is the main advantage of using a Gaussian policy in continuous action spaces?",
+  "options": [
+   "Simplicity of implementation",
+   "Ability to handle discrete actions",
+   "Smoothness and expressiveness",
+   "Faster convergence rate"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Slide 3.12 liệt kê ưu điểm của hành động liên tục: expressiveness (điều khiển tinh) và smoothness (policy mượt)."
+ },
+ {
+  "id": "sp26re-30",
+  "chapter": 9,
+  "sourceLesson": "3.5",
+  "source": "SP26-RE",
+  "examNo": 30,
+  "question": "Coarse coding can be seen as a form of which of the following in the context of state aggregation?",
+  "options": [
+   "Clustering",
+   "Overfitting",
+   "Exact encoding",
+   "Model-free learning"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Giống state aggregation, coarse coding gom các trạng thái gần nhau vào các vùng (receptive field), chỉ khác là các vùng được phép chồng lấn."
+ },
+ {
+  "id": "sp26re-31",
+  "chapter": 11,
+  "sourceLesson": "3.9",
+  "source": "SP26-RE",
+  "examNo": 31,
+  "question": "What is the advantage of using parameterized policies in reinforcement learning?",
+  "options": [
+   "They are simpler to implement",
+   "They provide more flexibility in learning complex behaviors",
+   "They converge faster to optimal solutions",
+   "They require less computational resources"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Slide 3.9: policy có tham số linh hoạt (flexibility), học được policy phức tạp, stochastic và cả hành động liên tục."
+ },
+ {
+  "id": "sp26re-32",
+  "chapter": 11,
+  "sourceLesson": "3.12",
+  "source": "SP26-RE",
+  "examNo": 32,
+  "question": "Which algorithm often employs Gaussian policies in reinforcement learning?",
+  "options": [
+   "Q-Learning",
+   "Deep Q-Networks (DQN)",
+   "Policy Gradient methods",
+   "Temporal Difference Learning"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Gaussian policy là policy có tham số cho hành động liên tục, được học bằng policy gradient/actor-critic."
+ },
+ {
+  "id": "sp26re-33",
+  "chapter": 9,
+  "sourceLesson": "3.1",
+  "source": "SP26-RE",
+  "examNo": 33,
+  "question": "What is the main advantage of using linear function approximation in reinforcement learning?",
+  "options": [
+   "It provides perfect accuracy",
+   "It is computationally inexpensive and easy to implement",
+   "It ensures convergence to the optimal policy",
+   "It eliminates the need for exploration"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Xấp xỉ tuyến tính tính nhanh (tích vô hướng), gradient đơn giản (chính là đặc trưng) và dễ cài đặt; nhưng không chính xác tuyệt đối."
+ },
+ {
+  "id": "sp26re-36",
+  "chapter": 4,
+  "sourceLesson": "1.11",
+  "source": "SP26-RE",
+  "examNo": 36,
+  "question": "Which algorithm uses the state value function to iteratively improve the policy until it converges to the optimal policy?",
+  "options": [
+   "Monte Carlo methods",
+   "Q-learning",
+   "Policy iteration",
+   "Temporal Difference learning"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Policy iteration: đánh giá $v_\\pi$ rồi greedify, lặp lại tới khi policy không đổi, khi đó là policy tối ưu."
+ },
+ {
+  "id": "sp26re-37",
+  "chapter": 7,
+  "sourceLesson": "2.8",
+  "source": "SP26-RE",
+  "examNo": 37,
+  "question": "In Q-learning, how is the action value updated for a given state-action pair?",
+  "options": [
+   "Using the expected return",
+   "Using the maximum action value of the next state",
+   "Using the discounted reward of the next state",
+   "Using the average of all action values"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Target Q-learning dùng $\\max_{a} Q(S_{t+1}, a)$. D (trung bình theo policy) là Expected Sarsa."
+ },
+ {
+  "id": "sp26re-38",
+  "chapter": 1,
+  "sourceLesson": "1.3",
+  "source": "SP26-RE",
+  "examNo": 38,
+  "question": "In reinforcement learning, what is a common downside of pure exploitation without exploration?",
+  "options": [
+   "Increased computational complexity.",
+   "Missing out on potentially better actions that haven't been tried enough.",
+   "High variance in reward estimation.",
+   "Difficulty in policy convergence to get maximum the total rewards"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Chỉ khai thác thì các hành động chưa thử không bao giờ được đánh giá, có thể bỏ lỡ hành động tốt nhất."
+ },
+ {
+  "id": "sp26re-39",
+  "chapter": 4,
+  "sourceLesson": "1.10",
+  "source": "SP26-RE",
+  "examNo": 39,
+  "question": "Which of the following methods is NOT used for Policy Evaluation?",
+  "options": [
+   "Temporal Difference Learning",
+   "Monte Carlo methods",
+   "Dynamic Programming",
+   "Deep Q-Networks"
+  ],
+  "answers": [
+   3
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "TD, MC, DP đều có phiên bản ước lượng $v_\\pi$ (prediction). DQN là phương pháp control học $q_*$ bằng neural network."
+ },
+ {
+  "id": "sp26re-40",
+  "chapter": 2,
+  "sourceLesson": "1.5",
+  "source": "SP26-RE",
+  "examNo": 40,
+  "question": "How is the reward function related to the policy in reinforcement learning?",
+  "options": [
+   "The reward function determines the optimal policy.",
+   "The reward function is irrelevant to the policy based on the value function.",
+   "The policy is designed to maximize the cumulative reward based on the reward function.",
+   "The policy defines the reward function."
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Reward hypothesis: agent tìm policy tối đa hoá tổng reward kỳ vọng; reward do môi trường định nghĩa, không phải do policy."
+ },
+ {
+  "id": "sp26re-41",
+  "chapter": 3,
+  "sourceLesson": "1.9",
+  "source": "SP26-RE",
+  "examNo": 41,
+  "question": "In the context of Markov Decision Processes (MDPs), what does the Bellman equation help to compute?",
+  "options": [
+   "The transition probabilities.",
+   "The optimal policy.",
+   "The reward function.",
+   "The state space."
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Giải phương trình Bellman (tối ưu) cho $v_*$/$q_*$, từ đó suy ra policy tối ưu. Xác suất chuyển và reward là đầu vào, không phải đầu ra."
+ },
+ {
+  "id": "sp26re-42",
+  "chapter": 4,
+  "sourceLesson": "1.10",
+  "source": "SP26-RE",
+  "examNo": 42,
+  "question": "What does the term \"iterative\" signify in Iterative Policy Evaluation?",
+  "options": [
+   "The process involves repeated computation until convergence",
+   "It updates the policy in every iteration",
+   "It requires iterating through all possible states",
+   "It involves iterating through different reinforcement learning algorithms"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Lặp đi lặp lại các lượt quét cập nhật $v_{k+1}$ từ $v_k$ cho tới khi $\\Delta < \\theta$. Policy không đổi trong policy evaluation."
+ },
+ {
+  "id": "sp26re-43",
+  "chapter": 2,
+  "sourceLesson": "1.6",
+  "source": "SP26-RE",
+  "examNo": 43,
+  "question": "What is the purpose of the discount factor (gamma, γ) in reinforcement learning?",
+  "options": [
+   "To control the learning rate of the agent",
+   "To prioritize recent rewards over distant future rewards",
+   "To balance exploration and exploitation",
+   "To determine the convergence rate of the algorithm"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "$\\gamma^k$ giảm dần theo $k$ nên reward gần có trọng số lớn hơn reward xa, đồng thời giữ return hữu hạn."
+ },
+ {
+  "id": "sp26re-44",
+  "chapter": 1,
+  "sourceLesson": "1.3",
+  "source": "SP26-RE",
+  "examNo": 44,
+  "question": "Which method adjusts the exploration-exploitation balance by dynamically altering the reward estimates based on their uncertainty?",
+  "options": [
+   "Thompson Sampling",
+   "Epsilon-Greedy",
+   "Q-Learning",
+   "Upper Confidence Bound (UCB)"
+  ],
+  "answers": [
+   3
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "UCB cộng thêm vào ước lượng một bonus tỉ lệ với độ bất định $c\\sqrt{\\ln t / N_t(a)}$, hành động ít được thử sẽ có bonus lớn."
+ },
+ {
+  "id": "sp26re-45",
+  "chapter": 2,
+  "sourceLesson": "1.6",
+  "source": "SP26-RE",
+  "examNo": 45,
+  "question": "If you're preparing for an exam by studying a little bit each day, what type of task is this?",
+  "options": [
+   "Episodic task.",
+   "Continuing task.",
+   "Project-based task.",
+   "Occasional task."
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Bảng so sánh trong slide 1.6 liệt kê \"studying for an exam\" là ví dụ episodic task: có mục tiêu và điểm kết thúc rõ ràng (ngày thi)."
+ },
+ {
+  "id": "sp26re-46",
+  "chapter": 4,
+  "sourceLesson": "1.11",
+  "source": "SP26-RE",
+  "examNo": 46,
+  "question": "Which characteristic distinguishes Policy Iteration from other reinforcement learning methods?",
+  "options": [
+   "It focuses solely on immediate rewards",
+   "It disregards the exploration phase",
+   "It iteratively improves both policy and value function",
+   "None of the above"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Policy iteration xen kẽ đánh giá (cải thiện value function) và cải thiện policy cho tới khi hội tụ."
+ },
+ {
+  "id": "sp26re-47",
+  "chapter": 7,
+  "sourceLesson": "2.8",
+  "source": "SP26-RE",
+  "examNo": 47,
+  "question": "Which algorithm commonly uses the Bellman equation to update the value function?",
+  "options": [
+   "K-means clustering",
+   "Q-learning",
+   "Principal Component Analysis (PCA)",
+   "Gradient descent"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Q-learning cập nhật Q theo dạng mẫu của phương trình Bellman tối ưu."
+ },
+ {
+  "id": "sp26re-48",
+  "chapter": 11,
+  "sourceLesson": "3.9",
+  "source": "SP26-RE",
+  "examNo": 48,
+  "question": "Which type of policy directly associates actions with states without using a value function?",
+  "options": [
+   "Value-based policy",
+   "Model-based policy",
+   "Policy-based policy",
+   "Q-learning policy"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Phương pháp policy-based biểu diễn trực tiếp $\\pi(a|s,\\theta)$, chọn hành động mà không cần suy ra từ value function."
+ },
+ {
+  "id": "sp26re-49",
+  "chapter": 3,
+  "sourceLesson": "1.7",
+  "source": "SP26-RE",
+  "examNo": 49,
+  "question": "Which of the following is NOT a characteristic of the action-value function?",
+  "options": [
+   "It depends on both the state and the action.",
+   "It can be used to derive the policy.",
+   "It only considers the immediate reward.",
+   "It is used to estimate the expected return."
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "$q_\\pi(s,a)$ là kỳ vọng của toàn bộ return (cả reward tương lai), không chỉ reward ngay lập tức."
+ },
+ {
+  "id": "sp26re-50",
+  "chapter": 7,
+  "sourceLesson": "2.7",
+  "source": "SP26-RE",
+  "examNo": 50,
+  "question": "Which of the following statements is true about the SARSA algorithm?",
+  "options": [
+   "SARSA is an off-policy algorithm.",
+   "SARSA always converges to the optimal policy.",
+   "SARSA updates the Q-values using the action taken by the policy.",
+   "SARSA requires a model of the environment."
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Sarsa là on-policy, target dùng $Q(S',A')$ với $A'$ là hành động policy thực sự chọn; không cần mô hình."
+ },
+ {
+  "id": "sp26re-34",
+  "chapter": 11,
+  "sourceLesson": "3.12",
+  "source": "SP26-RE",
+  "examNo": 34,
+  "question": "In Actor-Critic with Softmax Policies, how is the action chosen based on the softmax probabilities?",
+  "options": [
+   "The action with the highest probability is chosen",
+   "The action is randomly sampled from the distribution",
+   "The action with the lowest probability is chosen",
+   "The action with the maximum advantage is chosen"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Policy softmax là stochastic: hành động được lấy mẫu theo xác suất $\\pi(a|s,\\theta)$, nhờ đó agent vẫn khám phá."
+ },
+ {
+  "id": "quizlet-001",
+  "chapter": 1,
+  "sourceLesson": "1.2",
+  "source": "Quizlet",
+  "question": "What is the incremental rule (sample average) for action values?",
+  "options": [
+   "$Q_{n+1}= Q_n + \\frac{1}{n} [R_n - Q_n]$",
+   "$Q_{n+1}= Q_n - \\frac{1}{n} [R_n - Q_n]$",
+   "$Q_{n+1}= Q_n + \\frac{1}{n} [Q_n]$",
+   "$Q_{n+1}= Q_n + \\frac{1}{n} [R_n + Q_n]$"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Ước lượng mới = ước lượng cũ + step size × (target − ước lượng cũ), với step size $1/n$."
+ },
+ {
+  "id": "quizlet-002",
+  "chapter": 1,
+  "sourceLesson": "1.3",
+  "source": "Quizlet",
+  "question": "What is the exploration/exploitation tradeoff?",
+  "options": [
+   "The agent wants to explore the environment to learn as much about it as possible about the various actions. That way once it knows every arm's true value it can choose the best one for the rest of the time.",
+   "The agent wants to maximize the amount of reward it receives over its lifetime. To do so it needs to avoid the action it believes is worst to exploit what it knows about the environment.",
+   "The agent wants to explore to get more accurate estimates of its values. The agent also wants to exploit to get more reward. The agent cannot, however, choose to do both simultaneously.",
+   "The agent wants to exploit at the beginning and explore only after it has found the best action."
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Explore để ước lượng chính xác hơn, exploit để nhận nhiều reward hơn, nhưng tại mỗi bước không thể làm cả hai."
+ },
+ {
+  "id": "quizlet-003",
+  "chapter": 1,
+  "sourceLesson": "1.3",
+  "source": "Quizlet",
+  "question": "Why did epsilon of 0.1 perform better over 1000 steps than epsilon of 0.01?",
+  "options": [
+   "The 0.01 agent explored too much causing the arm to choose a bad action too often.",
+   "The 0.01 agent did not explore enough. Thus it ended up selecting a suboptimal arm for longer.",
+   "Epsilon of 0.1 is the optimal value for epsilon in general."
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Với $\\epsilon = 0.01$ agent hiếm khi khám phá nên mất nhiều thời gian mới phát hiện ra cần gạt tốt nhất."
+ },
+ {
+  "id": "quizlet-004",
+  "chapter": 1,
+  "sourceLesson": "1.3",
+  "source": "Quizlet",
+  "question": "If exploration is so great why did epsilon of 0.0 (a greedy agent) perform better than epsilon of 0.4?",
+  "options": [
+   "Epsilon of 0.4 explores too often that it takes many sub-optimal actions causing it to do worse over the long term.",
+   "Epsilon of 0.4 doesn't explore often enough to find the optimal action.",
+   "Epsilon of 0.0 is greedy, thus it will always choose the optimal arm."
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "$\\epsilon$ quá lớn khiến 40% số bước là hành động ngẫu nhiên, thường kém, nên tổng reward thấp."
+ },
+ {
+  "id": "quizlet-005",
+  "chapter": 2,
+  "sourceLesson": "1.5",
+  "source": "Quizlet",
+  "question": "The learner and decision maker is the _______.",
+  "options": [
+   "Agent",
+   "State",
+   "Reward",
+   "Environment"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Agent là thực thể học và ra quyết định."
+ },
+ {
+  "id": "quizlet-006",
+  "chapter": 2,
+  "sourceLesson": "1.4",
+  "source": "Quizlet",
+  "question": "At each time step the agent takes a/an _______.",
+  "options": [
+   "Reward",
+   "Action",
+   "Environment",
+   "State"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Mỗi bước agent chọn một hành động $A_t$; môi trường trả về reward và trạng thái mới."
+ },
+ {
+  "id": "quizlet-007",
+  "chapter": 2,
+  "sourceLesson": "1.5",
+  "source": "Quizlet",
+  "question": "Imagine the agent is learning in an episodic problem. Which of the following is true?",
+  "options": [
+   "The number of steps in an episode is stochastic: each episode can have a different number of steps.",
+   "The number of steps in an episode is always the same.",
+   "The agent takes the same action at each step during an episode."
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Thời điểm kết thúc $T$ là biến ngẫu nhiên, mỗi episode có thể dài ngắn khác nhau."
+ },
+ {
+  "id": "quizlet-008",
+  "chapter": 2,
+  "sourceLesson": "1.6",
+  "source": "Quizlet",
+  "question": "If the reward is always +1 what is the sum of the discounted infinite return when $\\gamma < 1$? $G_t=\\sum_{k=0}^{\\infty} \\gamma^{k}R_{t+k+1}$",
+  "options": [
+   "$G_t=1 \\cdot \\gamma^k$",
+   "Infinity.",
+   "$G_t=\\frac{1}{1-\\gamma}$",
+   "$G_t=\\frac{\\gamma}{1-\\gamma}$"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Tổng cấp số nhân $\\sum_k \\gamma^k = \\frac{1}{1-\\gamma}$."
+ },
+ {
+  "id": "quizlet-009",
+  "chapter": 2,
+  "sourceLesson": "1.6",
+  "source": "Quizlet",
+  "question": "How does the magnitude of the discount factor ($\\gamma$) affect learning?",
+  "options": [
+   "The magnitude of the discount factor has no effect on the agent.",
+   "With a smaller discount factor the agent is more far-sighted and considers rewards farther into the future.",
+   "With a larger discount factor the agent is more far-sighted and considers rewards farther into the future."
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "$\\gamma$ gần 1 thì reward xa vẫn có trọng số lớn, agent nhìn xa; $\\gamma = 0$ thì agent thiển cận."
+ },
+ {
+  "id": "quizlet-010",
+  "chapter": 2,
+  "sourceLesson": "1.6",
+  "source": "Quizlet",
+  "question": "Suppose $\\gamma = 0.8$ and the reward sequence is $R_1 = 5$ followed by an infinite sequence of 10s. What is $G_0$?",
+  "options": [
+   "45",
+   "15",
+   "55",
+   "50"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "$G_0 = 5 + 0.8 \\cdot \\frac{10}{1 - 0.8} = 5 + 40 = 45$."
+ },
+ {
+  "id": "quizlet-011",
+  "chapter": 2,
+  "sourceLesson": "1.4",
+  "source": "Quizlet",
+  "question": "What does MDP stand for?",
+  "options": [
+   "Meaningful Decision Process",
+   "Markov Decision Protocol",
+   "Markov Decision Process",
+   "Markov Deterministic Policy"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "MDP = Markov Decision Process."
+ },
+ {
+  "id": "quizlet-012",
+  "chapter": 2,
+  "sourceLesson": "1.5",
+  "source": "Quizlet",
+  "question": "What is the reward hypothesis?",
+  "options": [
+   "That all of what we mean by goals and purposes can be well thought of as the maximization of the expected value of the cumulative sum of a received scalar signal (called reward).",
+   "Ignore rewards and find other signals.",
+   "Always take the action that gives you the best reward at that point.",
+   "That all of what we mean by goals and purposes can be well thought of as the minimization of the expected value of the cumulative sum of a received scalar signal (called reward)."
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Reward hypothesis: mọi mục tiêu đều có thể diễn đạt bằng việc tối đa hoá kỳ vọng tổng reward tích luỹ."
+ },
+ {
+  "id": "quizlet-013",
+  "chapter": 2,
+  "sourceLesson": "1.6",
+  "source": "Quizlet",
+  "question": "When may you want to formulate a problem as continuing?",
+  "options": [
+   "When the agent-environment interaction does not naturally break into sequences. Each new episode begins independently of how the previous episode ended.",
+   "When the agent-environment interaction naturally breaks into sequences and each sequence begins independently of how the previous sequence ended."
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Continuing task: tương tác kéo dài, không tự nhiên chia thành các episode."
+ },
+ {
+  "id": "quizlet-014",
+  "chapter": 2,
+  "sourceLesson": "1.5",
+  "source": "Quizlet",
+  "question": "When may you want to formulate a problem as episodic?",
+  "options": [
+   "When the agent-environment interaction does not naturally break into sequences. Each new episode begins independently of how the previous episode ended.",
+   "When the agent-environment interaction naturally breaks into sequences and each sequence begins independently of how the previous sequence ended."
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Episodic task: tương tác chia thành các episode độc lập, mỗi episode bắt đầu lại từ đầu."
+ },
+ {
+  "id": "quizlet-015",
+  "chapter": 3,
+  "sourceLesson": "1.7",
+  "source": "Quizlet",
+  "question": "A policy is a function which maps ____ to ____.",
+  "options": [
+   "States to actions.",
+   "States to values.",
+   "Actions to probabilities.",
+   "Actions to probability distributions over values.",
+   "States to probability distributions over actions."
+  ],
+  "answers": [
+   4
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Tổng quát, policy $\\pi(a|s)$ ánh xạ mỗi trạng thái tới một phân phối xác suất trên các hành động (deterministic là trường hợp đặc biệt)."
+ },
+ {
+  "id": "quizlet-016",
+  "chapter": 3,
+  "sourceLesson": "1.8",
+  "source": "Quizlet",
+  "question": "The term \"backup\" most closely resembles the term ___ in meaning.",
+  "options": [
+   "Value",
+   "Update",
+   "Diagram"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Backup là việc chuyển thông tin giá trị từ trạng thái kế tiếp về trạng thái hiện tại, tức một lần cập nhật."
+ },
+ {
+  "id": "quizlet-017",
+  "chapter": 3,
+  "sourceLesson": "1.9",
+  "source": "Quizlet",
+  "question": "At least one deterministic optimal policy exists in every Markov decision process.",
+  "options": [
+   "True",
+   "False"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Luôn tồn tại policy tối ưu dạng deterministic: greedy theo $q_*$."
+ },
+ {
+  "id": "quizlet-018",
+  "chapter": 3,
+  "sourceLesson": "1.9",
+  "source": "Quizlet",
+  "question": "The optimal state-value function:",
+  "options": [
+   "Is unique in every finite Markov decision process.",
+   "Is not guaranteed to be unique, even in finite Markov decision processes."
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Có thể có nhiều policy tối ưu nhưng chúng chia sẻ cùng một $v_*$ duy nhất."
+ },
+ {
+  "id": "quizlet-019",
+  "chapter": 3,
+  "sourceLesson": "1.9",
+  "source": "Quizlet",
+  "question": "An optimal policy:",
+  "options": [
+   "Is not guaranteed to be unique, even in finite Markov decision processes.",
+   "Is unique in every Markov decision process.",
+   "Is unique in every finite Markov decision process."
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Nhiều hành động có thể cùng đạt giá trị lớn nhất nên có thể có nhiều policy tối ưu."
+ },
+ {
+  "id": "quizlet-020",
+  "chapter": 3,
+  "sourceLesson": "1.9",
+  "source": "Quizlet",
+  "question": "Every finite Markov decision process has __. [Select all that apply]",
+  "options": [
+   "A unique optimal value function",
+   "A unique optimal policy",
+   "A deterministic optimal policy",
+   "A stochastic optimal policy"
+  ],
+  "answers": [
+   0,
+   2
+  ],
+  "multi": true,
+  "answerSource": "official",
+  "explanation": "MDP hữu hạn luôn có $v_*$ duy nhất và luôn có ít nhất một policy tối ưu deterministic; policy tối ưu không nhất thiết duy nhất."
+ },
+ {
+  "id": "quizlet-021",
+  "chapter": 2,
+  "sourceLesson": "1.5",
+  "source": "Quizlet",
+  "question": "Does adding a constant to all rewards change the set of optimal policies in episodic tasks?",
+  "options": [
+   "Yes, adding a constant to all rewards changes the set of optimal policies.",
+   "No, as long as the relative differences between rewards remain the same, the set of optimal policies is the same."
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Trong episodic task, số bước khác nhau nên hằng số cộng thêm tích luỹ khác nhau; ví dụ reward −1 mỗi bước khuyến khích kết thúc sớm, cộng thêm 2 sẽ khuyến khích kéo dài."
+ },
+ {
+  "id": "quizlet-022",
+  "chapter": 2,
+  "sourceLesson": "1.6",
+  "source": "Quizlet",
+  "question": "Does adding a constant to all rewards change the set of optimal policies in continuing tasks?",
+  "options": [
+   "No, as long as the relative differences between rewards remain the same, the set of optimal policies is the same.",
+   "Yes, adding a constant to all rewards changes the set of optimal policies."
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Với continuing task có chiết khấu, hằng số $c$ cộng thêm $c/(1-\\gamma)$ cho mọi trạng thái như nhau nên không đổi thứ tự các policy."
+ },
+ {
+  "id": "quizlet-023",
+  "chapter": 3,
+  "sourceLesson": "1.9",
+  "source": "Quizlet",
+  "question": "Select the equation that correctly relates $v_{*}$ to $q_{*}$.",
+  "options": [
+   "$v_{*}(s) = \\sum_{a, r, s'} \\pi(a | s)p(s', r | s, a) q_{*}(s')$",
+   "$v_{*}(s) = \\sum_{a, r, s'} \\pi(a | s) p(s', r | s, a) [r + q_{*}(s')]$",
+   "$v_{*}(s) = \\sum_{a, r, s'} \\pi(a | s) p(s', r | s, a) [r + \\gamma q_{*}(s')]$",
+   "$v_{*}(s) = \\max_a q_{*}(s, a)$"
+  ],
+  "answers": [
+   3
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Giá trị tối ưu của trạng thái bằng giá trị của hành động tốt nhất: $v_*(s) = \\max_a q_*(s,a)$."
+ },
+ {
+  "id": "quizlet-024",
+  "chapter": 3,
+  "sourceLesson": "1.9",
+  "source": "Quizlet",
+  "question": "Select the equation that correctly relates $q_{*}$ to $v_{*}$ using the four-argument function $p$.",
+  "options": [
+   "$q_{*}(s, a) = \\sum_{s', r} p(s', r | s, a) [r + v_{*}(s')]$",
+   "$q_{*}(s, a) = \\sum_{s', r} p(s', r | s, a) \\gamma [r + v_{*}(s')]$",
+   "$q_{*}(s, a) = \\sum_{s', r} p(s', r | s, a) [r + \\gamma v_{*}(s')]$"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Lấy kỳ vọng theo dynamics của reward cộng giá trị tối ưu đã chiết khấu của trạng thái kế tiếp."
+ },
+ {
+  "id": "quizlet-025",
+  "chapter": 3,
+  "sourceLesson": "1.9",
+  "source": "Quizlet",
+  "question": "Write a policy $\\pi_{*}$ in terms of $q_{*}$.",
+  "options": [
+   "$\\pi_{*}(a|s) = q_{*}(s, a)$",
+   "$\\pi_{*}(a|s) = \\max_{a'} q_{*}(s, a')$",
+   "$\\pi_{*}(a|s)=1$ if $a=\\arg\\max_{a'}q_*(s,a')$, else 0"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Policy tối ưu greedy theo $q_*$: dồn toàn bộ xác suất vào hành động có $q_*$ lớn nhất."
+ },
+ {
+  "id": "quizlet-026",
+  "chapter": 3,
+  "sourceLesson": "1.9",
+  "source": "Quizlet",
+  "question": "Give an equation for some $\\pi_{*}$ in terms of $v_{*}$ and the four-argument $p$.",
+  "options": [
+   "$\\pi_{*}(a|s) = 1 \\text{ if } v_{*}(s) = \\sum_{s', r} p(s', r | s, a) [ r + \\gamma v_{*}(s')], \\text{ else } 0$",
+   "$\\pi_{*}(a|s) = 1 \\text{ if } v_{*}(s) = \\max_{a'} \\sum_{s', r} p(s', r | s, a') [ r + \\gamma v_{*}(s')], \\text{ else } 0$",
+   "$\\pi_{*}(a|s) = \\max_{a'} \\sum_{s', r} p(s', r | s, a') [ r + \\gamma v_{*}(s')]$",
+   "$\\pi_{*}(a|s) = \\sum_{s', r} p(s', r | s, a) [ r + \\gamma v_{*}(s')]$"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Chọn hành động $a$ mà giá trị nhìn trước một bước của nó bằng đúng $v_*(s)$, tức hành động đạt max."
+ },
+ {
+  "id": "quizlet-027",
+  "chapter": 3,
+  "sourceLesson": "1.7",
+  "source": "Quizlet",
+  "question": "A function which maps ___ to ___ is a value function. [Select all that apply]",
+  "options": [
+   "Values to states.",
+   "Values to actions.",
+   "States to expected returns.",
+   "State-action pairs to expected returns."
+  ],
+  "answers": [
+   2,
+   3
+  ],
+  "multi": true,
+  "answerSource": "official",
+  "explanation": "$v_\\pi$ ánh xạ trạng thái tới return kỳ vọng; $q_\\pi$ ánh xạ cặp trạng thái-hành động tới return kỳ vọng."
+ },
+ {
+  "id": "quizlet-028",
+  "chapter": 3,
+  "sourceLesson": "1.8",
+  "source": "Quizlet",
+  "question": "The Bellman equation for a given policy $\\pi$: [Select all that apply]",
+  "options": [
+   "Expresses state values $v(s)$ in terms of state values of successor states.",
+   "Expresses the improved policy in terms of the existing policy.",
+   "Holds only when the policy is greedy with respect to the value function."
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Phương trình Bellman kỳ vọng đúng với mọi policy, biểu diễn $v_\\pi(s)$ theo giá trị của các trạng thái kế tiếp."
+ },
+ {
+  "id": "quizlet-029",
+  "chapter": 3,
+  "sourceLesson": "1.9",
+  "source": "Quizlet",
+  "question": "The Bellman optimality equation for $v_{*}$: [Select all that apply]",
+  "options": [
+   "Holds for $v_{\\pi}$, the value function of an arbitrary policy $\\pi$.",
+   "Expresses state values $v_{*}(s)$ in terms of state values of successor states.",
+   "Expresses the improved policy in terms of the existing policy.",
+   "Holds when the policy is greedy with respect to the value function.",
+   "Holds for the optimal state value function."
+  ],
+  "answers": [
+   1,
+   4
+  ],
+  "multi": true,
+  "answerSource": "official",
+  "explanation": "Phương trình Bellman tối ưu chỉ đúng với $v_*$ và liên hệ $v_*(s)$ với $v_*$ của các trạng thái kế tiếp."
+ },
+ {
+  "id": "quizlet-030",
+  "chapter": 3,
+  "sourceLesson": "1.8",
+  "source": "Quizlet",
+  "question": "Give an equation for $v_{\\pi}$ in terms of $q_{\\pi}$ and $\\pi$.",
+  "options": [
+   "$v_{\\pi}(s) = \\sum_{a} \\pi(a | s) q_{\\pi}(s, a)$",
+   "$v_{\\pi}(s) = \\max_{a} \\pi(a | s) q_{\\pi}(s, a)$",
+   "$v_{\\pi}(s) = \\sum_{a} \\gamma \\pi(a | s) q_{\\pi}(s, a)$",
+   "$v_{\\pi}(s) = \\max_{a} \\gamma \\pi(a | s) q_{\\pi}(s, a)$"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "$v_\\pi$ là trung bình của $q_\\pi$ theo xác suất chọn hành động của policy."
+ },
+ {
+  "id": "quizlet-031",
+  "chapter": 3,
+  "sourceLesson": "1.8",
+  "source": "Quizlet",
+  "question": "Give an equation for $q_{\\pi}$ in terms of $v_{\\pi}$ and the four-argument $p$.",
+  "options": [
+   "$q_{\\pi}(s, a) = \\max_{s', r} p(s', r | s, a)[r + \\gamma v_{\\pi}(s')]$",
+   "$q_{\\pi}(s, a) = \\sum_{s'} \\sum_{r} p(s', r | s, a) \\gamma[r + v_{\\pi}(s')]$",
+   "$q_{\\pi}(s, a) = \\sum_{s'} \\sum_{r} p(s', r | s, a) [r + v_{\\pi}(s')]$",
+   "$q_{\\pi}(s, a) = \\sum_{s'} \\sum_{r} p(s', r | s, a)[r + \\gamma v_{\\pi}(s')]$"
+  ],
+  "answers": [
+   3
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Kỳ vọng theo dynamics của $r + \\gamma v_\\pi(s')$; chỉ chiết khấu giá trị trạng thái kế tiếp, không chiết khấu $r$."
+ },
+ {
+  "id": "quizlet-032",
+  "chapter": 1,
+  "sourceLesson": "1.1",
+  "source": "Quizlet",
+  "question": "Consider an episodic MDP with one state and two actions (left and right). The left action has stochastic reward 1 with probability p and 3 with probability 1−p. The right action has stochastic reward 0 with probability q and 10 with probability 1−q. What relationship between p and q makes the actions equally optimal?",
+  "options": [
+   "7 + 3p = 10q",
+   "7 + 2p = 10q",
+   "13 + 2p = 10q",
+   "7 + 2p = −10q"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Trái: $p + 3(1-p) = 3 - 2p$. Phải: $10(1-q) = 10 - 10q$. Cho bằng nhau: $10q = 7 + 2p$."
+ },
+ {
+  "id": "quizlet-033",
+  "chapter": 3,
+  "sourceLesson": "1.9",
+  "source": "Quizlet",
+  "question": "The value of any state under an optimal policy is ___ the value of that state under a non-optimal policy. [Select all that apply]",
+  "options": [
+   "Strictly greater than",
+   "Greater than or equal to",
+   "Strictly less than",
+   "Less than or equal to"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Policy không tối ưu vẫn có thể bằng policy tối ưu ở một số trạng thái, nên chỉ đảm bảo \"lớn hơn hoặc bằng\"."
+ },
+ {
+  "id": "quizlet-034",
+  "chapter": 4,
+  "sourceLesson": "1.11",
+  "source": "Quizlet",
+  "question": "If a policy $\\pi$ is greedy with respect to its own value function $v_{\\pi}$, then it is an optimal policy.",
+  "options": [
+   "True",
+   "False"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Khi greedify không làm policy thay đổi, $v_\\pi$ thoả phương trình Bellman tối ưu nên $\\pi$ tối ưu."
+ },
+ {
+  "id": "quizlet-035",
+  "chapter": 4,
+  "sourceLesson": "1.11",
+  "source": "Quizlet",
+  "question": "Let $v_{\\pi}$ be the state-value function for the policy $\\pi$. Let $\\pi'$ be greedy with respect to $v_{\\pi}$. Then $v_{\\pi'} \\geq v_{\\pi}$.",
+  "options": [
+   "False",
+   "True"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Policy improvement theorem: policy tham lam theo $v_\\pi$ tốt hơn hoặc bằng $\\pi$."
+ },
+ {
+  "id": "quizlet-036",
+  "chapter": 4,
+  "sourceLesson": "1.12",
+  "source": "Quizlet",
+  "question": "What is the relationship between value iteration and policy iteration? [Select all that apply]",
+  "options": [
+   "Value iteration and policy iteration are both special cases of generalized policy iteration.",
+   "Policy iteration is a special case of value iteration.",
+   "Value iteration is a special case of policy iteration."
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Cả hai đều là GPI: xen kẽ evaluation và improvement ở mức độ khác nhau."
+ },
+ {
+  "id": "quizlet-037",
+  "chapter": 4,
+  "sourceLesson": "1.12",
+  "source": "Quizlet",
+  "question": "The word synchronous means \"at the same time\". The word asynchronous means \"not at the same time\". A dynamic programming algorithm is: [Select all that apply]",
+  "options": [
+   "Synchronous, if it systematically sweeps the entire state space at each iteration.",
+   "Asynchronous, if it updates some states more than others.",
+   "Asynchronous, if it does not update all states at each iteration."
+  ],
+  "answers": [
+   0,
+   1,
+   2
+  ],
+  "multi": true,
+  "answerSource": "official",
+  "explanation": "DP đồng bộ quét toàn bộ trạng thái mỗi vòng; bất đồng bộ cập nhật theo thứ tự tuỳ ý, có trạng thái được cập nhật nhiều hơn."
+ },
+ {
+  "id": "quizlet-038",
+  "chapter": 4,
+  "sourceLesson": "1.12",
+  "source": "Quizlet",
+  "question": "Policy iteration and value iteration, as described in chapter four, are synchronous.",
+  "options": [
+   "True",
+   "False"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Cả hai quét toàn bộ không gian trạng thái ở mỗi vòng lặp."
+ },
+ {
+  "id": "quizlet-039",
+  "chapter": 4,
+  "sourceLesson": "1.12",
+  "source": "Quizlet",
+  "question": "Which of the following is true?",
+  "options": [
+   "Synchronous methods generally scale to large state spaces better than asynchronous methods.",
+   "Asynchronous methods generally scale to large state spaces better than synchronous methods."
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "DP bất đồng bộ có thể tập trung cập nhật vào các trạng thái quan trọng nên phù hợp với bài toán lớn."
+ },
+ {
+  "id": "quizlet-040",
+  "chapter": 4,
+  "sourceLesson": "1.10",
+  "source": "Quizlet",
+  "question": "Why are dynamic programming algorithms considered planning methods? [Select all that apply]",
+  "options": [
+   "They compute optimal value functions.",
+   "They use a model to improve the policy.",
+   "They learn from trial and error interaction."
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Planning = dùng mô hình để cải thiện policy; DP dùng mô hình $p$ chứ không học từ tương tác."
+ },
+ {
+  "id": "quizlet-041",
+  "chapter": 4,
+  "sourceLesson": "1.11",
+  "source": "Quizlet",
+  "question": "If a policy is greedy with respect to the value function for the equiprobable random policy, then it is guaranteed to be an optimal policy.",
+  "options": [
+   "True",
+   "False"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Chỉ một bước greedify chưa chắc đạt tối ưu; cần lặp policy iteration tới khi policy không đổi."
+ },
+ {
+  "id": "quizlet-042",
+  "chapter": 4,
+  "sourceLesson": "1.12",
+  "source": "Quizlet",
+  "question": "All Generalized Policy Iteration algorithms are synchronous.",
+  "options": [
+   "True",
+   "False"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "GPI bao gồm cả các phương pháp bất đồng bộ, MC, TD."
+ },
+ {
+  "id": "quizlet-043",
+  "chapter": 3,
+  "sourceLesson": "1.9",
+  "source": "Quizlet",
+  "question": "Let $v_{\\pi}$ be the state-value function for the policy $\\pi$ and $v_{\\pi'}$ for the policy $\\pi'$. Assume $v_{\\pi}=v_{\\pi'}$. Then this means that $\\pi=\\pi'$.",
+  "options": [
+   "True",
+   "False"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Hai policy khác nhau có thể có cùng value function (ví dụ hai policy tối ưu khác nhau)."
+ },
+ {
+  "id": "quizlet-044",
+  "chapter": 5,
+  "sourceLesson": "2.3",
+  "source": "Quizlet",
+  "question": "Which approach can find an optimal deterministic policy? (Select all that apply)",
+  "options": [
+   "$\\epsilon$-greedy exploration",
+   "Off-policy learning with an $\\epsilon$-soft behavior policy and a deterministic target policy",
+   "Exploring Starts"
+  ],
+  "answers": [
+   1,
+   2
+  ],
+  "multi": true,
+  "answerSource": "official",
+  "explanation": "$\\epsilon$-greedy on-policy chỉ tìm được policy tốt nhất trong lớp $\\epsilon$-soft; off-policy (target deterministic) và exploring starts tìm được policy tối ưu deterministic."
+ },
+ {
+  "id": "quizlet-045",
+  "chapter": 5,
+  "sourceLesson": "2.1",
+  "source": "Quizlet",
+  "question": "When can Monte Carlo methods, as defined in the course, be applied? (Select all that apply)",
+  "options": [
+   "When the problem is continuing and given a batch of data containing sequences of states, actions, and rewards",
+   "When the problem is continuing and there is a model that produces samples of the next state and reward",
+   "When the problem is episodic and given a batch of data containing sample episodes (sequences of states, actions, and rewards)",
+   "When the problem is episodic and there is a model that produces samples of the next state and reward"
+  ],
+  "answers": [
+   2,
+   3
+  ],
+  "multi": true,
+  "answerSource": "official",
+  "explanation": "Monte Carlo cần episode kết thúc để tính return; dữ liệu có thể từ episode sẵn có hoặc mô phỏng bằng sample model."
+ },
+ {
+  "id": "quizlet-046",
+  "chapter": 5,
+  "sourceLesson": "2.4",
+  "source": "Quizlet",
+  "question": "Which of the following is a requirement on the behaviour policy $b$ for using off-policy Monte Carlo policy evaluation? This is called the assumption of coverage.",
+  "options": [
+   "For each state $s$ and action $a$, if $b(a\\mid s)>0$ then $\\pi(a\\mid s)>0$",
+   "All actions have non-zero probabilities under $\\pi$",
+   "For each state $s$ and action $a$, if $\\pi(a\\mid s)>0$ then $b(a\\mid s)>0$"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Coverage: mọi hành động target policy có thể chọn thì behavior policy cũng phải chọn được."
+ },
+ {
+  "id": "quizlet-047",
+  "chapter": 5,
+  "sourceLesson": "2.2",
+  "source": "Quizlet",
+  "question": "When is it possible to determine a policy that is greedy with respect to the value functions $v_{\\pi}, q_{\\pi}$ for the policy $\\pi$? (Select all that apply)",
+  "options": [
+   "When state values $v_{\\pi}$ and a model are available",
+   "When state values $v_{\\pi}$ are available but no model is available.",
+   "When action values $q_{\\pi}$ and a model are available",
+   "When action values $q_{\\pi}$ are available but no model is available."
+  ],
+  "answers": [
+   0,
+   2,
+   3
+  ],
+  "multi": true,
+  "answerSource": "official",
+  "explanation": "Với $v_\\pi$ cần mô hình để nhìn trước một bước; với $q_\\pi$ chỉ cần argmax, có hay không có mô hình đều được."
+ },
+ {
+  "id": "quizlet-048",
+  "chapter": 5,
+  "sourceLesson": "2.1",
+  "source": "Quizlet",
+  "question": "Monte Carlo methods in Reinforcement Learning work by...",
+  "options": [
+   "Planning with a model of the environment",
+   "Averaging sample returns",
+   "Performing sweeps through the state set",
+   "Averaging sample rewards"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "MC lấy trung bình return (không phải reward đơn lẻ), và không quét toàn bộ trạng thái như DP."
+ },
+ {
+  "id": "quizlet-049",
+  "chapter": 5,
+  "sourceLesson": "2.1",
+  "source": "Quizlet",
+  "question": "Suppose the state $s$ has been visited three times, with corresponding returns $8$, $4$, and $3$. What is the current Monte Carlo estimate for the value of $s$?",
+  "options": [
+   "$3$",
+   "$15$",
+   "$5$",
+   "$3.5$"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Trung bình $(8 + 4 + 3)/3 = 5$."
+ },
+ {
+  "id": "quizlet-050",
+  "chapter": 5,
+  "sourceLesson": "2.1",
+  "source": "Quizlet",
+  "question": "When does Monte Carlo prediction perform its first update?",
+  "options": [
+   "After the first time step",
+   "After every state is visited at least once",
+   "At the end of the first episode"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Return chỉ biết khi episode kết thúc nên cập nhật đầu tiên xảy ra ở cuối episode đầu."
+ },
+ {
+  "id": "quizlet-051",
+  "chapter": 5,
+  "sourceLesson": "2.1",
+  "source": "Quizlet",
+  "question": "For Monte Carlo Prediction of state-values, the number of updates at the end of an episode depends on",
+  "options": [
+   "The length of the episode",
+   "The number of states",
+   "The number of possible actions in each state"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Vòng lặp trong duyệt ngược từng bước của episode, nên số cập nhật phụ thuộc độ dài episode."
+ },
+ {
+  "id": "quizlet-052",
+  "chapter": 5,
+  "sourceLesson": "2.3",
+  "source": "Quizlet",
+  "question": "In an $\\epsilon$-greedy policy over $|\\mathcal{A}|$ actions, what is the probability of the highest valued action if there are no other actions with the same value?",
+  "options": [
+   "$1-\\epsilon$",
+   "$\\epsilon$",
+   "$1-\\epsilon+\\frac{\\epsilon}{|\\mathcal{A}|}$",
+   "$\\frac{\\epsilon}{|\\mathcal{A}|}$"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "$1-\\epsilon$ khi exploit, cộng $\\epsilon/|\\mathcal A|$ khi lựa chọn ngẫu nhiên rơi đúng vào hành động đó."
+ },
+ {
+  "id": "quizlet-053",
+  "chapter": 5,
+  "sourceLesson": "2.4",
+  "source": "Quizlet",
+  "question": "If a trajectory starts at time $t$ and ends at time $T$, what is its relative probability under the target policy $\\pi$ and the behavior policy $b$?",
+  "options": [
+   "$\\prod_{k=t}^{T-1}\\frac{\\pi(A_k\\mid S_k)}{b(A_k\\mid S_k)}$",
+   "$\\sum_{k=t}^{T-1}\\frac{\\pi(A_k\\mid S_k)}{b(A_k\\mid S_k)}$",
+   "$\\frac{\\pi(A_{T-1}\\mid S_{T-1})}{b(A_{T-1}\\mid S_{T-1})}$",
+   "$\\frac{\\pi(A_{t}\\mid S_{t})}{b(A_{t}\\mid S_{t})}$"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Xác suất trajectory là tích theo từng bước; các xác suất chuyển $p$ triệt tiêu nên chỉ còn tích $\\pi/b$."
+ },
+ {
+  "id": "quizlet-054",
+  "chapter": 5,
+  "sourceLesson": "2.1",
+  "source": "Quizlet",
+  "question": "In Monte Carlo prediction of state-values, memory requirements depend on (Select all that apply).",
+  "options": [
+   "The number of states",
+   "The number of possible actions in each state",
+   "The length of episodes"
+  ],
+  "answers": [
+   0,
+   2
+  ],
+  "multi": true,
+  "answerSource": "official",
+  "explanation": "Cần lưu $V$ và danh sách return cho mỗi trạng thái, và lưu cả episode để duyệt ngược."
+ },
+ {
+  "id": "quizlet-055",
+  "chapter": 6,
+  "sourceLesson": "2.5",
+  "source": "Quizlet",
+  "question": "TD(0) is a solution method for:",
+  "options": [
+   "Control",
+   "Prediction"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "TD(0) như trong slide ước lượng $v_\\pi$ cho một policy cho trước (prediction)."
+ },
+ {
+  "id": "quizlet-056",
+  "chapter": 6,
+  "sourceLesson": "2.6",
+  "source": "Quizlet",
+  "question": "Which of the following methods use bootstrapping? (Select all that apply)",
+  "options": [
+   "Dynamic Programming",
+   "Monte Carlo",
+   "TD(0)"
+  ],
+  "answers": [
+   0,
+   2
+  ],
+  "multi": true,
+  "answerSource": "official",
+  "explanation": "DP và TD cập nhật dựa trên ước lượng của trạng thái kế tiếp; MC dùng return thật nên không bootstrap."
+ },
+ {
+  "id": "quizlet-057",
+  "chapter": 6,
+  "sourceLesson": "2.6",
+  "source": "Quizlet",
+  "question": "Which of the following is the correct characterization of Dynamic Programming (DP) and Temporal Difference (TD) methods?",
+  "options": [
+   "Both TD methods and DP methods require a model: the dynamics function p.",
+   "Neither TD methods nor DP methods require a model: the dynamics function p.",
+   "TD methods require a model, the dynamics function p, but Monte-Carlo methods do not.",
+   "DP methods require a model, the dynamics function p, but TD methods do not."
+  ],
+  "answers": [
+   3
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "DP cần mô hình; TD học từ kinh nghiệm nên không cần."
+ },
+ {
+  "id": "quizlet-058",
+  "chapter": 6,
+  "sourceLesson": "2.5",
+  "source": "Quizlet",
+  "question": "Match the algorithm name to its correct update (select all that apply).",
+  "options": [
+   "TD(0): $V(S_t) \\leftarrow V(S_t) + \\alpha [R_{t + 1} + \\gamma V(S_{t + 1}) - V(S_t)]$",
+   "Monte Carlo: $V(S_t) \\leftarrow V(S_t) + \\alpha [G_t - V(S_t)]$",
+   "Monte Carlo: $V(S_t) \\leftarrow V(S_t) + \\alpha [R_{t + 1} + \\gamma V(S_{t + 1}) - V(S_t)]$",
+   "TD(0): $V(S_t) \\leftarrow V(S_t) + \\alpha [G_t - V(S_t)]$"
+  ],
+  "answers": [
+   0,
+   1
+  ],
+  "multi": true,
+  "answerSource": "official",
+  "explanation": "MC dùng target $G_t$; TD(0) dùng target $R_{t+1} + \\gamma V(S_{t+1})$."
+ },
+ {
+  "id": "quizlet-059",
+  "chapter": 6,
+  "sourceLesson": "2.6",
+  "source": "Quizlet",
+  "question": "Which of the following well-describe Temporal Difference (TD) and Monte-Carlo (MC) methods? (Select all that apply)",
+  "options": [
+   "TD methods can be used in continuing tasks.",
+   "MC methods can be used in continuing tasks.",
+   "TD methods can be used in episodic tasks.",
+   "MC methods can be used in episodic tasks."
+  ],
+  "answers": [
+   0,
+   2,
+   3
+  ],
+  "multi": true,
+  "answerSource": "official",
+  "explanation": "TD dùng được cho cả hai loại task; MC chỉ dùng cho episodic."
+ },
+ {
+  "id": "quizlet-060",
+  "chapter": 6,
+  "sourceLesson": "2.5",
+  "source": "Quizlet",
+  "question": "In an episodic setting, we might have different updates depending on whether the next state is terminal or non-terminal. Which of the following TD error calculations are correct? (Select all that apply)",
+  "options": [
+   "$S_{t + 1}$ is non-terminal: $\\delta_t = R_{t + 1} + \\gamma V(S_{t + 1}) - V(S_t)$",
+   "$S_{t + 1}$ is non-terminal: $\\delta_t = R_{t + 1} - V(S_t)$",
+   "$S_{t + 1}$ is terminal: $\\delta_t = R_{t + 1} + \\gamma V(S_{t + 1}) - V(S_t)$ with $V(S_{t + 1}) = 0$",
+   "$S_{t + 1}$ is terminal: $\\delta_t = R_{t + 1} - V(S_t)$"
+  ],
+  "answers": [
+   0,
+   2,
+   3
+  ],
+  "multi": true,
+  "answerSource": "official",
+  "explanation": "Giá trị trạng thái kết thúc luôn bằng 0 nên C và D tương đương."
+ },
+ {
+  "id": "quizlet-061",
+  "chapter": 6,
+  "sourceLesson": "2.5",
+  "source": "Quizlet",
+  "question": "Suppose we have current estimates for the value of two states: V(A) = 1.0, V(B) = 1.0 in an episodic setting. We observe the following trajectory: A, 0, B, 1, B, 0, T where T is a terminal state. Apply TD(0) with step-size $\\alpha = 1$ and discount factor $\\gamma = 0.5$. What are the value estimates for state A and state B at the end of the episode?",
+  "options": [
+   "(1.0, 1.0)",
+   "(0.5, 0)",
+   "(0, 1.5)",
+   "(1, 0)",
+   "(0, 0)"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "$V(A) = 0 + 0.5 \\cdot 1 = 0.5$; $V(B) = 1 + 0.5 \\cdot 1 = 1.5$; rồi $V(B) = 0 + 0.5 \\cdot 0 = 0$. Kết quả (0.5, 0)."
+ },
+ {
+  "id": "quizlet-062",
+  "chapter": 6,
+  "sourceLesson": "2.6",
+  "source": "Quizlet",
+  "question": "Which of the following pairs is the correct characterization of the targets used in TD(0) and Monte Carlo?",
+  "options": [
+   "TD(0): High Variance Target, Monte Carlo: High Variance Target",
+   "TD(0): High Variance Target, Monte Carlo: Low Variance Target",
+   "TD(0): Low Variance Target, Monte Carlo: High Variance Target",
+   "TD(0): Low Variance Target, Monte Carlo: Low Variance Target"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Target TD chỉ phụ thuộc một reward và một ước lượng nên phương sai thấp; return MC cộng nhiều reward ngẫu nhiên nên phương sai cao."
+ },
+ {
+  "id": "quizlet-063",
+  "chapter": 6,
+  "sourceLesson": "2.6",
+  "source": "Quizlet",
+  "question": "True or False: \"Both TD(0) and Monte-Carlo (MC) methods converge to the true value function asymptotically, given that the environment is Markovian.\"",
+  "options": [
+   "True",
+   "False"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Với bảng giá trị và step size phù hợp, cả hai đều hội tụ về $v_\\pi$."
+ },
+ {
+  "id": "quizlet-064",
+  "chapter": 6,
+  "sourceLesson": "2.6",
+  "source": "Quizlet",
+  "question": "Which of the following pairs is the correct characterization of the TD(0) and Monte-Carlo (MC) methods?",
+  "options": [
+   "Both TD(0) and MC are offline methods.",
+   "Both TD(0) and MC are online methods.",
+   "TD(0) is an online method while MC is an offline method.",
+   "MC is an online method while TD(0) is an offline method."
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "TD(0) cập nhật mỗi bước (online); MC chờ hết episode (offline)."
+ },
+ {
+  "id": "quizlet-065",
+  "chapter": 6,
+  "sourceLesson": "2.6",
+  "source": "Quizlet",
+  "question": "Which of the following is the correct characterization of Dynamic Programming (DP) and Temporal Difference (TD) methods?",
+  "options": [
+   "Both TD and DP methods use expected updates.",
+   "Both TD and DP methods use sample updates.",
+   "TD methods use expected updates, DP methods use sample updates.",
+   "TD methods uses sample updates, DP methods use expected updates."
+  ],
+  "answers": [
+   3
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "DP lấy kỳ vọng đầy đủ trên mọi $s'$ (expected update); TD dùng một transition mẫu (sample update)."
+ },
+ {
+  "id": "quizlet-066",
+  "chapter": 7,
+  "sourceLesson": "2.8",
+  "source": "Quizlet",
+  "question": "What is the target policy in Q-learning?",
+  "options": [
+   "$\\epsilon$-greedy with respect to the current action-value estimates",
+   "Greedy with respect to the current action-value estimates"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Target dùng $\\max_a Q$, tức greedy policy; behavior policy mới là $\\epsilon$-greedy."
+ },
+ {
+  "id": "quizlet-067",
+  "chapter": 7,
+  "sourceLesson": "2.8",
+  "source": "Quizlet",
+  "question": "Which Bellman equation is the basis for the Q-learning update?",
+  "options": [
+   "Bellman equation for state values",
+   "Bellman equation for action values",
+   "Bellman optimality equation for state values",
+   "Bellman optimality equation for action values"
+  ],
+  "answers": [
+   3
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Q-learning là phiên bản lấy mẫu của phương trình Bellman tối ưu cho $q_*$."
+ },
+ {
+  "id": "quizlet-068",
+  "chapter": 7,
+  "sourceLesson": "2.7",
+  "source": "Quizlet",
+  "question": "Which Bellman equation is the basis for the Sarsa update?",
+  "options": [
+   "Bellman equation for state values",
+   "Bellman equation for action values",
+   "Bellman optimality equation for state values",
+   "Bellman optimality equation for action values"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Sarsa lấy mẫu phương trình Bellman kỳ vọng cho $q_\\pi$."
+ },
+ {
+  "id": "quizlet-069",
+  "chapter": 7,
+  "sourceLesson": "2.9",
+  "source": "Quizlet",
+  "question": "Which Bellman equation is the basis for the Expected Sarsa update?",
+  "options": [
+   "Bellman equation for state values",
+   "Bellman equation for action values",
+   "Bellman optimality equation for state values",
+   "Bellman optimality equation for action values"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Expected Sarsa tính kỳ vọng theo $\\pi$ ở trạng thái kế tiếp, dựa trên phương trình Bellman cho $q_\\pi$."
+ },
+ {
+  "id": "quizlet-070",
+  "chapter": 7,
+  "sourceLesson": "2.9",
+  "source": "Quizlet",
+  "question": "Which algorithm's update requires more computation per step?",
+  "options": [
+   "Expected Sarsa",
+   "Sarsa"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Expected Sarsa phải cộng trên mọi hành động ở trạng thái kế tiếp."
+ },
+ {
+  "id": "quizlet-071",
+  "chapter": 7,
+  "sourceLesson": "2.9",
+  "source": "Quizlet",
+  "question": "Which algorithm has a higher variance target?",
+  "options": [
+   "Expected Sarsa",
+   "Sarsa"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Target Sarsa phụ thuộc hành động $A'$ được lấy mẫu ngẫu nhiên nên phương sai cao hơn."
+ },
+ {
+  "id": "quizlet-072",
+  "chapter": 7,
+  "sourceLesson": "2.8",
+  "source": "Quizlet",
+  "question": "Q-learning does not learn about the outcomes of exploratory actions.",
+  "options": [
+   "True",
+   "False"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Target của Q-learning luôn dùng hành động greedy, nên giá trị học được là của greedy policy, không tính tới hành động khám phá trong tương lai."
+ },
+ {
+  "id": "quizlet-073",
+  "chapter": 7,
+  "sourceLesson": "2.9",
+  "source": "Quizlet",
+  "question": "Sarsa, Q-learning, and Expected Sarsa have similar targets on a transition to a terminal state.",
+  "options": [
+   "True",
+   "False"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Ở trạng thái kết thúc mọi Q bằng 0 nên cả ba target đều chỉ còn $R$."
+ },
+ {
+  "id": "quizlet-074",
+  "chapter": 7,
+  "sourceLesson": "2.7",
+  "source": "Quizlet",
+  "question": "Sarsa needs to wait until the end of an episode before performing its update.",
+  "options": [
+   "True",
+   "False"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Sarsa là phương pháp TD, cập nhật sau mỗi bước (khi đã chọn $A'$)."
+ },
+ {
+  "id": "quizlet-075",
+  "chapter": 8,
+  "sourceLesson": "2.10",
+  "source": "Quizlet",
+  "question": "Which of the following are the most accurate characterizations of sample models and distribution models? (Select all that apply)",
+  "options": [
+   "A distribution model can be used as a sample model.",
+   "A sample model can be used to obtain a possible next state and reward given the current state and action, whereas a distribution model can only be used to compute the probability of this next state and reward given the current state and action.",
+   "A sample model can be used to compute the probability of all possible trajectories in an episodic task based on the current state and action.",
+   "Both sample models and distribution models can be used to obtain a possible next state and reward, given the current state and action."
+  ],
+  "answers": [
+   0,
+   3
+  ],
+  "multi": true,
+  "answerSource": "official",
+  "explanation": "Từ distribution model có thể lấy mẫu, nên nó dùng được như sample model; điều ngược lại không đúng."
+ },
+ {
+  "id": "quizlet-076",
+  "chapter": 8,
+  "sourceLesson": "2.12",
+  "source": "Quizlet",
+  "question": "Which of the following statements are TRUE for Dyna architecture? (Select all that apply)",
+  "options": [
+   "Real experience can be used to improve the value function and policy",
+   "Real experience can be used to improve the model",
+   "Simulated experience can be used to improve the value function and policy",
+   "Simulated experience can be used to improve the model"
+  ],
+  "answers": [
+   0,
+   1,
+   2
+  ],
+  "multi": true,
+  "answerSource": "official",
+  "explanation": "Kinh nghiệm thật dùng cho direct RL và học mô hình; kinh nghiệm mô phỏng chỉ dùng cho planning, không dùng để học mô hình."
+ },
+ {
+  "id": "quizlet-077",
+  "chapter": 8,
+  "sourceLesson": "2.12",
+  "source": "Quizlet",
+  "question": "Mark all the statements that are TRUE for the tabular Dyna-Q algorithm. (Select all that apply)",
+  "options": [
+   "The memory requirements for the model in case of a deterministic environment are quadratic in the number of states",
+   "The environment is assumed to be deterministic.",
+   "The algorithm cannot be extended to stochastic environments.",
+   "For a given state-action pair, the model predicts the next state and reward"
+  ],
+  "answers": [
+   1,
+   3
+  ],
+  "multi": true,
+  "answerSource": "official",
+  "explanation": "Dyna-Q dạng bảng giả định môi trường deterministic, mô hình lưu $(S,A) \\to (R, S')$, bộ nhớ tỉ lệ $|\\mathcal S||\\mathcal A|$; có thể mở rộng cho môi trường ngẫu nhiên."
+ },
+ {
+  "id": "quizlet-078",
+  "chapter": 8,
+  "sourceLesson": "2.12",
+  "source": "Quizlet",
+  "question": "Which of the following statements are TRUE? (Select all that apply)",
+  "options": [
+   "The amount of computation per interaction with the environment is larger in the Dyna-Q algorithm (with non-zero planning steps) as compared to the Q-learning algorithm.",
+   "Model-based methods like Dyna typically require more memory than model-free methods like Q-learning.",
+   "When compared with model-free methods, model-based methods are relatively more sample efficient.",
+   "Model-based methods often suffer more from bias than model-free methods, because of inaccuracies in the model."
+  ],
+  "answers": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "multi": true,
+  "answerSource": "official",
+  "explanation": "Cả bốn đều đúng: Dyna tốn thêm tính toán và bộ nhớ, hiệu quả mẫu hơn, nhưng có thể bị chệch nếu mô hình sai."
+ },
+ {
+  "id": "quizlet-079",
+  "chapter": 8,
+  "sourceLesson": "2.12",
+  "source": "Quizlet",
+  "question": "Which of the following is generally the most computationally expensive step of the Dyna-Q algorithm? Assume N>1 planning steps are being performed (e.g., N=20).",
+  "options": [
+   "Model learning (step e)",
+   "Direct RL (step d)",
+   "Action selection (step b)",
+   "Planning (Indirect RL; step f)"
+  ],
+  "answers": [
+   3
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Mỗi bước thật có N cập nhật planning, nên bước planning tốn nhiều tính toán nhất."
+ },
+ {
+  "id": "quizlet-080",
+  "chapter": 8,
+  "sourceLesson": "2.13",
+  "source": "Quizlet",
+  "question": "What are some possible reasons for a learned model to be inaccurate? (Select all that apply)",
+  "options": [
+   "The environment has changed.",
+   "There is too much exploration (e.g., epsilon in epsilon-greedy exploration is set to a high value of 0.5)",
+   "The transition dynamics of the environment are stochastic, and only a few transitions have been experienced.",
+   "The agent's policy has changed significantly from the beginning of training."
+  ],
+  "answers": [
+   0,
+   2
+  ],
+  "multi": true,
+  "answerSource": "official",
+  "explanation": "Mô hình sai khi môi trường thay đổi, hoặc khi môi trường ngẫu nhiên mà dữ liệu còn ít. Khám phá nhiều còn giúp mô hình chính xác hơn."
+ },
+ {
+  "id": "quizlet-081",
+  "chapter": 8,
+  "sourceLesson": "2.12",
+  "source": "Quizlet",
+  "question": "In search control, which of the following methods is likely to make a Dyna agent perform better in problems with a large number of states? Recall that search control is the process that selects the starting states and actions in planning.",
+  "options": [
+   "Select state-action pairs uniformly at random from all previously experienced pairs.",
+   "Start backwards from state-action pairs that have had a non-zero update (e.g., from the state right beside a goal state). This avoids the otherwise wasteful computations from state-action pairs which have had no updates.",
+   "Start with state-action pairs enumerated in a fixed order (e.g., in a gridworld, states top-left to bottom-right, actions up, down, left, right)",
+   "All of these are equally good/bad."
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Bắt đầu ngược từ những nơi giá trị vừa thay đổi (prioritized sweeping) giúp lan truyền giá trị hiệu quả, tránh cập nhật vô ích."
+ },
+ {
+  "id": "quizlet-082",
+  "chapter": 9,
+  "sourceLesson": "3.1",
+  "source": "Quizlet",
+  "question": "Which of the following statements is true about function approximation in reinforcement learning? (Select all that apply)",
+  "options": [
+   "We only use function approximation because we have to for large or continuous state spaces. We would use tabular methods if we could, and learn an independent value per state.",
+   "It can help the agent achieve good generalization with good discrimination, so that it learns faster and represent the values quite accurately.",
+   "It can be more memory efficient.",
+   "It allows faster training by generalizing between states."
+  ],
+  "answers": [
+   1,
+   2,
+   3
+  ],
+  "multi": true,
+  "answerSource": "official",
+  "explanation": "Xấp xỉ hàm không chỉ là \"bắt buộc\": nó tiết kiệm bộ nhớ và khái quát hoá giúp học nhanh hơn."
+ },
+ {
+  "id": "quizlet-083",
+  "chapter": 9,
+  "sourceLesson": "3.1",
+  "source": "Quizlet",
+  "question": "We learned how value function estimation can be framed as supervised learning. But not all supervised learning methods are suitable. What are some characteristics of RL that make it harder to apply standard supervised learning methods? (Select all that apply)",
+  "options": [
+   "Data is available as a fixed batch.",
+   "When using bootstrapping methods like TD, the target labels change.",
+   "Data is temporally correlated in reinforcement learning."
+  ],
+  "answers": [
+   1,
+   2
+  ],
+  "multi": true,
+  "answerSource": "official",
+  "explanation": "Dữ liệu RL đến tuần tự, tương quan theo thời gian, và target thay đổi khi bootstrap; không phải một batch cố định."
+ },
+ {
+  "id": "quizlet-084",
+  "chapter": 9,
+  "sourceLesson": "3.1",
+  "source": "Quizlet",
+  "question": "Value Prediction (or Policy Evaluation) with Function Approximation can be viewed as supervised learning mainly because _________.",
+  "options": [
+   "We use stochastic gradient descent to learn the value function.",
+   "Each state and its target (used in the Monte Carlo update, TD(0) update, and DP update) forms an input-output training example which we can use to train our approximation to the value function",
+   "We can learn the value function by training with batches of data obtained from the agent's interaction with the world."
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Mỗi cặp (trạng thái, target) đóng vai trò một mẫu (input, nhãn)."
+ },
+ {
+  "id": "quizlet-085",
+  "chapter": 9,
+  "sourceLesson": "3.2",
+  "source": "Quizlet",
+  "question": "Which of the following is true about using Mean Squared Value Error $\\overline{VE} = \\sum_s \\mu(s) [v_\\pi(s) - \\hat{v}(s,\\mathbf{w})]^2$ as the prediction objective? (Select all that apply)",
+  "options": [
+   "Even if the agent uses a linear representation that cannot represent the true values, the agent can still get zero MSVE.",
+   "The agent can get zero MSVE when using a tabular representation that can represent the true values.",
+   "Gradient Monte Carlo with linear function approximation converges to the global optimum of this objective, if the step size is reduced over time.",
+   "This objective makes it explicit how we should trade-off accuracy of the value estimates across states, using the weighting $\\mu$."
+  ],
+  "answers": [
+   1,
+   2,
+   3
+  ],
+  "multi": true,
+  "answerSource": "official",
+  "explanation": "Với tuyến tính, $\\overline{VE}$ lồi nên gradient MC tới cực tiểu toàn cục; nhưng nếu biểu diễn không đủ mạnh thì không thể đạt sai số 0."
+ },
+ {
+  "id": "quizlet-086",
+  "chapter": 9,
+  "sourceLesson": "3.2",
+  "source": "Quizlet",
+  "question": "Which of the following is true about $\\mu(S)$ in Mean Squared Value Error? (Select all that apply)",
+  "options": [
+   "If the policy is uniformly random, $\\mu(S)$ would have the same value for all states.",
+   "It serves as a weighting to minimize the error more in states that we care about.",
+   "It has higher values for states that are visited more often.",
+   "It is a probability distribution."
+  ],
+  "answers": [
+   1,
+   2,
+   3
+  ],
+  "multi": true,
+  "answerSource": "official",
+  "explanation": "$\\mu$ là phân phối ghé thăm trạng thái; policy ngẫu nhiên đều không có nghĩa mọi trạng thái được ghé thăm như nhau."
+ },
+ {
+  "id": "quizlet-087",
+  "chapter": 9,
+  "sourceLesson": "3.2",
+  "source": "Quizlet",
+  "question": "When using stochastic gradient descent for learning the value function, why do we only make a small update towards minimizing the error instead of fully minimizing the error at each encountered state?",
+  "options": [
+   "Because the target value may not be accurate initially for both TD(0) and Monte Carlo method.",
+   "Because small updates guarantee we can slowly reduce approximation error to zero for all states.",
+   "Because we want to minimize approximation error for all states, proportionally to $\\mu$."
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Cập nhật nhỏ ở từng trạng thái gặp được, tần suất gặp tỉ lệ với $\\mu$, nên trung bình lại là tối ưu $\\overline{VE}$ có trọng số $\\mu$."
+ },
+ {
+  "id": "quizlet-088",
+  "chapter": 9,
+  "sourceLesson": "3.3",
+  "source": "Quizlet",
+  "question": "The general stochastic gradient descent update rule for state-value prediction is $\\mathbf{w}_{t+1} \\doteq \\mathbf{w}_t + \\alpha [U_t - \\hat{v}(S_t, \\mathbf{w}_t)] \\nabla \\hat{v}(S_t,\\mathbf{w}_t)$. For what values of $U_t$ would this be a semi-gradient method?",
+  "options": [
+   "$R_{t+1} + \\hat{v}(S_{t+1}, \\mathbf{w}_t)$",
+   "$v_\\pi(S_t)$",
+   "$R_{t+1} + R_{t+2} + \\dots + R_T$",
+   "$G_t$"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Semi-gradient khi target phụ thuộc chính $\\mathbf w$ (bootstrap) mà ta bỏ qua gradient của nó."
+ },
+ {
+  "id": "quizlet-089",
+  "chapter": 9,
+  "sourceLesson": "3.3",
+  "source": "Quizlet",
+  "question": "Which of the following statements is true about state-value prediction using stochastic gradient descent? (Select all that apply)",
+  "options": [
+   "When using $U_t = R_{t+1} +\\hat{v}(S_{t+1},\\mathbf{w}_t)$, the weight update is not using the true gradient of the TD error.",
+   "Using the Monte Carlo return or true value function as target results in an unbiased update.",
+   "Using the Monte Carlo return as target, and under appropriate stochastic approximation conditions, the value function will converge to a local optimum of the Mean Squared Value Error.",
+   "Semi-gradient TD(0) methods typically learn faster than gradient Monte Carlo methods.",
+   "Stochastic gradient descent updates with Monte Carlo targets always reduce the Mean Squared Value Error at each step."
+  ],
+  "answers": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "multi": true,
+  "answerSource": "official",
+  "explanation": "SGD chỉ giảm sai số theo kỳ vọng, không đảm bảo giảm ở mọi bước, nên E sai."
+ },
+ {
+  "id": "quizlet-090",
+  "chapter": 9,
+  "sourceLesson": "3.4",
+  "source": "Quizlet",
+  "question": "Which of the following is true about the TD fixed point? (Select all correct answers)",
+  "options": [
+   "The weight vector corresponding to the TD fixed point is the global minimum of the Mean Squared Value Error.",
+   "At the TD fixed point, the mean squared value error is not larger than $\\frac{1}{1-\\gamma}$ times the minimal mean squared value error, assuming the same linear function approximation.",
+   "Semi-gradient TD(0) with linear function approximation converges to the TD fixed point.",
+   "The weight vector corresponding to the TD fixed point is a local minimum of the Mean Squared Value Error."
+  ],
+  "answers": [
+   1,
+   2
+  ],
+  "multi": true,
+  "answerSource": "official",
+  "explanation": "TD fixed point nói chung không phải cực tiểu của $\\overline{VE}$, nhưng sai số bị chặn bởi $\\frac{1}{1-\\gamma}$ lần cực tiểu."
+ },
+ {
+  "id": "quizlet-091",
+  "chapter": 9,
+  "sourceLesson": "3.4",
+  "source": "Quizlet",
+  "question": "Which of the following is true about Linear Function Approximation, for estimating state-values? (Select all that apply)",
+  "options": [
+   "State aggregation is one way to generate features for linear function approximation.",
+   "The size of the feature vector is not necessarily equal to the size of the weight vector.",
+   "The gradient of the approximate value function $\\hat{v}(s, \\mathbf{w})$ with respect to $\\mathbf{w}$ is just the feature vector."
+  ],
+  "answers": [
+   0,
+   2
+  ],
+  "multi": true,
+  "answerSource": "official",
+  "explanation": "Trong xấp xỉ tuyến tính, số đặc trưng luôn bằng số trọng số; gradient chính là vector đặc trưng."
+ },
+ {
+  "id": "quizlet-092",
+  "chapter": 9,
+  "sourceLesson": "3.5",
+  "source": "Quizlet",
+  "question": "Which of the following is TRUE about coarse coding? (Select all that apply)",
+  "options": [
+   "In coarse coding, generalization occurs between states that have features with overlapping receptive fields.",
+   "In coarse coding, generalization between states depend on the size and shape of the receptive fields.",
+   "When using features with large receptive fields, the function approximator cannot make discriminations that are finer than the width of the receptive fields.",
+   "When training at one state, the learned value function will be updated over all states within the intersection of the receptive fields."
+  ],
+  "answers": [
+   0,
+   1
+  ],
+  "multi": true,
+  "answerSource": "official",
+  "explanation": "Nhờ chồng lấn nhiều vùng lớn, coarse coding vẫn phân biệt được chi tiết nhỏ hơn kích thước vùng; cập nhật ảnh hưởng tới hợp (không chỉ giao) của các vùng."
+ },
+ {
+  "id": "quizlet-093",
+  "chapter": 9,
+  "sourceLesson": "3.5",
+  "source": "Quizlet",
+  "question": "Which of the following affects generalization in tile coding? (Select all that apply)",
+  "options": [
+   "The number of tiles.",
+   "The shape of the tiles.",
+   "How the tilings are offset from each other.",
+   "The number of tilings."
+  ],
+  "answers": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "multi": true,
+  "answerSource": "official",
+  "explanation": "Kích thước/số tile, hình dạng tile, cách dịch lệch tiling và số tiling đều ảnh hưởng tới khái quát hoá."
+ },
+ {
+  "id": "quizlet-094",
+  "chapter": 9,
+  "sourceLesson": "3.5",
+  "source": "Quizlet",
+  "question": "When tile coding is used for feature construction, the number of active or non-zero features",
+  "options": [
+   "is the number of tiles.",
+   "is the number of tilings.",
+   "is the number of tilings multiplied by the number of tiles.",
+   "depends on the state."
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Mỗi tiling có đúng một tile chứa trạng thái, nên số đặc trưng bật bằng số tiling."
+ },
+ {
+  "id": "quizlet-095",
+  "chapter": 9,
+  "sourceLesson": "3.5",
+  "source": "Quizlet",
+  "question": "Which of the following statements about tile coding are TRUE? (Select all that apply)",
+  "options": [
+   "Tile coding is a form of coarse coding with tiles as its receptive fields.",
+   "Tile coding with one tiling is an instance of state aggregation.",
+   "The size of the feature vector equals the number of tilings: each feature corresponds to one tiling.",
+   "With only one tiling, generalization occurs only between states within the same tile."
+  ],
+  "answers": [
+   0,
+   1,
+   3
+  ],
+  "multi": true,
+  "answerSource": "official",
+  "explanation": "Kích thước vector đặc trưng bằng tổng số tile của mọi tiling, không phải số tiling."
+ },
+ {
+  "id": "quizlet-096",
+  "chapter": 9,
+  "sourceLesson": "3.5",
+  "source": "Quizlet",
+  "question": "Suppose a problem that you have formulated as an MDP has k continuous input dimensions. You are considering using tile coding as a function approximator. With T tilings and t tiles per dimension in each tiling, which of the following represent the resultant number of features? (Assume each tiling covers all k dimensions.)",
+  "options": [
+   "$kT^t$",
+   "$Tt^k$",
+   "$T \\cdot t \\cdot k$",
+   "$T \\cdot t / k$"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Mỗi tiling có $t^k$ tile, nhân với $T$ tiling."
+ },
+ {
+  "id": "quizlet-097",
+  "chapter": 9,
+  "sourceLesson": "3.1",
+  "source": "Quizlet",
+  "question": "Which of the following are true? (Select all that apply)",
+  "options": [
+   "In the tabular case, there is generalization across states, i.e., updates to the value function of one state influences the value function of other states.",
+   "In the tabular case, updating the value of one state does not affect the values of other states.",
+   "When using state aggregation or coarse coding, updating the value of one state does not affect the values of other states.",
+   "When using state aggregation or coarse coding, there is generalization across states."
+  ],
+  "answers": [
+   1,
+   3
+  ],
+  "multi": true,
+  "answerSource": "official",
+  "explanation": "Dạng bảng không khái quát hoá; state aggregation và coarse coding thì có."
+ },
+ {
+  "id": "quizlet-098",
+  "chapter": 7,
+  "sourceLesson": "2.9",
+  "source": "Quizlet",
+  "question": "To turn the update of Expected Sarsa algorithm to the update of Q-learning, one must:",
+  "options": [
+   "Expected Sarsa cannot be adapted to represent Q-learning.",
+   "Use a neural network to approximate the action-value function.",
+   "Behave greedily with respect to the action-value function.",
+   "Use the maximum over all the actions instead of the expectation in the update function."
+  ],
+  "answers": [
+   3
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Thay kỳ vọng bằng max (tương đương target policy greedy)."
+ },
+ {
+  "id": "quizlet-099",
+  "chapter": 10,
+  "sourceLesson": "3.7",
+  "source": "Quizlet",
+  "question": "Which of the following are true?",
+  "options": [
+   "When learning value functions in the mountain car domain with tile coding, where all rewards are −1 except when the terminal state is reached, initializing the weights to zero is optimistic and encourages exploration.",
+   "Exploration is not a problem when using function approximation because learning generalizes across states and actions.",
+   "When using function approximation and with discrete actions, there is no straightforward way to turn Sarsa into Expected Sarsa.",
+   "When using function approximation, Q-learning will always result in better performance than Sarsa and Expected Sarsa."
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Mọi return đều âm nên khởi tạo 0 là lạc quan, khiến agent thử các hành động chưa đi."
+ },
+ {
+  "id": "quizlet-100",
+  "chapter": 10,
+  "sourceLesson": "3.8",
+  "source": "Quizlet",
+  "question": "Which of the following statements about discounted return and differential return algorithms are true? (Select all that apply)",
+  "options": [
+   "Algorithms that maximize the discounted return can suffer from an exponentially large variance when using a large discount factor.",
+   "There is a set of Bellman equations for the value function corresponding to the discounted return. However, there is no set of Bellman equations for differential value functions.",
+   "The performance of discounted return algorithms can suffer because the optimal value of gamma is problem dependent."
+  ],
+  "answers": [
+   0,
+   2
+  ],
+  "multi": true,
+  "answerSource": "official",
+  "explanation": "Differential value function cũng có phương trình Bellman (không có $\\gamma$, reward trừ $r(\\pi)$)."
+ },
+ {
+  "id": "quizlet-101",
+  "chapter": 10,
+  "sourceLesson": "3.6",
+  "source": "Quizlet",
+  "question": "Imagine we have 7 state features and 6 actions and we want to use linear function approximation to compute the action-value function. If we use feature stacking, how many features would we need in total?",
+  "options": [
+   "76",
+   "67",
+   "42",
+   "13"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Stacked features: $7 \\times 6 = 42$."
+ },
+ {
+  "id": "quizlet-102",
+  "chapter": 10,
+  "sourceLesson": "3.7",
+  "source": "Quizlet",
+  "question": "Which of the following statements about epsilon-greedy policies and optimistic initialization are true? (Select all that apply)",
+  "options": [
+   "Optimistic initialization is always preferred over using an epsilon-greedy policy.",
+   "Epsilon-greedy can be easily combined with any function approximation technique because it only needs to be able to query for the approximate action-values, without needing to know how they are initialized or computed.",
+   "Optimistic initialization results in a more systematic exploration in the tabular case because the agent takes actions it has not taken as often in a state.",
+   "Implementing optimistic initialization is always straightforward and simple to implement regardless of the function approximation technique."
+  ],
+  "answers": [
+   1,
+   2
+  ],
+  "multi": true,
+  "answerSource": "official",
+  "explanation": "Đúng với nội dung bài 3.7: $\\epsilon$-greedy áp dụng mọi nơi; khởi tạo lạc quan có hệ thống ở dạng bảng nhưng khó với xấp xỉ hàm."
+ },
+ {
+  "id": "quizlet-103",
+  "chapter": 10,
+  "sourceLesson": "3.8",
+  "source": "Quizlet",
+  "question": "In the two-ring MDP, the red action (L) at state S gives an immediate reward of +1 and 0 afterwards, and the blue action (R) gives 0 immediately but +2 when returning to S. What is the optimal policy at S with discounted return $\\gamma = 0.5$, with $\\gamma = 0.9$, and with average reward?",
+  "options": [
+   "gamma = 0.5, blue action; gamma = 0.9, blue action; average reward, red action.",
+   "gamma = 0.5, blue action; gamma = 0.9, red action; average reward, red action.",
+   "gamma = 0.5, blue action; gamma = 0.9, red action; average reward, blue action.",
+   "gamma = 0.5, red action; gamma = 0.9, blue action; average reward, blue action."
+  ],
+  "answers": [
+   3
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "$\\gamma = 0.5$: thiển cận nên chọn +1 ngay (đỏ). $\\gamma = 0.9 > 0.841$ thì chọn xanh. Average reward: xanh 0.4 > đỏ 0.2."
+ },
+ {
+  "id": "quizlet-104",
+  "chapter": 11,
+  "sourceLesson": "3.9",
+  "source": "Quizlet",
+  "question": "Which of the following is true about policy-based methods? (Select all that apply)",
+  "options": [
+   "Policy-based methods are useful in problems where the policy is easier to approximate than action-value functions.",
+   "Policy-based methods can learn an optimal policy that is stochastic.",
+   "Policy-based methods allow smooth improvement in the policy without drastic changes.",
+   "Policy-based methods can be applied to continuous action space domains."
+  ],
+  "answers": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "multi": true,
+  "answerSource": "official",
+  "explanation": "Cả bốn đều là ưu điểm của policy có tham số."
+ },
+ {
+  "id": "quizlet-105",
+  "chapter": 11,
+  "sourceLesson": "3.9",
+  "source": "Quizlet",
+  "question": "Which of the following statements about parameterized policies are true? (Select all that apply)",
+  "options": [
+   "The probability of selecting any action must be greater than or equal to zero.",
+   "The policy must be approximated using linear function approximation.",
+   "The function used for representing the policy must be a softmax function.",
+   "For each state, the sum of all the action probabilities must equal to one."
+  ],
+  "answers": [
+   0,
+   3
+  ],
+  "multi": true,
+  "answerSource": "official",
+  "explanation": "Chỉ cần policy là phân phối xác suất hợp lệ; không bắt buộc tuyến tính hay softmax."
+ },
+ {
+  "id": "quizlet-106",
+  "chapter": 11,
+  "sourceLesson": "3.9",
+  "source": "Quizlet",
+  "question": "Assume you're given the preferences $h_1 = 44$, $h_2 = 42$, and $h_3 = 38$ for three actions ($a_1, a_2, a_3$). Under a softmax policy, what is the probability of choosing $a_2$, rounded to three decimals?",
+  "options": [
+   "0.420",
+   "0.002",
+   "0.119",
+   "0.879"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "$\\frac{e^{42}}{e^{44}+e^{42}+e^{38}} = \\frac{1}{e^2 + 1 + e^{-4}} \\approx \\frac{1}{8.407} \\approx 0.119$."
+ },
+ {
+  "id": "quizlet-107",
+  "chapter": 11,
+  "sourceLesson": "3.9",
+  "source": "Quizlet",
+  "question": "Which of the following is true about softmax policy? (Select all that apply)",
+  "options": [
+   "Similar to epsilon-greedy policy, softmax policy cannot approach a deterministic policy.",
+   "It can be parameterized by any function approximator as long as it can output scalar values for each available action, to form a softmax policy.",
+   "It cannot represent an optimal policy that is stochastic, because it reaches a deterministic policy as one action preference dominates others.",
+   "It is used to represent a policy in discrete action spaces."
+  ],
+  "answers": [
+   1,
+   3
+  ],
+  "multi": true,
+  "answerSource": "official",
+  "explanation": "Softmax trên preference có thể tiến tới deterministic và cũng biểu diễn được policy stochastic; dùng cho hành động rời rạc."
+ },
+ {
+  "id": "quizlet-108",
+  "chapter": 11,
+  "sourceLesson": "3.9",
+  "source": "Quizlet",
+  "question": "What are the differences between using softmax policy over action-values and using softmax policy over action-preferences? (Select all that apply)",
+  "options": [
+   "When using softmax policy over action-preferences, assuming a tabular representation, the policy will converge to the optimal policy regardless of whether the optimal policy is stochastic or deterministic.",
+   "When using softmax policy over action-values, assuming a tabular representation, the policy will converge to the optimal policy regardless of whether the optimal policy is stochastic or deterministic.",
+   "When using softmax policy over action-values, even if the optimal policy is deterministic, the policy may never approach a deterministic policy."
+  ],
+  "answers": [
+   0,
+   2
+  ],
+  "multi": true,
+  "answerSource": "official",
+  "explanation": "Action value hội tụ về giá trị cụ thể nên softmax trên chúng luôn giữ xác suất cho các hành động khác; preference thì không bị ràng buộc như vậy."
+ },
+ {
+  "id": "quizlet-109",
+  "chapter": 11,
+  "sourceLesson": "3.10",
+  "source": "Quizlet",
+  "question": "What is the following objective, and in which task formulation? $r(\\pi) = \\sum_s \\mu(s) \\sum_a \\pi(a|s, \\boldsymbol{\\theta}) \\sum_{s', r} p(s', r | s, a) r$",
+  "options": [
+   "Discounted return objective, continuing task",
+   "Average reward objective, continuing task",
+   "Undiscounted return objective, episodic task",
+   "Average reward objective, episodic task"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Đây là average reward $r(\\pi)$, dùng cho continuing task."
+ },
+ {
+  "id": "quizlet-110",
+  "chapter": 11,
+  "sourceLesson": "3.10",
+  "source": "Quizlet",
+  "question": "The policy gradient theorem gives $\\nabla r(\\pi) = \\sum_s \\mu(s) \\sum_a \\nabla \\pi(a|s,\\boldsymbol\\theta)\\, q_\\pi(s,a)$. Which of the following is true about it? (Select all that apply)",
+  "options": [
+   "This expression can be converted into the expectation $\\mathbb{E}_\\pi [\\nabla \\ln \\pi (A|S, \\boldsymbol\\theta)\\, q_{\\pi} (S,A)]$",
+   "This expression can be converted into $\\mathbb{E}_\\pi[\\sum_a \\nabla\\pi(a|S, \\boldsymbol{\\theta})q_\\pi(S,a)]$; in a discrete action space, by approximating $q_\\pi$ we could also use this gradient to update the policy.",
+   "The true action value $q_\\pi$ can be approximated in many ways, for example using TD algorithms.",
+   "We do not need to compute the gradient of the state distribution $\\mu$."
+  ],
+  "answers": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "multi": true,
+  "answerSource": "official",
+  "explanation": "Cả bốn đều đúng; điểm mấu chốt là không cần gradient của $\\mu$."
+ },
+ {
+  "id": "quizlet-111",
+  "chapter": 11,
+  "sourceLesson": "3.11",
+  "source": "Quizlet",
+  "question": "Which of the following statements is true? (Select all that apply)",
+  "options": [
+   "To update the actor in Actor-Critic, we can use TD error in place of $q_\\pi$ in the Policy Gradient Theorem.",
+   "Subtracting a baseline in the policy gradient update tends to reduce the variance of the update, which results in faster learning.",
+   "The Actor-Critic algorithm consists of two parts: a parameterized policy — the actor — and a value function — the critic.",
+   "TD methods do not have a role when estimating the policy directly."
+  ],
+  "answers": [
+   0,
+   1,
+   2
+  ],
+  "multi": true,
+  "answerSource": "official",
+  "explanation": "Critic dùng TD để học value và TD error cung cấp tín hiệu cho actor, nên D sai."
+ },
+ {
+  "id": "quizlet-112",
+  "chapter": 11,
+  "sourceLesson": "3.11",
+  "source": "Quizlet",
+  "question": "We usually want the critic to update at a faster rate than the actor.",
+  "options": [
+   "True",
+   "False"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Critic cần theo kịp policy hiện tại để TD error là tín hiệu đánh giá chính xác."
+ },
+ {
+  "id": "quizlet-113",
+  "chapter": 11,
+  "sourceLesson": "3.12",
+  "source": "Quizlet",
+  "question": "Which of the following statements are true about the Actor-Critic algorithm with softmax policies? (Choose all that apply)",
+  "options": [
+   "The preferences must be approximated using linear function approximation.",
+   "The actor and the critic share the same set of parameters.",
+   "Since the policy is written as a function of the current state, it is like having a different softmax distribution for each state.",
+   "The learning rate parameter of the actor and the critic can be different."
+  ],
+  "answers": [
+   2,
+   3
+  ],
+  "multi": true,
+  "answerSource": "official",
+  "explanation": "Actor ($\\boldsymbol\\theta$) và critic ($\\mathbf w$) có tham số và step size riêng; preference không bắt buộc tuyến tính."
+ },
+ {
+  "id": "quizlet-114",
+  "chapter": 11,
+  "sourceLesson": "3.12",
+  "source": "Quizlet",
+  "question": "Which one is a reasonable parameterization for a Gaussian policy?",
+  "options": [
+   "$\\mu$: the exponential of a linear function of parameters, $\\sigma$: a linear function of parameters.",
+   "$\\mu$: a linear function of parameters, $\\sigma$: the exponential of a linear function of parameters.",
+   "$\\mu$: a linear function of parameters, $\\sigma$: a linear function of parameters"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "$\\sigma$ phải dương nên dùng hàm mũ; $\\mu$ có thể là bất kỳ số thực nào."
+ },
+ {
+  "id": "quizlet-115",
+  "chapter": 11,
+  "sourceLesson": "3.12",
+  "source": "Quizlet",
+  "question": "A Gaussian policy becomes deterministic in the limit $\\sigma \\rightarrow 0$.",
+  "options": [
+   "True",
+   "False"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Khi $\\sigma \\to 0$, mọi xác suất dồn vào $\\mu(s)$."
+ },
+ {
+  "id": "quizlet-116",
+  "chapter": 11,
+  "sourceLesson": "3.11",
+  "source": "Quizlet",
+  "question": "To train the critic, we must use the average reward version of semi-gradient TD(0).",
+  "options": [
+   "True",
+   "False"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Critic có thể học bằng nhiều phương pháp TD khác (ví dụ bản chiết khấu); bản average reward chỉ là một lựa chọn cho continuing task."
+ },
+ {
+  "id": "quizlet-117",
+  "chapter": 7,
+  "sourceLesson": "2.7",
+  "source": "Quizlet",
+  "question": "Which of the following algorithms are appropriate in a control setting in which updates will be made at every time step? [Select all that apply]",
+  "options": [
+   "Q-learning",
+   "Expected SARSA",
+   "SARSA",
+   "Monte-Carlo with exploring starts"
+  ],
+  "answers": [
+   0,
+   1,
+   2
+  ],
+  "multi": true,
+  "answerSource": "official",
+  "explanation": "Ba thuật toán TD control cập nhật mỗi bước; Monte Carlo chờ hết episode."
+ },
+ {
+  "id": "quizlet-118",
+  "chapter": 4,
+  "sourceLesson": "1.12",
+  "source": "Quizlet",
+  "question": "Which of the following algorithms are appropriate in a control setting in which we are given access to a model? [Select all that apply]",
+  "options": [
+   "Dyna-Q",
+   "Policy Iteration",
+   "Iterative Policy Evaluation",
+   "Value Iteration"
+  ],
+  "answers": [
+   0,
+   1,
+   3
+  ],
+  "multi": true,
+  "answerSource": "official",
+  "explanation": "Iterative policy evaluation chỉ là prediction, không tìm policy tốt hơn."
+ },
+ {
+  "id": "quizlet-119",
+  "chapter": 10,
+  "sourceLesson": "3.8",
+  "source": "Quizlet",
+  "question": "Which of the following algorithms are appropriate in a continuing control setting with a discrete action space and function approximation? [Select all that apply]",
+  "options": [
+   "Gaussian Actor-Critic",
+   "Differential Softmax Actor-Critic",
+   "Differential Semi-Gradient SARSA"
+  ],
+  "answers": [
+   1,
+   2
+  ],
+  "multi": true,
+  "answerSource": "official",
+  "explanation": "Gaussian actor-critic dành cho hành động liên tục."
+ },
+ {
+  "id": "quizlet-120",
+  "chapter": 9,
+  "sourceLesson": "3.3",
+  "source": "Quizlet",
+  "question": "Which of the following algorithms are appropriate in an online prediction setting with linear function approximation? [Select all that apply]",
+  "options": [
+   "Semi-Gradient TD",
+   "Gradient Monte Carlo",
+   "SARSA"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Gradient MC phải chờ hết episode (không online); Sarsa là thuật toán control."
+ },
+ {
+  "id": "quizlet-121",
+  "chapter": 1,
+  "sourceLesson": "1.3",
+  "source": "Quizlet",
+  "question": "True or False: Epsilon-greedy exploration uses information from all the action values of a particular state when choosing a non-greedy action in that state.",
+  "options": [
+   "False",
+   "True"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "official",
+  "explanation": "Khi khám phá, $\\epsilon$-greedy chọn ngẫu nhiên đều, không dựa vào giá trị các hành động (khác với softmax)."
+ },
+ {
+  "id": "quizlet-122",
+  "chapter": 11,
+  "sourceLesson": "3.9",
+  "source": "Quizlet",
+  "question": "Which of the following are TRUE about the softmax temperature parameter $\\tau$? (Select all that apply)",
+  "options": [
+   "For very small $\\tau$, the agent mostly selects the greedy action.",
+   "If $\\tau$ is large, the agent's policy is more stochastic.",
+   "For very large $\\tau$, the agent's policy is nearly a uniformly-random policy.",
+   "$\\tau$ does not affect the exploration at all."
+  ],
+  "answers": [
+   0,
+   1,
+   2
+  ],
+  "multi": true,
+  "answerSource": "official",
+  "explanation": "$\\tau$ nhỏ: gần greedy; $\\tau$ lớn: gần ngẫu nhiên đều."
+ },
+ {
+  "id": "extra-ch1-01",
+  "chapter": 1,
+  "sourceLesson": "1.1",
+  "source": "Extra",
+  "question": "Treatment 1 gives reward −11 with probability 0.5 and +9 with probability 0.5. What is $q_*(1)$?",
+  "options": [
+   "−1",
+   "9",
+   "−11",
+   "4"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "$q_*(1) = 0.5 \\times (-11) + 0.5 \\times 9 = -1$. Ta so sánh kỳ vọng, không so sánh giá trị lớn nhất."
+ },
+ {
+  "id": "extra-ch1-02",
+  "chapter": 1,
+  "sourceLesson": "1.2",
+  "source": "Extra",
+  "question": "Treatment P has received rewards 1, 0, 0, 1 so far. What is its sample-average estimate $Q(P)$?",
+  "options": [
+   "0.25",
+   "0.5",
+   "0.75",
+   "1"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Trung bình mẫu $= (1+0+0+1)/4 = 0.5$."
+ },
+ {
+  "id": "extra-ch1-03",
+  "chapter": 1,
+  "sourceLesson": "1.2",
+  "source": "Extra",
+  "question": "The current estimate is $Q_n = 4$ after $n = 4$ rewards, and the new reward is $R_n = 9$. Using $Q_{n+1} = Q_n + \\frac{1}{n}[R_n - Q_n]$, what is $Q_{n+1}$?",
+  "options": [
+   "4.25",
+   "5",
+   "5.25",
+   "9"
+  ],
+  "answers": [
+   2
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "$Q_{n+1} = 4 + \\frac{1}{4}(9 - 4) = 4 + 1.25 = 5.25$."
+ },
+ {
+  "id": "extra-ch1-04",
+  "chapter": 1,
+  "sourceLesson": "1.3",
+  "source": "Extra",
+  "question": "With $\\epsilon$-greedy selection over $k = 4$ actions and $\\epsilon = 0.2$, what is the probability of selecting a particular non-greedy action?",
+  "options": [
+   "0.05",
+   "0.2",
+   "0.85",
+   "0.067"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Mỗi hành động non-greedy chỉ được chọn khi explore và rơi đúng vào nó: $\\epsilon / k = 0.2/4 = 0.05$."
+ },
+ {
+  "id": "extra-ch1-05",
+  "chapter": 1,
+  "sourceLesson": "1.2",
+  "source": "Extra",
+  "question": "Which update rule weights recent rewards more heavily and is suited to non-stationary bandit problems?",
+  "options": [
+   "Sample average with step size $1/n$",
+   "Constant step size $\\alpha$",
+   "Always choosing the greedy action",
+   "Using $\\epsilon = 0$"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Step size hằng số $\\alpha$ cho reward gần đây trọng số lớn hơn (trung bình có trọng số giảm theo hàm mũ), phù hợp khi phân phối reward thay đổi."
+ },
+ {
+  "id": "extra-ch1-06",
+  "chapter": 1,
+  "sourceLesson": "1.1",
+  "source": "Extra",
+  "question": "In the bandit problem, which statement is true?",
+  "options": [
+   "The action taken changes the next state of the environment.",
+   "The reward depends only on the action taken; there are no states or dynamics.",
+   "The agent must plan several steps ahead.",
+   "Rewards are known before choosing an action."
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Trong k-armed bandit, hành động không ảnh hưởng tình huống tiếp theo; reward chỉ phụ thuộc hành động hiện tại."
+ },
+ {
+  "id": "extra-ch1-07",
+  "chapter": 1,
+  "sourceLesson": "1.3",
+  "source": "Extra",
+  "question": "Three meals have estimates $Q = (3, 0, 0)$ and counts $N = (5, 0, 0)$, while the true values are $q_* = (3, 4, 2)$. What happens to a purely greedy agent?",
+  "options": [
+   "It will eventually find meal 2 because its value is highest.",
+   "It keeps choosing meal 1 forever and never discovers meal 2.",
+   "It chooses all meals equally.",
+   "It chooses meal 3 because it has the lowest count."
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Greedy luôn chọn món có $Q$ lớn nhất (món 1) nên các món khác không bao giờ được thử, bỏ lỡ món 2 tốt hơn."
+ },
+ {
+  "id": "extra-ch2-08",
+  "chapter": 2,
+  "sourceLesson": "1.6",
+  "source": "Extra",
+  "question": "With $\\gamma = 0.5$ and rewards $R_1 = 1, R_2 = 2, R_3 = 4$ (then the episode ends), what is $G_0$?",
+  "options": [
+   "7",
+   "3",
+   "2.5",
+   "4"
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "$G_0 = 1 + 0.5 \\cdot 2 + 0.25 \\cdot 4 = 1 + 1 + 1 = 3$."
+ },
+ {
+  "id": "extra-ch2-09",
+  "chapter": 2,
+  "sourceLesson": "1.6",
+  "source": "Extra",
+  "question": "Which identity relates returns at successive time steps?",
+  "options": [
+   "$G_t = R_{t+1} + \\gamma G_{t+1}$",
+   "$G_t = \\gamma R_{t+1} + G_{t+1}$",
+   "$G_t = R_t + \\gamma G_{t-1}$",
+   "$G_t = R_{t+1} G_{t+1}$"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Dạng đệ quy của return, nền tảng cho phương trình Bellman và TD."
+ },
+ {
+  "id": "extra-ch2-10",
+  "chapter": 2,
+  "sourceLesson": "1.4",
+  "source": "Extra",
+  "question": "The Markov property states that:",
+  "options": [
+   "The next state and reward depend only on the current state and action.",
+   "The agent must remember the entire history to act optimally.",
+   "Rewards are always deterministic.",
+   "All states are visited equally often."
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Trạng thái hiện tại đã đủ; nhớ thêm lịch sử không giúp dự đoán tương lai tốt hơn."
+ },
+ {
+  "id": "extra-ch2-11",
+  "chapter": 2,
+  "sourceLesson": "1.4",
+  "source": "Extra",
+  "question": "For the dynamics function $p(s', r \\mid s, a)$, which property must hold for every $s$ and $a$?",
+  "options": [
+   "$\\sum_{s'}\\sum_{r} p(s', r \\mid s, a) = 1$",
+   "$\\sum_{a} p(s', r \\mid s, a) = 1$",
+   "$p(s', r \\mid s, a) = 1$ for one $s'$ only",
+   "$\\sum_{s} p(s', r \\mid s, a) = 1$"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "$p$ là phân phối xác suất đồng thời của $(s', r)$ với $s, a$ cho trước, nên tổng theo $s'$ và $r$ bằng 1."
+ },
+ {
+  "id": "extra-ch6-12",
+  "chapter": 6,
+  "sourceLesson": "2.5",
+  "source": "Extra",
+  "question": "$V(A) = 0.5$, $V(C) = 2$, $\\alpha = 0.1$, $\\gamma = 0.9$. The agent moves from A to C and receives $R = 1$. What is the TD error $\\delta$?",
+  "options": [
+   "2.3",
+   "1.3",
+   "2.8",
+   "0.23"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "$\\delta = R + \\gamma V(C) - V(A) = 1 + 1.8 - 0.5 = 2.3$; sau đó $V(A) = 0.5 + 0.1 \\times 2.3 = 0.73$."
+ },
+ {
+  "id": "extra-ch6-13",
+  "chapter": 6,
+  "sourceLesson": "2.5",
+  "source": "Extra",
+  "question": "Continuing the previous setup ($V(A) = 0.5$, $\\delta = 2.3$, $\\alpha = 0.1$), what is the new value $V(A)$ after the TD(0) update?",
+  "options": [
+   "0.73",
+   "2.8",
+   "0.5",
+   "0.23"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "$V(A) \\leftarrow V(A) + \\alpha\\delta = 0.5 + 0.23 = 0.73$."
+ },
+ {
+  "id": "extra-ch6-14",
+  "chapter": 6,
+  "sourceLesson": "2.6",
+  "source": "Extra",
+  "question": "Which statement about the TD(0) target compared with the Monte Carlo target is correct?",
+  "options": [
+   "The TD target is unbiased and has high variance.",
+   "The TD target is biased (it uses an estimate) but has lower variance.",
+   "Both targets are identical.",
+   "The TD target requires a model of the environment."
+  ],
+  "answers": [
+   1
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "TD bootstrap từ ước lượng $V(S_{t+1})$ nên có chệch nhưng phương sai thấp; MC dùng $G_t$ không chệch nhưng phương sai cao."
+ },
+ {
+  "id": "extra-ch6-15",
+  "chapter": 6,
+  "sourceLesson": "2.6",
+  "source": "Extra",
+  "question": "Which method combines sampling (like Monte Carlo) with bootstrapping (like dynamic programming)?",
+  "options": [
+   "Temporal Difference learning",
+   "Value iteration",
+   "Exhaustive search",
+   "First-visit Monte Carlo"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "TD lấy mẫu kinh nghiệm như MC và cập nhật từ ước lượng khác như DP."
+ },
+ {
+  "id": "extra-ch10-16",
+  "chapter": 10,
+  "sourceLesson": "3.6",
+  "source": "Extra",
+  "question": "With stacked features, 4 state features and 3 actions give a weight segment per action. If the active state features are 2 and 4, and the weight segment for action $a_1$ has entries $(2.2, 0.1, 1.0, 1.8)$, what is $\\hat q(s, a_1)$ for binary features $x = (0,1,0,1)$?",
+  "options": [
+   "1.9",
+   "4.0",
+   "3.2",
+   "5.1"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Chỉ đặc trưng 2 và 4 bật: $\\hat q = 0.1 + 1.8 = 1.9$. Đây là tích vô hướng giữa đoạn trọng số của hành động và đặc trưng trạng thái."
+ },
+ {
+  "id": "extra-ch10-17",
+  "chapter": 10,
+  "sourceLesson": "3.6",
+  "source": "Extra",
+  "question": "What is the update of episodic semi-gradient Sarsa?",
+  "options": [
+   "$\\mathbf w \\leftarrow \\mathbf w + \\alpha[R + \\gamma \\hat q(S', A', \\mathbf w) - \\hat q(S, A, \\mathbf w)]\\nabla \\hat q(S, A, \\mathbf w)$",
+   "$\\mathbf w \\leftarrow \\mathbf w + \\alpha[G_t - \\hat v(S, \\mathbf w)]\\mathbf w$",
+   "$\\mathbf w \\leftarrow \\mathbf w - \\alpha[R + \\gamma \\max_a \\hat q(S', a, \\mathbf w)]$",
+   "$\\mathbf w \\leftarrow \\mathbf w + \\alpha\\nabla \\hat q(S, A, \\mathbf w)$"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Giống Sarsa dạng bảng nhưng cập nhật trọng số theo TD error nhân gradient của $\\hat q$."
+ },
+ {
+  "id": "extra-ch10-18",
+  "chapter": 10,
+  "sourceLesson": "3.6",
+  "source": "Extra",
+  "question": "In episodic semi-gradient Sarsa, what is the target when $S'$ is terminal?",
+  "options": [
+   "$R$",
+   "$R + \\gamma \\hat q(S', A', \\mathbf w)$",
+   "0",
+   "$\\max_a \\hat q(S', a, \\mathbf w)$"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Giá trị trạng thái kết thúc bằng 0 nên target chỉ còn reward $R$."
+ },
+ {
+  "id": "extra-ch10-19",
+  "chapter": 10,
+  "sourceLesson": "3.8",
+  "source": "Extra",
+  "question": "In the two-ring MDP, the left ring gives +1 once per 5 steps and the right ring gives +2 once per 5 steps. What are the average rewards $r(\\pi_L)$ and $r(\\pi_R)$?",
+  "options": [
+   "0.2 and 0.4",
+   "1 and 2",
+   "0.5 and 1",
+   "0.4 and 0.2"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "$r(\\pi_L) = 1/5 = 0.2$; $r(\\pi_R) = 2/5 = 0.4$, nên đi phải tốt hơn mà không cần chọn $\\gamma$."
+ },
+ {
+  "id": "extra-ch10-20",
+  "chapter": 10,
+  "sourceLesson": "3.8",
+  "source": "Extra",
+  "question": "What is the differential return used in the average reward setting?",
+  "options": [
+   "$G_t = R_{t+1} - r(\\pi) + R_{t+2} - r(\\pi) + \\dots$",
+   "$G_t = \\sum_k \\gamma^k R_{t+k+1}$",
+   "$G_t = R_{t+1} + R_{t+2} + \\dots + R_T$",
+   "$G_t = r(\\pi) - R_{t+1}$"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Differential return cộng các hiệu giữa reward và average reward, không có $\\gamma$."
+ },
+ {
+  "id": "extra-ch10-21",
+  "chapter": 10,
+  "sourceLesson": "3.8",
+  "source": "Extra",
+  "question": "In differential semi-gradient Sarsa, what is the TD error?",
+  "options": [
+   "$\\delta = R - \\bar R + \\hat q(S', A', \\mathbf w) - \\hat q(S, A, \\mathbf w)$",
+   "$\\delta = R + \\gamma \\hat q(S', A', \\mathbf w) - \\hat q(S, A, \\mathbf w)$",
+   "$\\delta = R - \\bar R$",
+   "$\\delta = \\bar R - \\hat q(S, A, \\mathbf w)$"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Bản average reward thay $\\gamma$ bằng việc trừ ước lượng average reward $\\bar R$; $\\bar R$ cũng được cập nhật bằng $\\delta$."
+ },
+ {
+  "id": "extra-ch10-22",
+  "chapter": 10,
+  "sourceLesson": "3.8",
+  "source": "Extra",
+  "question": "In the two-ring MDP, the agent prefers the right ring (+2 after 4 extra steps) only if $\\gamma$ exceeds about:",
+  "options": [
+   "0.841",
+   "0.5",
+   "0.9",
+   "0.993"
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "$v_R > v_L \\iff 2\\gamma^4 > 1 \\iff \\gamma > 2^{-1/4} \\approx 0.841$. Vòng dài hơn đòi hỏi $\\gamma$ càng gần 1."
+ },
+ {
+  "id": "extra-ch10-23",
+  "chapter": 10,
+  "sourceLesson": "3.7",
+  "source": "Extra",
+  "question": "Why can optimistic initial values fail to produce systematic exploration under function approximation?",
+  "options": [
+   "Generalization means updates in visited states also lower the values of unvisited states, removing their optimism.",
+   "Function approximation cannot represent large values.",
+   "Optimism only works with neural networks.",
+   "Epsilon must be zero."
+  ],
+  "answers": [
+   0
+  ],
+  "multi": false,
+  "answerSource": "verified-by-slides",
+  "explanation": "Ví dụ cực đoan một đặc trưng luôn bằng 1: mỗi cập nhật làm giảm giá trị mọi trạng thái, kể cả nơi chưa ghé thăm."
+ }
+]

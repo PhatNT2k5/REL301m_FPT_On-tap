@@ -1,0 +1,40 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:17.816
+Dynamic Programming
+
+00:00:17.816 --> 00:00:48.712
+Prediction vs. control
+
+00:00:48.712 --> 00:01:08.208
+Iterative policy evaluation
+
+00:01:08.208 --> 00:01:37.328
+Two arrays vs. in-place
+
+00:01:37.328 --> 00:02:02.152
+Example: 4×4 grid world
+
+00:02:02.152 --> 00:02:21.696
+Converged value of the random policy
+
+00:02:21.696 --> 00:02:57.512
+Policy improvement
+
+00:02:57.512 --> 00:03:29.104
+Policy iteration
+
+00:03:29.104 --> 00:04:09.768
+Generalized policy iteration (GPI)
+
+00:04:09.768 --> 00:04:36.800
+Value iteration
+
+00:04:36.800 --> 00:05:05.704
+Synchronous vs. asynchronous DP
+
+00:05:05.704 --> 00:05:41.616
+Efficiency of DP and bootstrapping
+
+00:05:41.616 --> 00:06:15.848
+Chapter 4 summary

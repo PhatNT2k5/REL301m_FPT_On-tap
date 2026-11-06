@@ -1,0 +1,189 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:05.075
+Chào bạn, đến với chương bốn: Dynamic Programming, quy hoạch động.
+
+2
+00:00:05.075 --> 00:00:17.016
+Chương này gộp ba bài: Policy Evaluation, Policy Iteration, và Generalized Policy Iteration. Ta sẽ biến các phương trình Bellman ở chương trước thành thuật toán lặp.
+
+3
+00:00:17.816 --> 00:00:28.766
+Có hai bài toán chính. Policy evaluation, còn gọi là prediction: cho trước một policy pi, hãy tính v pi, tức policy đó tốt đến đâu.
+
+4
+00:00:28.766 --> 00:00:34.004
+Control: tìm policy cho nhiều reward nhất, tức tìm policy tối ưu.
+
+5
+00:00:34.004 --> 00:00:34.504
+Dynamic programming giải cả hai, với giả định ta biết hoàn hảo mô hình của môi trường, tức hàm dynamics p.
+
+6
+00:00:34.504 --> 00:00:47.912
+Đó cũng là giới hạn của DP: phải có mô hình, và phải quét qua toàn bộ trạng thái, nên khó áp dụng khi không gian trạng thái rất lớn.
+
+7
+00:00:48.712 --> 00:00:52.774
+Ý tưởng: biến phương trình Bellman thành một quy tắc cập nhật. Giá trị mới ở bước k cộng một được tính từ giá trị cũ ở bước k.
+
+8
+00:00:52.774 --> 00:01:01.012
+Ta khởi tạo v zero một cách tuỳ ý, thường là toàn bộ bằng không.
+
+9
+00:01:01.012 --> 00:01:07.408
+Định lý đảm bảo: với mọi cách khởi tạo, v k hội tụ về v pi khi k tiến tới vô cùng.
+
+10
+00:01:08.208 --> 00:01:15.670
+Khi cài đặt, cách cơ bản dùng hai mảng. Mảng V lưu giá trị cũ, mảng V phẩy lưu giá trị mới. Hết một lượt quét toàn bộ trạng thái thì chép V phẩy sang V.
+
+11
+00:01:15.670 --> 00:01:24.433
+Cách thứ hai là cập nhật tại chỗ, in-place: ghi đè V của s ngay lập tức.
+
+12
+00:01:24.433 --> 00:01:29.870
+Bản in-place vẫn hội tụ, và thường nhanh hơn vì dùng ngay các giá trị mới nhất.
+
+13
+00:01:29.870 --> 00:01:36.528
+Ta dừng khi thay đổi lớn nhất delta trong một lượt quét nhỏ hơn một ngưỡng theta, ví dụ không phẩy không không một.
+
+14
+00:01:37.328 --> 00:01:44.041
+Ví dụ grid world bốn nhân bốn. Hai trạng thái kết thúc ở góc trên trái và góc dưới phải.
+
+15
+00:01:44.041 --> 00:01:48.090
+Mỗi bước di chuyển nhận reward âm một, gamma bằng một.
+
+16
+00:01:48.090 --> 00:01:52.916
+Policy cần đánh giá là ngẫu nhiên đều, mỗi hướng hai mươi lăm phần trăm.
+
+17
+00:01:52.916 --> 00:02:01.352
+Ở lượt quét đầu, mọi giá trị cũ đều bằng không, nên mỗi ô không kết thúc có giá trị bằng bốn lần không phẩy hai lăm nhân âm một, tức âm một.
+
+18
+00:02:02.152 --> 00:02:07.790
+Tiếp tục quét nhiều lượt cho tới khi delta nhỏ hơn không phẩy không không một, giá trị hội tụ.
+
+19
+00:02:07.790 --> 00:02:13.477
+Các ô gần góc kết thúc có giá trị khoảng âm mười bốn, các ô xa nhất khoảng âm hai mươi hai.
+
+20
+00:02:13.477 --> 00:02:20.896
+Vì mỗi bước bị trừ một và gamma bằng một, giá trị chính là số bước kỳ vọng để tới trạng thái kết thúc, mang dấu âm.
+
+21
+00:02:21.696 --> 00:02:30.034
+Khi đã có v pi, ta cải thiện policy bằng cách chọn hành động tham lam đối với v pi. Đây gọi là greedify.
+
+22
+00:02:30.034 --> 00:02:44.046
+Policy improvement theorem: nếu tại mọi trạng thái, giá trị q pi của hành động mà pi phẩy chọn lớn hơn hoặc bằng v pi, thì pi phẩy tốt hơn hoặc bằng pi. Nếu lớn hơn hẳn ở ít nhất một trạng thái thì pi phẩy tốt hơn hẳn.
+
+23
+00:02:44.046 --> 00:02:56.712
+Hệ quả quan trọng: policy tham lam mới luôn tốt hơn hẳn policy cũ, trừ khi policy cũ đã tối ưu. Khi greedify mà policy không đổi, nghĩa là nó thoả phương trình Bellman tối ưu.
+
+24
+00:02:57.512 --> 00:03:06.600
+Policy iteration xen kẽ hai bước. Bước E, evaluation: đánh giá đầy đủ policy hiện tại để có v pi.
+
+25
+00:03:06.600 --> 00:03:11.774
+Bước I, improvement: tạo policy mới tham lam đối với v pi.
+
+26
+00:03:11.774 --> 00:03:16.512
+Mỗi policy mới là deterministic và tốt hơn hẳn policy trước.
+
+27
+00:03:16.512 --> 00:03:28.304
+Vì MDP hữu hạn chỉ có hữu hạn deterministic policy, thuật toán chắc chắn dừng sau hữu hạn vòng lặp, khi policy không còn thay đổi. Lúc đó ta có pi sao và v sao.
+
+28
+00:03:29.104 --> 00:03:37.454
+Generalized policy iteration, GPI, là khung tổng quát gồm hai quá trình tương tác: evaluation và improvement.
+
+29
+00:03:37.454 --> 00:03:47.242
+Evaluation kéo value function về gần giá trị thật của policy. Improvement làm policy tham lam đối với value function hiện tại.
+
+30
+00:03:47.242 --> 00:03:55.842
+Điểm then chốt: không quá trình nào cần chạy xong hoàn toàn rồi mới tới quá trình kia. Chúng có thể đan xen ở bất kỳ mức độ nào.
+
+31
+00:03:55.842 --> 00:04:08.968
+Hai quá trình vừa cạnh tranh vừa hợp tác, và cùng hội tụ về policy tối ưu. Hầu hết thuật toán RL, kể cả Monte Carlo, Sarsa hay Q-learning sau này, đều là một dạng GPI.
+
+32
+00:04:09.768 --> 00:04:18.406
+Value iteration là trường hợp đặc biệt của GPI: thay vì đánh giá policy đến hội tụ, ta chỉ quét một lượt rồi greedify ngay.
+
+33
+00:04:18.406 --> 00:04:24.380
+Gộp lại, ta được quy tắc cập nhật chính là phương trình Bellman tối ưu, với phép max theo hành động.
+
+34
+00:04:24.380 --> 00:04:36.000
+Khi giá trị hội tụ, policy tối ưu được lấy ra bằng argmax. Hãy phân biệt: policy evaluation dùng tổng có trọng số pi, còn value iteration dùng max.
+
+35
+00:04:36.800 --> 00:04:46.912
+DP đồng bộ, synchronous, quét toàn bộ không gian trạng thái theo thứ tự có hệ thống ở mỗi vòng lặp, như policy iteration và value iteration cơ bản.
+
+36
+00:04:46.912 --> 00:04:54.300
+DP bất đồng bộ, asynchronous, cập nhật các trạng thái theo bất kỳ thứ tự nào, dùng giá trị mới nhất đang có.
+
+37
+00:04:54.300 --> 00:04:59.700
+Nhờ vậy nó có thể tập trung vào những trạng thái quan trọng, phù hợp với bài toán lớn.
+
+38
+00:04:59.700 --> 00:05:04.904
+Tuy nhiên, để đảm bảo hội tụ, mọi trạng thái vẫn phải tiếp tục được cập nhật.
+
+39
+00:05:05.704 --> 00:05:14.966
+Vì sao DP hiệu quả? Tìm kiếm vét cạn phải đánh giá tất cả số hành động mũ số trạng thái deterministic policy, tăng theo hàm mũ.
+
+40
+00:05:14.966 --> 00:05:19.729
+Trong khi DP chỉ tốn thời gian đa thức theo số trạng thái và số hành động.
+
+41
+00:05:19.729 --> 00:05:34.279
+Một khái niệm rất quan trọng: bootstrapping, tức cập nhật một ước lượng dựa trên ước lượng khác. DP cập nhật v của s dựa trên v của s phẩy. TD learning sau này cũng bootstrap, còn Monte Carlo thì không.
+
+42
+00:05:34.279 --> 00:05:40.816
+Khó khăn còn lại là curse of dimensionality: số trạng thái tăng theo hàm mũ khi số biến trạng thái tăng.
+
+43
+00:05:41.616 --> 00:05:47.278
+Tóm tắt chương bốn. Dynamic programming cần mô hình đầy đủ của môi trường.
+
+44
+00:05:47.278 --> 00:05:52.228
+Policy evaluation lặp phương trình Bellman kỳ vọng cho tới hội tụ.
+
+45
+00:05:52.228 --> 00:05:59.566
+Policy improvement greedify theo value function, và policy iteration xen kẽ đánh giá với cải thiện.
+
+46
+00:05:59.566 --> 00:06:03.991
+Value iteration lặp phương trình Bellman tối ưu với phép max.
+
+47
+00:06:03.991 --> 00:06:15.048
+GPI là khung chung cho mọi phương pháp, và DP là phương pháp bootstrap. Chương sau, ta bỏ giả định có mô hình và học trực tiếp từ kinh nghiệm với Monte Carlo.

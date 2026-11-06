@@ -1,0 +1,299 @@
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { MathText } from "../../components/MathText";
+import { CHAPTERS } from "../../data/chapters";
+import { QUESTION_BY_ID, SOURCE_LABEL } from "../../data/questions";
+import type { Question } from "../../data/types";
+import { href, navigate } from "../../router";
+import { toggleStar, updateProgress, useProgress, useSettings } from "../progress/store";
+import { buildDecks, sessionKey } from "./decks";
+import {
+  answerQuestion,
+  chunk,
+  createSession,
+  currentQuestionId,
+  hashString,
+  isComplete,
+  seededShuffle,
+  totalWrong,
+  type SessionState,
+} from "./engine";
+
+interface Feedback {
+  questionId: string;
+  chosen: number[];
+  correct: boolean;
+}
+
+const LETTERS = ["A", "B", "C", "D", "E", "F"];
+
+const sameIds = (a: string[], b: string[]): boolean => a.length === b.length && a.every((id, i) => id === b[i]);
+
+export const SessionView = ({ deckId, size, index }: { deckId: string; size: number; index: number }) => {
+  const [progress] = useProgress();
+  const [settings] = useSettings();
+  const decks = useMemo(() => buildDecks(progress), [progress]);
+  const deck = decks.find((d) => d.id === deckId);
+  const sessions = deck ? chunk(deck.questionIds, size) : [];
+  const ids = sessions[index] ?? [];
+  const key = sessionKey(deckId, size, index);
+
+  const stored = progress.sessions[key];
+  // Starred / hard decks change while you answer, so an existing session keeps its own question list there.
+  const dynamicDeck = deck?.kind === "starred" || deck?.kind === "hard";
+  const state: SessionState =
+    stored && (dynamicDeck || sameIds(stored.state.questionIds, ids)) ? stored.state : createSession(ids);
+  const done = isComplete(state);
+
+  const [feedback, setFeedback] = useState<Feedback | null>(null);
+  const [selection, setSelection] = useState<number[]>([]);
+
+  const shownId = feedback?.questionId ?? currentQuestionId(state);
+  const question: Question | undefined = shownId ? QUESTION_BY_ID.get(shownId) : undefined;
+
+  const optionOrder = useMemo(() => {
+    if (!question) return [];
+    const order = question.options.map((_, i) => i);
+    return settings.shuffleOptions ? seededShuffle(order, hashString(`${key}:${question.id}`)) : order;
+  }, [question, settings.shuffleOptions, key]);
+
+  const persist = useCallback(
+    (next: SessionState, wrongId?: string) => {
+      updateProgress((p) => {
+        const previous = p.sessions[key];
+        const finished = isComplete(next);
+        const wrong = totalWrong(next);
+        return {
+          ...p,
+          sessions: {
+            ...p.sessions,
+            [key]: {
+              state: next,
+              done: finished || Boolean(previous?.done),
+              bestWrong: finished ? Math.min(previous?.bestWrong ?? wrong, wrong) : previous?.bestWrong,
+            },
+          },
+          wrongTotals: wrongId ? { ...p.wrongTotals, [wrongId]: (p.wrongTotals[wrongId] ?? 0) + 1 } : p.wrongTotals,
+        };
+      });
+    },
+    [key],
+  );
+
+  const submit = useCallback(
+    (chosen: number[]) => {
+      if (!question || feedback || chosen.length === 0) return;
+      const result = answerQuestion(state, chosen, question.answers);
+      persist(result.state, result.correct ? undefined : question.id);
+      setFeedback({ questionId: question.id, chosen, correct: result.correct });
+    },
+    [question, feedback, state, persist],
+  );
+
+  const goNext = useCallback(() => {
+    setFeedback(null);
+    setSelection([]);
+  }, []);
+
+  const restart = () => {
+    persist(createSession(dynamicDeck ? state.questionIds : ids));
+    setFeedback(null);
+    setSelection([]);
+  };
+
+  // Auto-advance after a correct answer when enabled.
+  useEffect(() => {
+    if (!feedback?.correct || !settings.autoAdvance) return;
+    const timer = window.setTimeout(goNext, 900);
+    return () => window.clearTimeout(timer);
+  }, [feedback, settings.autoAdvance, goNext]);
+
+  const choose = useCallback(
+    (original: number) => {
+      if (!question || feedback) return;
+      if (question.multi) {
+        setSelection((s) => (s.includes(original) ? s.filter((x) => x !== original) : [...s, original]));
+      } else {
+        submit([original]);
+      }
+    },
+    [question, feedback, submit],
+  );
+
+  // Keyboard: 1-4 / A-D to choose, Enter to check or continue.
+  useEffect(() => {
+    const onKey = (event: KeyboardEvent) => {
+      if (event.target instanceof HTMLInputElement || event.metaKey || event.ctrlKey) return;
+      if (event.key === "Enter") {
+        if (feedback) goNext();
+        else if (question?.multi) submit(selection);
+        return;
+      }
+      const position = "1234".indexOf(event.key) !== -1 ? Number(event.key) - 1 : "abcd".indexOf(event.key.toLowerCase());
+      if (position >= 0 && position < optionOrder.length) choose(optionOrder[position]);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [feedback, question, selection, optionOrder, choose, goNext, submit]);
+
+  if (!deck || ids.length === 0) {
+    return (
+      <p>
+        Không tìm thấy session này. <a className="text-sage underline" href={href({ name: "practice", deckId })}>Về danh sách session</a>
+      </p>
+    );
+  }
+
+  const backHref = href({ name: "practice", deckId });
+  const starred = question ? progress.starred.includes(question.id) : false;
+  const chapter = question ? CHAPTERS.find((c) => c.number === question.chapter) : undefined;
+  const wrongSoFar = totalWrong(state);
+  const hasNext = index + 1 < sessions.length;
+
+  return (
+    <div className="mx-auto max-w-3xl">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <a href={backHref} className="text-sm text-muted hover:text-ink">
+          {deck.label}
+        </a>
+        <span className="text-sm text-muted">
+          Session {index + 1}/{sessions.length} · sai {wrongSoFar} lần
+        </span>
+      </div>
+
+      <ol className="mt-4 flex flex-wrap gap-1.5" aria-label="Tiến độ session">
+        {state.questionIds.map((id, i) => {
+          const solved = state.solved.includes(id);
+          const missed = (state.wrongCounts[id] ?? 0) > 0;
+          const current = id === shownId && !done;
+          return (
+            <li
+              key={id}
+              title={`Câu ${i + 1}`}
+              className={`h-3 w-6 rounded-sm ${
+                solved ? (missed ? "bg-reward" : "bg-sage") : missed ? "bg-penalty" : "bg-line"
+              } ${current ? "ring-2 ring-ink ring-offset-2 ring-offset-paper" : ""}`}
+            />
+          );
+        })}
+      </ol>
+      <p className="mt-2 text-xs text-muted">
+        Xanh: đúng ngay lần đầu · Vàng: đúng sau khi làm lại · Đỏ: đang chờ làm lại
+      </p>
+
+      {done && !feedback ? (
+        <section className="mt-8 rounded-2xl border border-sage bg-panel p-6 sm:p-8">
+          <p className="font-display text-5xl text-reward">+1</p>
+          <h1 className="mt-2 font-display text-3xl">Xong session {index + 1}</h1>
+          <p className="mt-2 text-muted">
+            {wrongSoFar === 0
+              ? `Bạn trả lời đúng cả ${ids.length} câu ngay từ lần đầu.`
+              : `Bạn đã sửa hết ${Object.keys(state.wrongCounts).length} câu từng sai, tổng cộng ${wrongSoFar} lần trả lời sai.`}
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            {hasNext && (
+              <button
+                type="button"
+                className="rounded-xl bg-sage px-5 py-2.5 font-medium text-paper"
+                onClick={() => navigate({ name: "session", deckId, size, index: index + 1 })}
+              >
+                Làm session {index + 2}
+              </button>
+            )}
+            <button type="button" className="rounded-xl border border-line px-5 py-2.5" onClick={restart}>
+              Làm lại session này
+            </button>
+            <a href={backHref} className="rounded-xl px-5 py-2.5 text-muted hover:text-ink">
+              Về danh sách session
+            </a>
+          </div>
+        </section>
+      ) : (
+        question && (
+          <section className="mt-6 rounded-2xl border border-line bg-panel p-5 sm:p-7">
+            <div className="flex items-start justify-between gap-3 text-sm text-muted">
+              <span>
+                {SOURCE_LABEL[question.source]}
+                {question.examNo ? ` câu ${question.examNo}` : ""} · Ch.{question.chapter}
+                {chapter ? ` ${chapter.title}` : ""} · slide {question.sourceLesson}
+              </span>
+              <button
+                type="button"
+                onClick={() => toggleStar(question.id)}
+                className={`shrink-0 rounded-md px-2 py-0.5 ${starred ? "text-reward" : "hover:text-ink"}`}
+                aria-pressed={starred}
+              >
+                {starred ? "★ Đã lưu" : "☆ Lưu câu"}
+              </button>
+            </div>
+
+            <MathText as="div" text={question.question} className="mt-4 text-lg font-medium leading-relaxed sm:text-xl" />
+            {question.multi && <p className="mt-2 text-sm text-muted">Chọn {question.answers.length} đáp án, rồi bấm Kiểm tra.</p>}
+
+            <div className="mt-5 space-y-2.5">
+              {optionOrder.map((original, position) => {
+                const isAnswer = question.answers.includes(original);
+                const picked = feedback ? feedback.chosen.includes(original) : selection.includes(original);
+                let tone = "border-line hover:border-sage";
+                if (feedback) {
+                  if (isAnswer) tone = "border-sage bg-sage-soft";
+                  else if (picked) tone = "border-penalty bg-penalty-soft";
+                  else tone = "border-line opacity-60";
+                } else if (picked) {
+                  tone = "border-ink bg-sage-soft";
+                }
+                return (
+                  <button
+                    key={original}
+                    type="button"
+                    disabled={Boolean(feedback)}
+                    onClick={() => choose(original)}
+                    className={`flex w-full items-start gap-3 rounded-xl border px-4 py-3 text-left transition-colors ${tone}`}
+                  >
+                    <span
+                      className={`grid h-7 w-7 shrink-0 place-items-center rounded-md text-sm font-semibold ${
+                        picked ? "bg-ink text-paper" : "bg-sage-soft text-ink"
+                      }`}
+                    >
+                      {LETTERS[position]}
+                    </span>
+                    <MathText text={question.options[original]} className="pt-0.5" />
+                  </button>
+                );
+              })}
+            </div>
+
+            {question.multi && !feedback && (
+              <button
+                type="button"
+                disabled={selection.length === 0}
+                onClick={() => submit(selection)}
+                className="mt-4 rounded-xl bg-ink px-5 py-2.5 font-medium text-paper disabled:opacity-40"
+              >
+                Kiểm tra
+              </button>
+            )}
+
+            {feedback && (
+              <div
+                className={`mt-6 rounded-xl border-l-4 p-4 ${feedback.correct ? "border-sage bg-sage-soft" : "border-penalty bg-penalty-soft"}`}
+                role="status"
+              >
+                <p className="font-semibold">
+                  {feedback.correct ? "Chính xác. +1" : "Chưa đúng. Câu này sẽ quay lại ở cuối lượt."}
+                </p>
+                <MathText as="p" text={question.explanation} className="mt-2 leading-relaxed" />
+                {question.answerSource === "verified-by-slides" && question.source !== "Extra" && (
+                  <p className="mt-2 text-xs text-muted">Đề không kèm đáp án, đáp án này được đối chiếu với slide.</p>
+                )}
+                <button type="button" onClick={goNext} className="mt-4 rounded-xl bg-ink px-5 py-2.5 font-medium text-paper">
+                  {isComplete(state) ? "Xem kết quả" : "Câu tiếp theo"}
+                </button>
+              </div>
+            )}
+          </section>
+        )
+      )}
+      <p className="mt-4 text-xs text-muted">Phím tắt: 1–4 hoặc A–D để chọn, Enter để tiếp tục.</p>
+    </div>
+  );
+};
