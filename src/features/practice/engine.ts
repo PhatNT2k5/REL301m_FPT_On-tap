@@ -3,12 +3,20 @@
  * and a session is complete only when every question has been answered correctly.
  */
 
+export interface AnswerRecord {
+  questionId: string;
+  chosen: number[];
+  correct: boolean;
+}
+
 export interface SessionState {
   questionIds: string[];
   queue: string[];
   solved: string[];
   wrongCounts: Record<string, number>;
   attempts: number;
+  /** Every answer given, in order. Optional because sessions saved before this field existed lack it. */
+  history?: AnswerRecord[];
 }
 
 export interface AnswerResult {
@@ -22,6 +30,7 @@ export const createSession = (questionIds: string[]): SessionState => ({
   solved: [],
   wrongCounts: {},
   attempts: 0,
+  history: [],
 });
 
 export const currentQuestionId = (state: SessionState): string | undefined => state.queue[0];
@@ -36,16 +45,18 @@ export const answerQuestion = (state: SessionState, chosen: number[], answers: n
   const [head, ...rest] = state.queue;
   if (head === undefined) return { state, correct: false };
   const correct = isCorrectChoice(chosen, answers);
+  const history = [...(state.history ?? []), { questionId: head, chosen: [...chosen], correct }];
   if (correct) {
     return {
       correct,
-      state: { ...state, queue: rest, solved: [...state.solved, head], attempts: state.attempts + 1 },
+      state: { ...state, queue: rest, solved: [...state.solved, head], attempts: state.attempts + 1, history },
     };
   }
   return {
     correct,
     state: {
       ...state,
+      history,
       queue: [...rest, head],
       wrongCounts: { ...state.wrongCounts, [head]: (state.wrongCounts[head] ?? 0) + 1 },
       attempts: state.attempts + 1,
@@ -55,6 +66,14 @@ export const answerQuestion = (state: SessionState, chosen: number[], answers: n
 
 export const isComplete = (state: SessionState): boolean =>
   state.queue.length === 0 && state.solved.length === state.questionIds.length;
+
+/** Answers given to one question, oldest first. */
+export const answersFor = (state: SessionState, questionId: string): AnswerRecord[] =>
+  (state.history ?? []).filter((record) => record.questionId === questionId);
+
+/** A question can be reviewed once it has been answered at least once in this session. */
+export const isAnswered = (state: SessionState, questionId: string): boolean =>
+  state.solved.includes(questionId) || (state.wrongCounts[questionId] ?? 0) > 0;
 
 export const totalWrong = (state: SessionState): number =>
   Object.values(state.wrongCounts).reduce((sum, n) => sum + n, 0);

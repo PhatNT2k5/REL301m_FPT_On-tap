@@ -7,12 +7,14 @@ import { href, navigate } from "../../router";
 import { playCue } from "../progress/sound";
 import { toggleStar, updateProgress, useProgress, useSettings } from "../progress/store";
 import { buildDecks, sessionKey } from "./decks";
+import { ReviewPanel } from "./ReviewPanel";
 import {
   answerQuestion,
   chunk,
   createSession,
   currentQuestionId,
   hashString,
+  isAnswered,
   isComplete,
   seededShuffle,
   totalWrong,
@@ -47,15 +49,27 @@ export const SessionView = ({ deckId, size, index }: { deckId: string; size: num
 
   const [feedback, setFeedback] = useState<Feedback | null>(null);
   const [selection, setSelection] = useState<number[]>([]);
+  const [reviewId, setReviewId] = useState<string | null>(null);
 
   const shownId = feedback?.questionId ?? currentQuestionId(state);
   const question: Question | undefined = shownId ? QUESTION_BY_ID.get(shownId) : undefined;
 
-  const optionOrder = useMemo(() => {
-    if (!question) return [];
-    const order = question.options.map((_, i) => i);
-    return settings.shuffleOptions ? seededShuffle(order, hashString(`${key}:${question.id}`)) : order;
-  }, [question, settings.shuffleOptions, key]);
+  const orderFor = useCallback(
+    (q: Question): number[] => {
+      const order = q.options.map((_, i) => i);
+      return settings.shuffleOptions ? seededShuffle(order, hashString(`${key}:${q.id}`)) : order;
+    },
+    [settings.shuffleOptions, key],
+  );
+
+  const optionOrder = useMemo(() => (question ? orderFor(question) : []), [question, orderFor]);
+
+  // Questions answered at least once in this session, in session order, for the review panel.
+  const answeredIds = useMemo(() => state.questionIds.filter((id) => isAnswered(state, id)), [state]);
+  const reviewQuestion = reviewId ? QUESTION_BY_ID.get(reviewId) : undefined;
+
+  // Leaving the session (or restarting it) closes any open review.
+  useEffect(() => setReviewId(null), [key]);
 
   const persist = useCallback(
     (next: SessionState, wrongId?: string) => {
@@ -100,7 +114,17 @@ export const SessionView = ({ deckId, size, index }: { deckId: string; size: num
     persist(createSession(dynamicDeck ? state.questionIds : ids));
     setFeedback(null);
     setSelection([]);
+    setReviewId(null);
   };
+
+  const stepReview = useCallback(
+    (delta: number) => {
+      if (!reviewId) return;
+      const next = answeredIds[answeredIds.indexOf(reviewId) + delta];
+      if (next) setReviewId(next);
+    },
+    [reviewId, answeredIds],
+  );
 
   // Auto-advance after a correct answer when enabled.
   useEffect(() => {
@@ -125,6 +149,12 @@ export const SessionView = ({ deckId, size, index }: { deckId: string; size: num
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
       if (event.target instanceof HTMLInputElement || event.metaKey || event.ctrlKey) return;
+      if (reviewId) {
+        if (event.key === "Escape" || event.key === "Enter") setReviewId(null);
+        else if (event.key === "ArrowLeft") stepReview(-1);
+        else if (event.key === "ArrowRight") stepReview(1);
+        return;
+      }
       if (event.key === "Enter") {
         if (feedback) goNext();
         else if (question?.multi) submit(selection);
@@ -135,7 +165,7 @@ export const SessionView = ({ deckId, size, index }: { deckId: string; size: num
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [feedback, question, selection, optionOrder, choose, goNext, submit]);
+  }, [feedback, question, selection, optionOrder, choose, goNext, submit, reviewId, stepReview]);
 
   if (!deck || ids.length === 0) {
     return (
@@ -166,12 +196,18 @@ export const SessionView = ({ deckId, size, index }: { deckId: string; size: num
           {state.questionIds.map((id, i) => {
             const solved = state.solved.includes(id);
             const missed = (state.wrongCounts[id] ?? 0) > 0;
-            const current = id === shownId && !done;
+            const current = id === shownId && !done && !reviewId;
+            const reviewable = solved || missed;
+            const reviewing = id === reviewId;
             return (
-              <li
-                key={id}
-                title={`Câu ${i + 1}`}
-                className={`grid aspect-square place-items-center rounded-md text-xs font-semibold ${
+              <li key={id}>
+                <button
+                  type="button"
+                  disabled={!reviewable}
+                  onClick={() => setReviewId(reviewing ? null : id)}
+                  title={reviewable ? `Xem lại câu ${i + 1}` : `Câu ${i + 1} (chưa làm)`}
+                  aria-pressed={reviewing}
+                  className={`grid aspect-square w-full place-items-center rounded-md text-xs font-semibold transition-transform enabled:cursor-pointer enabled:hover:scale-110 disabled:cursor-default ${
                   solved
                     ? missed
                       ? "bg-reward text-paper"
@@ -179,9 +215,10 @@ export const SessionView = ({ deckId, size, index }: { deckId: string; size: num
                     : missed
                       ? "bg-penalty text-paper"
                       : "bg-line text-muted"
-                } ${current ? "ring-2 ring-ink ring-offset-2 ring-offset-panel" : ""}`}
-              >
-                {i + 1}
+                } ${current || reviewing ? "ring-2 ring-ink ring-offset-2 ring-offset-panel" : ""}`}
+                >
+                  {i + 1}
+                </button>
               </li>
             );
           })}
@@ -190,14 +227,28 @@ export const SessionView = ({ deckId, size, index }: { deckId: string; size: num
           <li>Xanh: đúng ngay lần đầu</li>
           <li>Vàng: đúng sau khi làm lại</li>
           <li>Đỏ: đang chờ làm lại</li>
+          <li className="pt-1 text-ink">Bấm vào ô đã làm để xem lại câu đó.</li>
         </ul>
         <p className="mt-4 hidden border-t border-line pt-3 text-xs text-muted lg:block">
-          Phím tắt: 1–4 hoặc A–D để chọn, Enter để tiếp tục.
+          Phím tắt: 1–4 hoặc A–D để chọn, Enter để tiếp tục. Khi xem lại: ← → để chuyển câu, Esc để đóng.
         </p>
       </aside>
 
       <div className="min-w-0">
-      {done && !feedback ? (
+      {reviewQuestion && reviewId ? (
+        <ReviewPanel
+          question={reviewQuestion}
+          number={state.questionIds.indexOf(reviewId) + 1}
+          state={state}
+          optionOrder={orderFor(reviewQuestion)}
+          starred={progress.starred.includes(reviewQuestion.id)}
+          hasPrevious={answeredIds.indexOf(reviewId) > 0}
+          hasNext={answeredIds.indexOf(reviewId) < answeredIds.length - 1}
+          onStep={stepReview}
+          onClose={() => setReviewId(null)}
+          closeLabel={done && !feedback ? "Về kết quả session" : "Tiếp tục làm bài"}
+        />
+      ) : done && !feedback ? (
         <section className="rounded-2xl border border-sage bg-panel p-6 sm:p-8">
           <p className="font-display text-5xl text-reward">+1</p>
           <h1 className="mt-2 font-display text-3xl">Xong session {index + 1}</h1>
@@ -206,7 +257,17 @@ export const SessionView = ({ deckId, size, index }: { deckId: string; size: num
               ? `Bạn trả lời đúng cả ${ids.length} câu ngay từ lần đầu.`
               : `Bạn đã sửa hết ${Object.keys(state.wrongCounts).length} câu từng sai, tổng cộng ${wrongSoFar} lần trả lời sai.`}
           </p>
+          <p className="mt-2 text-sm text-muted">Bấm vào các ô số để xem lại từng câu và đáp án bạn đã chọn.</p>
           <div className="mt-6 flex flex-wrap gap-3">
+            {state.questionIds[0] && (
+              <button
+                type="button"
+                className="rounded-xl border border-ink px-5 py-2.5 font-medium"
+                onClick={() => setReviewId(state.questionIds[0])}
+              >
+                Xem lại bài làm
+              </button>
+            )}
             {hasNext && (
               <button
                 type="button"

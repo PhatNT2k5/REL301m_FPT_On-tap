@@ -1,9 +1,11 @@
 import { describe, expect, it } from "vitest";
 import {
   answerQuestion,
+  answersFor,
   chunk,
   createSession,
   currentQuestionId,
+  isAnswered,
   isComplete,
   isCorrectChoice,
   seededShuffle,
@@ -38,6 +40,26 @@ describe("quiz engine", () => {
     expect(isComplete(s)).toBe(true);
     expect(totalWrong(s)).toBe(2);
     expect(s.attempts).toBe(4);
+  });
+
+  it("records every answer so a question can be reviewed", () => {
+    let s = createSession(["a", "b"]);
+    expect(isAnswered(s, "a")).toBe(false);
+    s = answerQuestion(s, [0], [1]).state; // a wrong
+    s = answerQuestion(s, [1], [1]).state; // b right
+    s = answerQuestion(s, [1], [1]).state; // a right
+    expect(isAnswered(s, "a")).toBe(true);
+    expect(answersFor(s, "a")).toEqual([
+      { questionId: "a", chosen: [0], correct: false },
+      { questionId: "a", chosen: [1], correct: true },
+    ]);
+  });
+
+  it("tolerates sessions saved without history", () => {
+    const { history: _unused, ...legacy } = createSession(["a"]);
+    const { state } = answerQuestion(legacy, [0], [0]);
+    expect(answersFor(legacy, "a")).toEqual([]);
+    expect(answersFor(state, "a")).toHaveLength(1);
   });
 
   it("requires the exact set for multi-answer questions", () => {
