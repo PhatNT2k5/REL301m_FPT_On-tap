@@ -1,43 +1,58 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:20.288
+00:00:00.000 --> 00:00:19.736
 Monte Carlo Methods
 
-00:00:20.288 --> 00:00:49.432
-Learning from sampled experience
+00:00:19.736 --> 00:00:49.216
+From DP to Monte Carlo
 
-00:00:49.432 --> 00:01:12.720
+00:00:49.216 --> 00:01:14.832
+Averaging samples approximates the expectation
+
+00:01:14.832 --> 00:01:47.504
 Monte Carlo prediction
 
-00:01:12.720 --> 00:01:52.160
-Computing returns backward
+00:01:47.504 --> 00:02:25.984
+Computing returns backward: Gt = Rt+1 + γ Gt+1
 
-00:01:52.160 --> 00:02:21.592
+00:02:25.984 --> 00:03:03.024
+First-visit vs. every-visit (γ = 1)
+
+00:03:03.024 --> 00:03:35.336
 First-visit MC prediction
 
-00:02:21.592 --> 00:03:01.824
+00:03:35.336 --> 00:04:14.800
 Blackjack as an MDP
 
-00:03:01.824 --> 00:03:32.000
-MC for action values
+00:04:14.800 --> 00:04:44.808
+Why control needs q, not v
 
-00:03:32.000 --> 00:04:11.368
-Exploring starts & MC control (GPI)
+00:04:44.808 --> 00:05:14.456
+The exploration problem and exploring starts
 
-00:04:11.368 --> 00:04:33.696
+00:05:14.456 --> 00:05:43.912
+Monte Carlo ES (exploring starts) = GPI with samples
+
+00:05:43.912 --> 00:06:06.792
 Why exploring starts can fail
 
-00:04:33.696 --> 00:05:07.208
-\epsilon-soft policies
+00:06:06.792 --> 00:06:51.632
+ε-soft and ε-greedy policies
 
-00:05:07.208 --> 00:05:47.416
+00:06:51.632 --> 00:07:32.008
 On-policy vs. off-policy
 
-00:05:47.416 --> 00:06:23.904
-Importance sampling
+00:07:32.008 --> 00:08:10.656
+Importance sampling: reweight samples from b to look like π
 
-00:06:23.904 --> 00:06:54.656
+00:08:10.656 --> 00:08:58.376
 Off-policy Monte Carlo prediction
 
-00:06:54.656 --> 00:07:30.352
+00:08:58.376 --> 00:09:28.120
+DP vs. Monte Carlo
+
+00:09:28.120 --> 00:10:04.128
+Easy to mix up
+
+00:10:04.128 --> 00:10:43.232
 Chapter 5 summary

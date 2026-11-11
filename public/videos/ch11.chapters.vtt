@@ -1,37 +1,55 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:22.328
+00:00:00.000 --> 00:00:21.896
 Policy Gradient & Actor-Critic
 
-00:00:22.328 --> 00:00:42.880
-Parameterized policies \pi(a \mid s, \boldsymbol{\theta})
+00:00:21.896 --> 00:00:46.600
+Until now, the policy was derived from values
 
-00:00:42.880 --> 00:01:15.168
-Softmax policy
+00:00:46.600 --> 00:01:15.168
+Learn the habit directly: do more of what worked
 
-00:01:15.168 --> 00:01:47.000
-Advantages of policy parameterization
+00:01:15.168 --> 00:01:35.480
+Parameterized policies
 
-00:01:47.000 --> 00:02:21.976
-Objective: average reward
+00:01:35.480 --> 00:02:03.496
+Softmax policy over action preferences
 
-00:02:21.976 --> 00:02:51.888
+00:02:03.496 --> 00:02:36.792
+Softmax with preferences (2, 1, 0)
+
+00:02:36.792 --> 00:03:10.328
+Why parameterize the policy?
+
+00:03:10.328 --> 00:03:41.080
+Objective: average reward, maximized by gradient ascent
+
+00:03:41.080 --> 00:04:14.208
 The policy gradient theorem
 
-00:02:51.888 --> 00:03:17.408
-From the theorem to a sample update
+00:04:14.208 --> 00:04:46.448
+From the theorem to a one-sample update
 
-00:03:17.408 --> 00:04:02.008
-Actor-critic
+00:04:46.448 --> 00:05:20.104
+Actor-critic: a player and a coach
 
-00:04:02.008 --> 00:04:25.416
-Actor-critic with softmax and linear features
+00:05:20.104 --> 00:05:52.200
+Actor-critic updates (continuing, average reward)
 
-00:04:25.416 --> 00:05:03.992
+00:05:52.200 --> 00:06:20.384
+One-step actor-critic (continuing)
+
+00:06:20.384 --> 00:07:03.328
+One actor update with a softmax policy
+
+00:07:03.328 --> 00:07:48.432
 Gaussian policies for continuous actions
 
-00:05:03.992 --> 00:05:35.680
+00:07:48.432 --> 00:08:31.184
 Value-based vs. policy-based vs. actor-critic
 
-00:05:35.680 --> 00:06:11.088
+00:08:31.184 --> 00:09:03.424
+Easy to mix up
+
+00:09:03.424 --> 00:09:42.936
 Chapter 11 summary

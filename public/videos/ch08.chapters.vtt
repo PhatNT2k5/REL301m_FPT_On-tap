@@ -1,37 +1,46 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:19.616
+00:00:00.000 --> 00:00:19.424
 Models, Planning & Dyna
 
-00:00:19.616 --> 00:00:49.504
+00:00:19.424 --> 00:00:49.312
+Where we are
+
+00:00:49.312 --> 00:01:16.080
+Practising in your head
+
+00:01:16.080 --> 00:01:41.624
 What is a model?
 
-00:00:49.504 --> 00:01:34.848
+00:01:41.624 --> 00:02:29.848
 Sample models vs. distribution models
 
-00:01:34.848 --> 00:01:54.968
-Planning with simulated experience
-
-00:01:54.968 --> 00:02:23.560
+00:02:29.848 --> 00:03:02.736
 Random-sample one-step tabular Q-planning
 
-00:02:23.560 --> 00:02:54.768
+00:03:02.736 --> 00:03:30.032
 The Dyna architecture
 
-00:02:54.768 --> 00:03:28.184
+00:03:30.032 --> 00:04:10.888
 Tabular Dyna-Q
 
-00:03:28.184 --> 00:04:02.632
+00:04:10.888 --> 00:04:55.104
+Maze, reward only at the goal: what changes after episode 1?
+
+00:04:55.104 --> 00:05:20.120
 Dyna-Q vs. Q-learning
 
-00:04:02.632 --> 00:04:37.920
+00:05:20.120 --> 00:05:52.576
 Inaccurate models
 
-00:04:37.920 --> 00:05:09.800
+00:05:52.576 --> 00:06:20.328
 A new exploration–exploitation trade-off
 
-00:05:09.800 --> 00:05:50.440
-Dyna-Q+: exploration bonus
+00:06:20.328 --> 00:06:59.960
+Dyna-Q+: exploration bonus r + κ√τ
 
-00:05:50.440 --> 00:06:24.888
+00:06:59.960 --> 00:07:24.568
+Easy to mix up
+
+00:07:24.568 --> 00:08:00.552
 Chapter 8 summary

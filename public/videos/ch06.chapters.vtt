@@ -1,28 +1,37 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:17.120
+00:00:00.000 --> 00:00:19.592
 Temporal Difference Learning
 
-00:00:17.120 --> 00:00:38.920
-What is TD learning?
+00:00:19.592 --> 00:00:48.808
+What DP and MC each got right
 
-00:00:38.920 --> 00:01:06.384
-From MC to TD
+00:00:48.808 --> 00:01:22.056
+Predicting your arrival time on the way home
 
-00:01:06.384 --> 00:01:38.432
+00:01:22.056 --> 00:01:54.440
+From MC to TD(0)
+
+00:01:54.440 --> 00:02:25.408
 TD target and TD error
 
-00:01:38.432 --> 00:02:04.384
-Tabular TD(0) for estimating v_\pi
+00:02:25.408 --> 00:03:06.744
+One TD update
 
-00:02:04.384 --> 00:02:44.688
-Worked example: one TD update
+00:03:06.744 --> 00:03:57.104
+TD vs. MC on the chain A → B → C → end
 
-00:02:44.688 --> 00:03:18.032
+00:03:57.104 --> 00:04:28.192
+Tabular TD(0) for estimating vπ
+
+00:04:28.192 --> 00:05:02.232
 Advantages of TD
 
-00:03:18.032 --> 00:03:52.576
-TD vs. Monte Carlo vs. DP
+00:05:02.232 --> 00:05:42.968
+DP vs. MC vs. TD
 
-00:03:52.576 --> 00:04:24.288
+00:05:42.968 --> 00:06:13.024
+Easy to mix up
+
+00:06:13.024 --> 00:06:47.088
 Chapter 6 summary

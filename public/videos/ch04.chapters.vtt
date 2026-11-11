@@ -1,40 +1,64 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:17.816
+00:00:00.000 --> 00:00:20.000
 Dynamic Programming
 
-00:00:17.816 --> 00:00:48.712
-Prediction vs. control
+00:00:20.000 --> 00:00:54.184
+What we already have from Chapter 3
 
-00:00:48.712 --> 00:01:08.208
+00:00:54.184 --> 00:01:35.280
+Two problems: prediction and control
+
+00:01:35.280 --> 00:02:10.064
+Policy evaluation = asking your neighbours, again and again
+
+00:02:10.064 --> 00:02:48.592
 Iterative policy evaluation
 
-00:01:08.208 --> 00:01:37.328
-Two arrays vs. in-place
+00:02:48.592 --> 00:03:19.320
+4×4 grid world: the setup
 
-00:01:37.328 --> 00:02:02.152
-Example: 4×4 grid world
+00:03:19.320 --> 00:03:39.560
+Sweep 1: every non-terminal cell becomes −1
 
-00:02:02.152 --> 00:02:21.696
-Converged value of the random policy
+00:03:39.560 --> 00:04:15.400
+Sweep 2: cells next to T learn they are closer
 
-00:02:21.696 --> 00:02:57.512
-Policy improvement
+00:04:15.400 --> 00:04:45.696
+Sweep 3 … and after convergence
 
-00:02:57.512 --> 00:03:29.104
-Policy iteration
+00:04:45.696 --> 00:05:27.176
+Iterative policy evaluation (in-place)
 
-00:03:29.104 --> 00:04:09.768
+00:05:27.176 --> 00:06:01.240
+Policy improvement: once you know the map, take the best road
+
+00:06:01.240 --> 00:06:35.808
+Greedify in the grid world (cell 1, vπ of the random policy)
+
+00:06:35.808 --> 00:07:09.560
+Policy improvement theorem
+
+00:07:09.560 --> 00:07:43.360
+Policy iteration: evaluate, improve, repeat
+
+00:07:43.360 --> 00:08:25.824
 Generalized policy iteration (GPI)
 
-00:04:09.768 --> 00:04:36.800
-Value iteration
+00:08:25.824 --> 00:09:00.032
+Value iteration: one sweep of evaluation, then greedify
 
-00:04:36.800 --> 00:05:05.704
+00:09:00.032 --> 00:09:34.576
+Value iteration on the same grid: done in 3 sweeps
+
+00:09:34.576 --> 00:10:01.464
 Synchronous vs. asynchronous DP
 
-00:05:05.704 --> 00:05:41.616
-Efficiency of DP and bootstrapping
+00:10:01.464 --> 00:10:40.040
+Why DP is efficient, and what bootstrapping means
 
-00:05:41.616 --> 00:06:15.848
+00:10:40.040 --> 00:11:14.224
+Easy to mix up
+
+00:11:14.224 --> 00:11:49.608
 Chapter 4 summary

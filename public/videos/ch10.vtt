@@ -5,173 +5,237 @@ WEBVTT
 Chào bạn, đến với chương mười: điều khiển với xấp xỉ hàm và average reward.
 
 2
-00:00:05.650 --> 00:00:15.528
-Chương này gộp ba bài: Episodic Sarsa with Function Approximation, Exploration under Function Approximation, và Understand Average Reward.
+00:00:05.650 --> 00:00:22.464
+Chương này gộp ba bài: Episodic Sarsa with Function Approximation, Exploration under Function Approximation, và Average Reward. Hai nửa đầu chỉ là ghép chương bảy với chương chín. Nửa sau giới thiệu một cách đặt mục tiêu mới cho continuing task.
 
 3
-00:00:16.328 --> 00:00:24.203
-Để làm control, ta cần xấp xỉ action value. Vector đặc trưng phải phụ thuộc cả trạng thái và hành động.
+00:00:23.264 --> 00:00:24.714
+Nhắc lại. Chương bảy dùng bảng Q. Chương này thay bảng bằng trọng số w và hàm q mũ, đúng như chương chín đã làm cho V.
 
 4
-00:00:24.203 --> 00:00:30.766
-Cách đơn giản là stacked features: lặp lại các đặc trưng trạng thái một lần cho mỗi hành động, xếp chồng lên nhau.
+00:00:24.714 --> 00:00:25.214
+Cập nhật cũng y như chương chín: thay vì cộng TD error vào một ô, ta cộng TD error nhân gradient vào w.
 
 5
-00:00:30.766 --> 00:00:39.608
-Ví dụ bốn đặc trưng trạng thái và ba hành động cho mười hai đặc trưng. Chỉ đoạn ứng với hành động đang xét được bật, các đoạn khác bằng không.
+00:00:25.214 --> 00:00:46.376
+Và như chương bảy, Sarsa, Expected Sarsa và Q-learning chỉ khác nhau ở target. Nắm hai chương trước thì nửa đầu chương này gần như đã biết.
 
 6
-00:00:40.408 --> 00:00:49.083
-Mỗi hành động có một đoạn riêng trong vector trọng số. Giá trị hành động là tích vô hướng giữa đoạn trọng số đó với đặc trưng trạng thái.
+00:00:47.176 --> 00:00:53.876
+Để làm control, ta cần xấp xỉ action value, nên đặc trưng phải phụ thuộc cả trạng thái và hành động.
 
 7
-00:00:49.083 --> 00:00:58.308
-Trong ví dụ, trạng thái s zero bật hai đặc trưng. Với hành động a zero, q mũ bằng không phẩy bảy cộng không phẩy ba, bằng một.
+00:00:53.876 --> 00:01:00.426
+Cách đơn giản là stacked features: lặp lại các đặc trưng trạng thái một lần cho mỗi hành động, xếp chồng lên nhau.
 
 8
-00:00:58.308 --> 00:01:02.783
-Với a một, bằng hai phẩy hai cộng một phẩy tám, bằng bốn.
+00:01:00.426 --> 00:01:13.504
+Ví dụ bốn đặc trưng trạng thái và ba hành động thì có mười hai đặc trưng. Khi xét hành động nào, chỉ đoạn của hành động đó được bật, các đoạn khác bằng không. Mỗi hành động coi như có bộ trọng số riêng.
 
 9
-00:01:02.783 --> 00:01:16.624
-Với a hai, bằng một phẩy năm cộng một phẩy bảy, bằng ba. Vậy hành động greedy là a một. Với neural network, ta thường cho một output cho mỗi hành động, dùng chung các đặc trưng ở lớp ẩn cuối.
+00:01:14.304 --> 00:01:25.179
+Ví dụ trong slide: trạng thái s không bật hai đặc trưng nhị phân. Với hành động a không, hai trọng số tương ứng là không phẩy bảy và không phẩy ba, nên q mũ bằng một.
 
 10
-00:01:17.424 --> 00:01:25.074
-Episodic semi-gradient Sarsa giống Sarsa dạng bảng, chỉ khác là ta cập nhật vector trọng số thay vì một ô trong bảng.
+00:01:25.179 --> 00:01:30.592
+Với a một, hai trọng số là hai phẩy hai và một phẩy tám, q mũ bằng bốn.
 
 11
-00:01:25.074 --> 00:01:37.399
-Target là R t cộng một cộng gamma nhân q mũ của trạng thái và hành động kế tiếp, rồi nhân TD error với gradient của q mũ. Hành động vẫn được chọn epsilon-greedy theo q mũ.
+00:01:30.592 --> 00:01:44.424
+Với a hai, q mũ bằng một phẩy năm cộng một phẩy bảy, bằng ba. Hành động greedy là a một. Nếu dùng neural network, người ta thường cho mạng một output cho mỗi hành động, dùng chung các lớp ẩn.
 
 12
-00:01:37.399 --> 00:01:41.952
-Khi S phẩy là trạng thái kết thúc, target chỉ còn là R.
+00:01:45.224 --> 00:01:52.512
+Episodic semi-gradient Sarsa: target giống hệt Sarsa ở chương bảy, phần nhân gradient giống hệt chương chín.
 
 13
-00:01:42.752 --> 00:01:48.952
-Expected Sarsa và Q-learning cũng mở rộng tương tự. Chỉ có target thay đổi.
+00:01:52.512 --> 00:02:00.274
+Hành động vẫn được chọn epsilon-greedy theo q mũ: tính q mũ cho mọi hành động rồi chọn cái lớn nhất, thỉnh thoảng chọn ngẫu nhiên.
 
 14
-00:01:48.952 --> 00:01:55.227
-Với Expected Sarsa, target dùng kỳ vọng của q mũ theo target policy ở trạng thái kế tiếp.
+00:02:00.274 --> 00:02:04.832
+Khi S phẩy là trạng thái kết thúc, target chỉ còn là R.
 
 15
-00:01:55.227 --> 00:01:58.502
-Với Q-learning, thay kỳ vọng bằng max.
+00:02:05.632 --> 00:02:11.407
+Mã giả. Đầu episode chọn hành động epsilon-greedy theo q mũ.
 
 16
-00:01:58.502 --> 00:02:04.808
-Trong cả hai, ta tính q mũ cho mọi hành động ở trạng thái kế tiếp, rồi lấy kỳ vọng hoặc lấy max.
+00:02:11.407 --> 00:02:19.394
+Thực hiện, quan sát. Nếu tới trạng thái kết thúc thì target chỉ là R, cập nhật rồi sang episode mới.
 
 17
-00:02:05.608 --> 00:02:14.796
-Trong dạng bảng, optimistic initial values nghĩa là khởi tạo giá trị lớn hơn giá trị thật, khiến agent tò mò thử mọi hành động một cách có hệ thống.
+00:02:19.394 --> 00:02:24.694
+Nếu chưa kết thúc, chọn hành động kế tiếp A phẩy trước, giống Sarsa dạng bảng.
 
 18
-00:02:14.796 --> 00:02:21.196
-Với xấp xỉ tuyến tính và đặc trưng nhị phân, ta có thể khởi tạo mỗi trọng số bằng return lớn nhất có thể.
+00:02:24.694 --> 00:02:28.420
+Cập nhật w bằng TD error nhân gradient.
 
 19
-00:02:21.196 --> 00:02:30.683
-Nhưng khái quát hoá có thể xoá mất sự lạc quan: ví dụ chỉ có một đặc trưng luôn bằng một, mỗi cập nhật làm giảm giá trị mọi trạng thái, kể cả những nơi chưa ghé thăm.
+00:02:28.420 --> 00:02:31.288
+Gán S và A cho bước tiếp theo.
 
 20
-00:02:30.683 --> 00:02:41.176
-Tile coding cập nhật cục bộ nên giữ được sự lạc quan tốt hơn. Với neural network, quan hệ giữa trọng số và giá trị rất phức tạp, nên khó khởi tạo lạc quan.
+00:02:32.088 --> 00:02:45.463
+Expected Sarsa và Q-learning mở rộng theo đúng cách đó. Chỉ có target U t thay đổi: Expected Sarsa lấy trung bình theo policy, Q-learning lấy max. Đúng như bảng so sánh ở chương bảy.
 
 21
-00:02:41.976 --> 00:02:49.276
-Epsilon-greedy dùng được với mọi loại xấp xỉ hàm, kể cả phi tuyến, vì nó chỉ cần các ước lượng action value.
+00:02:45.463 --> 00:02:55.152
+Công thức cập nhật trọng số thì dùng chung. Trong cả hai trường hợp, ta tính q mũ cho mọi hành động ở trạng thái kế tiếp, rồi lấy trung bình hoặc lấy max.
 
 22
-00:02:49.276 --> 00:02:57.701
-Nhược điểm: đây không phải phương pháp khám phá có định hướng. Nó dựa vào hành động ngẫu nhiên để tình cờ tìm ra hành động tốt hơn.
+00:02:55.952 --> 00:03:03.577
+Nhắc lại chương một: khởi tạo giá trị lạc quan, cao hơn thực tế, khiến agent tò mò thử mọi hành động một cách có hệ thống.
 
 23
-00:02:57.701 --> 00:03:01.964
-Vì vậy nó kém hệ thống hơn các phương pháp dựa trên sự lạc quan.
+00:03:03.577 --> 00:03:09.990
+Với xấp xỉ tuyến tính và đặc trưng nhị phân, ta có thể khởi tạo mỗi trọng số bằng return lớn nhất có thể.
 
 24
-00:03:01.964 --> 00:03:07.440
-Tuy vậy, epsilon-greedy vẫn là cách phổ biến nhất trong thực tế vì đơn giản.
+00:03:09.990 --> 00:03:20.877
+Nhưng khái quát hoá có thể xoá mất sự lạc quan. Ví dụ chỉ có một đặc trưng luôn bằng một: mỗi lần cập nhật làm giảm giá trị của mọi trạng thái, kể cả những nơi chưa từng ghé.
 
 25
-00:03:08.240 --> 00:03:21.453
-Xét MDP hai vòng. Ở trạng thái S, agent chọn vòng trái hoặc vòng phải, mỗi vòng có năm trạng thái. Vòng trái cho cộng một ngay sau khi rời S. Vòng phải cho cộng hai ở cuối vòng.
+00:03:20.877 --> 00:03:31.016
+Tile coding cập nhật cục bộ nên giữ sự lạc quan tốt hơn. Với neural network, quan hệ giữa trọng số và giá trị quá phức tạp nên rất khó khởi tạo lạc quan.
 
 26
-00:03:21.453 --> 00:03:29.815
-Giá trị đi trái bằng một chia một trừ gamma mũ năm. Giá trị đi phải bằng hai gamma mũ bốn chia một trừ gamma mũ năm.
+00:03:31.816 --> 00:03:39.328
+Epsilon-greedy thì dùng được với mọi loại xấp xỉ hàm, kể cả phi tuyến, vì nó chỉ cần đọc ra các giá trị q mũ.
 
 27
-00:03:29.815 --> 00:03:40.265
-Với gamma bằng không phẩy năm, agent thích đi trái. Với gamma bằng không phẩy chín, agent thích đi phải, vốn thực sự cho nhiều reward hơn về lâu dài.
+00:03:39.328 --> 00:03:46.616
+Nhược điểm: không có định hướng. Nó chỉ trông chờ vào hành động ngẫu nhiên để tình cờ gặp hành động tốt hơn.
 
 28
-00:03:40.265 --> 00:03:56.864
-Agent chỉ chọn phải khi gamma lớn hơn hai mũ âm một phần tư, khoảng không phẩy tám bốn một. Nếu vòng dài hơn, gamma cần càng gần một. Nhưng gamma lớn làm return lớn và biến động mạnh, khó học, và không thể đặt gamma bằng một trong continuing task.
+00:03:46.616 --> 00:03:49.491
+Nên kém hệ thống hơn cách lạc quan.
 
 29
-00:03:57.664 --> 00:04:05.264
-Giải pháp cho continuing task là average reward: phần thưởng trung bình trên mỗi bước thời gian, khi thời gian tiến tới vô cùng.
+00:03:49.491 --> 00:03:53.920
+Nhưng vì đơn giản, nó vẫn là cách phổ biến nhất trong thực tế.
 
 30
-00:04:05.264 --> 00:04:13.676
-Có thể viết bằng on-policy distribution mu: tổng theo trạng thái, của tần suất ở trạng thái đó nhân với reward kỳ vọng tại trạng thái đó.
+00:03:54.720 --> 00:04:02.508
+Chuyển sang nửa sau. Continuing task là bài toán không có episode, ví dụ máy chủ phục vụ yêu cầu ngày đêm.
 
 31
-00:04:13.676 --> 00:04:26.802
-Trong ví dụ hai vòng, đi trái được average reward bằng một phần năm, tức không phẩy hai. Đi phải được hai phần năm, tức không phẩy bốn. Vậy đi phải tốt hơn, mà không cần chọn gamma.
+00:04:02.508 --> 00:04:09.382
+Với gamma nhỏ hơn một, reward ở xa bị đánh giá thấp, dù về lâu dài chúng cũng thật như reward ở gần.
 
 32
-00:04:26.802 --> 00:04:31.000
-Average reward coi reward gần và xa quan trọng như nhau.
+00:04:09.382 --> 00:04:15.282
+Gamma nhỏ có thể khiến agent chọn hành vi tệ hơn về lâu dài, như ví dụ ngay sau đây.
 
 33
-00:04:31.800 --> 00:04:39.925
-Trong average reward, return được định nghĩa lại là differential return: tổng của reward trừ average reward ở mỗi bước.
+00:04:15.282 --> 00:04:25.632
+Còn gamma lớn thì return rất lớn và dao động mạnh, khó học. Đặt gamma bằng một thì tổng vô hạn. Vậy cần một cách đặt mục tiêu khác.
 
 34
-00:04:39.925 --> 00:04:45.488
-Differential value function đo một trạng thái hay hành động tốt hơn mức trung bình bao nhiêu.
+00:04:26.432 --> 00:04:39.682
+Ví dụ hai vòng trong slide. Ở trạng thái S, agent chọn vòng trái hoặc vòng phải, mỗi vòng năm trạng thái rồi quay về S. Vòng trái cho cộng một ngay bước đầu. Vòng phải cho cộng hai ở bước cuối.
 
 35
-00:04:45.488 --> 00:04:52.224
-Phương trình Bellman tương ứng không có gamma, và reward r được thay bằng r trừ r của pi.
+00:04:39.682 --> 00:04:47.682
+Với gamma bằng không phẩy năm: đi trái được một phẩy không ba, đi phải chỉ không phẩy một ba. Agent chọn trái.
 
 36
-00:04:53.024 --> 00:05:02.474
-Differential semi-gradient Sarsa học trong bài toán average reward. Nó duy trì một ước lượng R gạch ngang của average reward.
+00:04:47.682 --> 00:04:59.520
+Với gamma bằng không phẩy chín: trái hai phẩy bốn bốn, phải ba phẩy hai. Agent chọn phải. Chỉ khi gamma lớn hơn khoảng không phẩy tám bốn một agent mới chọn phải.
 
 37
-00:05:02.474 --> 00:05:11.936
-TD error bằng R trừ R gạch ngang, cộng q mũ của cặp kế tiếp, trừ q mũ của cặp hiện tại. Lưu ý không có gamma.
+00:04:59.520 --> 00:05:09.920
+Trong khi nhìn theo average reward thì rõ ràng: vòng trái được trung bình một phần năm mỗi bước, vòng phải hai phần năm. Phải luôn tốt hơn, không cần chọn gamma.
 
 38
-00:05:11.936 --> 00:05:16.999
-Ước lượng average reward được cập nhật bằng step size beta nhân delta.
+00:05:10.720 --> 00:05:16.070
+Average reward r của pi là phần thưởng trung bình mỗi bước, khi chạy rất lâu.
 
 39
-00:05:16.999 --> 00:05:22.232
-Và trọng số được cập nhật như Sarsa thông thường, với step size alpha.
+00:05:16.070 --> 00:05:25.720
+Viết cách khác: với mỗi trạng thái, lấy tần suất agent ở đó, theo on-policy distribution mu, nhân với reward kỳ vọng ở đó, rồi cộng lại.
 
 40
-00:05:23.032 --> 00:05:31.682
-Tóm tắt chương mười. Đặc trưng cho action value có thể dùng stacked features, hoặc neural network với một output cho mỗi hành động.
+00:05:25.720 --> 00:05:30.448
+Reward gần và xa được coi quan trọng như nhau, và không cần gamma.
 
 41
-00:05:31.682 --> 00:05:37.270
-Semi-gradient Sarsa, Expected Sarsa và Q-learning chỉ khác nhau ở target.
+00:05:31.248 --> 00:05:41.723
+Nếu chỉ cộng reward mãi thì tổng vô hạn. Mẹo là trừ average reward khỏi mỗi reward rồi mới cộng. Đó là differential return.
 
 42
-00:05:37.270 --> 00:05:42.707
-Khởi tạo lạc quan khó áp dụng khi xấp xỉ hàm, còn epsilon-greedy luôn dùng được.
+00:05:41.723 --> 00:05:50.661
+Ý nghĩa: bắt đầu từ trạng thái này thì mình kiếm được nhiều hơn hay ít hơn mức trung bình bao nhiêu. Đó là differential value function.
 
 43
-00:05:42.707 --> 00:05:47.844
-Với continuing task, average reward là mục tiêu thay thế cho discounting.
+00:05:50.661 --> 00:06:00.264
+Phương trình Bellman tương ứng không có gamma, và reward r được thay bằng r trừ r của pi. Đề hay hỏi đúng hai chi tiết này.
 
 44
-00:05:47.844 --> 00:05:58.720
-Và ta dùng differential return cùng differential semi-gradient Sarsa. Chương cuối, ta học trực tiếp policy với policy gradient và actor-critic.
+00:06:01.064 --> 00:06:11.214
+Thuật toán học trong bài toán average reward là differential semi-gradient Sarsa. Nó giữ thêm một ước lượng R gạch ngang của average reward.
+
+45
+00:06:11.214 --> 00:06:23.376
+TD error bằng R trừ R gạch ngang, cộng q mũ của cặp kế tiếp, trừ q mũ của cặp hiện tại. Ước lượng average reward được cập nhật bằng step size beta nhân delta.
+
+46
+00:06:23.376 --> 00:06:27.939
+Trọng số được cập nhật như Sarsa thông thường với step size alpha.
+
+47
+00:06:27.939 --> 00:06:31.040
+Chú ý không có gamma ở bất kỳ đâu.
+
+48
+00:06:31.840 --> 00:06:46.640
+Tính thử. Reward bằng một, ước lượng average reward đang là không phẩy bốn, q mũ của cặp kế tiếp bằng hai, của cặp hiện tại bằng một phẩy năm. TD error bằng một trừ không phẩy bốn cộng hai trừ một phẩy năm, bằng một phẩy một.
+
+49
+00:06:46.640 --> 00:06:53.602
+Cập nhật average reward với beta bằng không phẩy một: không phẩy bốn cộng không phẩy một một, bằng không phẩy năm một.
+
+50
+00:06:53.602 --> 00:06:59.776
+Cập nhật trọng số với alpha bằng không phẩy một: mỗi trọng số có đặc trưng bật được cộng không phẩy một một.
+
+51
+00:07:00.576 --> 00:07:08.288
+Vài câu dễ nhầm. Sarsa, Expected Sarsa và Q-learning với xấp xỉ hàm chỉ khác nhau ở target.
+
+52
+00:07:08.288 --> 00:07:13.101
+Phương pháp khám phá dùng được với mọi loại xấp xỉ hàm là epsilon-greedy.
+
+53
+00:07:13.101 --> 00:07:19.676
+Khởi tạo lạc quan khó vì khái quát hoá xoá mất sự lạc quan, và trọng số neural network khó diễn giải.
+
+54
+00:07:19.676 --> 00:07:24.651
+Differential return không dùng gamma, mà trừ average reward.
+
+55
+00:07:24.651 --> 00:07:30.864
+Trong ví dụ hai vòng, average reward của trái là không phẩy hai, của phải là không phẩy bốn.
+
+56
+00:07:31.664 --> 00:07:40.139
+Tóm tắt chương mười. Đặc trưng cho action value có thể dùng stacked features, hoặc neural network với một output mỗi hành động.
+
+57
+00:07:40.139 --> 00:07:45.727
+Semi-gradient Sarsa, Expected Sarsa và Q-learning chỉ khác nhau ở target.
+
+58
+00:07:45.727 --> 00:07:51.064
+Khởi tạo lạc quan khó dùng khi xấp xỉ hàm, còn epsilon-greedy luôn dùng được.
+
+59
+00:07:51.064 --> 00:07:55.352
+Với continuing task, average reward thay cho discounting.
+
+60
+00:07:55.352 --> 00:08:11.072
+Và ta học bằng differential return với differential semi-gradient Sarsa. Từ chương bốn đến giờ, policy luôn được suy ra từ value. Chương cuối sẽ học thẳng policy, với policy gradient và actor-critic.

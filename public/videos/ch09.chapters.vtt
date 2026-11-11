@@ -1,49 +1,64 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:22.616
+00:00:00.000 --> 00:00:20.336
 On-policy Prediction with Function Approximation
 
-00:00:22.616 --> 00:00:55.624
+00:00:20.336 --> 00:00:44.080
+Everything so far used a table
+
+00:00:44.080 --> 00:01:13.608
+Learn a formula instead of memorising every answer
+
+00:01:13.608 --> 00:01:40.448
 From tables to parameterized functions
 
-00:00:55.624 --> 00:01:16.080
+00:01:40.448 --> 00:02:13.624
 Linear value function approximation
 
-00:01:16.080 --> 00:01:59.912
+00:02:13.624 --> 00:02:52.824
 Generalization vs. discrimination
 
-00:01:59.912 --> 00:02:30.784
-Mean squared value error \overline{VE}
+00:02:52.824 --> 00:03:21.584
+The objective: mean squared value error VE
 
-00:02:30.784 --> 00:02:51.024
-Gradient descent
+00:03:21.584 --> 00:03:47.056
+Stochastic gradient descent
 
-00:02:51.024 --> 00:03:18.440
+00:03:47.056 --> 00:04:14.856
 Gradient Monte Carlo
 
-00:03:18.440 --> 00:03:44.752
+00:04:14.856 --> 00:04:44.720
 State aggregation
 
-00:03:44.752 --> 00:04:16.032
+00:04:44.720 --> 00:05:14.872
 Semi-gradient TD(0)
 
-00:04:16.032 --> 00:04:46.088
-TD vs. gradient Monte Carlo
+00:05:14.872 --> 00:05:34.392
+One linear semi-gradient TD update
 
-00:04:46.088 --> 00:05:22.744
-Linear TD and the tabular special case
+00:05:34.392 --> 00:06:02.984
+Semi-gradient TD(0) for estimating vπ
 
-00:05:22.744 --> 00:05:53.808
+00:06:02.984 --> 00:06:42.400
+Gradient MC vs. semi-gradient TD
+
+00:06:42.400 --> 00:07:13.200
+Linear TD: tabular TD is a special case
+
+00:07:13.200 --> 00:07:44.888
 The TD fixed point
 
-00:05:53.808 --> 00:06:27.248
+00:07:44.888 --> 00:08:18.232
 Coarse coding
 
-00:06:27.248 --> 00:06:53.584
-Shape and size of features
+00:08:18.232 --> 00:08:46.824
+Size and shape of features
 
-00:06:53.584 --> 00:07:25.608
-Tile coding
+00:08:46.824 --> 00:09:31.736
+Tile coding: count the features
 
-00:07:25.608 --> 00:08:02.936
+00:09:31.736 --> 00:09:56.728
+Easy to mix up
+
+00:09:56.728 --> 00:10:34.920
 Chapter 9 summary

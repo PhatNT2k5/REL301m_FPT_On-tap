@@ -1,37 +1,52 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:16.328
+00:00:00.000 --> 00:00:23.264
 Control with Function Approximation & Average Reward
 
-00:00:16.328 --> 00:00:40.408
-From state values to action values
+00:00:23.264 --> 00:00:47.176
+Chapter 7 + Chapter 9 = this chapter
 
-00:00:40.408 --> 00:01:17.424
-Computing action values (stacked features)
+00:00:47.176 --> 00:01:14.304
+Features must depend on the action: stacked features
 
-00:01:17.424 --> 00:01:42.752
+00:01:14.304 --> 00:01:45.224
+Action values with stacked features
+
+00:01:45.224 --> 00:02:05.632
 Episodic semi-gradient Sarsa
 
-00:01:42.752 --> 00:02:05.608
-Expected Sarsa and Q-learning with FA
+00:02:05.632 --> 00:02:32.088
+Episodic semi-gradient Sarsa
 
-00:02:05.608 --> 00:02:41.976
-Optimistic initial values with FA
+00:02:32.088 --> 00:02:55.952
+Expected Sarsa and Q-learning with function approximation
 
-00:02:41.976 --> 00:03:08.240
-\epsilon-greedy with FA
+00:02:55.952 --> 00:03:31.816
+Optimistic initial values with function approximation
 
-00:03:08.240 --> 00:03:57.664
-The problem with discounting
+00:03:31.816 --> 00:03:54.720
+ε-greedy with function approximation
 
-00:03:57.664 --> 00:04:31.800
-Average reward r(\pi)
+00:03:54.720 --> 00:04:26.432
+Why discounting is awkward for tasks that never end
 
-00:04:31.800 --> 00:04:53.024
-Differential return and value functions
+00:04:26.432 --> 00:05:10.720
+Two rings: the choice depends on γ
 
-00:04:53.024 --> 00:05:23.032
+00:05:10.720 --> 00:05:31.248
+Average reward r(π)
+
+00:05:31.248 --> 00:06:01.064
+Differential return: better or worse than average?
+
+00:06:01.064 --> 00:06:31.840
 Differential semi-gradient Sarsa
 
-00:05:23.032 --> 00:05:59.520
+00:06:31.840 --> 00:07:00.576
+One differential Sarsa step
+
+00:07:00.576 --> 00:07:31.664
+Easy to mix up
+
+00:07:31.664 --> 00:08:11.872
 Chapter 10 summary

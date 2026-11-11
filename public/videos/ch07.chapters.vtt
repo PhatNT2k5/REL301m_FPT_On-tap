@@ -1,37 +1,49 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:17.816
+00:00:00.000 --> 00:00:19.880
 TD Control: Sarsa, Q-learning, Expected Sarsa
 
-00:00:17.816 --> 00:00:44.176
-GPI with TD
+00:00:19.880 --> 00:00:47.536
+The three pieces we combine
 
-00:00:44.176 --> 00:01:12.456
+00:00:47.536 --> 00:01:20.472
+All three share one update rule
+
+00:01:20.472 --> 00:02:10.952
+Same transition, three different targets
+
+00:02:10.952 --> 00:02:35.608
 Sarsa: on-policy TD control
 
-00:01:12.456 --> 00:01:49.496
-Sarsa algorithm
+00:02:35.608 --> 00:03:06.072
+Sarsa (on-policy TD control)
 
-00:01:49.496 --> 00:02:24.976
+00:03:06.072 --> 00:03:42.416
 Q-learning: off-policy TD control
 
-00:02:24.976 --> 00:02:56.856
-Q-table example
+00:03:42.416 --> 00:04:06.088
+Q-learning: spot the difference with Sarsa
 
-00:02:56.856 --> 00:03:19.232
-Sarsa vs. Q-learning: the Bellman view
+00:04:06.088 --> 00:04:43.032
+Q-table update
 
-00:03:19.232 --> 00:03:57.040
-Sarsa vs. Q-learning (cliff walking intuition)
+00:04:43.032 --> 00:05:06.128
+The Bellman view
 
-00:03:57.040 --> 00:04:20.880
+00:05:06.128 --> 00:05:47.464
+Cliff walking: safe Sarsa vs. bold Q-learning
+
+00:05:47.464 --> 00:06:07.800
 Expected Sarsa
 
-00:04:20.880 --> 00:04:54.488
-Expected Sarsa example
-
-00:04:54.488 --> 00:05:25.624
+00:06:07.800 --> 00:06:35.960
 Expected Sarsa generalizes Q-learning
 
-00:05:25.624 --> 00:06:00.192
+00:06:35.960 --> 00:07:04.408
+Sarsa vs. Q-learning vs. Expected Sarsa
+
+00:07:04.408 --> 00:07:33.936
+Easy to mix up
+
+00:07:33.936 --> 00:08:07.592
 Chapter 7 summary

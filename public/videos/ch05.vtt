@@ -5,205 +5,301 @@ WEBVTT
 Chào bạn, đến với chương năm: Monte Carlo Methods.
 
 2
-00:00:04.438 --> 00:00:19.488
-Chương này gộp bốn bài: Introduction to Monte Carlo, Monte Carlo for Control, Exploration Methods, và Off-policy learning for prediction. Từ đây, ta không cần biết mô hình môi trường nữa, mà học trực tiếp từ kinh nghiệm.
+00:00:04.438 --> 00:00:18.936
+Chương này gộp bốn bài: Introduction to Monte Carlo, Monte Carlo for Control, Exploration Methods và Off-policy learning. Từ đây agent không còn được biết mô hình môi trường nữa, mà phải tự đi và học từ kinh nghiệm.
 
 3
-00:00:20.288 --> 00:00:30.400
-Dynamic programming cần mô hình đầy đủ của môi trường, điều thường không có trong thực tế. Ví dụ tính chính xác xác suất của tổng mười hai con xúc xắc đã rất phức tạp.
+00:00:19.736 --> 00:00:25.199
+Chương trước, DP biết hết xác suất chuyển trạng thái nên tính được kỳ vọng một cách chính xác.
 
 4
-00:00:30.400 --> 00:00:34.863
-Monte Carlo giải quyết bằng cách lấy mẫu ngẫu nhiên rồi tính trung bình.
+00:00:25.199 --> 00:00:32.736
+Nhưng ngoài đời ta hiếm khi có mô hình đó. Thử tính chính xác xác suất tổng của mười hai con xúc xắc thôi đã rất mệt.
 
 5
-00:00:34.863 --> 00:00:41.776
-Tung mười hai con xúc xắc vài lần, trung bình tổng được bốn mốt phẩy năm bảy, rất gần giá trị thật là bốn mươi hai.
+00:00:32.736 --> 00:00:39.823
+Monte Carlo làm đơn giản hơn: cứ chơi thật nhiều ván, ghi lại return thực tế nhận được, rồi lấy trung bình.
 
 6
-00:00:41.776 --> 00:00:48.632
-Càng nhiều mẫu, trung bình càng gần kỳ vọng. Đó là toàn bộ ý tưởng của Monte Carlo.
+00:00:39.823 --> 00:00:48.416
+Khung tư duy vẫn là GPI của chương bốn: đánh giá rồi cải thiện. Chỉ khác là bước đánh giá dùng mẫu thay vì dùng mô hình.
 
 7
-00:00:49.432 --> 00:00:57.207
-Để ước lượng v pi của s, agent đi theo policy pi, ghi lại return sau mỗi lần ghé thăm s, rồi lấy trung bình.
+00:00:49.216 --> 00:00:54.541
+Ví dụ trong slide: tổng của mười hai con xúc xắc có kỳ vọng đúng bằng bốn mươi hai.
 
 8
-00:00:57.207 --> 00:01:03.370
-Return chỉ biết được khi episode kết thúc, nên Monte Carlo chỉ áp dụng cho episodic task.
+00:00:54.541 --> 00:00:59.904
+Tung thử vài lần rồi lấy trung bình, ta được bốn mốt phẩy năm bảy, đã rất gần.
 
 9
-00:01:03.370 --> 00:01:11.920
-Giống bandit, nhưng thay vì trung bình reward của một cần gạt, ta lấy trung bình return khi đi theo một policy từ trạng thái s đến cuối episode.
+00:00:59.904 --> 00:01:05.378
+Càng nhiều mẫu, trung bình càng gần kỳ vọng. Đây là luật số lớn.
 
 10
-00:01:12.720 --> 00:01:20.758
-Để tính return hiệu quả, ta đi ngược từ cuối episode, dùng công thức G t bằng R t cộng một cộng gamma G t cộng một.
+00:01:05.378 --> 00:01:14.032
+Monte Carlo trong RL chỉ là áp dụng ý này: giá trị của một trạng thái là trung bình các return đã quan sát được sau khi ghé trạng thái đó.
 
 11
-00:01:20.758 --> 00:01:29.945
-Ví dụ chuỗi reward ba, bốn, bảy, một, hai, với gamma bằng không phẩy năm. Ở cuối, G năm bằng không.
+00:01:14.832 --> 00:01:23.869
+Để ước lượng v pi của s, agent đi theo policy pi, mỗi lần ghé s thì ghi lại return từ đó đến cuối episode, rồi lấy trung bình.
 
 12
-00:01:29.945 --> 00:01:39.808
-G bốn bằng hai. G ba bằng một cộng không phẩy năm nhân hai, bằng hai. G hai bằng bảy cộng không phẩy năm nhân hai, bằng tám.
+00:01:23.869 --> 00:01:31.957
+Return chỉ biết khi episode kết thúc, nên Monte Carlo chỉ dùng cho episodic task. Đây là câu hay hỏi.
 
 13
-00:01:39.808 --> 00:01:51.360
-G một bằng bốn cộng không phẩy năm nhân tám, bằng tám. Và G zero bằng ba cộng không phẩy năm nhân tám, bằng bảy. Đây là dạng bài tính toán rất hay ra thi.
+00:01:31.957 --> 00:01:39.257
+Nó giống bandit ở chương một, nhưng thay vì trung bình reward của một cần gạt, ta trung bình return của cả một chuỗi hành động.
 
 14
-00:01:52.160 --> 00:01:58.122
-Thuật toán first-visit Monte Carlo prediction: sinh một episode theo policy pi.
+00:01:39.257 --> 00:01:46.704
+Và Monte Carlo không bootstrap: nó dùng return thật, không dựa vào giá trị ước lượng của trạng thái khác như DP.
 
 15
-00:01:58.122 --> 00:02:02.410
-Duyệt ngược từ cuối, cập nhật G bằng gamma G cộng reward.
+00:01:47.504 --> 00:02:02.066
+Dạng bài tính toán rất hay ra thi. Chuỗi reward là ba, bốn, bảy, một, hai, gamma bằng không phẩy năm. Mẹo là đi ngược từ cuối. Ở cuối episode, return bằng không.
 
 16
-00:02:02.410 --> 00:02:09.422
-Với first-visit, chỉ thêm G vào danh sách return của S t ở lần đầu tiên trạng thái đó xuất hiện trong episode.
+00:02:02.066 --> 00:02:06.791
+G bốn bằng reward cuối là hai, cộng nửa của không, bằng hai.
 
 17
-00:02:09.422 --> 00:02:20.792
-Giá trị V của S t bằng trung bình danh sách return. Còn every-visit Monte Carlo thì dùng mọi lần ghé thăm. Cả hai đều hội tụ về v pi.
+00:02:06.791 --> 00:02:10.342
+G ba bằng một cộng nửa của hai, bằng hai.
 
 18
-00:02:21.592 --> 00:02:30.842
-Ví dụ kinh điển: Blackjack. Mỗi ván là một episode. Thua nhận âm một, hoà nhận không, thắng nhận cộng một.
+00:02:10.342 --> 00:02:13.916
+G hai bằng bảy cộng nửa của hai, bằng tám.
 
 19
-00:02:30.842 --> 00:02:37.392
-Hành động chỉ có hai: hit để rút thêm bài, hoặc stick để dừng. Gamma bằng một.
+00:02:13.916 --> 00:02:17.429
+G một bằng bốn cộng nửa của tám, bằng tám.
 
 20
-00:02:37.392 --> 00:02:47.504
-Trạng thái gồm: có usable ace hay không, tổng điểm của người chơi từ mười hai đến hai mốt, và lá bài ngửa của nhà cái. Tổng cộng hai trăm trạng thái.
+00:02:17.429 --> 00:02:25.184
+Và G không bằng ba cộng nửa của tám, bằng bảy. Đi ngược thì mỗi bước chỉ cần một phép nhân và một phép cộng.
 
 21
-00:02:47.504 --> 00:03:01.024
-Policy được đánh giá: chỉ dừng khi tổng là hai mươi hoặc hai mốt. Ví dụ đang mười ba, hit được bảy thành hai mươi, stick, nhà cái bị quắc. Return bằng cộng một cho cả hai trạng thái đã đi qua.
+00:02:25.984 --> 00:02:45.796
+Một episode có thể ghé cùng một trạng thái nhiều lần. Ví dụ episode A, B, A, B rồi kết thúc, gamma bằng một. Tính ngược ta có return lần lượt là bốn, ba, ba, một. First-visit chỉ lấy return ở lần ghé đầu tiên: A được bốn, B được ba.
 
 22
-00:03:01.824 --> 00:03:10.599
-Để điều khiển, ta cần action value. Cách học giống hệt: lấy trung bình return sau mỗi lần gặp cặp trạng thái và hành động.
+00:02:45.796 --> 00:02:55.184
+Every-visit lấy mọi lần ghé: A là trung bình của bốn và ba, bằng ba phẩy năm. B là trung bình của ba và một, bằng hai.
 
 23
-00:03:10.599 --> 00:03:19.924
-Khi không có mô hình, chỉ biết v thì không đủ để chọn hành động, vì không thể nhìn trước một bước. Ta cần q để so sánh trực tiếp các hành động.
+00:02:55.184 --> 00:03:02.224
+Hai cách cho kết quả khác nhau trên một episode, nhưng với đủ nhiều episode thì cả hai đều hội tụ về v pi.
 
 24
-00:03:19.924 --> 00:03:31.200
-Nhưng có vấn đề: nếu policy là deterministic, các hành động khác không bao giờ được thử, nên không có return để ước lượng. Đây là bài toán duy trì exploration.
+00:03:03.024 --> 00:03:10.011
+Mã giả first-visit Monte Carlo prediction. Mỗi trạng thái có một danh sách return.
 
 25
-00:03:32.000 --> 00:03:44.862
-Giải pháp đầu tiên là exploring starts: mỗi episode bắt đầu từ một cặp trạng thái và hành động ngẫu nhiên, sao cho mọi cặp đều có xác suất lớn hơn không. Sau bước đầu, agent đi theo policy của mình.
+00:03:10.011 --> 00:03:14.749
+Với mỗi episode, đầu tiên chơi trọn một ván theo policy pi.
 
 26
-00:03:44.862 --> 00:03:48.588
-Monte Carlo control là một dạng GPI. Bước evaluation dùng Monte Carlo để ước lượng q.
+00:03:14.749 --> 00:03:20.761
+Sau đó duyệt ngược từ cuối, cập nhật G bằng gamma G cộng reward, giống hệt bảng vừa tính.
 
 27
-00:03:48.588 --> 00:03:49.088
-Bước improvement chọn hành động tham lam theo Q.
+00:03:20.761 --> 00:03:30.799
+Dòng bảy là chỗ khác biệt của first-visit: chỉ ghi nhận nếu đây là lần đầu trạng thái xuất hiện trong episode. Bỏ dòng này đi là ta có every-visit.
 
 28
-00:03:49.088 --> 00:04:10.568
-Và ta cải thiện policy ngay sau mỗi episode. Thuật toán này gọi là Monte Carlo ES. Chạy đủ lâu với Blackjack, nó tìm ra policy tối ưu: có usable ace thì chơi mạnh tay hơn, còn không có thì phụ thuộc nhiều vào lá bài của nhà cái.
+00:03:30.799 --> 00:03:34.536
+Cuối cùng, giá trị bằng trung bình danh sách return.
 
 29
-00:04:11.368 --> 00:04:17.630
-Exploring starts không phải lúc nào cũng dùng được, vì phải bắt đầu được từ mọi cặp trạng thái và hành động.
+00:03:35.336 --> 00:03:44.473
+Ví dụ kinh điển: Blackjack. Mỗi ván là một episode. Thua được âm một, hoà được không, thắng được cộng một.
 
 30
-00:04:17.630 --> 00:04:24.018
-Thử nghĩ với xe tự lái: làm sao đặt chiếc xe vào đủ mọi trạng thái ngẫu nhiên giữa đường cao tốc đông đúc?
+00:03:44.473 --> 00:03:50.773
+Chỉ có hai hành động: hit để rút thêm bài, stick để dừng. Gamma bằng một.
 
 31
-00:04:24.018 --> 00:04:26.906
-Điều đó nguy hiểm và không thực tế.
+00:03:50.773 --> 00:04:02.048
+Trạng thái gồm: có usable ace hay không, tổng điểm người chơi từ mười hai đến hai mốt, và lá bài ngửa của nhà cái. Hai nhân mười nhân mười, tổng cộng hai trăm trạng thái.
 
 32
-00:04:26.906 --> 00:04:32.896
-Giải pháp thay thế: duy trì việc khám phá ngay trong quá trình hành động, bằng một policy mềm.
+00:04:02.048 --> 00:04:14.000
+Policy được đánh giá: chỉ dừng khi được hai mươi hoặc hai mốt. Vì gamma bằng một và reward chỉ có ở cuối, mọi trạng thái đã đi qua trong ván đều nhận cùng một return là kết quả ván đó.
 
 33
-00:04:33.696 --> 00:04:43.296
-Epsilon-soft policy là policy mà mọi hành động đều có xác suất ít nhất epsilon chia số hành động. Vì vậy nó luôn là stochastic.
+00:04:14.800 --> 00:04:22.087
+Nhớ lại chương bốn: để greedify bằng v, ta phải nhìn trước một bước qua mô hình p để biết mỗi hành động dẫn tới đâu.
 
 34
-00:04:43.296 --> 00:04:51.633
-Epsilon-greedy là trường hợp phổ biến nhất của epsilon-soft: greedy action có xác suất một trừ epsilon cộng epsilon chia số hành động.
+00:04:22.087 --> 00:04:30.575
+Giờ không có mô hình thì không nhìn trước được. Biết mỗi trạng thái tốt bao nhiêu cũng vô ích nếu không biết hành động nào dẫn tới trạng thái nào.
 
 35
-00:04:51.633 --> 00:05:06.408
-Monte Carlo control với epsilon-soft policy không cần exploring starts. Nhưng lưu ý: nó chỉ tìm được policy tốt nhất trong lớp epsilon-soft, tức gần tối ưu, chứ không phải policy tối ưu thật sự, vì vẫn luôn khám phá.
+00:04:30.575 --> 00:04:38.537
+Vì vậy ta học thẳng q của s và a: điểm của từng hành động. Muốn chọn thì cứ lấy hành động có q lớn nhất.
 
 36
-00:05:07.208 --> 00:05:17.383
-Off-policy learning tách vai trò thành hai policy. Target policy pi là policy mà ta muốn học giá trị, ví dụ optimal policy.
+00:04:38.537 --> 00:04:44.008
+Cách học q y hệt: lấy trung bình return sau mỗi lần gặp cặp trạng thái và hành động.
 
 37
-00:05:17.383 --> 00:05:24.395
-Behavior policy b là policy thực sự chọn hành động, thường mang tính khám phá, như chọn ngẫu nhiên đều.
+00:04:44.808 --> 00:04:56.520
+Vấn đề: nếu policy deterministic, các hành động khác không bao giờ được thử, nên không có return nào để ước lượng q của chúng. Có thể hành động tốt nhất bị bỏ quên mãi mãi.
 
 38
-00:05:24.395 --> 00:05:36.295
-On-policy là khi target policy trùng behavior policy. Off-policy là khi chúng khác nhau. On-policy chính là trường hợp đặc biệt của off-policy.
+00:04:56.520 --> 00:05:03.295
+Cách đầu tiên là exploring starts: mỗi episode bắt đầu từ một cặp trạng thái và hành động được chọn ngẫu nhiên.
 
 39
-00:05:36.295 --> 00:05:46.616
-Điều kiện bắt buộc là coverage: nếu target policy chọn hành động a ở trạng thái s với xác suất dương, thì behavior policy cũng phải chọn hành động đó với xác suất dương.
+00:05:03.295 --> 00:05:08.808
+Mọi cặp đều có xác suất dương được chọn làm điểm xuất phát, nên mọi cặp đều sẽ được thử.
 
 40
-00:05:47.416 --> 00:05:53.428
-Vấn đề: dữ liệu được lấy mẫu từ phân phối b, nhưng ta muốn kỳ vọng theo phân phối pi. Trung bình mẫu thông thường sẽ cho kỳ vọng theo b.
+00:05:08.808 --> 00:05:13.656
+Sau bước đầu tiên đó, agent đi theo policy của mình như bình thường.
 
 41
-00:05:53.428 --> 00:06:01.728
-Importance sampling nhân mỗi mẫu với tỉ số rho bằng pi của x chia b của x, rồi lấy trung bình.
+00:05:14.456 --> 00:05:22.356
+Đây là Monte Carlo ES. Điểm đặc trưng là dòng ba: chọn ngẫu nhiên cặp trạng thái và hành động để bắt đầu.
 
 42
-00:06:01.728 --> 00:06:11.378
-Ví dụ: lấy được x bằng một, pi bằng không phẩy ba, b bằng không phẩy tám lăm, ước lượng bằng một nhân không phẩy ba chia không phẩy tám lăm, khoảng không phẩy ba lăm.
+00:05:22.356 --> 00:05:25.843
+Sau đó chơi trọn ván theo policy hiện tại.
 
 43
-00:06:11.378 --> 00:06:23.104
-Mẫu tiếp theo x bằng ba, pi bằng không phẩy một, b bằng không phẩy không năm, tỉ số bằng hai. Trung bình hai mẫu là không phẩy ba lăm cộng sáu, chia hai, khoảng ba phẩy một tám.
+00:05:25.843 --> 00:05:32.656
+Duyệt ngược để tính return, và cập nhật Q bằng trung bình. Đó là bước evaluation.
 
 44
-00:06:23.904 --> 00:06:32.341
-Áp dụng vào Monte Carlo: mỗi return G t được nhân với rho, là tích các tỉ số pi chia b dọc theo phần còn lại của trajectory.
+00:05:32.656 --> 00:05:43.112
+Ngay sau đó greedify policy theo Q. Đó là bước improvement. Đánh giá và cải thiện xen kẽ sau mỗi episode, đúng tinh thần GPI ở chương bốn.
 
 45
-00:06:32.341 --> 00:06:40.266
-Điểm hay: các xác suất chuyển trạng thái p xuất hiện ở cả tử và mẫu nên triệt tiêu nhau. Ta không cần biết mô hình.
+00:05:43.912 --> 00:05:50.150
+Exploring starts không phải lúc nào cũng làm được, vì phải bắt đầu được từ mọi cặp trạng thái và hành động.
 
 46
-00:06:40.266 --> 00:06:45.941
-Ordinary importance sampling là ước lượng không chệch, nhưng phương sai có thể rất lớn.
+00:05:50.150 --> 00:05:56.299
+Thử nghĩ với xe tự lái: làm sao đặt chiếc xe vào mọi tình huống ngẫu nhiên giữa đường cao tốc đông đúc?
 
 47
-00:06:45.941 --> 00:06:53.856
-Weighted importance sampling có chệch, nhưng độ chệch giảm về không, và phương sai nhỏ hơn nhiều, nên thường được ưu tiên trong thực tế.
+00:05:56.299 --> 00:05:58.962
+Vừa nguy hiểm vừa không thực tế.
 
 48
-00:06:54.656 --> 00:07:02.518
-Tóm tắt chương năm. Monte Carlo học từ các episode hoàn chỉnh, không cần mô hình, và không bootstrap.
+00:05:58.962 --> 00:06:05.992
+Giải pháp thay thế: thay vì khám phá ở điểm xuất phát, ta khám phá ngay trong lúc chơi, bằng một policy mềm.
 
 49
-00:07:02.518 --> 00:07:05.694
-Return được tính ngược từ cuối episode.
+00:06:06.792 --> 00:06:15.592
+Epsilon-soft policy là policy mà mọi hành động đều có xác suất ít nhất epsilon chia số hành động, nên nó không bao giờ bỏ hẳn hành động nào.
 
 50
-00:07:05.694 --> 00:07:12.381
-Để điều khiển, ta học q, và duy trì khám phá bằng exploring starts hoặc epsilon-soft policy.
+00:06:15.592 --> 00:06:38.042
+Phổ biến nhất là epsilon-greedy. Ví dụ epsilon bằng không phẩy một, có bốn hành động. Hành động tham lam có xác suất một trừ không phẩy một, cộng không phẩy một chia bốn, bằng không phẩy chín hai lăm. Ba hành động còn lại mỗi cái không phẩy không hai lăm. Chú ý: hành động tham lam cũng được cộng phần ngẫu nhiên, đề hay gài chỗ này.
 
 51
-00:07:12.381 --> 00:07:18.194
-Trong off-policy learning, behavior policy phải bao phủ target policy.
+00:06:38.042 --> 00:06:50.832
+Monte Carlo control với epsilon-soft không cần exploring starts. Nhưng nó chỉ tìm được policy tốt nhất trong lớp epsilon-soft, tức gần tối ưu chứ không tối ưu thật sự, vì nó vẫn luôn khám phá.
 
 52
-00:07:18.194 --> 00:07:29.552
-Và importance sampling ratio dùng để hiệu chỉnh return. Chương sau, ta kết hợp ý tưởng của Monte Carlo và dynamic programming để có Temporal Difference learning.
+00:06:51.632 --> 00:07:01.269
+Off-policy learning tách thành hai vai. Target policy pi là policy ta muốn học giá trị, ví dụ policy tối ưu, tham lam.
+
+53
+00:07:01.269 --> 00:07:08.869
+Behavior policy b là policy thật sự chọn hành động và sinh dữ liệu, thường mang tính khám phá, như chọn ngẫu nhiên.
+
+54
+00:07:08.869 --> 00:07:19.894
+On-policy là khi hai policy trùng nhau. Off-policy là khi khác nhau. Có thể xem on-policy là trường hợp đặc biệt của off-policy.
+
+55
+00:07:19.894 --> 00:07:31.208
+Điều kiện bắt buộc là coverage: hành động nào target policy có thể chọn thì behavior policy cũng phải có xác suất chọn. Không thì không bao giờ có dữ liệu về hành động đó.
+
+56
+00:07:32.008 --> 00:07:38.733
+Vấn đề: dữ liệu sinh ra từ b, nên trung bình thường sẽ cho kỳ vọng theo b, không phải theo pi. Importance sampling sửa bằng cách nhân mỗi mẫu với trọng số rho bằng pi chia b.
+
+57
+00:07:38.733 --> 00:07:52.920
+Kết quả nào pi hay chọn hơn b thì được nhân hệ số lớn hơn một. Kết quả nào pi ít chọn hơn thì bị giảm trọng số, pi không bao giờ chọn thì trọng số bằng không.
+
+58
+00:07:52.920 --> 00:08:09.856
+Ví dụ trong slide: mẫu x bằng một, pi không phẩy ba, b không phẩy tám lăm, đóng góp khoảng không phẩy ba lăm. Mẫu x bằng ba, pi không phẩy một, b không phẩy không năm, trọng số bằng hai, đóng góp sáu. Trung bình hai mẫu khoảng ba phẩy một tám.
+
+59
+00:08:10.656 --> 00:08:23.418
+Với Monte Carlo, ta nhân cả return với tích các tỉ số pi chia b dọc theo phần còn lại của episode. Xác suất chuyển trạng thái p có mặt ở cả tử và mẫu nên triệt tiêu, nhờ vậy không cần mô hình.
+
+60
+00:08:23.418 --> 00:08:37.093
+Ví dụ: target policy tham lam, behavior policy chọn ngẫu nhiên giữa hai hành động. Nếu hai bước liên tiếp đều trùng với lựa chọn tham lam, rho bằng một chia không phẩy năm, nhân một chia không phẩy năm, bằng bốn.
+
+61
+00:08:37.093 --> 00:08:44.031
+Nhưng chỉ cần một bước b chọn hành động mà pi không bao giờ chọn, rho bằng không, cả đoạn return đó bị bỏ đi.
+
+62
+00:08:44.031 --> 00:08:57.576
+Ordinary importance sampling không chệch nhưng phương sai có thể rất lớn, vì rho có thể khổng lồ. Weighted importance sampling có chệch, độ chệch giảm dần về không, và phương sai nhỏ hơn nhiều, nên thường được dùng hơn.
+
+63
+00:08:58.376 --> 00:09:04.588
+So sánh nhanh với chương bốn. DP cần mô hình, Monte Carlo không cần.
+
+64
+00:09:04.588 --> 00:09:08.938
+DP bootstrap, Monte Carlo không bootstrap.
+
+65
+00:09:08.938 --> 00:09:16.113
+DP cập nhật bằng cách quét qua các trạng thái. Monte Carlo cập nhật khi kết thúc mỗi episode.
+
+66
+00:09:16.113 --> 00:09:20.288
+Vì vậy Monte Carlo chỉ dùng được cho episodic task.
+
+67
+00:09:20.288 --> 00:09:27.320
+Và để điều khiển, Monte Carlo học q chứ không học v. Bảng này đủ trả lời phần lớn câu hỏi lý thuyết của chương.
+
+68
+00:09:28.120 --> 00:09:36.382
+Vài chỗ dễ nhầm. Monte Carlo không dùng được cho continuing task, vì phải chờ episode kết thúc mới có return.
+
+69
+00:09:36.382 --> 00:09:44.358
+Xác suất của hành động tham lam trong epsilon-greedy là một trừ epsilon cộng epsilon chia số hành động, không phải một trừ epsilon.
+
+70
+00:09:44.358 --> 00:09:51.308
+Monte Carlo on-policy với epsilon-soft chỉ tốt nhất trong lớp epsilon-soft, không phải tối ưu tuyệt đối.
+
+71
+00:09:51.308 --> 00:09:57.170
+Coverage: pi chọn được thì b cũng phải chọn được. Chiều ngược lại không cần.
+
+72
+00:09:57.170 --> 00:10:03.328
+Ordinary importance sampling không chệch nhưng phương sai cao. Weighted thì ngược lại.
+
+73
+00:10:04.128 --> 00:10:11.728
+Tóm tắt chương năm. Monte Carlo học từ các episode hoàn chỉnh, không cần mô hình và không bootstrap.
+
+74
+00:10:11.728 --> 00:10:14.891
+Return được tính ngược từ cuối episode.
+
+75
+00:10:14.891 --> 00:10:21.566
+Để điều khiển, ta học q, và duy trì khám phá bằng exploring starts hoặc epsilon-soft policy.
+
+76
+00:10:21.566 --> 00:10:42.432
+Trong off-policy, behavior policy phải bao phủ target policy, và return được hiệu chỉnh bằng importance sampling ratio. Chương sau ta kết hợp điểm mạnh của Monte Carlo và DP: học từ kinh nghiệm như Monte Carlo, nhưng cập nhật ngay từng bước nhờ bootstrap như DP. Đó là Temporal Difference learning.

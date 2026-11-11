@@ -5,185 +5,237 @@ WEBVTT
 Chào bạn, đến với chương tám: Models, Planning và Dyna.
 
 2
-00:00:05.238 --> 00:00:18.816
-Chương này gộp bốn bài: Define model, Define planning, Dyna as a formalism for planning, và Dealing with inaccurate models. Ta sẽ kết hợp học từ kinh nghiệm thật với lập kế hoạch bằng mô hình.
+00:00:05.238 --> 00:00:18.624
+Chương này gộp bốn bài: Define model, Define planning, Dyna, và Dealing with inaccurate models. Ý tưởng chính: vừa học từ kinh nghiệm thật, vừa luyện tập trong đầu bằng một mô hình tự học được.
 
 3
-00:00:19.616 --> 00:00:25.154
-Mô hình, model, lưu trữ hiểu biết của agent về dynamics của môi trường.
+00:00:19.424 --> 00:00:25.749
+Nhắc lại. DP ở chương bốn có sẵn mô hình và chỉ tính toán, không cần trải nghiệm.
 
 4
-00:00:25.154 --> 00:00:30.466
-Cho một trạng thái và một hành động, mô hình trả về trạng thái kế tiếp và reward.
+00:00:25.749 --> 00:00:33.012
+Monte Carlo, TD và Q-learning ở các chương sau thì ngược lại: chỉ học từ kinh nghiệm thật, không có mô hình.
 
 5
-00:00:30.466 --> 00:00:35.666
-Nhờ vậy agent có thể thấy trước kết quả của một hành động mà không cần thực hiện nó.
+00:00:33.012 --> 00:00:41.462
+Điểm yếu: mỗi bước đi thật chỉ cho một lần cập nhật. Nếu tương tác thật đắt đỏ, ví dụ robot thật, thì học rất chậm.
 
 6
-00:00:35.666 --> 00:00:48.704
-Mô hình được dùng để lập kế hoạch, planning: dùng kinh nghiệm mô phỏng để cập nhật value function, từ đó cải thiện policy. Điều này giúp agent cần ít tương tác thật hơn, tức tăng sample efficiency.
+00:00:41.462 --> 00:00:48.512
+Dyna kết hợp hai thế giới: tự học một mô hình từ kinh nghiệm, rồi dùng mô hình đó để cập nhật thêm nhiều lần nữa.
 
 7
-00:00:49.504 --> 00:01:00.779
-Có hai loại mô hình. Sample model sinh ra một kết quả cụ thể, được lấy mẫu theo xác suất bên dưới. Ví dụ tung đồng xu, nó trả về sấp hoặc ngửa.
+00:00:49.312 --> 00:00:57.724
+Hình dung một người chơi cờ. Giữa các ván, họ ngồi nhớ lại các thế cờ và nghĩ: nếu lúc đó đi nước khác thì sao.
 
 8
-00:01:00.779 --> 00:01:09.554
-Distribution model mô tả đầy đủ xác suất của mọi kết quả. Ví dụ đồng xu: sấp năm mươi phần trăm, ngửa năm mươi phần trăm.
+00:00:57.724 --> 00:01:02.937
+Mỗi lần tưởng tượng như vậy là một bài học thêm, không tốn một ván cờ thật nào.
 
 9
-00:01:09.554 --> 00:01:20.179
-Với năm đồng xu, sample model chỉ cần tung năm lần. Distribution model phải liệt kê hai mũ năm, tức ba mươi hai kết quả, cùng xác suất của từng kết quả.
+00:01:02.937 --> 00:01:08.649
+Mô hình chính là trí nhớ dạng: ở tình huống này làm hành động này thì sẽ ra kết quả kia.
 
 10
-00:01:20.179 --> 00:01:34.048
-Vì vậy sample model gọn và rẻ hơn. Distribution model chứa nhiều thông tin hơn, có thể tính kỳ vọng chính xác, nhưng khó xây dựng và có thể rất lớn. Dynamic programming cần distribution model.
+00:01:08.649 --> 00:01:15.280
+Planning là học từ những trải nghiệm tưởng tượng đó. Đây là toàn bộ tinh thần của chương tám.
 
 11
-00:01:34.848 --> 00:01:40.036
-Planning là quá trình nhận vào một mô hình và cho ra một policy được cải thiện.
+00:01:16.080 --> 00:01:21.218
+Mô hình, model, lưu hiểu biết của agent về cách môi trường vận hành.
 
 12
-00:01:40.036 --> 00:01:43.498
-Một cách làm: lấy mẫu kinh nghiệm từ mô hình.
+00:01:21.218 --> 00:01:26.705
+Đưa vào một trạng thái và một hành động, mô hình trả về trạng thái kế tiếp và reward.
 
 13
-00:01:43.498 --> 00:01:49.710
-Dùng kinh nghiệm mô phỏng đó để cập nhật value function, như thể các tương tác này thật sự đã xảy ra.
+00:01:26.705 --> 00:01:30.742
+Nhờ vậy agent biết trước kết quả mà không cần thật sự làm.
 
 14
-00:01:49.710 --> 00:01:54.168
-Sau đó hành động tham lam theo value function đã được cải thiện.
+00:01:30.742 --> 00:01:40.824
+Dùng kinh nghiệm mô phỏng đó để cập nhật value function gọi là planning. Lợi ích chính là cần ít tương tác thật hơn, tức tăng sample efficiency.
 
 15
-00:01:54.968 --> 00:02:02.181
-Thuật toán Q-planning đơn giản gồm bốn bước. Bước một: chọn ngẫu nhiên một cặp trạng thái và hành động.
+00:01:41.624 --> 00:01:52.462
+Có hai loại mô hình. Sample model trả về một kết quả cụ thể, được lấy mẫu ngẫu nhiên. Distribution model mô tả xác suất của mọi kết quả.
 
 16
-00:02:02.181 --> 00:02:08.006
-Bước hai: hỏi sample model để nhận reward R và trạng thái kế tiếp S phẩy.
+00:01:52.462 --> 00:02:01.262
+Với một đồng xu: sample model trả lời là ngửa. Distribution model trả lời ngửa năm mươi phần trăm, sấp năm mươi phần trăm.
 
 17
-00:02:08.006 --> 00:02:12.718
-Bước ba: thực hiện cập nhật Q-learning trên transition mô phỏng này.
+00:02:01.262 --> 00:02:10.749
+Với năm đồng xu: sample model chỉ cần tung năm lần. Distribution model phải liệt kê hai mũ năm, tức ba mươi hai kết quả kèm xác suất.
 
 18
-00:02:12.718 --> 00:02:22.760
-Bước bốn: cải thiện policy bằng cách greedy theo Q. Toàn bộ chỉ dùng kinh nghiệm tưởng tượng, nên có thể chạy song song khi agent đang tương tác, hoặc khi agent đang chờ.
+00:02:10.749 --> 00:02:18.974
+Vì vậy sample model gọn và rẻ. Distribution model chứa nhiều thông tin hơn nhưng có thể rất lớn và khó xây dựng.
 
 19
-00:02:23.560 --> 00:02:31.235
-Kiến trúc Dyna, do Richard Sutton đề xuất năm một chín chín mươi, kết hợp học không cần mô hình với lập kế hoạch dựa trên mô hình.
+00:02:18.974 --> 00:02:29.048
+DP cần distribution model để tính kỳ vọng chính xác. Dyna và Q-planning chỉ cần sample model. Câu này rất hay thi.
 
 20
-00:02:31.235 --> 00:02:37.198
-Kinh nghiệm thật từ môi trường được dùng cho direct RL update, ví dụ cập nhật Q-learning.
+00:02:29.848 --> 00:02:37.060
+Thuật toán planning đơn giản nhất có bốn bước. Bước một: chọn ngẫu nhiên một cặp trạng thái và hành động.
 
 21
-00:02:37.198 --> 00:02:40.210
-Kinh nghiệm thật cũng được dùng để học mô hình.
+00:02:37.060 --> 00:02:42.798
+Bước hai: hỏi sample model xem làm vậy thì nhận reward bao nhiêu và tới trạng thái nào.
 
 22
-00:02:40.210 --> 00:02:53.968
-Mô hình sinh kinh nghiệm mô phỏng, dùng cho planning update. Và search control quyết định nên mô phỏng từ trạng thái và hành động nào. Cả direct RL và planning cùng cập nhật một value function.
+00:02:42.798 --> 00:02:48.473
+Bước ba: cập nhật Q-learning y hệt chương bảy, chỉ là trên transition tưởng tượng.
 
 23
-00:02:54.768 --> 00:03:03.843
-Thuật toán Dyna-Q dạng bảng. Ở mỗi bước thật: chọn hành động epsilon-greedy, thực hiện, quan sát R và S phẩy.
+00:02:48.473 --> 00:03:01.936
+Bước bốn: policy là greedy theo Q. Vì không cần môi trường thật, vòng lặp này có thể chạy trong lúc agent đang chờ, hoặc song song khi agent đang hành động. Nhược điểm: chọn ngẫu nhiên nên nhiều lần cập nhật bị lãng phí.
 
 24
-00:03:03.843 --> 00:03:07.393
-Cập nhật Q-learning trực tiếp từ transition thật.
+00:03:02.736 --> 00:03:12.924
+Kiến trúc Dyna, do Richard Sutton đề xuất năm một chín chín mươi. Kinh nghiệm thật được dùng trực tiếp để cập nhật Q-learning, gọi là direct RL.
 
 25
-00:03:07.393 --> 00:03:14.643
-Cập nhật mô hình: lưu lại rằng cặp S và A dẫn tới R và S phẩy, với giả định môi trường deterministic.
+00:03:12.924 --> 00:03:16.198
+Cũng kinh nghiệm thật đó được dùng để học mô hình.
 
 26
-00:03:14.643 --> 00:03:27.384
-Sau đó lặp n lần bước planning: chọn ngẫu nhiên một cặp trạng thái hành động đã từng gặp, hỏi mô hình, rồi cập nhật Q-learning. Lưu ý chỉ chọn những cặp đã quan sát, vì mô hình chưa biết các cặp khác.
+00:03:16.198 --> 00:03:24.998
+Mô hình sinh kinh nghiệm mô phỏng, dùng cho planning update. Direct RL và planning cùng cập nhật một bảng Q duy nhất.
 
 27
-00:03:28.184 --> 00:03:35.746
-So sánh Dyna-Q với Q-learning. Q-learning không có mô hình, mỗi bước thật chỉ có một lần cập nhật.
+00:03:24.998 --> 00:03:29.232
+Search control quyết định nên mô phỏng từ cặp trạng thái hành động nào.
 
 28
-00:03:35.746 --> 00:03:41.296
-Dyna-Q học thêm mô hình và thực hiện thêm n lần cập nhật planning cho mỗi bước thật.
+00:03:30.032 --> 00:03:38.744
+Mã giả Dyna-Q. Bước a đến c giống hệt Q-learning: chọn hành động epsilon-greedy, thực hiện, quan sát R và S phẩy.
 
 29
-00:03:41.296 --> 00:03:51.446
-Kết quả là Dyna-Q hiệu quả mẫu hơn rất nhiều. Trong ví dụ mê cung, với n bằng năm mươi, agent tìm ra đường đi tốt chỉ sau vài episode.
+00:03:38.744 --> 00:03:45.569
+Bước d: cập nhật Q-learning từ transition thật. Đây là direct RL.
 
 30
-00:03:51.446 --> 00:04:01.832
-Nếu n bằng không, Dyna-Q trở thành Q-learning thông thường. Đổi lại, Dyna-Q tốn nhiều tính toán và bộ nhớ hơn, và cài đặt phức tạp hơn.
+00:03:45.569 --> 00:03:54.832
+Bước e: ghi vào mô hình rằng cặp S và A dẫn tới R và S phẩy. Slide giả định môi trường deterministic nên chỉ cần ghi đè.
 
 31
-00:04:02.632 --> 00:04:08.444
-Mô hình không chính xác khi các transition nó lưu khác với những gì thật sự xảy ra trong môi trường.
+00:03:54.832 --> 00:03:58.169
+Bước f: lặp n lần planning.
 
 32
-00:04:08.444 --> 00:04:17.907
-Trường hợp một: mô hình chưa đầy đủ, vì agent chưa thử hết các hành động ở các trạng thái. Các transition đó đơn giản là bị thiếu.
+00:03:58.169 --> 00:04:10.088
+Mỗi lần chọn ngẫu nhiên một trạng thái đã từng gặp và một hành động đã từng làm ở đó, hỏi mô hình, rồi cập nhật Q-learning. Chú ý chữ đã từng: mô hình chưa biết gì về các cặp chưa thử.
 
 33
-00:04:17.907 --> 00:04:23.794
-Với mô hình chưa đầy đủ, agent vẫn planning được bằng cách chỉ mô phỏng những cặp đã quan sát.
+00:04:10.888 --> 00:04:29.700
+Ví dụ mê cung trong slide: chỉ có reward khi tới đích, mọi bước khác reward bằng không, Q ban đầu bằng không. Với Q-learning, hết episode đầu tiên, chỉ duy nhất cặp trạng thái hành động ngay trước đích có Q khác không. Giống ví dụ TD ở chương sáu: thông tin lan ngược mỗi episode một bước.
 
 34
-00:04:23.794 --> 00:04:37.120
-Trường hợp hai: môi trường thay đổi, transition cũ trở nên sai. Planning với mô hình sai có thể làm policy tệ đi so với môi trường thật. Vì vậy agent cần giữ mô hình luôn chính xác.
+00:04:29.700 --> 00:04:41.550
+Với Dyna-Q và n bằng năm, mỗi bước thật có thêm năm lần cập nhật tưởng tượng trên các cặp đã gặp. Khi Q ở gần đích vừa tăng, các lần planning sau lan giá trị đó ngược ra nhiều bước.
 
 35
-00:04:37.920 --> 00:04:44.745
-Trong môi trường thay đổi, mô hình có thể sai bất cứ lúc nào. Agent phải chọn giữa hai việc.
+00:04:41.550 --> 00:04:54.304
+Với n bằng năm mươi, giá trị lan gần như hết đường đi, và agent tìm ra đường tốt chỉ sau khoảng ba episode, trong khi Q-learning cần vài chục episode. Đó chính là sample efficiency.
 
 36
-00:04:44.745 --> 00:04:48.970
-Explore: đi kiểm tra lại các vùng để mô hình chính xác.
+00:04:55.104 --> 00:05:01.079
+Tóm lại so sánh. Q-learning không có mô hình, mỗi bước thật một lần cập nhật.
 
 37
-00:04:48.970 --> 00:04:53.782
-Hoặc exploit: tin vào mô hình và lập kế hoạch tìm policy tối ưu.
+00:05:01.079 --> 00:05:06.266
+Dyna-Q học thêm mô hình và cập nhật thêm n lần planning cho mỗi bước thật.
 
 38
-00:04:53.782 --> 00:05:09.000
-Mô hình sẽ còn sai cho tới khi agent quay lại vùng đã thay đổi. Vì vậy nên khuyến khích agent ghé lại những nơi lâu rồi chưa tới. Ví dụ chú thỏ biết rùa xuất phát ở một ô, nhưng sau một thời gian dài, rùa có thể đã ở chỗ khác.
+00:05:06.266 --> 00:05:10.292
+Vì vậy Dyna-Q cần ít episode thật hơn rất nhiều.
 
 39
-00:05:09.800 --> 00:05:18.062
-Dyna-Q plus cộng thêm phần thưởng khám phá vào reward dùng trong planning: reward mới bằng r cộng kappa nhân căn bậc hai của tau.
+00:05:10.292 --> 00:05:19.320
+Nếu n bằng không, Dyna-Q chính là Q-learning. Cái giá phải trả là tốn tính toán, bộ nhớ và cài đặt phức tạp hơn.
 
 40
-00:05:18.062 --> 00:05:26.775
-Tau là số bước thời gian kể từ lần cuối cặp trạng thái hành động đó được thử trong môi trường thật. Cặp nào lâu chưa thử thì bonus càng lớn.
+00:05:20.120 --> 00:05:32.470
+Mô hình không chính xác khi nó khác với môi trường thật. Trường hợp một: mô hình chưa đầy đủ, vì agent chưa thử hết các hành động. Những transition đó chỉ đơn giản là bị thiếu.
 
 41
-00:05:26.775 --> 00:05:41.463
-Kappa là hằng số nhỏ điều chỉnh ảnh hưởng của bonus. Nếu kappa bằng không, ta quay về Dyna-Q thường. Bonus chỉ dùng trong planning, và tau không được cập nhật trong vòng lặp planning vì đó không phải lần ghé thăm thật.
+00:05:32.470 --> 00:05:37.745
+Cách xử lý đã có sẵn trong Dyna-Q: chỉ planning trên các cặp đã quan sát.
 
 42
-00:05:41.463 --> 00:05:49.640
-Nhờ bonus, Dyna-Q plus phát hiện thay đổi của môi trường nhanh hơn nhiều, ví dụ khi mê cung xuất hiện đường tắt mới hoặc đường cũ bị chặn.
+00:05:37.745 --> 00:05:46.958
+Trường hợp hai nguy hiểm hơn: môi trường thay đổi, ví dụ mê cung mở đường tắt hoặc chặn đường cũ. Transition trong mô hình trở nên sai.
 
 43
-00:05:50.440 --> 00:05:59.978
-Tóm tắt chương tám. Mô hình ánh xạ trạng thái và hành động sang trạng thái kế tiếp và reward, gồm hai loại sample model và distribution model.
+00:05:46.958 --> 00:05:51.776
+Lập kế hoạch với mô hình sai có thể làm policy tệ đi trong môi trường thật.
 
 44
-00:05:59.978 --> 00:06:03.690
-Planning cải thiện policy bằng kinh nghiệm mô phỏng.
+00:05:52.576 --> 00:06:00.288
+Vì vậy xuất hiện một dạng đánh đổi mới. Explore ở đây nghĩa là đi kiểm tra lại các vùng để mô hình còn đúng.
 
 45
-00:06:03.690 --> 00:06:09.890
-Kiến trúc Dyna kết hợp direct RL, học mô hình, planning và search control.
+00:06:00.288 --> 00:06:04.226
+Exploit nghĩa là tin mô hình và lập kế hoạch dựa trên nó.
 
 46
-00:06:09.890 --> 00:06:14.802
-Dyna-Q thêm n bước planning cho mỗi bước thật nên rất hiệu quả mẫu.
+00:06:04.226 --> 00:06:08.739
+Mô hình sẽ còn sai cho tới khi agent quay lại đúng chỗ đã thay đổi.
 
 47
-00:06:14.802 --> 00:06:24.088
-Và Dyna-Q plus dùng bonus kappa căn tau để thích nghi khi môi trường thay đổi. Chương sau, ta chuyển sang bài toán lớn với xấp xỉ hàm.
+00:06:08.739 --> 00:06:19.528
+Giải pháp: khuyến khích agent ghé lại những nơi đã lâu không tới. Như chú thỏ trong slide: biết rùa từng ở một ô, nhưng lâu rồi thì rùa có thể đã đi chỗ khác.
+
+48
+00:06:20.328 --> 00:06:43.590
+Dyna-Q plus cộng thêm phần thưởng khám phá vào reward dùng trong planning: kappa nhân căn bậc hai của tau. Tau là số bước kể từ lần cuối cặp đó được thử trong môi trường thật. Ví dụ kappa bằng không phẩy một: cặp vừa thử bốn bước trước được cộng không phẩy hai. Cặp đã một trăm bước chưa thử được cộng một. Nếu kappa bằng không thì quay về Dyna-Q thường.
+
+49
+00:06:43.590 --> 00:06:50.991
+Bonus chỉ dùng trong planning, và tau không được đặt lại trong vòng lặp planning, vì tưởng tượng thì không phải là ghé thăm thật.
+
+50
+00:06:50.991 --> 00:06:59.160
+Nhờ bonus, agent bị kéo về những nơi lâu chưa kiểm tra, nên phát hiện đường tắt mới hoặc đường bị chặn nhanh hơn nhiều so với Dyna-Q.
+
+51
+00:06:59.960 --> 00:07:04.722
+Vài câu hay gặp. DP cần distribution model.
+
+52
+00:07:04.722 --> 00:07:08.635
+Planning trong Dyna-Q chỉ chọn những cặp đã quan sát.
+
+53
+00:07:08.635 --> 00:07:12.385
+Dyna-Q với n bằng không là Q-learning.
+
+54
+00:07:12.385 --> 00:07:17.948
+Lợi ích chính của planning là sample efficiency: cần ít tương tác thật hơn.
+
+55
+00:07:17.948 --> 00:07:23.768
+Bonus của Dyna-Q plus tăng theo căn bậc hai của thời gian kể từ lần ghé thăm thật gần nhất.
+
+56
+00:07:24.568 --> 00:07:32.981
+Tóm tắt chương tám. Mô hình cho biết làm hành động này ở trạng thái này thì ra gì, có hai loại là sample và distribution.
+
+57
+00:07:32.981 --> 00:07:36.681
+Planning cải thiện policy bằng kinh nghiệm mô phỏng.
+
+58
+00:07:36.681 --> 00:07:42.468
+Dyna kết hợp direct RL, học mô hình, planning và search control.
+
+59
+00:07:42.468 --> 00:07:47.368
+Dyna-Q thêm n bước planning cho mỗi bước thật nên rất hiệu quả mẫu.
+
+60
+00:07:47.368 --> 00:07:59.752
+Dyna-Q plus dùng bonus để thích nghi khi môi trường thay đổi. Đến đây mọi thứ đều dùng bảng. Chương sau ta bỏ bảng, chuyển sang xấp xỉ hàm để xử lý không gian trạng thái khổng lồ.
