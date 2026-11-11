@@ -2,11 +2,11 @@ import type { ContentLang } from "../data/types";
 import { useSettings } from "../features/progress/store";
 
 const LANGS: { value: ContentLang; label: string; title: string }[] = [
-  { value: "en", label: "EN", title: "Câu hỏi và lời giải bằng tiếng Anh" },
-  { value: "vi", label: "VI", title: "Câu hỏi và lời giải bằng tiếng Việt" },
+  { value: "en", label: "EN", title: "Câu hỏi và đáp án bằng tiếng Anh (lời giải luôn tiếng Việt)" },
+  { value: "vi", label: "VI", title: "Câu hỏi và đáp án bằng tiếng Việt" },
 ];
 
-/** Switches the language of questions, options and explanations. */
+/** Switches the language of questions and options. Explanations always stay in Vietnamese. */
 export const LangToggle = ({ className = "" }: { className?: string }) => {
   const [settings, setSettings] = useSettings();
   return (

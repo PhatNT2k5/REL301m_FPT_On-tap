@@ -1,3 +1,4 @@
+import { annotateTerms } from "./annotateTerms";
 import raw from "./questions.json";
 import rawTranslations from "./translations.json";
 import type { ContentLang, LocalizedQuestion, Question, QuestionSource, QuestionTranslation } from "./types";
@@ -10,15 +11,17 @@ const TRANSLATIONS: Record<string, QuestionTranslation> = rawTranslations as Rec
 
 /**
  * Question text and options are written in English, explanations in Vietnamese.
- * The other language comes from translations.json; anything missing falls back to the original.
+ * The language toggle only switches the question and options; the explanation always stays
+ * in Vietnamese, with English RL terms glossed in Vietnamese.
  */
 export const localizeQuestion = (q: Question, lang: ContentLang): LocalizedQuestion => {
-  const t = TRANSLATIONS[q.id];
+  const explanation = annotateTerms(q.explanation);
   if (lang === "en") {
-    return { question: q.question, options: q.options, explanation: t?.explanationEn ?? q.explanation };
+    return { question: q.question, options: q.options, explanation };
   }
+  const t = TRANSLATIONS[q.id];
   const optionsVi = t?.optionsVi?.length === q.options.length ? t.optionsVi : q.options;
-  return { question: t?.questionVi ?? q.question, options: optionsVi, explanation: q.explanation };
+  return { question: t?.questionVi ?? q.question, options: optionsVi, explanation };
 };
 
 export const EXAMS: { source: QuestionSource; label: string }[] = [
