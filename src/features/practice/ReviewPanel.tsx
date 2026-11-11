@@ -1,8 +1,9 @@
 import { MathText } from "../../components/MathText";
 import { CHAPTERS } from "../../data/chapters";
-import { SOURCE_LABEL } from "../../data/questions";
+import { LangToggle } from "../../components/LangToggle";
+import { SOURCE_LABEL, localizeQuestion } from "../../data/questions";
 import type { Question } from "../../data/types";
-import { toggleStar } from "../progress/store";
+import { toggleStar, useSettings } from "../progress/store";
 import { answersFor, type SessionState } from "./engine";
 
 const LETTERS = ["A", "B", "C", "D", "E", "F"];
@@ -33,6 +34,8 @@ export const ReviewPanel = ({
   onClose,
   closeLabel,
 }: ReviewPanelProps) => {
+  const [settings] = useSettings();
+  const text = localizeQuestion(question, settings.contentLang);
   const attempts = answersFor(state, question.id);
   const lastChosen = attempts.at(-1)?.chosen ?? [];
   const solved = state.solved.includes(question.id);
@@ -63,17 +66,20 @@ export const ReviewPanel = ({
           {question.examNo ? ` câu ${question.examNo}` : ""} · Ch.{question.chapter}
           {chapter ? ` ${chapter.title}` : ""} · slide {question.sourceLesson}
         </span>
-        <button
-          type="button"
-          onClick={() => toggleStar(question.id)}
-          className={`shrink-0 rounded-md px-2 py-0.5 ${starred ? "text-reward" : "hover:text-ink"}`}
-          aria-pressed={starred}
-        >
-          {starred ? "★ Đã lưu" : "☆ Lưu câu"}
-        </button>
+        <span className="flex shrink-0 items-center gap-2">
+          <LangToggle />
+          <button
+            type="button"
+            onClick={() => toggleStar(question.id)}
+            className={`rounded-md px-2 py-0.5 ${starred ? "text-reward" : "hover:text-ink"}`}
+            aria-pressed={starred}
+          >
+            {starred ? "★ Đã lưu" : "☆ Lưu câu"}
+          </button>
+        </span>
       </div>
 
-      <MathText as="div" text={question.question} className="mt-4 text-lg font-medium leading-relaxed sm:text-xl" />
+      <MathText as="div" text={text.question} className="mt-4 text-lg font-medium leading-relaxed sm:text-xl" />
 
       <div className="mt-5 space-y-2.5">
         {optionOrder.map((original, position) => {
@@ -93,7 +99,7 @@ export const ReviewPanel = ({
               >
                 {LETTERS[position]}
               </span>
-              <MathText text={question.options[original]} className="flex-1 pt-0.5" />
+              <MathText text={text.options[original]} className="flex-1 pt-0.5" />
               {(isAnswer || picked) && (
                 <span className="shrink-0 pt-0.5 text-xs font-semibold text-muted">
                   {isAnswer && picked ? "Bạn chọn · Đúng" : isAnswer ? "Đáp án đúng" : "Bạn chọn"}
@@ -120,7 +126,7 @@ export const ReviewPanel = ({
         ) : (
           <p className="mt-1 text-xs text-muted">Câu này làm trước khi có tính năng xem lại nên không lưu đáp án bạn đã chọn.</p>
         )}
-        <MathText as="p" text={question.explanation} className="mt-3 leading-relaxed" />
+        <MathText as="p" text={text.explanation} className="mt-3 leading-relaxed" />
         {question.answerSource === "verified-by-slides" && question.source !== "Extra" && (
           <p className="mt-2 text-xs text-muted">Đề không kèm đáp án, đáp án này được đối chiếu với slide.</p>
         )}

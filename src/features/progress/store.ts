@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import type { ContentLang } from "../../data/types";
 import type { SessionState } from "../practice/engine";
 
 export type Theme = "light" | "dark";
@@ -10,6 +11,7 @@ export interface Settings {
   shuffleOptions: boolean;
   autoAdvance: boolean;
   sound: boolean;
+  contentLang: ContentLang;
 }
 
 export interface SessionRecord {
@@ -32,7 +34,7 @@ const defaultTheme = (): Theme =>
   typeof window !== "undefined" && window.matchMedia?.("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 
 const defaults = (): Progress => ({
-  settings: { theme: defaultTheme(), sessionSize: 10, shuffleOptions: true, autoAdvance: false, sound: true },
+  settings: { theme: defaultTheme(), sessionSize: 10, shuffleOptions: true, autoAdvance: false, sound: true, contentLang: "en" },
   sessions: {},
   starred: [],
   wrongTotals: {},

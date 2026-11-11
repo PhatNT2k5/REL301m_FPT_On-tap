@@ -22,3 +22,18 @@ export interface Chapter {
   lessons: { id: string; title: string }[];
   keyPoints: string[];
 }
+
+export type ContentLang = "en" | "vi";
+
+/** Fills in the language a question is not written in. Option order matches Question.options. */
+export interface QuestionTranslation {
+  questionVi?: string;
+  optionsVi?: string[];
+  explanationEn?: string;
+}
+
+export interface LocalizedQuestion {
+  question: string;
+  options: string[];
+  explanation: string;
+}

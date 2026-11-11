@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { MathText } from "../../components/MathText";
 import { CHAPTERS } from "../../data/chapters";
-import { QUESTION_BY_ID, SOURCE_LABEL } from "../../data/questions";
+import { LangToggle } from "../../components/LangToggle";
+import { QUESTION_BY_ID, SOURCE_LABEL, localizeQuestion } from "../../data/questions";
 import type { Question } from "../../data/types";
 import { href, navigate } from "../../router";
 import { playCue } from "../progress/sound";
@@ -180,6 +181,7 @@ export const SessionView = ({ deckId, size, index }: { deckId: string; size: num
   const chapter = question ? CHAPTERS.find((c) => c.number === question.chapter) : undefined;
   const wrongSoFar = totalWrong(state);
   const hasNext = index + 1 < sessions.length;
+  const text = question ? localizeQuestion(question, settings.contentLang) : undefined;
 
   return (
     <div className="grid gap-6 lg:grid-cols-[260px_minmax(0,1fr)] lg:items-start xl:grid-cols-[280px_minmax(0,1fr)]">
@@ -286,7 +288,7 @@ export const SessionView = ({ deckId, size, index }: { deckId: string; size: num
           </div>
         </section>
       ) : (
-        question && (
+        question && text && (
           <section className="rounded-2xl border border-line bg-panel p-5 sm:p-7">
             <div className="flex items-start justify-between gap-3 text-sm text-muted">
               <span>
@@ -294,17 +296,20 @@ export const SessionView = ({ deckId, size, index }: { deckId: string; size: num
                 {question.examNo ? ` câu ${question.examNo}` : ""} · Ch.{question.chapter}
                 {chapter ? ` ${chapter.title}` : ""} · slide {question.sourceLesson}
               </span>
-              <button
-                type="button"
-                onClick={() => toggleStar(question.id)}
-                className={`shrink-0 rounded-md px-2 py-0.5 ${starred ? "text-reward" : "hover:text-ink"}`}
-                aria-pressed={starred}
-              >
-                {starred ? "★ Đã lưu" : "☆ Lưu câu"}
-              </button>
+              <span className="flex shrink-0 items-center gap-2">
+                <LangToggle />
+                <button
+                  type="button"
+                  onClick={() => toggleStar(question.id)}
+                  className={`rounded-md px-2 py-0.5 ${starred ? "text-reward" : "hover:text-ink"}`}
+                  aria-pressed={starred}
+                >
+                  {starred ? "★ Đã lưu" : "☆ Lưu câu"}
+                </button>
+              </span>
             </div>
 
-            <MathText as="div" text={question.question} className="mt-4 text-lg font-medium leading-relaxed sm:text-xl" />
+            <MathText as="div" text={text.question} className="mt-4 text-lg font-medium leading-relaxed sm:text-xl" />
             {question.multi && <p className="mt-2 text-sm text-muted">Chọn {question.answers.length} đáp án, rồi bấm Kiểm tra.</p>}
 
             <div className="mt-5 space-y-2.5">
@@ -334,7 +339,7 @@ export const SessionView = ({ deckId, size, index }: { deckId: string; size: num
                     >
                       {LETTERS[position]}
                     </span>
-                    <MathText text={question.options[original]} className="pt-0.5" />
+                    <MathText text={text.options[original]} className="pt-0.5" />
                   </button>
                 );
               })}
@@ -359,7 +364,7 @@ export const SessionView = ({ deckId, size, index }: { deckId: string; size: num
                 <p className="font-semibold">
                   {feedback.correct ? "Chính xác. +1" : "Chưa đúng. Câu này sẽ quay lại ở cuối lượt."}
                 </p>
-                <MathText as="p" text={question.explanation} className="mt-2 leading-relaxed" />
+                <MathText as="p" text={text.explanation} className="mt-2 leading-relaxed" />
                 {question.answerSource === "verified-by-slides" && question.source !== "Extra" && (
                   <p className="mt-2 text-xs text-muted">Đề không kèm đáp án, đáp án này được đối chiếu với slide.</p>
                 )}

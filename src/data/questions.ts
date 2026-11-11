@@ -1,9 +1,25 @@
 import raw from "./questions.json";
-import type { Question, QuestionSource } from "./types";
+import rawTranslations from "./translations.json";
+import type { ContentLang, LocalizedQuestion, Question, QuestionSource, QuestionTranslation } from "./types";
 
 export const QUESTIONS: Question[] = raw as Question[];
 
 export const QUESTION_BY_ID: Map<string, Question> = new Map(QUESTIONS.map((q) => [q.id, q]));
+
+const TRANSLATIONS: Record<string, QuestionTranslation> = rawTranslations as Record<string, QuestionTranslation>;
+
+/**
+ * Question text and options are written in English, explanations in Vietnamese.
+ * The other language comes from translations.json; anything missing falls back to the original.
+ */
+export const localizeQuestion = (q: Question, lang: ContentLang): LocalizedQuestion => {
+  const t = TRANSLATIONS[q.id];
+  if (lang === "en") {
+    return { question: q.question, options: q.options, explanation: t?.explanationEn ?? q.explanation };
+  }
+  const optionsVi = t?.optionsVi?.length === q.options.length ? t.optionsVi : q.options;
+  return { question: t?.questionVi ?? q.question, options: optionsVi, explanation: q.explanation };
+};
 
 export const EXAMS: { source: QuestionSource; label: string }[] = [
   { source: "SP26-FE", label: "Đề FE Spring 2026" },

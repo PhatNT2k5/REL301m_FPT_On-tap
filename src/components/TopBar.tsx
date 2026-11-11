@@ -1,6 +1,7 @@
 import { playCue } from "../features/progress/sound";
 import { useSettings } from "../features/progress/store";
 import { href, type Route } from "../router";
+import { LangToggle } from "./LangToggle";
 
 const isLearn = (route: Route): boolean => route.name === "learn" || route.name === "chapter";
 
@@ -33,6 +34,7 @@ export const TopBar = ({ route }: { route: Route }) => {
             Luyện tập
           </a>
         </nav>
+        <LangToggle />
         <button
           type="button"
           onClick={() => {
