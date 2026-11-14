@@ -130,9 +130,9 @@ export const SessionView = ({ deckId, size, index }: { deckId: string; size: num
   // Auto-advance after a correct answer when enabled.
   useEffect(() => {
     if (!feedback?.correct || !settings.autoAdvance) return;
-    const timer = window.setTimeout(goNext, 900);
+    const timer = window.setTimeout(goNext, settings.advanceDelay);
     return () => window.clearTimeout(timer);
-  }, [feedback, settings.autoAdvance, goNext]);
+  }, [feedback, settings.autoAdvance, settings.advanceDelay, goNext]);
 
   const choose = useCallback(
     (original: number) => {

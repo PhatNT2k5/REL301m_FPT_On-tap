@@ -1,6 +1,13 @@
 import { useState } from "react";
 import { href } from "../../router";
-import { resetSessions, useProgress, useSettings, type SessionSize } from "../progress/store";
+import {
+  ADVANCE_DELAYS,
+  resetSessions,
+  useProgress,
+  useSettings,
+  type AdvanceDelay,
+  type SessionSize,
+} from "../progress/store";
 import { buildDecks, sessionKey, type Deck } from "./decks";
 import { chunk } from "./engine";
 import { SessionGrid } from "./SessionGrid";
@@ -47,6 +54,37 @@ const SizeToggle = ({ size, onChange }: { size: SessionSize; onChange: (n: Sessi
         }`}
       >
         {n} câu
+      </button>
+    ))}
+  </div>
+);
+
+const DelayToggle = ({
+  delay,
+  disabled,
+  onChange,
+}: {
+  delay: AdvanceDelay;
+  disabled: boolean;
+  onChange: (d: AdvanceDelay) => void;
+}) => (
+  <div
+    className={`flex rounded-lg border border-line bg-panel p-0.5 ${disabled ? "opacity-50" : ""}`}
+    role="group"
+    aria-label="Thời gian chờ trước khi chuyển câu"
+  >
+    {ADVANCE_DELAYS.map((d) => (
+      <button
+        key={d}
+        type="button"
+        disabled={disabled}
+        onClick={() => onChange(d)}
+        aria-pressed={d === delay}
+        className={`rounded-md px-2.5 py-1 text-xs font-semibold tabular-nums transition-colors disabled:cursor-not-allowed ${
+          d === delay ? "bg-paper text-ink shadow-sm" : "text-muted enabled:hover:text-ink"
+        }`}
+      >
+        {d / 1000}s
       </button>
     ))}
   </div>
@@ -110,7 +148,14 @@ export const PracticeHome = ({ deckId }: { deckId: string }) => {
 
       <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
         <Checkbox label="Trộn thứ tự đáp án" checked={settings.shuffleOptions} onChange={(v) => setSettings({ shuffleOptions: v })} />
-        <Checkbox label="Tự chuyển khi đúng" checked={settings.autoAdvance} onChange={(v) => setSettings({ autoAdvance: v })} />
+        <div className="flex items-center gap-2">
+          <Checkbox label="Tự chuyển khi đúng" checked={settings.autoAdvance} onChange={(v) => setSettings({ autoAdvance: v })} />
+          <DelayToggle
+            delay={settings.advanceDelay}
+            disabled={!settings.autoAdvance}
+            onChange={(d) => setSettings({ advanceDelay: d })}
+          />
+        </div>
         <span className="text-sm text-muted">Câu sai sẽ được hỏi lại cuối lượt.</span>
       </div>
 
