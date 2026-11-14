@@ -2875,5 +2875,3515 @@
    "Epsilon phải bằng 0."
   ],
   "explanationEn": "Extreme example with one feature that is always 1: every update lowers the value of every state, including ones never visited."
+ },
+ "b300-e1-01": {
+  "questionVi": "Sự đánh đổi cốt lõi trong bài toán K-armed bandit là gì?",
+  "optionsVi": [
+   "Bài toán dạng episodic so với continuing",
+   "Exploration (khám phá) so với Exploitation (khai thác)",
+   "Học model-free so với model-based",
+   "Đánh giá on-policy so với off-policy"
+  ]
+ },
+ "b300-e1-02": {
+  "questionVi": "Trong bài toán K-armed bandit, giá trị thật q*(a) của hành động 'a' biểu diễn điều gì?",
+  "optionsVi": [
+   "Phương sai của phân phối phần thưởng gắn với hành động 'a'",
+   "Tổng phần thưởng tích lũy của hành động 'a' chia cho tổng số bước T",
+   "Phần thưởng lớn nhất từng nhận được khi chọn hành động 'a'",
+   "Phần thưởng kỳ vọng khi hành động 'a' được chọn: E[R_t | A_t = a]"
+  ]
+ },
+ "b300-e1-03": {
+  "questionVi": "Với phương pháp sample-average để ước lượng action value, Q_{k+1}(a) được cập nhật thế nào sau khi nhận phần thưởng R_k?",
+  "optionsVi": [
+   "Q_{k+1}(a) = Q_k(a) + α · [R_k + γ · Q_k(a)]",
+   "Q_{k+1}(a) = R_k - Q_k(a)",
+   "Q_{k+1}(a) = Q_k(a) + (1/k) · [R_k - Q_k(a)]",
+   "Q_{k+1}(a) = Q_k(a) + k · [R_k - Q_k(a)]"
+  ]
+ },
+ "b300-e1-04": {
+  "questionVi": "Chiến lược chọn hành động thuần greedy (ε = 0) có hành vi như thế nào?",
+  "optionsVi": [
+   "Luân phiên giữa hành động tốt nhất và một hành động ngẫu nhiên ở mỗi bước",
+   "Chọn hành động theo tỉ lệ phân phối xác suất softmax",
+   "Luôn chọn hành động có giá trị ước lượng cao nhất, có nguy cơ kẹt ở lựa chọn chưa tối ưu",
+   "Luôn khám phá các hành động chưa thử với xác suất bằng nhau"
+  ]
+ },
+ "b300-e1-05": {
+  "questionVi": "Tham số ε trong chiến lược chọn hành động ε-greedy có vai trò gì?",
+  "optionsVi": [
+   "Đặt hệ số chiết khấu cho phần thưởng tương lai",
+   "Quy định xác suất chọn một hành động ngẫu nhiên đều trong tất cả hành động",
+   "Giới hạn sai số lớn nhất của ước lượng giá trị",
+   "Xác định step-size cho cập nhật với step-size cố định"
+  ]
+ },
+ "b300-e1-06": {
+  "questionVi": "Trong môi trường bandit không dừng (phân phối phần thưởng thay đổi theo thời gian), nên chọn step-size như thế nào?",
+  "optionsVi": [
+   "Step-size cố định α trong (0, 1], đặt trọng số lớn hơn cho phần thưởng gần đây",
+   "Step-size α = 0 để không thay đổi các ước lượng trước đó",
+   "Step-size tăng theo cấp số mũ α_k = k^2",
+   "Step-size trung bình mẫu 1/k tiến dần về 0"
+  ]
+ },
+ "b300-e1-07": {
+  "questionVi": "Công thức toán học của cách chọn hành động Upper Confidence Bound (UCB) là gì?",
+  "optionsVi": [
+   "A_t = argmax_a [ Q_t(a) + c · √(ln(t) / N_t(a)) ]",
+   "A_t = argmax_a [ Q_t(a) + α · (R_t - Q_t(a)) ]",
+   "A_t = argmax_a [ exp(Q_t(a)) / Σ_b exp(Q_t(b)) ]",
+   "A_t = argmax_a [ Q_t(a) - c · √(t / N_t(a)) ]"
+  ]
+ },
+ "b300-e1-08": {
+  "questionVi": "Đại lượng N_t(a) trong công thức chọn hành động UCB biểu diễn điều gì?",
+  "optionsVi": [
+   "Tổng phần thưởng tích lũy của hành động 'a' tới thời điểm t",
+   "Phương sai của hành động 'a' tới thời điểm t",
+   "Số lần hành động 'a' đã được chọn trước thời điểm t",
+   "Số bước còn lại cho tới khi episode kết thúc"
+  ]
+ },
+ "b300-e1-09": {
+  "questionVi": "Trong Gradient Bandit, action preference H_t(a) được chuyển thành xác suất chọn hành động π_t(a) như thế nào?",
+  "optionsVi": [
+   "Dùng phân phối Gauss với phương sai cố định",
+   "Dùng phân phối Softmax (Gibbs): exp(H_t(a)) / Σ_b exp(H_t(b))",
+   "Dùng chuẩn hóa tuyến tính: H_t(a) / Σ_b H_t(b)",
+   "Dùng quy tắc ngưỡng ε-greedy"
+  ]
+ },
+ "b300-e1-10": {
+  "questionVi": "Giá trị khởi tạo lạc quan (ví dụ khởi tạo Q_1(a) bằng một số dương lớn) ảnh hưởng thế nào tới việc học bandit?",
+  "optionsVi": [
+   "Đảm bảo hội tụ ngay lập tức trong bài toán không dừng",
+   "Loại bỏ hoàn toàn nhu cầu về phần thưởng tương lai",
+   "Khuyến khích khám phá sớm vì phần thưởng ban đầu gây thất vọng làm các hành động khác trông tốt hơn",
+   "Buộc agent hành động thuần greedy mà không khám phá"
+  ]
+ },
+ "b300-e1-11": {
+  "questionVi": "Trong Markov Decision Process (MDP), bên học/ra quyết định và môi trường bên ngoài được gọi là gì?",
+  "optionsVi": [
+   "Bên học gọi là Value Function, hệ thống bên ngoài gọi là Model",
+   "Bên học gọi là Policy, hệ thống bên ngoài gọi là State Space",
+   "Bên học gọi là Agent, mọi thứ bên ngoài nó gọi là Environment",
+   "Bên học gọi là Environment, hệ thống bên ngoài gọi là Reward"
+  ]
+ },
+ "b300-e1-12": {
+  "questionVi": "Hàm động lực học bốn đối số p(s', r | s, a) trong MDP cho biết điều gì?",
+  "optionsVi": [
+   "Hệ số chiết khấu γ gắn với trạng thái s'",
+   "Xác suất đồng thời chuyển sang trạng thái s' và nhận phần thưởng r khi biết trạng thái hiện tại s và hành động a",
+   "Return kỳ vọng G_t bắt đầu từ trạng thái s",
+   "Xác suất chọn hành động 'a' khi ở trạng thái 's'"
+  ]
+ },
+ "b300-e1-13": {
+  "questionVi": "Tính chất cơ bản của một trạng thái Markov (Markov Property) là gì?",
+  "optionsVi": [
+   "Trạng thái phải chứa toàn bộ lịch sử từ bước 0",
+   "Trạng thái chứa mọi thông tin cần thiết từ quá khứ để dự đoán trạng thái và phần thưởng tương lai mà không cần toàn bộ lịch sử",
+   "Trạng thái chỉ gồm phần thưởng tức thì nhận được ở bước t",
+   "Trạng thái phải được biểu diễn bằng một vector số thực liên tục"
+  ]
+ },
+ "b300-e1-14": {
+  "questionVi": "Tổng return chiết khấu G_t được định nghĩa toán học thế nào cho chuỗi phần thưởng R_{t+1}, R_{t+2}, ...?",
+  "optionsVi": [
+   "G_t = (1 - γ) · Σ_{k=0}^{∞} R_{t+k+1}",
+   "G_t = Σ_{k=0}^{∞} γ · R_{t+k+1}",
+   "G_t = max_{k} R_{t+k+1}",
+   "G_t = Σ_{k=0}^{∞} γ^k · R_{t+k+1}"
+  ]
+ },
+ "b300-e1-15": {
+  "questionVi": "Hệ số chiết khấu γ (với 0 ≤ γ ≤ 1) trong Học tăng cường dùng để làm gì?",
+  "optionsVi": [
+   "Điều khiển mức khám phá trong cách chọn hành động ε-greedy",
+   "Giảm dần step-size α trong quá trình học",
+   "Xác định giá trị hiện tại tương đối của phần thưởng tương lai so với phần thưởng tức thì",
+   "Giới hạn xác suất lớn nhất khi chọn một hành động"
+  ]
+ },
+ "b300-e1-16": {
+  "questionVi": "Nếu γ = 0 trong MDP có chiết khấu, agent ra quyết định theo kiểu nào?",
+  "optionsVi": [
+   "Thiển cận (myopic): agent chỉ quan tâm tối đa phần thưởng tức thì R_{t+1}",
+   "Phân bố đều trên mọi bước thời gian tương lai",
+   "Nhìn xa: agent coi trọng như nhau mọi phần thưởng tương lai vô hạn",
+   "Không hợp lệ, vì γ không thể bằng 0"
+  ]
+ },
+ "b300-e1-17": {
+  "questionVi": "Điều gì phân biệt Episodic Task với Continuing Task?",
+  "optionsVi": [
+   "Episodic task chia tương tác thành các episode tự nhiên kết thúc ở trạng thái kết thúc; continuing task kéo dài vô hạn",
+   "Episodic task cần không gian hành động liên tục; continuing task cần không gian hành động rời rạc",
+   "Episodic task không dùng phần thưởng; continuing task có dùng phần thưởng",
+   "Episodic task chạy mãi không dừng; continuing task kết thúc ở trạng thái kết thúc"
+  ]
+ },
+ "b300-e1-18": {
+  "questionVi": "Absorbing state (trạng thái kết thúc) trong MDP dạng episodic là gì?",
+  "optionsVi": [
+   "Trạng thái chỉ chuyển về chính nó với phần thưởng 0 ở mọi bước sau đó",
+   "Trạng thái buộc agent bắt đầu lại từ một trạng thái ngẫu nhiên với phần thưởng âm",
+   "Trạng thái đặt bộ tích lũy phần thưởng của agent về ∞",
+   "Trạng thái mà hành động không ảnh hưởng tới phần thưởng tương lai nhưng trạng thái thay đổi liên tục"
+  ]
+ },
+ "b300-e1-19": {
+  "questionVi": "Điều kiện nào đảm bảo return kỳ vọng G_t hữu hạn trong continuing task?",
+  "optionsVi": [
+   "Đặt γ = 1 và mọi phần thưởng đều dương",
+   "Dùng policy tất định",
+   "Đặt γ < 1 với điều kiện phần thưởng bị chặn",
+   "Đặt α = 0 trong quy tắc cập nhật"
+  ]
+ },
+ "b300-e1-20": {
+  "questionVi": "Tổng các xác suất p(s', r | s, a) trên mọi s' và r có thể có (với s và a hợp lệ) bằng bao nhiêu?",
+  "optionsVi": [
+   "0.5",
+   "0",
+   "1.0",
+   "Vô cùng"
+  ]
+ },
+ "b300-e1-21": {
+  "questionVi": "Policy ngẫu nhiên π(a | s) được định nghĩa hình thức trong RL như thế nào?",
+  "optionsVi": [
+   "Giá trị lớn nhất của Q(s, a) trên mọi hành động a",
+   "Xác suất S_{t+1} = s' khi biết S_t = s",
+   "Xác suất A_t = a khi biết S_t = s",
+   "Return kỳ vọng G_t khi biết S_t = s và A_t = a"
+  ]
+ },
+ "b300-e1-22": {
+  "questionVi": "Định nghĩa hình thức của hàm giá trị trạng thái v_π(s) dưới policy π là gì?",
+  "optionsVi": [
+   "v_π(s) = max_a q_π(s, a)",
+   "v_π(s) = Σ_{a} π(a|s)",
+   "v_π(s) = E_π [ G_t | S_t = s ]",
+   "v_π(s) = E_π [ R_{t+1} | S_t = s ]"
+  ]
+ },
+ "b300-e1-23": {
+  "questionVi": "Định nghĩa hình thức của hàm giá trị hành động q_π(s, a) dưới policy π là gì?",
+  "optionsVi": [
+   "q_π(s, a) = Σ_{s'} p(s'|s, a) v_π(s')",
+   "q_π(s, a) = E_π [ G_t | S_t = s, A_t = a ]",
+   "q_π(s, a) = v_π(s) / π(a|s)",
+   "q_π(s, a) = E_π [ R_{t+1} | S_t = s ]"
+  ]
+ },
+ "b300-e1-24": {
+  "questionVi": "Quan hệ giữa v_π(s) và q_π(s, a) là gì?",
+  "optionsVi": [
+   "v_π(s) = max_{a} q_π(s, a)",
+   "v_π(s) = q_π(s, a) / π(a|s)",
+   "v_π(s) = Σ_{a} π(a | s) · q_π(s, a)",
+   "v_π(s) = Σ_{a} q_π(s, a)"
+  ]
+ },
+ "b300-e1-25": {
+  "questionVi": "Phương trình nào là Bellman Expectation Equation cho v_π(s)?",
+  "optionsVi": [
+   "v_π(s) = Σ_{s',r} p(s',r|s,a) [ r + γ · v_π(s) ]",
+   "v_π(s) = max_a Σ_{s',r} p(s',r|s,a) [ r + γ · v_π(s') ]",
+   "v_π(s) = Σ_a π(a|s) Σ_{s',r} p(s',r|s,a) [ r + γ · v_π(s') ]",
+   "v_π(s) = E[ G_t + R_{t+1} ]"
+  ]
+ },
+ "b300-e1-26": {
+  "questionVi": "Phương trình nào là Bellman Expectation Equation cho q_π(s, a)?",
+  "optionsVi": [
+   "q_π(s,a) = Σ_{a'} π(a'|s') q_π(s',a')",
+   "q_π(s,a) = max_{a'} Σ_{s',r} p(s',r|s,a) [ r + γ · q_π(s',a') ]",
+   "q_π(s,a) = Σ_{s',r} p(s',r|s,a) [ r + γ · Σ_{a'} π(a'|s') · q_π(s',a') ]",
+   "q_π(s,a) = v_π(s) + γ · E[R_{t+1}]"
+  ]
+ },
+ "b300-e1-27": {
+  "questionVi": "Tính chất cốt lõi nào cho phép phương trình Bellman biểu diễn giá trị trạng thái theo kiểu đệ quy?",
+  "optionsVi": [
+   "Chuẩn hóa mọi phần thưởng về khoảng 0 đến 1",
+   "Xấp xỉ hàm phi tuyến bằng mô hình tuyến tính",
+   "Tách return G_t thành phần thưởng tức thì R_{t+1} cộng return tương lai đã chiết khấu γ · G_{t+1}",
+   "Giả định mọi chuyển trạng thái đều tất định"
+  ]
+ },
+ "b300-e1-28": {
+  "questionVi": "Backup diagram trong Học tăng cường là gì?",
+  "optionsVi": [
+   "Sơ đồ lưu trữ của bộ nhớ đệm",
+   "Đồ thị phần thưởng theo các episode huấn luyện",
+   "Lưu đồ thể hiện phần cứng mạng dự phòng",
+   "Biểu diễn đồ họa các chuyển trạng thái và lựa chọn tạo nên phép cập nhật cho hàm giá trị"
+  ]
+ },
+ "b300-e1-29": {
+  "questionVi": "Trong backup diagram của v_π(s), vòng tròn rỗng và chấm đặc biểu diễn gì?",
+  "optionsVi": [
+   "Vòng tròn rỗng là phần thưởng; chấm đặc là hệ số chiết khấu",
+   "Vòng tròn rỗng là hành động; chấm đặc là trạng thái",
+   "Vòng tròn rỗng là trạng thái; chấm đặc là hành động",
+   "Vòng tròn rỗng là trạng thái kết thúc; chấm đặc là trạng thái ban đầu"
+  ]
+ },
+ "b300-e1-30": {
+  "questionVi": "Mục tiêu cơ bản của agent trong Markov Decision Process là gì?",
+  "optionsVi": [
+   "Giảm tối đa tổng năng lượng tiêu thụ",
+   "Giảm tối đa số hành động trong mỗi episode",
+   "Tối đa hóa return chiết khấu tích lũy kỳ vọng về lâu dài",
+   "Ghé thăm mọi trạng thái trong không gian trạng thái với số lần bằng nhau"
+  ]
+ },
+ "b300-e1-31": {
+  "questionVi": "Policy Evaluation (còn gọi là bài toán Prediction) trong Dynamic Programming là gì?",
+  "optionsVi": [
+   "Học mô hình chuyển p(s',r|s,a) từ các mẫu",
+   "Chọn hành động tốt nhất bằng khám phá ε-greedy",
+   "Tính hàm giá trị trạng thái v_π cho một policy π cho trước",
+   "Tìm trực tiếp policy tối ưu π* từ phần thưởng"
+  ]
+ },
+ "b300-e1-32": {
+  "questionVi": "Trong Iterative Policy Evaluation, quy tắc cập nhật v_{k+1}(s) là gì?",
+  "optionsVi": [
+   "v_{k+1}(s) = Σ_a π(a|s) Σ_{s',r} p(s',r|s,a) [ r + γ · v_k(s') ]",
+   "v_{k+1}(s) = v_k(s) + α · [ R_{t+1} - v_k(s) ]",
+   "v_{k+1}(s) = max_a Σ_{s',r} p(s',r|s,a) [ r + γ · v_k(s') ]",
+   "v_{k+1}(s) = Σ_{s'} p(s'|s) v_k(s')"
+  ]
+ },
+ "b300-e1-33": {
+  "questionVi": "Điều gì đảm bảo Iterative Policy Evaluation hội tụ về hàm giá trị thật v_π khi k tiến tới ∞?",
+  "optionsVi": [
+   "Dùng không gian hành động liên tục",
+   "Tính chất ánh xạ co (contraction mapping) của toán tử Bellman expectation khi γ < 1",
+   "Lấy mẫu chuyển trạng thái ngẫu nhiên đều từ experience buffer",
+   "Đặt step-size α bằng 1.0"
+  ]
+ },
+ "b300-e1-34": {
+  "questionVi": "Điều kiện dừng trong Iterative Policy Evaluation thường được định nghĩa thế nào?",
+  "optionsVi": [
+   "Khi k đạt đúng 1000 vòng lặp",
+   "Khi max_{s} |v_{k+1}(s) - v_k(s)| < θ, với θ là một ngưỡng dương nhỏ",
+   "Khi policy đổi hành động ở mọi trạng thái",
+   "Khi mọi giá trị trạng thái đều bằng 0"
+  ]
+ },
+ "b300-e1-35": {
+  "questionVi": "Trong phiên bản in-place của Iterative Policy Evaluation, giá trị trạng thái được cập nhật thế nào trong một lượt quét?",
+  "optionsVi": [
+   "Giữ hai mảng riêng biệt và chỉ hoán đổi ở cuối mỗi lượt quét",
+   "Cập nhật trực tiếp trên một mảng duy nhất, dùng ngay giá trị mới cho các trạng thái tính sau",
+   "Cập nhật giá trị trạng thái theo thứ tự chữ cái ngược",
+   "Hoãn cập nhật cho tới khi mọi episode kết thúc"
+  ]
+ },
+ "b300-e1-36": {
+  "questionVi": "Trong ví dụ Gridworld 4x4 với policy ngẫu nhiên (π(a|s) = 0.25 cho 4 hành động) và R = -1 mỗi bước, giá trị của các trạng thái kết thúc là bao nhiêu?",
+  "optionsVi": [
+   "-14",
+   "Vô cùng",
+   "-1",
+   "0"
+  ]
+ },
+ "b300-e1-37": {
+  "questionVi": "Vì sao Dynamic Programming được xem là phương pháp 'Model-Based'?",
+  "optionsVi": [
+   "Nó dùng mô hình phần cứng robot thật khi huấn luyện",
+   "Nó xây dựng mô hình neural network của không gian trạng thái",
+   "Nó cần biết đầy đủ động lực học của môi trường p(s',r|s,a)",
+   "Nó mô hình hóa sở thích của người dùng"
+  ]
+ },
+ "b300-e1-38": {
+  "questionVi": "'Bootstrapping' trong Dynamic Programming nghĩa là gì?",
+  "optionsVi": [
+   "Chạy thuật toán mà không có giá trị khởi tạo",
+   "Cập nhật ước lượng giá trị của một trạng thái dựa trên giá trị ước lượng của các trạng thái kế tiếp",
+   "Khởi tạo tham số policy bằng nhiễu Gauss ngẫu nhiên",
+   "Lấy mẫu lại dữ liệu huấn luyện có hoàn lại"
+  ]
+ },
+ "b300-e1-39": {
+  "questionVi": "Full backup trong Dynamic Programming là gì?",
+  "optionsVi": [
+   "Đặt lại giá trị trạng thái về 0 mỗi khi sai số vượt ngưỡng",
+   "Lưu giá trị trạng thái ra ổ đĩa sau mỗi bước",
+   "Cập nhật dựa trên mẫu, chỉ dùng một chuyển trạng thái được lấy mẫu",
+   "Cập nhật xét mọi trạng thái kế tiếp và phần thưởng có thể có dựa trên động lực học của môi trường"
+  ]
+ },
+ "b300-e1-40": {
+  "questionVi": "Độ phức tạp thời gian của một lượt quét đầy đủ Policy Evaluation trên không gian trạng thái S và không gian hành động A là bao nhiêu?",
+  "optionsVi": [
+   "O(log |S|)",
+   "O(|S| · |A| · |S|)",
+   "O(|A|^2)",
+   "O(|S|^2)"
+  ]
+ },
+ "b300-e1-41": {
+  "questionVi": "Policy Improvement trong Dynamic Programming là gì?",
+  "optionsVi": [
+   "Tăng dần step-size α theo thời gian",
+   "Chuyển một policy tất định thành policy ngẫu nhiên",
+   "Giảm số trạng thái của MDP",
+   "Tạo policy mới π' greedy theo hàm giá trị v_π của policy hiện tại π"
+  ]
+ },
+ "b300-e1-42": {
+  "questionVi": "Theo Policy Improvement Theorem, nếu q_π(s, π'(s)) ≥ v_π(s) với mọi s thuộc S thì có thể kết luận gì về policy π'?",
+  "optionsVi": [
+   "Policy π' có phương sai lớn hơn policy π",
+   "Policy π' phải bằng policy ngẫu nhiên",
+   "Policy π' tốt ít nhất bằng policy π: v_π'(s) ≥ v_π(s) với mọi s",
+   "Policy π' tệ hơn hẳn policy π"
+  ]
+ },
+ "b300-e1-43": {
+  "questionVi": "Policy greedy tất định π'(s) được xây dựng từ hàm giá trị trạng thái v_π(s) như thế nào?",
+  "optionsVi": [
+   "π'(s) = Σ_a π(a|s) v_π(s)",
+   "π'(s) = argmax_a Σ_{s',r} p(s',r|s,a) [ r + γ · v_π(s') ]",
+   "π'(s) = argmin_a v_π(s)",
+   "π'(s) = v_π(s) + γ"
+  ]
+ },
+ "b300-e1-44": {
+  "questionVi": "Điều gì xảy ra khi policy greedy π' cho v_π'(s) = v_π(s) với mọi s?",
+  "optionsVi": [
+   "Cả π và π' đều là policy tối ưu (π = π*), thỏa Bellman Optimality Equation",
+   "Không gian trạng thái có chu trình",
+   "Phải tăng hệ số chiết khấu γ",
+   "Thuật toán đã phân kỳ và phải chạy lại"
+  ]
+ },
+ "b300-e1-45": {
+  "questionVi": "Hai bước luân phiên chính trong thuật toán Policy Iteration là gì?",
+  "optionsVi": [
+   "Exploration (E) và Exploitation (I)",
+   "Encoding (E) và Inference (I)",
+   "Estimation (E) và Integration (I)",
+   "Policy Evaluation (E) và Policy Improvement (I)"
+  ]
+ },
+ "b300-e1-46": {
+  "questionVi": "Policy Iteration đi theo chuỗi nào cho tới khi hội tụ về policy tối ưu π*?",
+  "optionsVi": [
+   "v_0 → v_1 → v_2 → ... → v*",
+   "q_0 → v_0 → q_1 → v_1 → ... → π*",
+   "π_0 → v_{π_0} → π_1 → v_{π_1} → π_2 → ... → π* → v*",
+   "π_0 → π_1 → π_2 → ... → π*"
+  ]
+ },
+ "b300-e1-47": {
+  "questionVi": "Vì sao Policy Iteration chắc chắn hội tụ về policy tối ưu trong MDP hữu hạn?",
+  "optionsVi": [
+   "Vì action value được lấy mẫu đều",
+   "Vì hệ số chiết khấu γ luôn bằng 1",
+   "Vì MDP hữu hạn chỉ có hữu hạn policy tất định, và mỗi bước cải thiện cho policy tốt hơn hẳn cho tới khi tối ưu",
+   "Vì giá trị trạng thái tăng không giới hạn"
+  ]
+ },
+ "b300-e1-48": {
+  "questionVi": "Điểm nghẽn tính toán chính của Policy Iteration chuẩn là gì?",
+  "optionsVi": [
+   "Cần bộ nhớ vô hạn để lưu các bộ kinh nghiệm",
+   "Không thể đánh giá policy tất định",
+   "Mỗi bước Policy Evaluation cần quét lặp tới khi hội tụ chính xác rồi mới cải thiện policy được",
+   "Chỉ xử lý được 2 trạng thái mỗi lần"
+  ]
+ },
+ "b300-e1-49": {
+  "questionVi": "Trong Policy Iteration, làm sao biết thuật toán đã hội tụ về policy tối ưu?",
+  "optionsVi": [
+   "Khi số vòng lặp đạt 100",
+   "Khi mọi giá trị trạng thái bằng 0",
+   "Khi policy giữ ổn định (policy_stable == True) sau bước cải thiện: π'(s) == π(s) với mọi trạng thái",
+   "Khi phần thưởng trở thành âm"
+  ]
+ },
+ "b300-e1-50": {
+  "questionVi": "Trong Gridworld, nếu nhiều hành động cùng đạt giá trị lớn nhất khi chọn greedy, policy có thể xử lý thế nào?",
+  "optionsVi": [
+   "Báo lỗi và dừng",
+   "Bỏ qua các hành động bằng nhau và chọn ngẫu nhiên một hành động không bằng",
+   "Luôn chọn hành động có chỉ số nhỏ nhất",
+   "Chia đều xác suất cho mọi hành động cùng đạt giá trị lớn nhất"
+  ]
+ },
+ "b300-e1-51": {
+  "questionVi": "Value Iteration trong Dynamic Programming là gì?",
+  "optionsVi": [
+   "Thuật toán rút gọn Policy Evaluation chỉ còn 1 lượt quét cho mỗi bước cải thiện, gộp đánh giá và cải thiện vào một phép cập nhật",
+   "Mô hình hồi quy tuyến tính để dự đoán giá trị",
+   "Thuật toán đánh giá policy π qua vô hạn lượt quét mà không bao giờ cải thiện",
+   "Phương pháp ước lượng phần thưởng mà không cần biết trạng thái"
+  ]
+ },
+ "b300-e1-52": {
+  "questionVi": "Quy tắc cập nhật Bellman Optimality dùng trong Value Iteration cho v_{k+1}(s) là gì?",
+  "optionsVi": [
+   "v_{k+1}(s) = max_a Σ_{s',r} p(s',r|s,a) [ r + γ · v_k(s') ]",
+   "v_{k+1}(s) = v_k(s) + α · [ R - v_k(s) ]",
+   "v_{k+1}(s) = Σ_a π(a|s) Σ_{s',r} p(s',r|s,a) [ r + γ · v_k(s') ]",
+   "v_{k+1}(s) = min_a v_k(s)"
+  ]
+ },
+ "b300-e1-53": {
+  "questionVi": "Value Iteration khác Policy Iteration về bản chất ở điểm nào?",
+  "optionsVi": [
+   "Value Iteration chỉ dùng được cho không gian trạng thái liên tục",
+   "Value Iteration không cần các lượt quét đánh giá policy riêng giữa các lần cải thiện; nó cập nhật giá trị trực tiếp bằng toán tử max",
+   "Value Iteration cần lấy mẫu Monte Carlo",
+   "Value Iteration là model-free, còn Policy Iteration là model-based"
+  ]
+ },
+ "b300-e1-54": {
+  "questionVi": "Generalized Policy Iteration (GPI) là gì?",
+  "optionsVi": [
+   "Khái niệm chung cho phép quá trình đánh giá policy và cải thiện policy tương tác với nhau, bất kể mức độ chi tiết của từng bước",
+   "Một thư viện Python cụ thể để giải MDP",
+   "Lý thuyết cho rằng mọi policy phải là ngẫu nhiên đều",
+   "Phương pháp chỉ áp dụng cho policy dùng gradient descent"
+  ]
+ },
+ "b300-e1-55": {
+  "questionVi": "Trong GPI, hai lực đối nghịch nào cùng phối hợp để đạt tối ưu?",
+  "optionsVi": [
+   "Lấy mẫu thêm nhiễu; lấy trung bình bỏ nhiễu",
+   "Exploration tăng phương sai; Exploitation giảm phương sai",
+   "Evaluation làm hàm giá trị nhất quán với policy hiện tại; Improvement làm policy greedy theo hàm giá trị hiện tại",
+   "Chiết khấu làm giảm return; việc học làm tăng return"
+  ]
+ },
+ "b300-e1-56": {
+  "questionVi": "Synchronous Dynamic Programming là gì?",
+  "optionsVi": [
+   "Thuật toán cập nhật trạng thái theo thứ tự ngẫu nhiên tùy ý, không quét",
+   "Thuật toán cập nhật giá trị theo thời gian thực khi cảm biến vật lý kích hoạt",
+   "Thuật toán cập nhật mọi trạng thái một cách có hệ thống theo các lượt quét, đọc giá trị cũ để ghi giá trị mới",
+   "Thuật toán chạy trên nhiều GPU song song ở các máy chủ cloud khác nhau"
+  ]
+ },
+ "b300-e1-57": {
+  "questionVi": "Asynchronous Dynamic Programming là gì?",
+  "optionsVi": [
+   "Thuật toán DP chạy không cần xung nhịp của bộ xử lý trung tâm",
+   "Thuật toán DP cập nhật giá trị trạng thái theo thứ tự tùy ý, dùng bất kỳ giá trị nào đang có, không cần quét đầy đủ có hệ thống",
+   "Thuật toán DP chỉ dùng được cho episodic task",
+   "Thuật toán DP không dùng phương trình Bellman"
+  ]
+ },
+ "b300-e1-58": {
+  "questionVi": "In-Place Dynamic Programming là ví dụ của loại nào?",
+  "optionsVi": [
+   "Synchronous DP với hai bộ nhớ đệm",
+   "Asynchronous DP, vì giá trị mới cập nhật của các trạng thái được dùng ngay để cập nhật các trạng thái còn lại trong cùng lượt quét",
+   "Học Monte Carlo model-free",
+   "Tối ưu Policy Gradient"
+  ]
+ },
+ "b300-e1-59": {
+  "questionVi": "Prioritized Sweeping trong Asynchronous DP là gì?",
+  "optionsVi": [
+   "Chỉ cập nhật trạng thái kết thúc và bỏ qua trạng thái trung gian",
+   "Cập nhật trạng thái theo thứ tự chữ cái của tên trạng thái",
+   "Cập nhật trạng thái theo độ lớn Bellman error để dồn tính toán vào nơi giá trị thay đổi nhiều nhất",
+   "Cập nhật trạng thái theo tuổi của agent"
+  ]
+ },
+ "b300-e1-60": {
+  "questionVi": "Ưu điểm lớn của Asynchronous DP với MDP có không gian trạng thái lớn là gì?",
+  "optionsVi": [
+   "Đảm bảo hội tụ chính xác trong 1 bước",
+   "Biến MDP thành bài toán hồi quy tuyến tính",
+   "Loại bỏ nhu cầu dùng hệ số chiết khấu γ",
+   "Có thể tiến triển và cải thiện policy mà không phải quét đầy đủ tốn kém qua hàng triệu trạng thái"
+  ]
+ },
+ "b300-e2-01": {
+  "questionVi": "Đặc điểm cơ bản nào phân biệt phương pháp Monte Carlo (MC) với Dynamic Programming (DP)?",
+  "optionsVi": [
+   "MC dùng bootstrapping để cập nhật ước lượng trước khi episode kết thúc",
+   "MC chỉ áp dụng được cho không gian trạng thái liên tục",
+   "MC không cần mô hình động lực học p(s',r|s,a) của môi trường; nó học từ kinh nghiệm",
+   "MC không dùng return mẫu"
+  ]
+ },
+ "b300-e2-02": {
+  "questionVi": "Vì sao Monte Carlo chỉ áp dụng được cho Episodic Task?",
+  "optionsVi": [
+   "Vì continuing task không có hệ số chiết khấu",
+   "Vì return G_t chỉ tính được sau khi episode đạt trạng thái kết thúc",
+   "Vì MC không xử lý được phần thưởng âm",
+   "Vì MC yêu cầu chuyển trạng thái phải tuyến tính"
+  ]
+ },
+ "b300-e2-03": {
+  "questionVi": "Trong Monte Carlo Prediction cho giá trị trạng thái v_π(s), V(s) được ước lượng thế nào?",
+  "optionsVi": [
+   "Giải hệ phương trình tuyến tính bằng nghịch đảo ma trận",
+   "Lấy phần thưởng lớn nhất quan sát được ở trạng thái s",
+   "Chạy gradient descent trên phần thưởng tức thì R_t",
+   "Lấy trung bình mẫu các return G_t quan sát được sau các lần ghé trạng thái s qua nhiều episode"
+  ]
+ },
+ "b300-e2-04": {
+  "questionVi": "First-visit MC và Every-visit MC prediction khác nhau thế nào?",
+  "optionsVi": [
+   "First-visit MC dùng γ = 0; Every-visit MC dùng γ = 1",
+   "First-visit MC cập nhật giá trị sau 1 episode; Every-visit MC cập nhật sau khi mọi episode kết thúc",
+   "First-visit MC áp dụng cho action value; Every-visit MC áp dụng cho state value",
+   "First-visit MC lấy trung bình return sau lần đầu ghé s trong một episode; Every-visit MC lấy trung bình return sau mọi lần ghé s"
+  ]
+ },
+ "b300-e2-05": {
+  "questionVi": "Theo luật số lớn, ước lượng Monte Carlo V(s) thay đổi thế nào khi số episode ghé thăm tiến tới ∞?",
+  "optionsVi": [
+   "Dao động giữa giá trị dương và âm",
+   "Hội tụ tiệm cận về giá trị trạng thái kỳ vọng thật v_π(s)",
+   "Tăng lớn vô hạn",
+   "Hội tụ về giá trị khởi tạo V_0(s)"
+  ]
+ },
+ "b300-e2-06": {
+  "questionVi": "Trong bài toán Blackjack mô hình hóa là MDP episodic không chiết khấu (γ = 1), phần thưởng cho thắng, hòa, thua là bao nhiêu?",
+  "optionsVi": [
+   "Thắng: +10, Hòa: +5, Thua: 0",
+   "Thắng: +1, Hòa: +1, Thua: 0",
+   "Thắng: 0, Hòa: -1, Thua: -2",
+   "Thắng: +1, Hòa: 0, Thua: -1"
+  ]
+ },
+ "b300-e2-07": {
+  "questionVi": "3 biến trạng thái định nghĩa một trạng thái trong ví dụ Blackjack MDP của Sutton & Barto là gì?",
+  "optionsVi": [
+   "Tổng tiền của người chơi, tổng tiền của nhà cái và số lá còn trong bộ bài",
+   "Số lá trên tay người chơi, số lá trên tay nhà cái và số bàn",
+   "Tuổi người chơi, chất bài của nhà cái và thời điểm trong ngày",
+   "Tổng điểm hiện tại của người chơi (12-21), lá bài ngửa của nhà cái (1-10) và có Usable Ace hay không (True/False)"
+  ]
+ },
+ "b300-e2-08": {
+  "questionVi": "Ưu điểm tính toán quan trọng của Monte Carlo so với Dynamic Programming là gì?",
+  "optionsVi": [
+   "MC không cần bộ sinh số ngẫu nhiên",
+   "MC cập nhật giá trị trạng thái mà không cần chạy episode",
+   "Chi phí ước lượng giá trị cho một trạng thái mục tiêu không phụ thuộc kích thước không gian trạng thái |S|",
+   "MC đảm bảo mọi ước lượng có phương sai bằng 0"
+  ]
+ },
+ "b300-e2-09": {
+  "questionVi": "Trong cập nhật Monte Carlo dạng tăng dần, V(S_t) được cập nhật thế nào khi quan sát return mới G_t?",
+  "optionsVi": [
+   "V(S_t) ← max(V(S_t), G_t)",
+   "V(S_t) ← G_t / α",
+   "V(S_t) ← V(S_t) + α · [ R_{t+1} + γ · V(S_{t+1}) - V(S_t) ]",
+   "V(S_t) ← V(S_t) + α · [ G_t - V(S_t) ]"
+  ]
+ },
+ "b300-e2-10": {
+  "questionVi": "Vì sao ước lượng Monte Carlo có phương sai cao?",
+  "optionsVi": [
+   "Step-size α của MC cố định bằng ∞",
+   "Return G_t được cộng dồn qua nhiều chuyển trạng thái-hành động và phần thưởng ngẫu nhiên trong cả một episode",
+   "Ước lượng MC dùng mô hình hồi quy tuyến tính tất định",
+   "MC cắt episode sau 1 bước"
+  ]
+ },
+ "b300-e2-11": {
+  "questionVi": "Vì sao ước lượng Action Value Q(s, a) là cần thiết cho control model-free trong Monte Carlo?",
+  "optionsVi": [
+   "Không có mô hình môi trường p(s',r|s,a) thì chỉ có V(s) là không đủ để chọn hành động; chọn greedy cần Q(s, a)",
+   "Giá trị trạng thái V(s) không thể lưu trong bộ nhớ máy tính",
+   "Action value Q(s, a) không phụ thuộc vào policy π",
+   "Action value Q(s, a) luôn có phương sai thấp hơn V(s)"
+  ]
+ },
+ "b300-e2-12": {
+  "questionVi": "Vấn đề cặp trạng thái-hành động không được ghé (Unvisited State-Action Pairs) trong Monte Carlo Control là gì?",
+  "optionsVi": [
+   "Cặp không được ghé tự động đặt hệ số chiết khấu γ về 0",
+   "Nếu policy π tất định, nhiều cặp (s, a) sẽ không bao giờ được ghé nên không ước lượng được action value của chúng",
+   "Cặp không được ghé làm code Python lỗi NullPointer",
+   "Cặp không được ghé buộc môi trường kết thúc"
+  ]
+ },
+ "b300-e2-13": {
+  "questionVi": "Monte Carlo Exploring Starts (MC ES) giả định điều gì để đảm bảo mọi cặp (s, a) đều được ghé?",
+  "optionsVi": [
+   "Không gian trạng thái bị chặn trong khoảng 0 đến 1",
+   "Mỗi episode bắt đầu tại một cặp trạng thái-hành động (S_0, A_0) chọn ngẫu nhiên, với xác suất khác 0 cho mọi cặp",
+   "Mọi hành động cho phần thưởng giống nhau",
+   "Agent chỉ khám phá ở bước cuối của mỗi episode"
+  ]
+ },
+ "b300-e2-14": {
+  "questionVi": "Policy Improvement trong Monte Carlo Exploring Starts (MC ES) hoạt động thế nào?",
+  "optionsVi": [
+   "π(a|s) ← 1 / |A| với mọi trạng thái s",
+   "π(s) ← argmin_a Q(s, a)",
+   "π(s) ← Σ_a Q(s, a)",
+   "π(s) ← argmax_a Q(s, a) với mọi trạng thái s trong episode vừa quan sát"
+  ]
+ },
+ "b300-e2-15": {
+  "questionVi": "Vì sao giả định Exploring Starts thường không thực tế với hệ thống vật lý ngoài đời?",
+  "optionsVi": [
+   "Phần cứng vật lý không đo được action value Q(s, a)",
+   "Exploring starts cần step-size âm",
+   "Hệ thống thật (như xe tự lái) không thể bắt đầu tùy ý ở các cấu hình trạng thái-hành động nguy hiểm hoặc bất kỳ",
+   "Exploring starts chỉ chạy trên môi trường lưới 2D"
+  ]
+ },
+ "b300-e2-16": {
+  "questionVi": "Trong Monte Carlo Control với Exploring Starts, policy improvement được thực hiện khi nào?",
+  "optionsVi": [
+   "Sau mỗi bước thời gian t trong episode",
+   "Theo từng episode, sau khi tính return cho các cặp (s, a) đã ghé trong episode vừa kết thúc",
+   "Lúc bắt đầu tạo không gian trạng thái",
+   "Chỉ một lần sau khi hoàn thành 1 triệu episode"
+  ]
+ },
+ "b300-e2-17": {
+  "questionVi": "Monte Carlo Exploring Starts hội tụ về cấu trúc policy nào?",
+  "optionsVi": [
+   "Policy ngẫu nhiên đều",
+   "Một hàm baseline tuyến tính",
+   "Policy tất định tối ưu π* và hàm action-value tối ưu q*",
+   "Policy ε-greedy với ε = 0.5"
+  ]
+ },
+ "b300-e2-18": {
+  "questionVi": "Trong thí nghiệm MC Control với Blackjack, việc có Usable Ace thay đổi đường chiến lược tối ưu như thế nào?",
+  "optionsVi": [
+   "Người chơi luôn đầu hàng ngay",
+   "Policy tối ưu trở nên hoàn toàn ngẫu nhiên",
+   "Người chơi luôn rút bài bất kể tổng điểm",
+   "Người chơi rút thêm lâu hơn và chỉ dừng ở tổng cao hơn (ví dụ 19-21) vì lá Ace đóng vai trò đệm an toàn chống quá 21"
+  ]
+ },
+ "b300-e2-19": {
+  "questionVi": "On-Policy MC Control duy trì việc khám phá liên tục thế nào khi không có Exploring Starts?",
+  "optionsVi": [
+   "Đặt lại giá trị trạng thái về 0 mỗi 10 bước",
+   "Buộc agent hành động ngẫu nhiên 100% thời gian",
+   "Dùng policy ngẫu nhiên ε-greedy hoặc ε-soft để mọi hành động luôn có xác suất được chọn khác 0",
+   "Bỏ hệ số chiết khấu γ"
+  ]
+ },
+ "b300-e2-20": {
+  "questionVi": "Yêu cầu xác định một policy ε-soft với không gian hành động |A| là gì?",
+  "optionsVi": [
+   "π(a|s) = 1 - ε với mọi hành động",
+   "π(a|s) = 0 với các hành động chưa tối ưu",
+   "π(a|s) = ε · |A|",
+   "π(a|s) ≥ ε / |A| với mọi s thuộc S và a thuộc A"
+  ]
+ },
+ "b300-e2-21": {
+  "questionVi": "Xác suất chọn hành động greedy dưới policy ε-greedy với |A| hành động là bao nhiêu?",
+  "optionsVi": [
+   "1 - ε + (ε / |A|)",
+   "1 - ε",
+   "(1 - ε) / |A|",
+   "ε / |A|"
+  ]
+ },
+ "b300-e2-22": {
+  "questionVi": "Xác suất chọn một hành động không greedy bất kỳ dưới policy ε-greedy với |A| hành động là bao nhiêu?",
+  "optionsVi": [
+   "1 - ε",
+   "ε",
+   "ε / |A|",
+   "1 / |A|"
+  ]
+ },
+ "b300-e2-23": {
+  "questionVi": "Vì sao On-Policy MC Control dùng policy ε-greedy không bao giờ học được policy tất định tối ưu hoàn toàn?",
+  "optionsVi": [
+   "Vì hệ số chiết khấu γ phải đặt bằng 0",
+   "Vì policy ε-greedy làm phần thưởng trở thành âm",
+   "Vì Monte Carlo không tính return chính xác được",
+   "Vì nó đánh giá và cải thiện một policy ε-greedy, vốn phải tiếp tục khám phá với xác suất ε"
+  ]
+ },
+ "b300-e2-24": {
+  "questionVi": "Off-Policy Learning trong Học tăng cường là gì?",
+  "optionsVi": [
+   "Học mà không thu thập dữ liệu nào từ môi trường",
+   "Chỉ học từ tín hiệu phần thưởng mà không dùng thông tin trạng thái",
+   "Học hoặc đánh giá target policy π trong khi sinh kinh nghiệm bằng một behavior policy b khác",
+   "Đánh giá policy khi màn hình máy tính đang tắt"
+  ]
+ },
+ "b300-e2-25": {
+  "questionVi": "Target Policy π trong off-policy learning là gì?",
+  "optionsVi": [
+   "Policy dùng để sinh hành động khám phá trong môi trường",
+   "Policy của đối thủ",
+   "Policy đang được học và đánh giá, hướng tới trở thành policy tối ưu π*",
+   "Một policy ngẫu nhiên cố định không bao giờ cập nhật"
+  ]
+ },
+ "b300-e2-26": {
+  "questionVi": "Behavior Policy b trong off-policy learning là gì?",
+  "optionsVi": [
+   "Policy đang được đánh giá để triển khai cuối cùng",
+   "Policy dùng để điều khiển agent và sinh các quỹ đạo kinh nghiệm có khám phá",
+   "Hàm phần thưởng của môi trường",
+   "Policy tất định chỉ chọn hành động có chỉ số 0"
+  ]
+ },
+ "b300-e2-27": {
+  "questionVi": "Điều kiện bao phủ (Coverage Condition) cần cho off-policy learning hợp lệ là gì?",
+  "optionsVi": [
+   "Target policy π phải chọn mọi hành động với xác suất bằng nhau",
+   "Behavior policy b phải tất định",
+   "π(a|s) phải bằng b(a|s) với mọi trạng thái và hành động",
+   "Nếu π(a|s) > 0 thì b(a|s) > 0 với mọi s và a (behavior policy phải lấy mẫu được mọi hành động mà target policy có thể chọn)"
+  ]
+ },
+ "b300-e2-28": {
+  "questionVi": "Ưu điểm chính của Off-Policy learning so với On-Policy learning là gì?",
+  "optionsVi": [
+   "Off-policy learning loại bỏ hoàn toàn phương sai",
+   "Target policy π có thể là policy tối ưu tất định thuần túy trong khi behavior policy b vẫn khám phá; còn cho phép học từ dữ liệu minh họa",
+   "Off-policy learning không cần tính return",
+   "Off-policy learning chạy nhanh gấp đôi trong Python"
+  ]
+ },
+ "b300-e2-29": {
+  "questionVi": "Điều gì xảy ra nếu Coverage Condition bị vi phạm khi ước lượng off-policy?",
+  "optionsVi": [
+   "Môi trường chuyển thành bài toán bandit",
+   "Agent tìm ra policy tối ưu ngay lập tức",
+   "Tỉ số importance sampling không xác định (chia cho 0), dẫn tới ước lượng giá trị bị lệch hoặc không hợp lệ",
+   "Return G_t tự động bằng 0"
+  ]
+ },
+ "b300-e2-30": {
+  "questionVi": "On-Policy learning có phải là trường hợp đặc biệt của Off-Policy learning không?",
+  "optionsVi": [
+   "Không, hai cách này hoàn toàn loại trừ nhau",
+   "Có, khi target policy π và behavior policy b giống hệt nhau (π = b)",
+   "Không, vì on-policy không dùng hàm giá trị",
+   "Có, nhưng chỉ khi γ = 0"
+  ]
+ },
+ "b300-e2-31": {
+  "questionVi": "Mục đích của Importance Sampling trong Off-Policy learning là gì?",
+  "optionsVi": [
+   "Tự động tăng step-size α",
+   "Chuyển episodic task thành continuing task",
+   "Điều chỉnh các return thu được dưới behavior policy b để cho ước lượng không lệch dưới target policy π",
+   "Nén trạng thái nhiều chiều thành các ô rời rạc"
+  ]
+ },
+ "b300-e2-32": {
+  "questionVi": "Tỉ số Importance Sampling W (hay rho_{t:T-1}) cho quỹ đạo A_t, S_{t+1}, ..., S_T là gì?",
+  "optionsVi": [
+   "Hiệu giữa giá trị mục tiêu và giá trị hiện tại",
+   "Tổng phần thưởng chia cho số bước T",
+   "Tỉ số hệ số chiết khấu γ_target / γ_behavior",
+   "Tích các tỉ số xác suất hành động: Π_{k=t}^{T-1} [ π(A_k|S_k) / b(A_k|S_k) ]"
+  ]
+ },
+ "b300-e2-33": {
+  "questionVi": "Trong Ordinary Importance Sampling, giá trị trạng thái V(s) được tính từ return G_i và tỉ số W_i thế nào?",
+  "optionsVi": [
+   "V(s) = Σ_{i} (W_i · G_i) / Σ_{i} W_i",
+   "V(s) = Σ_{i} (W_i · G_i) / N  (trung bình thường của các return có trọng số)",
+   "V(s) = Σ_{i} G_i / Σ_{i} W_i",
+   "V(s) = max_i (W_i · G_i)"
+  ]
+ },
+ "b300-e2-34": {
+  "questionVi": "Trong Weighted Importance Sampling, giá trị trạng thái V(s) được tính từ return G_i và tỉ số W_i thế nào?",
+  "optionsVi": [
+   "V(s) = Σ_{i} G_i / N",
+   "V(s) = Σ_{i} (W_i · G_i) / Σ_{i} W_i  (trung bình có trọng số của các return)",
+   "V(s) = Σ_{i} W_i",
+   "V(s) = Σ_{i} (W_i · G_i) / N"
+  ]
+ },
+ "b300-e2-35": {
+  "questionVi": "Đánh đổi bias và variance giữa Ordinary và Weighted Importance Sampling là gì?",
+  "optionsVi": [
+   "Ordinary IS bị lệch; Weighted IS hoàn toàn không lệch",
+   "Hai ước lượng có bias và variance như nhau",
+   "Ordinary IS có phương sai thấp; Weighted IS có phương sai vô hạn",
+   "Ordinary IS không lệch nhưng phương sai cao/không bị chặn; Weighted IS bị lệch (với số mẫu hữu hạn) nhưng phương sai thấp hơn"
+  ]
+ },
+ "b300-e2-36": {
+  "questionVi": "Trong Off-Policy MC Prediction dùng Importance Sampling, điều gì xảy ra nếu hành động A_k do behavior policy b chọn có xác suất 0 dưới target policy π (π(A_k|S_k) = 0)?",
+  "optionsVi": [
+   "Tỉ số W trở thành ∞",
+   "Return G_t tăng gấp đôi",
+   "Tỉ số importance sampling W bằng 0, nên return của phần còn lại của episode bị bỏ qua (trọng số 0)",
+   "Thuật toán lỗi ngay lập tức"
+  ]
+ },
+ "b300-e2-37": {
+  "questionVi": "Vì sao Off-Policy Monte Carlo có thể học chậm khi episode dài?",
+  "optionsVi": [
+   "Vì episode dài cần thêm bộ nhớ GPU",
+   "Vì hệ số chiết khấu γ trở thành âm",
+   "Vì target policy π không thể cập nhật cho tới cuối năm",
+   "Vì nhân nhiều tỉ số importance sampling qua quỹ đạo dài gây phương sai cực lớn hoặc làm trọng số về 0"
+  ]
+ },
+ "b300-e2-38": {
+  "questionVi": "Trong cài đặt tăng dần của Weighted Importance Sampling, tham số C_n nào được duy trì?",
+  "optionsVi": [
+   "C_n = C_{n-1} · W_n",
+   "C_n = max(C_{n-1}, W_n)",
+   "C_n = C_{n-1} + W_n (tổng tích lũy các trọng số importance sampling)",
+   "C_n = C_{n-1} / n"
+  ]
+ },
+ "b300-e2-39": {
+  "questionVi": "Quy tắc cập nhật tăng dần cho Q(S_t, A_t) trong Off-Policy MC dùng trọng số W là gì?",
+  "optionsVi": [
+   "Q_{n+1} = G_n / C_n",
+   "Q_{n+1} = Q_n + (W_n / C_n) · [ G_n - Q_n ]",
+   "Q_{n+1} = Q_n + W_n · G_n",
+   "Q_{n+1} = Q_n + α · [ G_n - Q_n ]"
+  ]
+ },
+ "b300-e2-40": {
+  "questionVi": "Off-Policy Monte Carlo Control có học được target policy tất định tối ưu π* khi dùng behavior policy b ε-greedy không?",
+  "optionsVi": [
+   "Có, bằng cách định nghĩa target policy π greedy theo ước lượng Q hiện tại, còn behavior policy b vẫn ε-greedy",
+   "Không, target policy π cũng phải ε-greedy",
+   "Không, vì importance sampling chỉ dùng được cho state value V",
+   "Có, nhưng chỉ khi mọi phần thưởng đều dương"
+  ]
+ },
+ "b300-e2-41": {
+  "questionVi": "Temporal Difference (TD) Learning trong Học tăng cường là gì?",
+  "optionsVi": [
+   "Sự kết hợp giữa lấy mẫu của Monte Carlo và bootstrapping của Dynamic Programming để cập nhật ước lượng giá trị sau mỗi bước",
+   "Thuật toán planning model-based cần đầy đủ động lực học môi trường",
+   "Kỹ thuật đo thời gian vật lý trôi qua khi chạy code",
+   "Phương pháp chỉ cập nhật giá trị ở cuối episode bằng hồi quy tuyến tính"
+  ]
+ },
+ "b300-e2-42": {
+  "questionVi": "Quy tắc cập nhật TD(0) dạng bảng cho giá trị trạng thái V(S_t) là gì?",
+  "optionsVi": [
+   "V(S_t) ← V(S_t) + α · [ G_t - V(S_t) ]",
+   "V(S_t) ← R_{t+1} + γ · V(S_{t+1})",
+   "V(S_t) ← V(S_t) + α · [ R_{t+1} + γ · V(S_{t+1}) - V(S_t) ]",
+   "V(S_t) ← Σ_{s'} p(s'|S_t) V(s')"
+  ]
+ },
+ "b300-e2-43": {
+  "questionVi": "TD Error δ_t trong TD(0) được định nghĩa thế nào?",
+  "optionsVi": [
+   "δ_t = R_{t+1} + γ · V(S_{t+1}) - V(S_t)",
+   "δ_t = R_{t+1} - V(S_t)",
+   "δ_t = G_t - V(S_t)",
+   "δ_t = V(S_{t+1}) - V(S_t)"
+  ]
+ },
+ "b300-e2-44": {
+  "questionVi": "Đại lượng nào được gọi là TD Target trong TD(0)?",
+  "optionsVi": [
+   "G_t",
+   "V(S_t)",
+   "δ_t",
+   "R_{t+1} + γ · V(S_{t+1})"
+  ]
+ },
+ "b300-e2-45": {
+  "questionVi": "TD(0) kết hợp đặc điểm của Dynamic Programming (DP) và Monte Carlo (MC) như thế nào?",
+  "optionsVi": [
+   "Giống MC, nó dùng phương trình ma trận chính xác; giống DP, nó dùng random walk",
+   "Giống DP, nó cần đủ xác suất chuyển; giống MC, nó đợi tới cuối episode",
+   "Giống MC, nó học từ kinh nghiệm lấy mẫu mà không cần mô hình; giống DP, nó bootstrap bằng cách cập nhật dựa trên ước lượng hiện tại",
+   "Nó không có đặc điểm chung nào với DP hay MC"
+  ]
+ },
+ "b300-e2-46": {
+  "questionVi": "Ưu điểm vận hành lớn của TD(0) so với Monte Carlo là gì?",
+  "optionsVi": [
+   "TD(0) loại bỏ hoàn toàn không gian trạng thái",
+   "TD(0) cập nhật ước lượng giá trị online từng bước mà không cần đợi episode kết thúc, nên dùng được cho continuing task",
+   "TD(0) đảm bảo mọi ước lượng có phương sai bằng 0",
+   "TD(0) không cần step-size α"
+  ]
+ },
+ "b300-e2-47": {
+  "questionVi": "Xét về bias và variance, TD(0) so với ước lượng Monte Carlo thế nào?",
+  "optionsVi": [
+   "TD(0) có phương sai thấp hơn nhưng bias ban đầu cao hơn (do bootstrapping); MC có phương sai cao hơn nhưng không lệch",
+   "Cả hai phương pháp đều không lệch và phương sai bằng 0",
+   "TD(0) có phương sai cao hơn và bias thấp hơn MC",
+   "TD(0) có phương sai không bị chặn còn MC có phương sai bằng 0"
+  ]
+ },
+ "b300-e2-48": {
+  "questionVi": "Trong ví dụ Random Walk (5 trạng thái A, B, C, D, E), giá trị thật v_π(s) của trạng thái C dưới policy bước ngẫu nhiên đều là bao nhiêu?",
+  "optionsVi": [
+   "0.0",
+   "0.25",
+   "0.5",
+   "1.0"
+  ]
+ },
+ "b300-e2-49": {
+  "questionVi": "Batch Updating trong TD(0) và Monte Carlo là gì?",
+  "optionsVi": [
+   "Đưa một lô kinh nghiệm hữu hạn vào lặp đi lặp lại cho tới khi ước lượng giá trị hội tụ trên tập dữ liệu đó",
+   "Chỉ cập nhật tham số policy bằng mini-batch gradient descent",
+   "Chỉ cập nhật giá trị khi có 100 GPU kết nối",
+   "Xử lý các yêu cầu theo lô trong hệ quản trị cơ sở dữ liệu"
+  ]
+ },
+ "b300-e2-50": {
+  "questionVi": "Khi batch updating trên tập dữ liệu hữu hạn, TD(0) hội tụ về đâu so với Monte Carlo?",
+  "optionsVi": [
+   "Cả hai hội tụ về cùng giá trị khác 0",
+   "TD(0) phân kỳ còn MC hội tụ",
+   "TD(0) hội tụ về ước lượng của mô hình maximum likelihood (Certainty Equivalence); MC hội tụ về nghiệm có sai số bình phương nhỏ nhất trên các return huấn luyện",
+   "TD(0) hội tụ về 0 còn MC hội tụ về ∞"
+  ]
+ },
+ "b300-e2-51": {
+  "questionVi": "Sarsa trong Học tăng cường là gì?",
+  "optionsVi": [
+   "Thuật toán TD control on-policy cập nhật action value Q(S,A) bằng bộ (S_t, A_t, R_{t+1}, S_{t+1}, A_{t+1})",
+   "Bộ phân loại neural network có giám sát",
+   "Thuật toán DP off-policy cho trạng thái liên tục",
+   "Một engine planning model-based"
+  ]
+ },
+ "b300-e2-52": {
+  "questionVi": "Quy tắc cập nhật dạng bảng của Sarsa là gì?",
+  "optionsVi": [
+   "Q(S_t, A_t) ← Q(S_t, A_t) + α · [ R_{t+1} + γ · max_a Q(S_{t+1}, a) - Q(S_t, A_t) ]",
+   "Q(S_t, A_t) ← Σ_a Q(S_t, a)",
+   "Q(S_t, A_t) ← R_{t+1} + γ · Q(S_{t+1}, A_{t+1})",
+   "Q(S_t, A_t) ← Q(S_t, A_t) + α · [ R_{t+1} + γ · Q(S_{t+1}, A_{t+1}) - Q(S_t, A_t) ]"
+  ]
+ },
+ "b300-e2-53": {
+  "questionVi": "Q-Learning (Watkins, 1989) là gì?",
+  "optionsVi": [
+   "Thuật toán MC control on-policy dùng importance sampling",
+   "Phương pháp đại số tuyến tính để phân rã ma trận",
+   "Thuật toán policy gradient không có baseline",
+   "Thuật toán TD control off-policy cập nhật Q(S,A) bằng action value lớn nhất trên mọi hành động kế tiếp max_a Q(S_{t+1}, a)"
+  ]
+ },
+ "b300-e2-54": {
+  "questionVi": "Quy tắc cập nhật dạng bảng của Q-Learning là gì?",
+  "optionsVi": [
+   "Q(S_t, A_t) ← Q(S_t, A_t) + α · [ R_{t+1} + γ · max_a Q(S_{t+1}, a) - Q(S_t, A_t) ]",
+   "Q(S_t, A_t) ← max_a Q(S_t, a)",
+   "Q(S_t, A_t) ← Q(S_t, A_t) + α · [ R_{t+1} + γ · Q(S_{t+1}, A_{t+1}) - Q(S_t, A_t) ]",
+   "Q(S_t, A_t) ← R_{t+1} - Q(S_t, A_t)"
+  ]
+ },
+ "b300-e2-55": {
+  "questionVi": "Vì sao Q-Learning được xếp vào loại Off-Policy?",
+  "optionsVi": [
+   "Vì nó chạy offline trên file trong ổ đĩa",
+   "Vì target policy là greedy theo Q (dùng max_a), còn behavior policy chọn hành động có thể khám phá (ví dụ ε-greedy)",
+   "Vì nó không dùng phần thưởng từ môi trường",
+   "Vì nó đánh giá state value V thay vì action value Q"
+  ]
+ },
+ "b300-e2-56": {
+  "questionVi": "Expected Sarsa là gì?",
+  "optionsVi": [
+   "Phương pháp Monte Carlo tính return kỳ vọng vào cuối năm",
+   "Thuật toán DP cần biết xác suất chuyển p(s',r|s,a)",
+   "Thuật toán loại bỏ step-size α",
+   "Thuật toán TD control thay max_a trong Q-learning bằng giá trị kỳ vọng dưới policy hiện tại: Σ_a π(a|S_{t+1}) Q(S_{t+1}, a)"
+  ]
+ },
+ "b300-e2-57": {
+  "questionVi": "Quy tắc cập nhật dạng bảng của Expected Sarsa là gì?",
+  "optionsVi": [
+   "Q(S_t, A_t) ← Q(S_t, A_t) + α · [ R_{t+1} + γ · max_a Q(S_{t+1}, a) - Q(S_t, A_t) ]",
+   "Q(S_t, A_t) ← Q(S_t, A_t) + α · [ R_{t+1} + γ · Σ_a π(a|S_{t+1}) Q(S_{t+1}, a) - Q(S_t, A_t) ]",
+   "Q(S_t, A_t) ← R_{t+1} + γ · Q(S_{t+1}, A_{t+1})",
+   "Q(S_t, A_t) ← Σ_a π(a|S_t) Q(S_t, a)"
+  ]
+ },
+ "b300-e2-58": {
+  "questionVi": "Trong bài toán Cliff Walking, Sarsa và Q-Learning hoạt động khác nhau thế nào khi dùng policy ε-greedy (ε = 0.1)?",
+  "optionsVi": [
+   "Hai thuật toán học được đường đi giống hệt nhau",
+   "Q-Learning học đường an toàn còn Sarsa luôn rơi xuống vực",
+   "Sarsa rơi xuống vực 100% còn Q-Learning không di chuyển",
+   "Sarsa học đường an toàn dài hơn, xa mép vực; Q-Learning học đường ngắn tối ưu sát mép vực nhưng thỉnh thoảng rơi xuống do khám phá ε"
+  ]
+ },
+ "b300-e2-59": {
+  "questionVi": "Expected Sarsa so với Sarsa về phương sai và độ nhạy với step-size thế nào?",
+  "optionsVi": [
+   "Expected Sarsa có phương sai thấp hơn Sarsa vì lấy trung bình theo hành động kế tiếp, cho phép dùng step-size α lớn hơn mà không mất ổn định",
+   "Expected Sarsa chỉ dùng được với policy tất định",
+   "Expected Sarsa có phương sai cao hơn Sarsa",
+   "Expected Sarsa không chạy được với α > 0.01"
+  ]
+ },
+ "b300-e2-60": {
+  "questionVi": "Expected Sarsa có thể chạy được cả dạng On-Policy lẫn Off-Policy không?",
+  "optionsVi": [
+   "Không, nó cần mô hình đầy đủ của môi trường p(s',r|s,a)",
+   "Không, nó chỉ là off-policy",
+   "Không, nó chỉ là on-policy",
+   "Có, nếu policy π dùng trong Σ_a π(a|S_{t+1}) khác behavior policy b dùng để chọn hành động thì nó chạy off-policy"
+  ]
+ },
+ "b300-e3-01": {
+  "questionVi": "Model của môi trường trong Học tăng cường là gì?",
+  "optionsVi": [
+   "Bất cứ thứ gì agent có thể dùng để dự đoán môi trường sẽ phản hồi thế nào với hành động của nó",
+   "Bộ phân loại deep neural network huấn luyện trên dữ liệu ảnh",
+   "Bảng hàm phần thưởng lưu trong RAM",
+   "Khung vật lý của một robot"
+  ]
+ },
+ "b300-e3-02": {
+  "questionVi": "Distribution Model và Sample Model khác nhau thế nào?",
+  "optionsVi": [
+   "Distribution Model cho xác suất của mọi kết quả có thể p(s',r|s,a); Sample Model cho một kết quả được lấy mẫu (s', r)",
+   "Distribution Model chạy trên Linux; Sample Model chạy trên Windows",
+   "Distribution Model dùng neural network; Sample Model dùng bảng",
+   "Distribution Model chỉ dùng cho trạng thái liên tục"
+  ]
+ },
+ "b300-e3-03": {
+  "questionVi": "Planning trong Học tăng cường được định nghĩa thế nào?",
+  "optionsVi": [
+   "Viết script code trước khi chạy mô phỏng",
+   "Biên dịch code Python thành file nhị phân C++",
+   "Thiết kế hàm phần thưởng trước khi huấn luyện",
+   "Bất kỳ quá trình tính toán nào nhận model làm đầu vào và tạo ra hoặc cải thiện policy để tương tác với môi trường"
+  ]
+ },
+ "b300-e3-04": {
+  "questionVi": "Cấu trúc chung nào được chia sẻ giữa thuật toán Planning và Learning trong RL?",
+  "optionsVi": [
+   "Cả hai đều cần nghịch đảo ma trận chuyển trạng thái",
+   "Cả hai đều cần tinh chỉnh thủ công theo sở thích con người",
+   "Cả hai đều bỏ kinh nghiệm ngay mà không cập nhật giá trị",
+   "Cả hai đều tính hàm giá trị bằng cách cập nhật state value hoặc action value qua phép backup dựa trên kinh nghiệm mô phỏng hoặc thật"
+  ]
+ },
+ "b300-e3-05": {
+  "questionVi": "Simulated Experience trong RL model-based là gì?",
+  "optionsVi": [
+   "Các quỹ đạo kinh nghiệm sinh ra bằng cách truy vấn model nội bộ của môi trường, thay vì tương tác với thế giới thật",
+   "Dữ liệu tải từ các bộ dữ liệu tổng hợp trên Kaggle",
+   "Kinh nghiệm có được khi chơi trò chơi điện tử",
+   "Dữ liệu đầu vào từ kính thực tế ảo"
+  ]
+ },
+ "b300-e3-06": {
+  "questionVi": "State-space Planning và Plan-space Planning khác nhau thế nào?",
+  "optionsVi": [
+   "State-space planning tìm kiếm trong không gian trạng thái để tìm chuyển tối ưu; Plan-space planning tìm kiếm trong không gian các kế hoạch",
+   "State-space planning dùng toán liên tục; Plan-space dùng quy hoạch nguyên",
+   "Đây là cùng một khái niệm với tên khác nhau",
+   "State-space planning áp dụng cho Bandit; Plan-space áp dụng cho MDP"
+  ]
+ },
+ "b300-e3-07": {
+  "questionVi": "Hai vai trò chính của kinh nghiệm trong Model-based Reinforcement Learning là gì?",
+  "optionsVi": [
+   "Tăng tốc phần cứng và định tuyến mạng",
+   "Model Learning (cải thiện model nội bộ của môi trường) và Direct RL (cải thiện trực tiếp hàm giá trị / policy)",
+   "Lưu trữ dữ liệu và nén dữ liệu",
+   "Chọn đặc trưng và tinh chỉnh siêu tham số"
+  ]
+ },
+ "b300-e3-08": {
+  "questionVi": "Background Planning (còn gọi là Search Control) là gì?",
+  "optionsVi": [
+   "Planning chạy trên một máy chủ phụ chạy nền",
+   "Planning thực hiện dần dần bằng kinh nghiệm mô phỏng trong khi agent hành động hoặc chờ giữa các bước môi trường thật",
+   "Planning thực hiện khi agent đang tắt nguồn",
+   "Biên dịch sẵn các bảng tra trước khi chạy"
+  ]
+ },
+ "b300-e3-09": {
+  "questionVi": "Decision-time Planning là gì?",
+  "optionsVi": [
+   "Planning bắt đầu sau khi gặp một trạng thái s cụ thể để chọn hành động ngay tiếp theo (ví dụ Monte Carlo Tree Search)",
+   "Planning quyết định khi nào dừng huấn luyện",
+   "Planning thực hiện trong giai đoạn phát triển phần mềm ban đầu",
+   "Đặt step-size α"
+  ]
+ },
+ "b300-e3-10": {
+  "questionVi": "Trong model môi trường tất định dạng bảng Model(s, a), truy vấn Model(S, A) trả về gì?",
+  "optionsVi": [
+   "Phân phối xác suất π(a|S)",
+   "Hệ số chiết khấu γ",
+   "Trạng thái kế tiếp S' và phần thưởng R đã quan sát trước đó khi thực hiện hành động A ở trạng thái S",
+   "Action value tối ưu Q*(S, A)"
+  ]
+ },
+ "b300-e3-11": {
+  "questionVi": "Kiến trúc cốt lõi của agent Dyna (Sutton, 1990) là gì?",
+  "optionsVi": [
+   "Mạng neural tích chập sâu để nhận dạng ảnh",
+   "Thuật toán Q-learning model-free thuần túy, không lưu model",
+   "Kiến trúc tích hợp đồng thời Direct RL, Model Learning và Planning quanh cùng một hàm giá trị và policy",
+   "Hệ chuyên gia tĩnh dựa trên luật"
+  ]
+ },
+ "b300-e3-12": {
+  "questionVi": "Trong vòng lặp Dyna-Q, điều gì xảy ra ở pha Direct RL của một bước (S, A → R, S')?",
+  "optionsVi": [
+   "Agent cập nhật tham số policy bằng policy gradient",
+   "Agent xóa toàn bộ bộ nhớ model",
+   "Agent cập nhật Q(S, A) bằng bộ kinh nghiệm thật (S, A, R, S') theo quy tắc cập nhật Q-learning",
+   "Agent thực hiện n hành động ngẫu nhiên mà không ghi lại phần thưởng"
+  ]
+ },
+ "b300-e3-13": {
+  "questionVi": "Trong vòng lặp Dyna-Q, điều gì xảy ra ở pha Model Learning của một bước (S, A → R, S')?",
+  "optionsVi": [
+   "Agent nghịch đảo ma trận chuyển trạng thái",
+   "Agent xóa các mục chuyển trạng thái trước đó",
+   "Agent huấn luyện lại deep neural network trong 100 epoch",
+   "Agent lưu Model(S, A) ← (R, S') với giả định chuyển trạng thái của môi trường là tất định"
+  ]
+ },
+ "b300-e3-14": {
+  "questionVi": "Trong Dyna-Q, tham số nào điều khiển lượng planning thực hiện sau mỗi bước môi trường thật?",
+  "optionsVi": [
+   "Tham số n (số bước planning / số cập nhật mô phỏng mỗi bước thật)",
+   "Tham số ε (tỉ lệ khám phá)",
+   "Tham số γ (hệ số chiết khấu)",
+   "Tham số α (step size)"
+  ]
+ },
+ "b300-e3-15": {
+  "questionVi": "Một bước planning của Dyna-Q chọn trạng thái và hành động để mô phỏng như thế nào?",
+  "optionsVi": [
+   "Luôn chọn trạng thái số 0 và hành động số 0",
+   "Chọn trạng thái theo đúng thứ tự số từ 1 tới N",
+   "Dùng mạng GAN sâu để tạo ra trạng thái mới",
+   "Chọn trạng thái S' ngẫu nhiên đều trong các trạng thái đã ghé, và hành động A' ngẫu nhiên đều trong các hành động đã thực hiện ở S'"
+  ]
+ },
+ "b300-e3-16": {
+  "questionVi": "Trong thí nghiệm Shortcut Maze, đường đi trong môi trường thay đổi thế nào ở một bước thời gian nhất định?",
+  "optionsVi": [
+   "Trạng thái đích biến mất hoàn toàn",
+   "Đường tối ưu trở nên dài hơn và bị chặn",
+   "Mọi phần thưởng trở thành âm vô cùng",
+   "Một đường ngắn hơn, tối ưu hơn được mở ra (trước đó bị chặn)"
+  ]
+ },
+ "b300-e3-17": {
+  "questionVi": "Trong thí nghiệm Blocking Maze, đường đi trong môi trường thay đổi thế nào ở một bước thời gian nhất định?",
+  "optionsVi": [
+   "Một đường ngắn hơn được mở ra",
+   "Trạng thái bắt đầu đổi vị trí",
+   "Đường tối ưu trước đó bị tường chặn, buộc agent tìm đường thay thế dài hơn",
+   "Hệ số chiết khấu giảm về 0"
+  ]
+ },
+ "b300-e3-18": {
+  "questionVi": "Vì sao Dyna-Q chuẩn không phát hiện được đường ngắn mới trong Shortcut Maze?",
+  "optionsVi": [
+   "Vì Q-learning không xử lý được đường tắt",
+   "Vì model chỉ mô phỏng các cặp (S, A) đã trải nghiệm, và agent không bao giờ thử đường mới mở khi hành động greedy",
+   "Vì hệ số chiết khấu γ quá lớn",
+   "Vì tham số n được đặt bằng 0"
+  ]
+ },
+ "b300-e3-19": {
+  "questionVi": "Dyna-Q+ khuyến khích agent khám phá các cặp trạng thái-hành động lâu chưa được ghé như thế nào?",
+  "optionsVi": [
+   "Đặt lại Q-value về dương vô cùng mỗi 50 bước",
+   "Nhân phần thưởng với -1",
+   "Cộng thêm exploration bonus r_bonus = r + κ · √(τ) vào phần thưởng khi planning, với τ là số bước kể từ lần ghé cuối",
+   "Đặt ε = 1.0 vĩnh viễn"
+  ]
+ },
+ "b300-e3-20": {
+  "questionVi": "τ trong công thức exploration bonus κ · √(τ) của Dyna-Q+ là gì?",
+  "optionsVi": [
+   "Tham số nhiệt độ trong policy Softmax",
+   "Số bước thời gian đã trôi qua kể từ lần cuối chuyển (s, a) được thử trong tương tác thật",
+   "Sai số giá trị mục tiêu",
+   "Tổng số episode"
+  ]
+ },
+ "b300-e3-21": {
+  "questionVi": "Vì sao model môi trường không chính xác có thể khiến agent RL model-based hoạt động kém?",
+  "optionsVi": [
+   "Model không chính xác buộc hệ số chiết khấu γ về 0",
+   "Model không chính xác làm hỏng phần cứng RAM",
+   "Model không chính xác vô hiệu hóa việc tính gradient",
+   "Planning với model sai sẽ cập nhật hàm giá trị về các mục tiêu sai, dẫn tới policy chưa tối ưu hoặc không hợp lệ"
+  ]
+ },
+ "b300-e3-22": {
+  "questionVi": "Trong môi trường thay đổi, Dyna-Q+ hoạt động thế nào trên Blocking Maze so với Dyna-Q chuẩn?",
+  "optionsVi": [
+   "Dyna-Q+ tìm ra đường thay thế nhanh hơn vì exploration bonus thúc đẩy khám phá các chuyển chưa được ghé",
+   "Dyna-Q+ thất bại hoàn toàn vì exploration bonus gây phân kỳ",
+   "Hai thuật toán hoạt động giống hệt nhau",
+   "Dyna-Q chuẩn tốt hơn vì bỏ qua các chuyển chưa được ghé"
+  ]
+ },
+ "b300-e3-23": {
+  "questionVi": "Vì sao RL dạng bảng (Tabular) không thực tế với không gian trạng thái lớn hoặc liên tục ngoài đời?",
+  "optionsVi": [
+   "Phương pháp dạng bảng không tính được phần thưởng dương",
+   "Phương pháp dạng bảng không dùng được hệ số chiết khấu",
+   "Số trạng thái quá lớn (hoặc vô hạn) để lưu từng giá trị trong bộ nhớ hoặc ghé mỗi trạng thái đủ số lần để học",
+   "Phương pháp dạng bảng cần Python 2.7"
+  ]
+ },
+ "b300-e3-24": {
+  "questionVi": "Value Function Approximation trong Học tăng cường là gì?",
+  "optionsVi": [
+   "Làm tròn giá trị trạng thái về số nguyên gần nhất",
+   "Thay phần thưởng bằng mô hình hồi quy tuyến tính",
+   "Biểu diễn hàm giá trị v̂(s, w) hoặc q̂(s, a, w) bằng hàm có tham số với vector trọng số w có số chiều nhỏ hơn nhiều so với không gian trạng thái",
+   "Đặt giá trị mọi trạng thái chưa ghé bằng 0"
+  ]
+ },
+ "b300-e3-25": {
+  "questionVi": "Value Function Approximation được đặt thành bài toán Supervised Learning như thế nào?",
+  "optionsVi": [
+   "Phần thưởng R là đầu vào và trạng thái s là đầu ra",
+   "Hành động a là nhãn phân loại của trạng thái s",
+   "Đặt thành bài toán phân cụm k-means không giám sát",
+   "Trạng thái s là đặc trưng đầu vào, còn return mục tiêu U_t (hoặc TD target) là nhãn mục tiêu cho hồi quy"
+  ]
+ },
+ "b300-e3-26": {
+  "questionVi": "Điều gì làm Value Function Approximation trong RL khác Supervised Learning thông thường?",
+  "optionsVi": [
+   "Mục tiêu trong RL do người gán nhãn cung cấp theo thời gian thực",
+   "Dữ liệu RL không bao giờ có nhiễu",
+   "Supervised learning không dùng được gradient descent",
+   "Nhãn mục tiêu U_t trong RL không dừng, phụ thuộc policy đang thay đổi và được bootstrap từ ước lượng giá trị hiện tại"
+  ]
+ },
+ "b300-e3-27": {
+  "questionVi": "Hàm mục tiêu Mean Squared Value Error (MSVE hay VE) cho xấp xỉ giá trị trạng thái v̂(s, w) là gì?",
+  "optionsVi": [
+   "VE(w) = Σ_{s in S} [ v_π(s) - v̂(s, w) ]",
+   "VE(w) = Σ_{s in S} d(s) · [ v_π(s) - v̂(s, w) ]^2",
+   "VE(w) = max_s | v_π(s) - v̂(s, w) |",
+   "VE(w) = Σ_{a in A} q(s, a, w)^2"
+  ]
+ },
+ "b300-e3-28": {
+  "questionVi": "d(s) trong hàm mục tiêu VE(w) khi học on-policy biểu diễn điều gì?",
+  "optionsVi": [
+   "Đạo hàm của hàm giá trị theo trạng thái s",
+   "Phân phối trạng thái (on-policy distribution), là tỉ lệ thời gian agent ở trạng thái s dưới policy π",
+   "Khoảng cách từ trạng thái s tới trạng thái kết thúc",
+   "Hệ số chiết khấu gắn với trạng thái s"
+  ]
+ },
+ "b300-e3-29": {
+  "questionVi": "Tổng của phân phối trạng thái d(s) trên mọi trạng thái s trong không gian trạng thái S bằng bao nhiêu?",
+  "optionsVi": [
+   "Vô cùng",
+   "1.0",
+   "Số trạng thái |S|",
+   "0.0"
+  ]
+ },
+ "b300-e3-30": {
+  "questionVi": "Vì sao nói chung không thể đạt VE(w) = 0 khi dùng xấp xỉ hàm với số trọng số ít hơn số trạng thái (|w| << |S|)?",
+  "optionsVi": [
+   "Vì vector trọng số w chứa số âm",
+   "Vì bộ xấp xỉ hàm không đủ năng lực biểu diễn giá trị độc lập chính xác cho từng trạng thái, buộc phải đánh đổi giữa các trạng thái",
+   "Vì phân phối trạng thái d(s) luôn bằng 0",
+   "Vì hệ số chiết khấu γ phải bằng 0"
+  ]
+ },
+ "b300-e3-31": {
+  "questionVi": "Quy tắc cập nhật trọng số Stochastic Gradient Descent (SGD) tổng quát cho xấp xỉ hàm giá trị với mục tiêu U_t là gì?",
+  "optionsVi": [
+   "w_{t+1} = w_t + α · ∇ U_t",
+   "w_{t+1} = w_t / α",
+   "w_{t+1} = w_t - α · U_t · v̂(S_t, w_t)",
+   "w_{t+1} = w_t + α · [ U_t - v̂(S_t, w_t) ] · ∇ v̂(S_t, w_t)"
+  ]
+ },
+ "b300-e3-32": {
+  "questionVi": "∇ v̂(S_t, w_t) trong quy tắc cập nhật SGD biểu diễn điều gì?",
+  "optionsVi": [
+   "Chuyển vị của nhãn mục tiêu U_t",
+   "Vector các đạo hàm riêng của hàm giá trị ước lượng theo vector trọng số w",
+   "Gradient của phân phối trạng thái d(S_t) theo thời gian",
+   "Hiệu sai số vô hướng U_t - v̂"
+  ]
+ },
+ "b300-e3-33": {
+  "questionVi": "Nếu mục tiêu U_t là ước lượng không lệch của giá trị thật v_π(S_t) (ví dụ return Monte Carlo G_t), SGD đảm bảo điều gì?",
+  "optionsVi": [
+   "Vector trọng số w_t hội tụ về một cực trị địa phương của hàm mục tiêu VE với điều kiện step-size chuẩn",
+   "Bộ xấp xỉ hàm cập nhật mà không cần tính gradient",
+   "Ước lượng giá trị trở nên giống hệt bảng tra",
+   "Hàm mục tiêu VE đạt đúng 0 sau 1 bước"
+  ]
+ },
+ "b300-e3-34": {
+  "questionVi": "Vì sao cập nhật TD được gọi là phương pháp Semi-Gradient khi dùng với xấp xỉ hàm?",
+  "optionsVi": [
+   "Vì step-size α được chia đôi",
+   "Vì TD target U_t = R_{t+1} + γ · v̂(S_{t+1}, w) phụ thuộc vào w, nhưng đạo hàm của nó theo w bị bỏ qua khi tính gradient",
+   "Vì chỉ tính gradient cho một nửa không gian trạng thái",
+   "Vì dùng số thực dấu phẩy động độ chính xác một nửa"
+  ]
+ },
+ "b300-e3-35": {
+  "questionVi": "Quy tắc cập nhật trọng số Semi-Gradient TD(0) cho giá trị trạng thái là gì?",
+  "optionsVi": [
+   "w_{t+1} = w_t + α · R_{t+1} · ∇ v̂(S_t, w_t)",
+   "w_{t+1} = w_t + α · [ G_t - v̂(S_t, w_t) ] · ∇ v̂(S_t, w_t)",
+   "w_{t+1} = w_t + α · [ R_{t+1} + γ · v̂(S_{t+1}, w_t) - v̂(S_t, w_t) ] · ∇ v̂(S_t, w_t)",
+   "w_{t+1} = w_t - α · ∇ v̂(S_{t+1}, w_t)"
+  ]
+ },
+ "b300-e3-36": {
+  "questionVi": "Mô hình Linear Value Function Approximation là gì?",
+  "optionsVi": [
+   "Một lớp neural network với hàm kích hoạt ReLU",
+   "Mô hình mà ước lượng giá trị v̂(s, w) là tổ hợp tuyến tính của vector đặc trưng x(s): v̂(s, w) = w^T · x(s) = Σ_i w_i · x_i(s)",
+   "Bảng tra với chỉ số tuyến tính",
+   "Mô hình vẽ đường thẳng trên đồ thị 2D"
+  ]
+ },
+ "b300-e3-37": {
+  "questionVi": "Với hàm giá trị tuyến tính v̂(s, w) = w^T · x(s), gradient ∇ v̂(s, w) theo w là gì?",
+  "optionsVi": [
+   "Vector trọng số w",
+   "Trạng thái s",
+   "Giá trị vô hướng 1.0",
+   "Chính vector đặc trưng x(s)"
+  ]
+ },
+ "b300-e3-38": {
+  "questionVi": "Quy tắc cập nhật trọng số rút gọn của Linear Semi-Gradient TD(0) là gì?",
+  "optionsVi": [
+   "w_{t+1} = w_t + α · δ_t · w_t",
+   "w_{t+1} = x(S_t) · w_t^T",
+   "w_{t+1} = w_t + α · δ_t · x(S_t), với δ_t = R_{t+1} + γ · w_t^T · x(S_{t+1}) - w_t^T · x(S_t)",
+   "w_{t+1} = w_t + δ_t / x(S_t)"
+  ]
+ },
+ "b300-e3-39": {
+  "questionVi": "TD Fixed Point w_TD trong Linear Semi-Gradient TD(0) là gì?",
+  "optionsVi": [
+   "Giá trị trọng số lớn nhất có thể trong bộ nhớ",
+   "Vector trọng số có mọi phần tử bằng 0",
+   "Vector trọng số ngẫu nhiên ban đầu",
+   "Vector trọng số duy nhất mà TD(0) tuyến tính hội tụ về, thỏa A · w_TD = b"
+  ]
+ },
+ "b300-e3-40": {
+  "questionVi": "Mean Squared Value Error tại TD Fixed Point VE(w_TD) so với sai số nhỏ nhất có thể VE(w*) thế nào?",
+  "optionsVi": [
+   "VE(w_TD) tệ hơn VE(w*) không giới hạn",
+   "VE(w_TD) = 100 · VE(w*)",
+   "VE(w_TD) ≤ (1 / (1 - γ)) · VE(w*)",
+   "VE(w_TD) luôn bằng 0"
+  ]
+ },
+ "b300-e3-41": {
+  "questionVi": "State Aggregation trong xây dựng đặc trưng là gì?",
+  "optionsVi": [
+   "Gộp nhiều máy chủ vật lý thành 1 cụm",
+   "Gộp không gian hành động A và không gian trạng thái S",
+   "Cộng mọi phần thưởng trong một episode",
+   "Dạng đơn giản của xấp xỉ hàm tuyến tính, trong đó trạng thái được gom thành các nhóm rời nhau, mỗi nhóm có một đặc trưng chỉ thị riêng"
+  ]
+ },
+ "b300-e3-42": {
+  "questionVi": "Coarse Coding là gì?",
+  "optionsVi": [
+   "Nén số thực 64-bit thành số nguyên 8-bit",
+   "Gom hành động thành các nhóm thô",
+   "Viết code Python không định dạng, không chú thích",
+   "Biểu diễn trạng thái liên tục bằng các vùng tiếp nhận (đặc trưng) chồng lấn nhau, nên ghé một trạng thái sẽ kích hoạt nhiều đặc trưng"
+  ]
+ },
+ "b300-e3-43": {
+  "questionVi": "Kích thước và hình dạng vùng tiếp nhận trong Coarse Coding ảnh hưởng thế nào tới khả năng tổng quát hóa?",
+  "optionsVi": [
+   "Kích thước vùng tiếp nhận không ảnh hưởng tới tổng quát hóa",
+   "Vùng tiếp nhận nhỏ làm dùng bộ nhớ vô hạn",
+   "Vùng tiếp nhận lớn ngăn mọi tổng quát hóa",
+   "Vùng tiếp nhận lớn cho tổng quát hóa rộng tới các trạng thái xa nhau; vùng nhỏ cho tổng quát hóa hẹp, cục bộ"
+  ]
+ },
+ "b300-e3-44": {
+  "questionVi": "Tile Coding là gì?",
+  "optionsVi": [
+   "Lưu giá trị trạng thái trong bảng cơ sở dữ liệu SQL 2D",
+   "Một dạng coarse coding trong đó các vùng tiếp nhận được tổ chức thành các phân hoạch của không gian trạng thái gọi là Tiling, đặt lệch nhau",
+   "Chia không gian hành động thành các ô vuông",
+   "Phương pháp lát gạch nền trong robot học"
+  ]
+ },
+ "b300-e3-45": {
+  "questionVi": "Trong Tile Coding với m tiling, có bao nhiêu đặc trưng được kích hoạt (giá trị = 1) cho một trạng thái s bất kỳ?",
+  "optionsVi": [
+   "0 đặc trưng",
+   "Tổng cộng 1 đặc trưng",
+   "Đúng m đặc trưng (mỗi tiling một đặc trưng được kích hoạt)",
+   "Mọi đặc trưng trong không gian trạng thái"
+  ]
+ },
+ "b300-e3-46": {
+  "questionVi": "Lợi ích tính toán quan trọng của Tile Coding khi tính w^T · x(s) là gì?",
+  "optionsVi": [
+   "Cho phép huấn luyện không cần step-size α",
+   "Loại bỏ hoàn toàn phép toán ma trận",
+   "Vì đúng m đặc trưng bằng 1 còn lại bằng 0, tích vô hướng w^T · x(s) rút gọn thành tổng m trọng số, không cần nhân cả vector",
+   "Giảm bộ nhớ xuống còn 1 byte"
+  ]
+ },
+ "b300-e3-47": {
+  "questionVi": "Hash Addressing (Hashing) được dùng để làm gì trong cài đặt Tile Coding?",
+  "optionsVi": [
+   "Sinh lựa chọn hành động giả ngẫu nhiên",
+   "Băm mật khẩu khi người dùng đăng nhập",
+   "Mã hóa policy của agent cho an ninh mạng",
+   "Ánh xạ lưới tọa độ tile nhiều chiều rất lớn vào một mảng bộ nhớ kích thước cố định, bỏ phần bộ nhớ không dùng"
+  ]
+ },
+ "b300-e3-48": {
+  "questionVi": "Radial Basis Function (RBF) là gì?",
+  "optionsVi": [
+   "Biểu diễn đặc trưng liên tục, trong đó mức kích hoạt x_i(s) thay đổi mượt trong khoảng 0 đến 1 theo khoảng cách Gauss tới tâm c_i",
+   "Đặc trưng chỉ thị nhị phân rời rạc dùng trong state aggregation",
+   "Hệ tọa độ cực cho cánh tay robot",
+   "Hàm cơ sở đa thức lượng giác"
+  ]
+ },
+ "b300-e3-49": {
+  "questionVi": "Dạng toán học của Gaussian Radial Basis Function x_i(s) là gì?",
+  "optionsVi": [
+   "x_i(s) = exp( - || s - c_i ||^2 / (2 · σ_i^2) )",
+   "x_i(s) = sin(s · c_i)",
+   "x_i(s) = 1 / (1 + exp(-s))",
+   "x_i(s) = || s - c_i ||"
+  ]
+ },
+ "b300-e3-50": {
+  "questionVi": "Nhược điểm chính của Radial Basis Function so với Tile Coding là gì?",
+  "optionsVi": [
+   "RBF không biểu diễn được trạng thái liên tục",
+   "RBF không dùng được với gradient descent",
+   "RBF cần tra bảng trạng thái",
+   "Tính đặc trưng RBF tốn kém vì mọi đặc trưng đều có mức kích hoạt liên tục khác 0 ở mọi trạng thái"
+  ]
+ },
+ "b300-e3-51": {
+  "questionVi": "Trong Action-Value Function Approximation q̂(s, a, w), hành động được chọn thế nào khi làm control?",
+  "optionsVi": [
+   "Tính q̂(s, a, w) cho từng hành động a trong A(s) rồi chọn theo ε-greedy dựa trên các action value ước lượng này",
+   "Chỉ đánh giá state value v̂(s, w)",
+   "Chọn hành động ngẫu nhiên bất kể trọng số",
+   "Chạy nghịch đảo ma trận trên không gian hành động"
+  ]
+ },
+ "b300-e3-52": {
+  "questionVi": "Quy tắc cập nhật Semi-Gradient Episodic Sarsa cho vector trọng số w là gì?",
+  "optionsVi": [
+   "w_{t+1} = ∇ q̂(S_t, A_t, w_t)",
+   "w_{t+1} = w_t + α · [ R_{t+1} - q̂(S_t, A_t, w_t) ] · ∇ q̂(S_t, A_t, w_t)",
+   "w_{t+1} = w_t + α · [ R_{t+1} + γ · q̂(S_{t+1}, A_{t+1}, w_t) - q̂(S_t, A_t, w_t) ] · ∇ q̂(S_t, A_t, w_t)",
+   "w_{t+1} = w_t + α · q̂(S_{t+1}, A_{t+1}, w_t)"
+  ]
+ },
+ "b300-e3-53": {
+  "questionVi": "Trong bài toán điều khiển liên tục Mountain Car, hai biến trạng thái liên tục là gì?",
+  "optionsVi": [
+   "Vị trí xe (p) và vận tốc xe (v)",
+   "Khối lượng xe và nhiệt độ động cơ",
+   "Độ cao đồi và trọng lực",
+   "Góc lái và mức nhiên liệu"
+  ]
+ },
+ "b300-e3-54": {
+  "questionVi": "Trong Mountain Car, 3 hành động rời rạc của agent là gì?",
+  "optionsVi": [
+   "Số cao, số thấp, đỗ xe",
+   "Nhảy, cúi, chạy nước rút",
+   "Rẽ trái, rẽ phải, phanh",
+   "Lùi (-1), không ga (0), tiến (+1)"
+  ]
+ },
+ "b300-e3-55": {
+  "questionVi": "Vì sao Mountain Car khó với action value khởi tạo bằng 0?",
+  "optionsVi": [
+   "Động cơ xe quá yếu để leo thẳng lên dốc; xe phải lùi lên đồi bên trái trước để lấy đà",
+   "Phần thưởng là +100 ở mọi bước",
+   "Xe không có phanh",
+   "Không gian trạng thái không có tính Markov"
+  ]
+ },
+ "b300-e3-56": {
+  "questionVi": "Cấu trúc phần thưởng nào được dùng trong Mountain Car để khuyến khích lên đỉnh nhanh?",
+  "optionsVi": [
+   "R = +1 cho mỗi bước",
+   "R = -1 cho mỗi bước cho tới khi lên tới đỉnh (lúc episode kết thúc)",
+   "R = 0 ở mọi nơi kể cả đích",
+   "R = -100 tại đích"
+  ]
+ },
+ "b300-e3-57": {
+  "questionVi": "Linear Semi-Gradient Sarsa với Tile Coding hoạt động thế nào trên Mountain Car?",
+  "optionsVi": [
+   "Thất bại vì mô hình tuyến tính không giải được Mountain Car",
+   "Phân kỳ tới chi phí vô hạn ngay lập tức",
+   "Học thành công hàm cost-to-go phi tuyến 3D và thoát khỏi thung lũng trong vài trăm episode",
+   "Cần 10 tỉ episode để học"
+  ]
+ },
+ "b300-e3-58": {
+  "questionVi": "Vấn đề cơ bản khi dùng chiết khấu chuẩn (γ < 1) trong Continuing Task không có trạng thái kết thúc là gì?",
+  "optionsVi": [
+   "Continuing task bị lỗi khi γ < 1",
+   "Không tính được hệ số chiết khấu γ khi không có trạng thái kết thúc",
+   "Chiết khấu đo return tương đối theo thời điểm hành động thay vì tốc độ hiệu năng trung bình, gây ra bất thường khi tối ưu",
+   "Continuing task không có phần thưởng"
+  ]
+ },
+ "b300-e3-59": {
+  "questionVi": "Trong cách đặt bài toán Average Reward cho continuing task, tốc độ phần thưởng trung bình r(π) được định nghĩa thế nào?",
+  "optionsVi": [
+   "r(π) = R_1 / R_T",
+   "r(π) = lim_{h → ∞} (1 / h) · Σ_{t=1}^{h} E[ R_t | S_0, A_{0:t-1} ~ π ]",
+   "r(π) = Σ_{t=1}^{100} R_t",
+   "r(π) = max_t R_t"
+  ]
+ },
+ "b300-e3-60": {
+  "questionVi": "Differential Return G_t trong continuing task dưới average reward r(π) được định nghĩa thế nào?",
+  "optionsVi": [
+   "G_t = Σ_{k=1}^{∞} γ^k · R_{t+k}",
+   "G_t = R_{t+1} - R_t",
+   "G_t = r(π) · t",
+   "G_t = Σ_{k=1}^{∞} [ R_{t+k} - r(π) ]  (phần thưởng tính tương đối so với tốc độ phần thưởng trung bình r(π))"
+  ]
+ },
+ "b300-e4-01": {
+  "questionVi": "Differential Return G_t trong cách đặt average reward cho continuing task là gì?",
+  "optionsVi": [
+   "G_t = max_k R_{t+k}",
+   "G_t = Σ_{k=1}^{∞} [ R_{t+k} - r(π) ]",
+   "G_t = Σ_{k=1}^{∞} γ^k · R_{t+k}",
+   "G_t = R_{t+1} / r(π)"
+  ]
+ },
+ "b300-e4-02": {
+  "questionVi": "Trong cách đặt average reward, đại lượng nào thay cho giá trị trạng thái v_π(s)?",
+  "optionsVi": [
+   "Differential State-Value v_π(s) = E_π [ G_t | S_t = s ]",
+   "Phần thưởng tức thì R_{t+1}",
+   "Return chiết khấu v_π(s)",
+   "Phần thưởng lớn nhất v_π(s)"
+  ]
+ },
+ "b300-e4-03": {
+  "questionVi": "Differential Bellman Equation cho giá trị trạng thái v_π(s) là gì?",
+  "optionsVi": [
+   "v_π(s) = max_a [ r - r(π) ]",
+   "v_π(s) = r(π) + v_π(s)",
+   "v_π(s) = Σ_a π(a|s) Σ_{s',r} p(s',r|s,a) [ r - r(π) + v_π(s') ]",
+   "v_π(s) = Σ_a π(a|s) Σ_{s',r} p(s',r|s,a) [ r + γ · v_π(s') ]"
+  ]
+ },
+ "b300-e4-04": {
+  "questionVi": "Differential TD Error δ_t trong TD(0) dạng bảng với average reward là gì?",
+  "optionsVi": [
+   "δ_t = R_{t+1} - V(S_{t+1})",
+   "δ_t = G_t - V(S_t)",
+   "δ_t = R_{t+1} - R_bar_t + V(S_{t+1}) - V(S_t)",
+   "δ_t = R_{t+1} + γ · V(S_{t+1}) - V(S_t)"
+  ]
+ },
+ "b300-e4-05": {
+  "questionVi": "Trong Differential Semi-Gradient Sarsa dạng bảng, ước lượng phần thưởng trung bình R_bar_t được cập nhật thế nào?",
+  "optionsVi": [
+   "R_bar_{t+1} = max(R_bar_t, R_{t+1})",
+   "R_bar_{t+1} = R_{t+1}",
+   "R_bar_{t+1} = R_bar_t / α",
+   "R_bar_{t+1} = R_bar_t + β · δ_t"
+  ]
+ },
+ "b300-e4-06": {
+  "questionVi": "Tham số β trong quy tắc cập nhật R_bar_{t+1} = R_bar_t + β · δ_t là gì?",
+  "optionsVi": [
+   "Xác suất chọn hành động ngẫu nhiên",
+   "Hằng số exploration bonus",
+   "Step-size dương dùng để ước lượng tốc độ phần thưởng trung bình",
+   "Hệ số chiết khấu"
+  ]
+ },
+ "b300-e4-07": {
+  "questionVi": "Vì sao cách đặt average reward loại bỏ nhu cầu dùng hệ số chiết khấu γ trong continuing task?",
+  "optionsVi": [
+   "Vì continuing task chạy 0 bước",
+   "Vì phần thưởng trong continuing task luôn bằng 0",
+   "Vì mọi phần thưởng được đánh giá tương đối so với tốc độ phần thưởng trung bình dài hạn r(π), nên return tự nhiên hữu hạn mà không cần chiết khấu",
+   "Vì γ được phần cứng tự tính"
+  ]
+ },
+ "b300-e4-08": {
+  "questionVi": "Differential Bellman Optimality Equation cho v*(s) là gì?",
+  "optionsVi": [
+   "v*(s) = max_a Σ_{s',r} p(s',r|s,a) [ r - r* + v*(s') ]",
+   "v*(s) = r* + max_a v*(s)",
+   "v*(s) = min_a [ r - r* ]",
+   "v*(s) = max_a Σ_{s',r} p(s',r|s,a) [ r + γ · v*(s') ]"
+  ]
+ },
+ "b300-e4-09": {
+  "questionVi": "Trong bài toán Access-Control Queuing Task, tài nguyên máy chủ nào được quản lý?",
+  "optionsVi": [
+   "Các nhân CPU của web server xử lý yêu cầu HTTP",
+   "Các bảng lưu trữ trong cơ sở dữ liệu cloud",
+   "Hàng đợi băng thông của router mạng",
+   "Một tập n máy chủ rảnh nhận yêu cầu của khách hàng với mức ưu tiên và phần thưởng khác nhau"
+  ]
+ },
+ "b300-e4-10": {
+  "questionVi": "Trong Access-Control Queuing Task, vì sao agent có thể từ chối khách hàng ưu tiên thấp dù còn máy chủ rảnh?",
+  "optionsVi": [
+   "Vì khách ưu tiên thấp làm sập máy chủ",
+   "Vì khách ưu tiên thấp cho phần thưởng âm vô cùng",
+   "Để giữ máy chủ cho khách ưu tiên cao dự kiến sắp tới, nhằm tối đa phần thưởng trung bình r(π)",
+   "Vì policy hoàn toàn ngẫu nhiên"
+  ]
+ },
+ "b300-e4-11": {
+  "questionVi": "Policy Parameterization trong Học tăng cường là gì?",
+  "optionsVi": [
+   "Tham số hóa giá trị trạng thái V(s) bằng bảng tra",
+   "Biểu diễn trực tiếp policy π(a|s, θ) bằng một hàm có tham số với vector tham số θ",
+   "Đặt các step-size α và β bằng giá trị cố định",
+   "Định nghĩa tham số của hàm phần thưởng"
+  ]
+ },
+ "b300-e4-12": {
+  "questionVi": "Policy Gradient Methods là gì?",
+  "optionsVi": [
+   "Các phương pháp học vector tham số policy θ bằng gradient ascent trên thước đo hiệu năng J(θ)",
+   "Các phương pháp dựa trên giá trị dùng Q-learning dạng bảng",
+   "Các phương pháp tính gradient của xác suất chuyển trạng thái",
+   "Các phương pháp tối ưu hệ số chiết khấu γ bằng gradient descent"
+  ]
+ },
+ "b300-e4-13": {
+  "questionVi": "Mục tiêu của tối ưu Policy Gradient trong episodic task là gì?",
+  "optionsVi": [
+   "Tối đa số trạng thái được ghé",
+   "Giảm tối đa tổng step-size α",
+   "Giảm tối đa số chiều của vector trọng số w",
+   "Tối đa thước đo hiệu năng J(θ) = v_{π_θ}(s_0) (giá trị thật của trạng thái bắt đầu s_0 dưới policy π_θ)"
+  ]
+ },
+ "b300-e4-14": {
+  "questionVi": "Quy tắc cập nhật gradient ascent tổng quát cho tham số policy θ là gì?",
+  "optionsVi": [
+   "θ_{t+1} = θ_t + α · ∇ J(θ_t)",
+   "θ_{t+1} = ∇ J(θ_t) / α",
+   "θ_{t+1} = θ_t · α",
+   "θ_{t+1} = θ_t - α · ∇ J(θ_t)"
+  ]
+ },
+ "b300-e4-15": {
+  "questionVi": "Vì sao tính ∇ J(θ) không đơn giản trong Học tăng cường model-free?",
+  "optionsVi": [
+   "Vì không thể lấy đạo hàm theo tham số policy",
+   "Vì hiệu năng J(θ) phụ thuộc cả việc chọn hành động LẪN phân phối trạng thái d(s) của môi trường, mà đạo hàm của nó theo θ không biết được nếu không có model",
+   "Vì tính gradient cần trình biên dịch C++",
+   "Vì θ chứa số ảo"
+  ]
+ },
+ "b300-e4-16": {
+  "questionVi": "Phát biểu của Policy Gradient Theorem cho episodic task là gì?",
+  "optionsVi": [
+   "∇ J(θ) = Σ_a π(a|s, θ)",
+   "∇ J(θ) = Σ_s d(s) Σ_a q_{π_θ}(s, a) · ∇ π(a|s, θ)",
+   "∇ J(θ) = max_a q_π(s, a)",
+   "∇ J(θ) = Σ_s v_π(s) · ∇ d(s)"
+  ]
+ },
+ "b300-e4-17": {
+  "questionVi": "Ý nghĩa quan trọng của Policy Gradient Theorem là gì?",
+  "optionsVi": [
+   "Chứng minh hàm giá trị là không cần thiết trong RL",
+   "Chuyển policy gradient thành quy hoạch tuyến tính",
+   "Cho biểu thức chính xác của ∇ J(θ) KHÔNG chứa đạo hàm của phân phối trạng thái d(s) của môi trường",
+   "Cho phép huấn luyện không cần tín hiệu phần thưởng"
+  ]
+ },
+ "b300-e4-18": {
+  "questionVi": "∇ J(θ) có thể viết lại dưới dạng kỳ vọng thế nào để cập nhật gradient dựa trên mẫu?",
+  "optionsVi": [
+   "∇ J(θ) = E_{π_θ} [ q_{π_θ}(S_t, A_t) · ( ∇ π(A_t|S_t, θ) / π(A_t|S_t, θ) ) ]",
+   "∇ J(θ) = E_{π_θ} [ ∇ q_π(S_t, A_t) ]",
+   "∇ J(θ) = E_{π_θ} [ v_π(S_t) ]",
+   "∇ J(θ) = E_{π_θ} [ R_{t+1} · ∇ S_t ]"
+  ]
+ },
+ "b300-e4-19": {
+  "questionVi": "Score Function (hay eligibility vector) trong Policy Gradient là gì?",
+  "optionsVi": [
+   "∇ ln π(A_t|S_t, θ) = ∇ π(A_t|S_t, θ) / π(A_t|S_t, θ)",
+   "π(A_t|S_t, θ) / ∇ θ",
+   "∇ R_{t+1}",
+   "ln Q(S_t, A_t)"
+  ]
+ },
+ "b300-e4-20": {
+  "questionVi": "Ưu điểm quan trọng của Policy Parameterization so với cách dựa trên action value (Epsilon-Greedy) là gì?",
+  "optionsVi": [
+   "Policy parameterization biểu diễn được xác suất liên tục mượt, học được policy ngẫu nhiên tối ưu và xử lý trực tiếp không gian hành động liên tục",
+   "Policy parameterization loại bỏ neural network",
+   "Policy parameterization đảm bảo phương sai bằng 0 ở mọi bước",
+   "Policy parameterization không bao giờ cần tinh chỉnh siêu tham số"
+  ]
+ },
+ "b300-e4-21": {
+  "questionVi": "Thuật toán REINFORCE (Williams, 1992) là gì?",
+  "optionsVi": [
+   "Thuật toán dựa trên giá trị dùng eligibility trace",
+   "Thuật toán DP model-based dùng policy iteration",
+   "Thuật toán policy gradient Monte Carlo dùng return mẫu thực tế G_t để cập nhật tham số policy θ",
+   "Thuật toán Q-learning dạng bảng với xấp xỉ hàm tuyến tính"
+  ]
+ },
+ "b300-e4-22": {
+  "questionVi": "Quy tắc cập nhật tham số của REINFORCE tại bước t là gì?",
+  "optionsVi": [
+   "θ_{t+1} = θ_t + α · G_t",
+   "θ_{t+1} = θ_t + α · [ R_{t+1} - V(S_t) ]",
+   "θ_{t+1} = θ_t - α · ∇ π(A_t|S_t, θ_t)",
+   "θ_{t+1} = θ_t + α · γ^t · G_t · ∇ ln π(A_t|S_t, θ_t)"
+  ]
+ },
+ "b300-e4-23": {
+  "questionVi": "Vì sao REINFORCE được xếp vào thuật toán Monte Carlo?",
+  "optionsVi": [
+   "Vì nó dựa vào return của cả episode G_t, nên episode phải kết thúc rồi mới cập nhật được",
+   "Vì nó dùng số ngẫu nhiên để sinh action value",
+   "Vì nó lấy mẫu trạng thái từ phân phối đều",
+   "Vì nó được cài đặt bằng phần mềm sòng bạc Monte Carlo"
+  ]
+ },
+ "b300-e4-24": {
+  "questionVi": "Nhược điểm chính của thuật toán REINFORCE chuẩn là gì?",
+  "optionsVi": [
+   "Phải giải hệ phương trình tuyến tính ở mỗi bước",
+   "Chỉ giải được bài toán bandit 1 trạng thái",
+   "Phương sai cao của return mẫu G_t làm hội tụ chậm và cần nhiều episode để huấn luyện ổn định",
+   "Không dùng được với neural network"
+  ]
+ },
+ "b300-e4-25": {
+  "questionVi": "Thêm Baseline b(s) vào REINFORCE thay đổi quy tắc cập nhật tham số thế nào?",
+  "optionsVi": [
+   "θ_{t+1} = θ_t + α · [ G_t + b(S_t) ]",
+   "θ_{t+1} = θ_t + α · γ^t · [ G_t - b(S_t) ] · ∇ ln π(A_t|S_t, θ_t)",
+   "θ_{t+1} = θ_t + b(S_t) · ∇ ln π(A_t|S_t, θ_t)",
+   "θ_{t+1} = b(S_t) / θ_t"
+  ]
+ },
+ "b300-e4-26": {
+  "questionVi": "Trừ đi một baseline b(s) không phụ thuộc hành động 'a' có làm lệch kỳ vọng của policy gradient không?",
+  "optionsVi": [
+   "Có, gây lệch nghiêm trọng cho mọi cập nhật",
+   "Có, nhưng chỉ khi γ < 1",
+   "Không, với điều kiện b(s) bằng ∞",
+   "Không, kỳ vọng của b(s) · ∇ ln π(a|s, θ) theo các hành động bằng 0, nên kỳ vọng gradient vẫn chính xác, không lệch"
+  ]
+ },
+ "b300-e4-27": {
+  "questionVi": "Mục đích chính của việc thêm baseline b(s) trong REINFORCE with Baseline là gì?",
+  "optionsVi": [
+   "Bỏ nhu cầu dùng return của cả episode G_t",
+   "Chuyển hành động rời rạc thành hành động liên tục",
+   "Tự động tăng learning rate α",
+   "Giảm đáng kể phương sai của cập nhật policy gradient mà không gây lệch"
+  ]
+ },
+ "b300-e4-28": {
+  "questionVi": "Lựa chọn tự nhiên cho hàm baseline b(s) trong REINFORCE with Baseline là gì?",
+  "optionsVi": [
+   "Một ước lượng hàm giá trị trạng thái đã học v̂(s, w)",
+   "Phần thưởng lớn nhất từng quan sát ở trạng thái s",
+   "Hằng số bằng -1",
+   "Action preference trung bình H(s, a)"
+  ]
+ },
+ "b300-e4-29": {
+  "questionVi": "Trong REINFORCE with Baseline dùng v̂(s, w), trọng số giá trị w được cập nhật thế nào?",
+  "optionsVi": [
+   "Dùng semi-gradient SGD trên return Monte Carlo: w_{t+1} = w_t + α_w · [ G_t - v̂(S_t, w_t) ] · ∇ v̂(S_t, w_t)",
+   "Không cập nhật w; giữ cố định",
+   "Dùng quy tắc cập nhật Q-learning",
+   "Dùng nghịch đảo ma trận chuyển trạng thái"
+  ]
+ },
+ "b300-e4-30": {
+  "questionVi": "Đại lượng [ G_t - v̂(S_t, w_t) ] trong REINFORCE with Baseline biểu diễn điều gì?",
+  "optionsVi": [
+   "Xác suất chuyển trạng thái",
+   "Ước lượng advantage (hay phần dư của return Monte Carlo), đo return của episode tốt hơn bao nhiêu so với giá trị trạng thái kỳ vọng",
+   "Sai số của hệ số chiết khấu",
+   "Xác suất chọn hành động"
+  ]
+ },
+ "b300-e4-31": {
+  "questionVi": "Softmax Policy Parameterization cho hành động rời rạc được định nghĩa thế nào?",
+  "optionsVi": [
+   "π(a|s, θ) = max_b h(s, b, θ)",
+   "π(a|s, θ) = h(s, a, θ) / Σ_b h(s, b, θ)",
+   "π(a|s, θ) = exp( h(s, a, θ) ) / Σ_b exp( h(s, b, θ) )",
+   "π(a|s, θ) = 1 / |A|"
+  ]
+ },
+ "b300-e4-32": {
+  "questionVi": "h(s, a, θ) trong Softmax Policy Parameterization là gì?",
+  "optionsVi": [
+   "Ước lượng giá trị trạng thái v̂(s, w)",
+   "Hệ số chiết khấu γ",
+   "Tham số step-size",
+   "Hàm action preference (ví dụ mô hình tuyến tính θ^T · x(s, a) hoặc đầu ra neural network) cho việc chọn hành động a ở trạng thái s"
+  ]
+ },
+ "b300-e4-33": {
+  "questionVi": "Với action preference tuyến tính h(s, a, θ) = θ^T · x(s, a), score function ∇ ln π(a|s, θ) là gì?",
+  "optionsVi": [
+   "∇ ln π(a|s, θ) = θ · x(s, a)",
+   "∇ ln π(a|s, θ) = x(s, a) - Σ_b π(b|s, θ) · x(s, b)",
+   "∇ ln π(a|s, θ) = x(s, a)",
+   "∇ ln π(a|s, θ) = 1.0"
+  ]
+ },
+ "b300-e4-34": {
+  "questionVi": "Softmax Policy Parameterization có biểu diễn được policy tất định không?",
+  "optionsVi": [
+   "Có, bằng cách đặt θ = 0",
+   "Có, theo giới hạn khi preference của một hành động lớn hơn rất nhiều các hành động khác (h(s, a1) >> h(s, a2))",
+   "Không, policy softmax luôn ngẫu nhiên đều mãi mãi",
+   "Không, vì hàm softmax cần không gian hành động liên tục"
+  ]
+ },
+ "b300-e4-35": {
+  "questionVi": "Gaussian Policy Parameterization cho không gian hành động liên tục được định nghĩa thế nào?",
+  "optionsVi": [
+   "Hành động a được lấy mẫu từ phân phối đều [0, 1]",
+   "Hành động a được lấy mẫu từ phân phối chuẩn N( μ(s, θ), σ(s, θ)^2 )",
+   "Hành động a được chọn bằng ε-greedy trên các khoảng liên tục",
+   "Hành động a được chọn bằng cách lấy max trên miền liên tục"
+  ]
+ },
+ "b300-e4-36": {
+  "questionVi": "Trong Gaussian Policy Parameterization, kỳ vọng μ(s, θ) có thể tham số hóa tuyến tính thế nào?",
+  "optionsVi": [
+   "μ(s, θ) = exp(s)",
+   "μ(s, θ) = 0",
+   "μ(s, θ) = Σ_a π(a|s)",
+   "μ(s, θ) = θ_μ^T · x(s)"
+  ]
+ },
+ "b300-e4-37": {
+  "questionVi": "Trong Gaussian Policy Parameterization, độ lệch chuẩn σ(s, θ) có thể tham số hóa thế nào để luôn dương?",
+  "optionsVi": [
+   "σ(s, θ) = θ_σ^T · x_σ(s)",
+   "σ(s, θ) = exp( θ_σ^T · x_σ(s) )",
+   "σ(s, θ) = 0",
+   "σ(s, θ) = -1.0"
+  ]
+ },
+ "b300-e4-38": {
+  "questionVi": "Score function ∇ ln π(a|s, θ_μ) cho tham số kỳ vọng của Gaussian policy là gì?",
+  "optionsVi": [
+   "∇_{θ_μ} ln π(a|s, θ) = ( (a - μ(s, θ)) / σ(s, θ)^2 ) · x(s)",
+   "∇_{θ_μ} ln π(a|s, θ) = x(s) / σ",
+   "∇_{θ_μ} ln π(a|s, θ) = a - μ(s, θ)",
+   "∇_{θ_μ} ln π(a|s, θ) = 1.0"
+  ]
+ },
+ "b300-e4-39": {
+  "questionVi": "Gaussian Policy Parameterization có ưu điểm thực tế lớn nào so với rời rạc hóa hành động liên tục?",
+  "optionsVi": [
+   "Chuyển bài toán liên tục thành bandit 1 bước",
+   "Bỏ nhu cầu dùng trọng số neural network",
+   "Đảm bảo phương sai bằng 0 trong các bước policy gradient",
+   "Cho phép học hành động điều khiển liên tục mượt mà không gặp curse of dimensionality vốn có khi rời rạc hóa không gian hành động"
+  ]
+ },
+ "b300-e4-40": {
+  "questionVi": "Việc khám phá diễn ra thế nào trong Gaussian Policy Parameterization khi huấn luyện?",
+  "optionsVi": [
+   "Thêm nhiễu ngẫu nhiên ε-greedy vào hành động liên tục",
+   "Khám phá nhờ lấy mẫu hành động quanh kỳ vọng μ theo phương sai σ^2; phương sai có thể được học và điều chỉnh theo thời gian",
+   "Khởi động lại môi trường mỗi khi hành động a âm",
+   "Đặt độ lệch chuẩn σ bằng 0"
+  ]
+ },
+ "b300-e4-41": {
+  "questionVi": "Điều gì định nghĩa kiến trúc Actor-Critic trong Học tăng cường?",
+  "optionsVi": [
+   "Phương pháp đánh giá policy bằng diễn viên kịch",
+   "Phương pháp dùng hai neural network chơi cờ với nhau",
+   "Thuật toán Q-learning thuần túy không có policy network",
+   "Phương pháp duy trì hai cấu trúc riêng cho Policy (Actor) và ước lượng giá trị (Critic), dùng TD error của Critic để cập nhật Actor"
+  ]
+ },
+ "b300-e4-42": {
+  "questionVi": "Trong kiến trúc Actor-Critic, Actor có vai trò gì?",
+  "optionsVi": [
+   "Ước lượng giá trị trạng thái v(s) và tính TD error",
+   "Lưu xác suất chuyển trạng thái trong bộ nhớ",
+   "Tính tín hiệu phần thưởng",
+   "Biểu diễn và cập nhật policy có tham số π(a|s, θ), và chọn hành động trong môi trường"
+  ]
+ },
+ "b300-e4-43": {
+  "questionVi": "Trong kiến trúc Actor-Critic, Critic có vai trò gì?",
+  "optionsVi": [
+   "Đánh giá giá trị trạng thái hoặc hành động (v̂ hoặc q̂) và phản hồi cho Actor qua tín hiệu TD error δ_t",
+   "Hiển thị đồ họa lên màn hình",
+   "Đặt hệ số chiết khấu γ",
+   "Chọn hành động cho agent"
+  ]
+ },
+ "b300-e4-44": {
+  "questionVi": "Actor-Critic khắc phục hạn chế chính của REINFORCE như thế nào?",
+  "optionsVi": [
+   "Thay return Monte Carlo đầy đủ G_t bằng TD target có bootstrap, cho phép cập nhật online từng bước với phương sai thấp hơn",
+   "Bỏ hoàn toàn policy network",
+   "Dùng 100% hành động tất định",
+   "Chỉ cập nhật vào cuối mỗi năm"
+  ]
+ },
+ "b300-e4-45": {
+  "questionVi": "TD Error δ_t được dùng như thế nào ở bước cập nhật Actor của One-Step Actor-Critic?",
+  "optionsVi": [
+   "δ_t = R_{t+1} + γ · v̂(S_{t+1}, w_t) - v̂(S_t, w_t), đóng vai trò trọng số advantage cho cập nhật policy gradient",
+   "δ_t = w_t^T · x(S_t)",
+   "δ_t = G_t - R_{t+1}",
+   "δ_t = π(A_t|S_t, θ)"
+  ]
+ },
+ "b300-e4-46": {
+  "questionVi": "Quy tắc cập nhật tham số của Actor trong One-Step Actor-Critic là gì?",
+  "optionsVi": [
+   "θ_{t+1} = ∇ ln π(A_t|S_t, θ_t)",
+   "θ_{t+1} = θ_t + α_θ · δ_t · w_t",
+   "θ_{t+1} = θ_t + δ_t",
+   "θ_{t+1} = θ_t + α_θ · δ_t · ∇ ln π(A_t|S_t, θ_t)"
+  ]
+ },
+ "b300-e4-47": {
+  "questionVi": "Quy tắc cập nhật tham số của Critic trong One-Step Semi-Gradient Actor-Critic là gì?",
+  "optionsVi": [
+   "w_{t+1} = w_t + α_w · δ_t · ∇ v̂(S_t, w_t)",
+   "w_{t+1} = w_t / δ_t",
+   "w_{t+1} = w_t + α_w · θ_t",
+   "w_{t+1} = δ_t · ∇ π(A_t|S_t)"
+  ]
+ },
+ "b300-e4-48": {
+  "questionVi": "Trong continuing task với average reward, Differential TD Error δ_t trong Actor-Critic là gì?",
+  "optionsVi": [
+   "δ_t = R_{t+1} - R_bar_t + v̂(S_{t+1}, w_t) - v̂(S_t, w_t)",
+   "δ_t = R_bar_t - R_{t+1}",
+   "δ_t = G_t - R_bar_t",
+   "δ_t = R_{t+1} + γ · v̂(S_{t+1}, w_t) - v̂(S_t, w_t)"
+  ]
+ },
+ "b300-e4-49": {
+  "questionVi": "Trong Actor-Critic cho continuing task, phần thưởng trung bình R̄, trọng số critic w và tham số actor θ được cập nhật tương quan với nhau thế nào?",
+  "optionsVi": [
+   "Cả 3 (R̄, w, θ) được cập nhật đồng thời ở mỗi bước bằng chung differential TD error δ_t",
+   "Critic cập nhật mỗi bước, còn Actor chỉ cập nhật ở cuối episode",
+   "Actor cập nhật trước, Critic cập nhật sau 100 bước",
+   "R̄ cập nhật thứ Hai, w thứ Ba, θ thứ Tư"
+  ]
+ },
+ "b300-e4-50": {
+  "questionVi": "Điều gì làm Actor-Critic đặc biệt phù hợp với bài toán điều khiển liên tục ngoài đời (ví dụ robot)?",
+  "optionsVi": [
+   "Actor tham số hóa xử lý trực tiếp đầu ra hành động liên tục, còn Critic học TD cho cập nhật online phương sai thấp mà không cần đợi episode kết thúc",
+   "Actor-Critic hoạt động không cần đầu vào trạng thái",
+   "Actor-Critic bỏ nhu cầu dùng cảm biến",
+   "Actor-Critic không dùng số học dấu phẩy động"
+  ]
+ },
+ "b300-e4-51": {
+  "questionVi": "Policy Gradient và các phương pháp Action-Value (như Q-Learning) khác nhau thế nào?",
+  "optionsVi": [
+   "Policy Gradient tham số hóa và tối ưu trực tiếp policy; Action-Value học giá trị rồi chọn hành động gián tiếp qua greedy/ε-greedy",
+   "Policy Gradient cần model; Action-Value là model-free",
+   "Chúng giống hệt nhau về mặt toán học",
+   "Policy Gradient dùng bảng; Action-Value dùng neural network"
+  ]
+ },
+ "b300-e4-52": {
+  "questionVi": "Vì sao REINFORCE with Baseline có phương sai thấp hơn REINFORCE chuẩn?",
+  "optionsVi": [
+   "Baseline biến Monte Carlo thành Dynamic Programming",
+   "Baseline buộc step-size α về 0",
+   "Baseline bỏ hệ số chiết khấu γ",
+   "Trừ baseline v̂(s) làm giảm dao động độ lớn của return G_t mà không làm thay đổi kỳ vọng gradient"
+  ]
+ },
+ "b300-e4-53": {
+  "questionVi": "Vector đặc trưng x(s) có vai trò gì trong xấp xỉ hàm giá trị tuyến tính v̂(s, w) = w^T · x(s)?",
+  "optionsVi": [
+   "Chuẩn hóa phần thưởng về khoảng -1 đến +1",
+   "Ghi lại thời gian chạy trong quá khứ",
+   "Trích đặc điểm dạng số từ trạng thái thô s để tổng quát hóa giữa các trạng thái tương tự",
+   "Lưu bảng tra policy tối ưu"
+  ]
+ },
+ "b300-e4-54": {
+  "questionVi": "Trong Tile Coding, yếu tố nào điều khiển độ phân giải và khả năng tổng quát hóa của bộ xấp xỉ hàm?",
+  "optionsVi": [
+   "Số nhân CPU của máy tính",
+   "Số tiling m, độ rộng tile và độ lệch tương đối giữa các tiling",
+   "Giá trị khởi tạo của vector trọng số w",
+   "Độ lớn phần thưởng của môi trường"
+  ]
+ },
+ "b300-e4-55": {
+  "questionVi": "Vì sao Semi-Gradient TD đôi khi phân kỳ khi kết hợp với xấp xỉ hàm phi tuyến và học off-policy (The Deadly Triad)?",
+  "optionsVi": [
+   "Mạng phi tuyến không tính được số thực",
+   "Học off-policy vô hiệu hóa gradient ascent",
+   "Bootstrapping làm tăng RAM vượt quá dung lượng",
+   "Sự kết hợp Function Approximation, Bootstrapping và Off-Policy Learning có thể làm phép cập nhật giãn ra thay vì co lại"
+  ]
+ },
+ "b300-e4-56": {
+  "questionVi": "Ba yếu tố nào tạo nên 'The Deadly Triad' trong Học tăng cường?",
+  "optionsVi": [
+   "Function Approximation, Bootstrapping và Off-Policy Learning",
+   "Exploration, Exploitation và Discounting",
+   "Sarsa, Q-Learning và Expected Sarsa",
+   "Bandit, MDP và Dynamic Programming"
+  ]
+ },
+ "b300-e4-57": {
+  "questionVi": "Với Gaussian policy cho hành động liên tục, điều gì xảy ra nếu độ lệch chuẩn σ(s, θ) được học cùng kỳ vọng μ(s, θ)?",
+  "optionsVi": [
+   "Policy chuyển thành policy dạng bảng rời rạc",
+   "Ban đầu agent khám phá rộng với σ lớn, rồi tự thu nhỏ σ khi hội tụ về hành động tối ưu chính xác",
+   "Kỳ vọng μ bị đóng băng và ngừng cập nhật",
+   "Sigma tăng tới ∞ và việc huấn luyện bị lỗi"
+  ]
+ },
+ "b300-e4-58": {
+  "questionVi": "Khác biệt cơ bản giữa REINFORCE with Baseline và One-Step Actor-Critic là gì?",
+  "optionsVi": [
+   "Hai thuật toán có quy tắc cập nhật giống hệt nhau",
+   "REINFORCE with Baseline dùng return Monte Carlo đầy đủ G_t (theo episode); One-Step Actor-Critic dùng TD target 1 bước R + γ*V(S') (online từng bước)",
+   "REINFORCE là off-policy; Actor-Critic là model-based",
+   "REINFORCE dùng neural network; Actor-Critic dùng bảng tra"
+  ]
+ },
+ "b300-e4-59": {
+  "questionVi": "Trong Policy Gradient Theorem, vì sao biểu thức gradient KHÔNG cần tính đạo hàm của phân phối trạng thái d(s) của môi trường?",
+  "optionsVi": [
+   "Vì đạo hàm của d(s) do model môi trường tính",
+   "Vì phân phối trạng thái d(s) là hằng số trong mọi MDP",
+   "Vì thay đổi phân phối trạng thái do tham số policy θ gây ra triệt tiêu khi lấy tổng kỳ vọng policy gradient trên phân phối quỹ đạo",
+   "Vì d(s) được giả định bằng 0 ở mọi nơi"
+  ]
+ },
+ "b300-e4-60": {
+  "questionVi": "Khung RL nào là nền tảng tổng quát nhất cho bài toán robot thực tế dạng continuing, trạng thái liên tục và hành động liên tục?",
+  "optionsVi": [
+   "Deterministic Policy Evaluation",
+   "Epsilon-greedy Bandit với sample average",
+   "Actor-Critic liên tục với Gaussian Policy Parameterization và cách đặt Differential Average Reward",
+   "Value Iteration dạng bảng"
+  ]
+ },
+ "b300-e5-01": {
+  "questionVi": "Mục tiêu chính của agent trong bài toán K-armed bandit là gì?",
+  "optionsVi": [
+   "Tối đa tổng phần thưởng tích lũy kỳ vọng qua T bước",
+   "Học xác suất chuyển của môi trường",
+   "Giảm tối đa số hành động thực hiện",
+   "Đảm bảo mọi cần gạt được kéo số lần bằng nhau"
+  ]
+ },
+ "b300-e5-02": {
+  "questionVi": "Trong chiến lược ε-greedy với ε = 0.1 và 5 hành động, xác suất chọn hành động greedy là bao nhiêu?",
+  "optionsVi": [
+   "0.02",
+   "0.10",
+   "0.92 (0.9 + 0.1/5)",
+   "0.90"
+  ]
+ },
+ "b300-e5-03": {
+  "questionVi": "Cách chọn hành động Upper Confidence Bound (UCB) được thiết kế để đạt điều gì?",
+  "optionsVi": [
+   "Cân bằng exploration và exploitation bằng cách xét cả ước lượng action value lẫn độ bất định/mức ít được chọn của hành động",
+   "Chọn hành động có phương sai thấp nhất",
+   "Chuyển bài toán bandit thành MDP",
+   "Bỏ step-size α"
+  ]
+ },
+ "b300-e5-04": {
+  "questionVi": "Điều gì định nghĩa một Markov Decision Process (MDP)?",
+  "optionsVi": [
+   "Bảng tra tất định các giá trị trạng thái",
+   "Kiến trúc neural network với 3 lớp ẩn",
+   "Không gian trạng thái S, không gian hành động A, không gian phần thưởng R, động lực học chuyển p(s',r|s,a) và hệ số chiết khấu γ, thỏa Markov Property",
+   "Chuỗi biến ngẫu nhiên độc lập không có bộ nhớ"
+  ]
+ },
+ "b300-e5-05": {
+  "questionVi": "Biểu diễn toán học của Markov Property là gì?",
+  "optionsVi": [
+   "P(S_{t+1}=s', R_{t+1}=r | S_t, A_t, S_{t-1}, A_{t-1}, ..., S_0, A_0) = P(S_{t+1}=s', R_{t+1}=r | S_t, A_t)",
+   "P(R_{t+1}=r) = P(R_t=r)",
+   "P(A_t=a) = 1 / |A|",
+   "P(S_{t+1}=s' | S_t) = 1.0"
+  ]
+ },
+ "b300-e5-06": {
+  "questionVi": "Tổng return chiết khấu G_t được định nghĩa thế nào?",
+  "optionsVi": [
+   "G_t = max_k R_{t+k+1}",
+   "G_t = Σ_{k=0}^{∞} R_{t+k+1}",
+   "G_t = Σ_{k=0}^{∞} γ^k · R_{t+k+1}",
+   "G_t = (1 - γ) · R_{t+1}"
+  ]
+ },
+ "b300-e5-07": {
+  "questionVi": "Quan hệ giữa giá trị trạng thái v_π(s) và giá trị hành động q_π(s, a) là gì?",
+  "optionsVi": [
+   "v_π(s) = q_π(s, a) / π(a|s)",
+   "v_π(s) = max_a q_π(s, a)",
+   "v_π(s) = Σ_a q_π(s, a)",
+   "v_π(s) = Σ_a π(a|s) · q_π(s, a)"
+  ]
+ },
+ "b300-e5-08": {
+  "questionVi": "Bellman Optimality Equation cho v*(s) là gì?",
+  "optionsVi": [
+   "v*(s) = min_a [ r + v*(s') ]",
+   "v*(s) = Σ_a π(a|s) Σ_{s',r} p(s',r|s,a) [ r + γ · v*(s') ]",
+   "v*(s) = Σ_{s',r} p(s',r|s,a) [ r + γ · v*(s') ]",
+   "v*(s) = max_a Σ_{s',r} p(s',r|s,a) [ r + γ · v*(s') ]"
+  ]
+ },
+ "b300-e5-09": {
+  "questionVi": "Bellman Optimality Equation cho q*(s, a) là gì?",
+  "optionsVi": [
+   "q*(s, a) = r + γ · q*(s', a')",
+   "q*(s, a) = Σ_{s',r} p(s',r|s,a) [ r + γ · max_{a'} q*(s', a') ]",
+   "q*(s, a) = Σ_{s',r} p(s',r|s,a) [ r + γ · Σ_{a'} π(a'|s') q*(s', a') ]",
+   "q*(s, a) = max_{a'} q*(s, a')"
+  ]
+ },
+ "b300-e5-10": {
+  "questionVi": "Policy tối ưu π* là gì?",
+  "optionsVi": [
+   "Policy chọn hành động ngẫu nhiên với xác suất bằng nhau",
+   "Policy giảm tối đa phương sai phần thưởng",
+   "Policy đạt v_π*(s) ≥ v_π(s) với mọi policy π và mọi trạng thái s thuộc S",
+   "Policy ghé các trạng thái theo thứ tự chữ cái"
+  ]
+ },
+ "b300-e5-11": {
+  "questionVi": "Policy Evaluation (Prediction) trong Dynamic Programming là gì?",
+  "optionsVi": [
+   "Tính lặp giá trị trạng thái v_π cho một policy π cố định cho trước bằng Bellman Expectation Equation",
+   "Khớp mô hình hồi quy tuyến tính với tín hiệu phần thưởng",
+   "Lấy mẫu các episode ngẫu nhiên để tính return trung bình",
+   "Tìm trực tiếp policy tối ưu π* từ tương tác với môi trường"
+  ]
+ },
+ "b300-e5-12": {
+  "questionVi": "Policy Improvement Theorem phát biểu điều gì?",
+  "optionsVi": [
+   "Policy greedy luôn là ngẫu nhiên",
+   "Nếu q_π(s, π'(s)) ≥ v_π(s) với mọi trạng thái s thì policy π' nói chung tốt ít nhất bằng policy π: v_π'(s) ≥ v_π(s)",
+   "Policy improvement luôn làm giá trị trạng thái tăng gấp đôi",
+   "Policy iteration hội tụ sau đúng 1 bước"
+  ]
+ },
+ "b300-e5-13": {
+  "questionVi": "Policy Iteration là gì?",
+  "optionsVi": [
+   "Một cập nhật Q-learning model-free",
+   "Cập nhật giá trị bằng lấy mẫu Monte Carlo mà không đánh giá",
+   "Thuật toán luân phiên giữa các lượt quét Policy Evaluation đầy đủ và bước Policy Improvement cho tới khi policy ổn định",
+   "Chạy gradient ascent trên action preference"
+  ]
+ },
+ "b300-e5-14": {
+  "questionVi": "Value Iteration là gì?",
+  "optionsVi": [
+   "Phương pháp đại số tuyến tính để nghịch đảo ma trận",
+   "Gộp đánh giá và cải thiện policy vào một phép cập nhật mỗi lượt quét bằng toán tử Bellman Optimality: v_{k+1}(s) = max_a Σ_{s',r} p(s',r|s,a) [ r + γ · v_k(s') ]",
+   "Đánh giá policy π qua vô hạn lượt quét",
+   "Phương pháp Monte Carlo với exploring starts"
+  ]
+ },
+ "b300-e5-15": {
+  "questionVi": "Generalized Policy Iteration (GPI) là gì?",
+  "optionsVi": [
+   "Mô hình tổng quát trong đó quá trình đánh giá và cải thiện tương tác, vừa cạnh tranh vừa phối hợp để đạt giá trị và policy tối ưu",
+   "Phương pháp rời rạc hóa không gian hành động liên tục",
+   "Thư viện Python để giải gridworld",
+   "Một hàm loss của neural network"
+  ]
+ },
+ "b300-e5-16": {
+  "questionVi": "Vì sao Monte Carlo được gọi là 'Model-Free'?",
+  "optionsVi": [
+   "Vì không dùng phần thưởng",
+   "Vì ước lượng hàm giá trị trực tiếp từ các quỹ đạo kinh nghiệm lấy mẫu mà không cần xác suất chuyển p(s',r|s,a)",
+   "Vì không cần bộ nhớ máy tính",
+   "Vì chạy không cần trình thông dịch Python"
+  ]
+ },
+ "b300-e5-17": {
+  "questionVi": "First-Visit MC và Every-Visit MC là gì?",
+  "optionsVi": [
+   "First-Visit MC dùng γ = 0; Every-Visit MC dùng γ = 1",
+   "First-Visit MC lấy trung bình return sau lần xuất hiện đầu tiên của trạng thái s trong episode; Every-Visit MC lấy trung bình return sau mọi lần xuất hiện của s",
+   "First-Visit MC áp dụng cho Bandit; Every-Visit MC áp dụng cho MDP",
+   "First-Visit MC cập nhật online; Every-Visit MC cập nhật offline"
+  ]
+ },
+ "b300-e5-18": {
+  "questionVi": "Monte Carlo Exploring Starts (MC ES) là gì?",
+  "optionsVi": [
+   "Thuật toán MC chỉ bắt đầu episode ở trạng thái số 0",
+   "Phương pháp MC dùng neural network",
+   "Thuật toán MC cho điều khiển động cơ liên tục",
+   "Thuật toán MC control giả định mỗi episode bắt đầu tại một cặp trạng thái-hành động (S_0, A_0) chọn ngẫu nhiên để đảm bảo khám phá đầy đủ"
+  ]
+ },
+ "b300-e5-19": {
+  "questionVi": "Coverage Condition trong Off-Policy Learning là gì?",
+  "optionsVi": [
+   "Không gian trạng thái S phải hữu hạn",
+   "Behavior policy b phải thỏa b(a|s) > 0 mỗi khi target policy π có π(a|s) > 0",
+   "Target policy π phải bằng behavior policy b",
+   "Behavior policy b phải bao phủ 100% không gian vật lý"
+  ]
+ },
+ "b300-e5-20": {
+  "questionVi": "Tỉ số Importance Sampling W của một quỹ đạo dưới target policy π và behavior policy b là gì?",
+  "optionsVi": [
+   "W = π(A_t|S_t) · b(A_t|S_t)",
+   "W = γ^T",
+   "W = Π_{k=t}^{T-1} [ π(A_k|S_k) / b(A_k|S_k) ]",
+   "W = Σ_{k=t}^{T-1} [ π(A_k|S_k) - b(A_k|S_k) ]"
+  ]
+ },
+ "b300-e5-21": {
+  "questionVi": "Quy tắc cập nhật TD(0) cho giá trị trạng thái là gì?",
+  "optionsVi": [
+   "V(S_t) ← V(S_t) + α · [ G_t - V(S_t) ]",
+   "V(S_t) ← R_{t+1} + γ · V(S_{t+1})",
+   "V(S_t) ← max_a Q(S_t, a)",
+   "V(S_t) ← V(S_t) + α · [ R_{t+1} + γ · V(S_{t+1}) - V(S_t) ]"
+  ]
+ },
+ "b300-e5-22": {
+  "questionVi": "TD Error δ_t trong TD(0) là gì?",
+  "optionsVi": [
+   "δ_t = G_t - V(S_t)",
+   "δ_t = R_{t+1} + γ · V(S_{t+1}) - V(S_t)",
+   "δ_t = R_{t+1} - V(S_t)",
+   "δ_t = V(S_{t+1}) - V(S_t)"
+  ]
+ },
+ "b300-e5-23": {
+  "questionVi": "TD learning kết hợp ưu điểm của DP và MC như thế nào?",
+  "optionsVi": [
+   "Giống MC, nó học từ kinh nghiệm lấy mẫu mà không cần model; giống DP, nó bootstrap cập nhật bằng ước lượng giá trị hiện tại mà không cần đợi episode kết thúc",
+   "Giống DP, nó cần ma trận chuyển; giống MC, nó có phương sai bằng 0",
+   "Nó không có đặc điểm chung nào với DP hay MC",
+   "Giống MC, nó cần tra bảng; giống DP, nó dùng deep learning"
+  ]
+ },
+ "b300-e5-24": {
+  "questionVi": "Sarsa là gì?",
+  "optionsVi": [
+   "Một thuật toán policy gradient",
+   "Thuật toán TD control on-policy cập nhật Q(S,A) bằng (S_t, A_t, R_{t+1}, S_{t+1}, A_{t+1})",
+   "Một thuật toán DP off-policy",
+   "Một cây tìm kiếm Monte Carlo"
+  ]
+ },
+ "b300-e5-25": {
+  "questionVi": "Q-Learning là gì?",
+  "optionsVi": [
+   "Thuật toán TD control off-policy cập nhật Q(S,A) bằng max_a Q(S_{t+1}, a)",
+   "Một thuật toán DP model-based",
+   "Một thuật toán MC on-policy",
+   "Một phương pháp actor-critic"
+  ]
+ },
+ "b300-e5-26": {
+  "questionVi": "Expected Sarsa là gì?",
+  "optionsVi": [
+   "Thuật toán DP cho trạng thái liên tục",
+   "Thuật toán TD control cập nhật Q(S,A) bằng giá trị kỳ vọng Σ_a π(a|S_{t+1}) Q(S_{t+1}, a)",
+   "Phương pháp Monte Carlo dùng return kỳ vọng",
+   "Một thuật toán gradient bandit"
+  ]
+ },
+ "b300-e5-27": {
+  "questionVi": "Trong Dyna-Q, 3 quá trình chính được tích hợp là gì?",
+  "optionsVi": [
+   "Sampling, Filtering và Smoothing",
+   "Evaluation, Improvement và Optimization",
+   "Direct RL, Model Learning và Planning (Search Control)",
+   "Encoding, Decoding và Reconstruction"
+  ]
+ },
+ "b300-e5-28": {
+  "questionVi": "Dyna-Q+ xử lý môi trường thay đổi như thế nào?",
+  "optionsVi": [
+   "Chạy trên nhiều CPU",
+   "Cộng exploration bonus r_bonus = r + κ · √(τ) vào cập nhật planning dựa trên số bước chưa ghé τ",
+   "Đặt lại bộ nhớ model ở mỗi bước",
+   "Buộc hệ số chiết khấu γ về 0"
+  ]
+ },
+ "b300-e5-29": {
+  "questionVi": "Distribution Model và Sample Model là gì?",
+  "optionsVi": [
+   "Distribution Model chạy trên GPU; Sample Model chạy trên CPU",
+   "Chúng giống hệt nhau",
+   "Distribution Model là model-free; Sample Model là model-based",
+   "Distribution Model cho ra xác suất p(s',r|s,a); Sample Model cho ra một bộ chuyển được lấy mẫu (s', r)"
+  ]
+ },
+ "b300-e5-30": {
+  "questionVi": "Background Planning là gì?",
+  "optionsVi": [
+   "Đặt step-size α",
+   "Biên dịch sẵn code trước khi chạy",
+   "Planning khi máy tính đang tắt",
+   "Dùng kinh nghiệm mô phỏng sinh từ model nội bộ để cập nhật hàm giá trị trong khi agent hành động hoặc chờ giữa các bước"
+  ]
+ },
+ "b300-e5-31": {
+  "questionVi": "Value Function Approximation là gì?",
+  "optionsVi": [
+   "Thay phần thưởng bằng hồi quy tuyến tính",
+   "Làm tròn giá trị trạng thái thành số nguyên",
+   "Đặt giá trị các trạng thái chưa ghé bằng 0",
+   "Biểu diễn hàm giá trị v̂(s, w) bằng mô hình có tham số (tuyến tính hoặc neural network) với vector trọng số w có số chiều nhỏ hơn không gian trạng thái"
+  ]
+ },
+ "b300-e5-32": {
+  "questionVi": "Hàm mục tiêu Mean Squared Value Error (VE) là gì?",
+  "optionsVi": [
+   "VE(w) = Σ_{s in S} [ v_π(s) - v̂(s, w) ]",
+   "VE(w) = Σ_a q(s, a)^2",
+   "VE(w) = Σ_{s in S} d(s) · [ v_π(s) - v̂(s, w) ]^2",
+   "VE(w) = max_s | v_π(s) - v̂(s, w) |"
+  ]
+ },
+ "b300-e5-33": {
+  "questionVi": "Quy tắc cập nhật SGD cho xấp xỉ hàm giá trị với mục tiêu U_t là gì?",
+  "optionsVi": [
+   "w_{t+1} = w_t + α · [ U_t - v̂(S_t, w_t) ] · ∇ v̂(S_t, w_t)",
+   "w_{t+1} = w_t - α · U_t",
+   "w_{t+1} = w_t + ∇ v̂(S_t, w_t)",
+   "w_{t+1} = w_t / α"
+  ]
+ },
+ "b300-e5-34": {
+  "questionVi": "Vì sao TD với xấp xỉ hàm được gọi là phương pháp 'Semi-Gradient'?",
+  "optionsVi": [
+   "Vì step size α bị chia đôi",
+   "Vì chỉ cập nhật một nửa số trọng số",
+   "Vì mục tiêu U_t = R_{t+1} + γ · v̂(S_{t+1}, w) phụ thuộc vào w, nhưng đạo hàm của nó theo w bị bỏ qua khi cập nhật gradient",
+   "Vì dùng số thực dấu phẩy động 16-bit"
+  ]
+ },
+ "b300-e5-35": {
+  "questionVi": "Linear Value Function Approximation là gì?",
+  "optionsVi": [
+   "v̂(s, w) = w / x(s)",
+   "v̂(s, w) = exp(w^T · x(s))",
+   "v̂(s, w) = max_i (w_i · x_i(s))",
+   "v̂(s, w) = w^T · x(s) = Σ_i w_i · x_i(s)"
+  ]
+ },
+ "b300-e5-36": {
+  "questionVi": "Gradient ∇ v̂(s, w) của mô hình tuyến tính v̂(s, w) = w^T · x(s) là gì?",
+  "optionsVi": [
+   "Giá trị vô hướng 1.0",
+   "Vector trọng số w",
+   "Vector đặc trưng x(s)",
+   "Trạng thái s"
+  ]
+ },
+ "b300-e5-37": {
+  "questionVi": "State Aggregation là gì?",
+  "optionsVi": [
+   "Cộng phần thưởng qua các episode",
+   "Gộp nhiều máy chủ thành 1 cụm",
+   "Gộp các không gian hành động",
+   "Một dạng xấp xỉ hàm tuyến tính trong đó trạng thái được gom thành các cụm rời nhau, mỗi cụm có một đặc trưng chỉ thị nhị phân"
+  ]
+ },
+ "b300-e5-38": {
+  "questionVi": "Tile Coding là gì?",
+  "optionsVi": [
+   "Chia không gian hành động thành các ô vuông",
+   "Lát gạch nền trong robot học",
+   "Lưu giá trị trong bảng SQL 2D",
+   "Phương pháp xây dựng đặc trưng kiểu coarse coding, chia không gian trạng thái thành nhiều lưới đặt lệch nhau (tiling)"
+  ]
+ },
+ "b300-e5-39": {
+  "questionVi": "Nếu Tile Coding dùng m tiling, có bao nhiêu đặc trưng được kích hoạt (giá trị = 1) cho một trạng thái bất kỳ?",
+  "optionsVi": [
+   "Đúng m đặc trưng",
+   "Mọi đặc trưng trong không gian trạng thái",
+   "0 đặc trưng",
+   "1 đặc trưng"
+  ]
+ },
+ "b300-e5-40": {
+  "questionVi": "Radial Basis Function (RBF) là gì?",
+  "optionsVi": [
+   "Một hàm cơ sở đa thức",
+   "Biểu diễn đặc trưng liên tục với mức kích hoạt x_i(s) = exp( - || s - c_i ||^2 / (2 · σ_i^2) )",
+   "Hệ tọa độ cực cho robot",
+   "Đặc trưng chỉ thị nhị phân dùng trong state aggregation"
+  ]
+ },
+ "b300-e5-41": {
+  "questionVi": "Average Reward r(π) trong continuing task được định nghĩa thế nào?",
+  "optionsVi": [
+   "r(π) = lim_{h → ∞} (1 / h) · Σ_{t=1}^{h} E[ R_t | S_0, A_{0:t-1} ~ π ]",
+   "r(π) = Σ_{t=1}^{100} R_t",
+   "r(π) = max_t R_t",
+   "r(π) = R_1 / R_T"
+  ]
+ },
+ "b300-e5-42": {
+  "questionVi": "Differential Return G_t trong cách đặt average reward được định nghĩa thế nào?",
+  "optionsVi": [
+   "G_t = Σ_{k=1}^{∞} γ^k · R_{t+k}",
+   "G_t = r(π) · t",
+   "G_t = R_{t+1} - R_t",
+   "G_t = Σ_{k=1}^{∞} [ R_{t+k} - r(π) ]"
+  ]
+ },
+ "b300-e5-43": {
+  "questionVi": "Differential TD Error δ_t trong TD(0) dạng bảng với average reward là gì?",
+  "optionsVi": [
+   "δ_t = R_{t+1} - R_bar_t + V(S_{t+1}) - V(S_t)",
+   "δ_t = R_{t+1} - V(S_{t+1})",
+   "δ_t = G_t - V(S_t)",
+   "δ_t = R_{t+1} + γ · V(S_{t+1}) - V(S_t)"
+  ]
+ },
+ "b300-e5-44": {
+  "questionVi": "Policy Parameterization là gì?",
+  "optionsVi": [
+   "Biểu diễn trực tiếp policy π(a|s, θ) bằng một hàm có tham số với vector trọng số θ",
+   "Đặt step-size α bằng giá trị cố định",
+   "Tham số hóa giá trị trạng thái V(s)",
+   "Định nghĩa tham số của hàm phần thưởng"
+  ]
+ },
+ "b300-e5-45": {
+  "questionVi": "Quy tắc cập nhật gradient ascent tổng quát cho tham số policy θ là gì?",
+  "optionsVi": [
+   "θ_{t+1} = ∇ J(θ_t) / α",
+   "θ_{t+1} = θ_t · α",
+   "θ_{t+1} = θ_t - α · ∇ J(θ_t)",
+   "θ_{t+1} = θ_t + α · ∇ J(θ_t)"
+  ]
+ },
+ "b300-e5-46": {
+  "questionVi": "Policy Gradient Theorem cho episodic task là gì?",
+  "optionsVi": [
+   "∇ J(θ) = max_a q_π(s, a)",
+   "∇ J(θ) = Σ_s v_π(s) · ∇ d(s)",
+   "∇ J(θ) = Σ_a π(a|s, θ)",
+   "∇ J(θ) = Σ_s d(s) Σ_a q_{π_θ}(s, a) · ∇ π(a|s, θ)"
+  ]
+ },
+ "b300-e5-47": {
+  "questionVi": "Score Function trong phương pháp policy gradient là gì?",
+  "optionsVi": [
+   "π(A_t|S_t, θ) / ∇ θ",
+   "∇ ln π(A_t|S_t, θ) = ∇ π(A_t|S_t, θ) / π(A_t|S_t, θ)",
+   "ln Q(S_t, A_t)",
+   "∇ R_{t+1}"
+  ]
+ },
+ "b300-e5-48": {
+  "questionVi": "Quy tắc cập nhật của thuật toán REINFORCE là gì?",
+  "optionsVi": [
+   "θ_{t+1} = θ_t + α · G_t",
+   "θ_{t+1} = θ_t - α · ∇ π(A_t|S_t, θ_t)",
+   "θ_{t+1} = θ_t + α · [ R_{t+1} - V(S_t) ]",
+   "θ_{t+1} = θ_t + α · γ^t · G_t · ∇ ln π(A_t|S_t, θ_t)"
+  ]
+ },
+ "b300-e5-49": {
+  "questionVi": "Vì sao thêm Baseline b(s) vào REINFORCE?",
+  "optionsVi": [
+   "Để tự động tăng learning rate α",
+   "Để bỏ nhu cầu dùng return của cả episode G_t",
+   "Để chuyển hành động rời rạc thành liên tục",
+   "Để giảm đáng kể phương sai của cập nhật gradient mà không gây lệch"
+  ]
+ },
+ "b300-e5-50": {
+  "questionVi": "Lựa chọn tự nhiên cho baseline b(s) trong REINFORCE with Baseline là gì?",
+  "optionsVi": [
+   "Phần thưởng lớn nhất từng quan sát",
+   "Hằng số -1",
+   "Action preference H(s, a)",
+   "Một ước lượng hàm giá trị trạng thái đã học v̂(s, w)"
+  ]
+ },
+ "b300-e5-51": {
+  "questionVi": "Softmax Policy Parameterization cho hành động rời rạc được định nghĩa thế nào?",
+  "optionsVi": [
+   "π(a|s, θ) = h(s, a, θ) / Σ_b h(s, b, θ)",
+   "π(a|s, θ) = max_b h(s, b, θ)",
+   "π(a|s, θ) = exp( h(s, a, θ) ) / Σ_b exp( h(s, b, θ) )",
+   "π(a|s, θ) = 1 / |A|"
+  ]
+ },
+ "b300-e5-52": {
+  "questionVi": "Gaussian Policy Parameterization cho hành động liên tục được định nghĩa thế nào?",
+  "optionsVi": [
+   "Hành động a được lấy mẫu từ phân phối đều [0, 1]",
+   "Hành động a được lấy mẫu từ phân phối chuẩn N( μ(s, θ), σ(s, θ)^2 )",
+   "Hành động a được chọn bằng ε-greedy trên các khoảng liên tục",
+   "Hành động a được chọn bằng cách lấy max trên miền liên tục"
+  ]
+ },
+ "b300-e5-53": {
+  "questionVi": "Điều gì định nghĩa kiến trúc Actor-Critic?",
+  "optionsVi": [
+   "Hai neural network chơi cờ với nhau",
+   "Đánh giá policy bằng diễn viên kịch",
+   "Hai cấu trúc riêng cho Policy (Actor) và ước lượng giá trị (Critic), dùng TD error của Critic để cập nhật Actor",
+   "Thuật toán Q-learning thuần túy không có policy network"
+  ]
+ },
+ "b300-e5-54": {
+  "questionVi": "Quy tắc cập nhật Actor trong One-Step Actor-Critic là gì?",
+  "optionsVi": [
+   "θ_{t+1} = θ_t + α_θ · δ_t · w_t",
+   "θ_{t+1} = θ_t + δ_t",
+   "θ_{t+1} = θ_t + α_θ · δ_t · ∇ ln π(A_t|S_t, θ_t)",
+   "θ_{t+1} = ∇ ln π(A_t|S_t, θ_t)"
+  ]
+ },
+ "b300-e5-55": {
+  "questionVi": "Quy tắc cập nhật Critic trong One-Step Semi-Gradient Actor-Critic là gì?",
+  "optionsVi": [
+   "w_{t+1} = w_t + α_w · θ_t",
+   "w_{t+1} = w_t + α_w · δ_t · ∇ v̂(S_t, w_t)",
+   "w_{t+1} = w_t / δ_t",
+   "w_{t+1} = δ_t · ∇ π(A_t|S_t)"
+  ]
+ },
+ "b300-e5-56": {
+  "questionVi": "Ba yếu tố nào tạo nên 'The Deadly Triad' trong Học tăng cường?",
+  "optionsVi": [
+   "Function Approximation, Bootstrapping và Off-Policy Learning",
+   "Sarsa, Q-Learning và Expected Sarsa",
+   "Bandit, MDP và Dynamic Programming",
+   "Exploration, Exploitation và Discounting"
+  ]
+ },
+ "b300-e5-57": {
+  "questionVi": "Vì sao Actor-Critic khắc phục được hạn chế chính của REINFORCE?",
+  "optionsVi": [
+   "Bỏ hoàn toàn policy network",
+   "Chỉ cập nhật vào cuối mỗi năm",
+   "Thay return Monte Carlo đầy đủ G_t bằng TD target có bootstrap, cho phép cập nhật online từng bước với phương sai thấp hơn",
+   "Dùng 100% hành động tất định"
+  ]
+ },
+ "b300-e5-58": {
+  "questionVi": "Với Gaussian policy cho hành động liên tục, việc khám phá thích nghi thế nào trong quá trình học?",
+  "optionsVi": [
+   "Khởi động lại môi trường khi hành động âm",
+   "Thêm nhiễu ε-greedy",
+   "Đặt độ lệch chuẩn σ bằng 0",
+   "Nhờ lấy mẫu hành động quanh kỳ vọng μ theo phương sai σ^2; phương sai có thể được học và điều chỉnh theo thời gian"
+  ]
+ },
+ "b300-e5-59": {
+  "questionVi": "Trong continuing task với average reward, Differential TD Error δ_t trong Actor-Critic là gì?",
+  "optionsVi": [
+   "δ_t = G_t - R_bar_t",
+   "δ_t = R_{t+1} + γ · v̂(S_{t+1}, w_t) - v̂(S_t, w_t)",
+   "δ_t = R_{t+1} - R_bar_t + v̂(S_{t+1}, w_t) - v̂(S_t, w_t)",
+   "δ_t = R_bar_t - R_{t+1}"
+  ]
+ },
+ "b300-e5-60": {
+  "questionVi": "Khung RL nào là nền tảng toàn diện nhất cho bài toán robot thực tế dạng continuing, trạng thái liên tục và hành động liên tục?",
+  "optionsVi": [
+   "Actor-Critic liên tục với Gaussian Policy Parameterization và cách đặt Differential Average Reward",
+   "Deterministic Policy Evaluation",
+   "Value Iteration dạng bảng",
+   "Epsilon-greedy Bandit với sample average"
+  ]
+ },
+ "bx-e1-01": {
+  "questionVi": "Trong bài toán K-Armed Bandit, action value q*(a) biểu diễn điều gì?",
+  "optionsVi": [
+   "Phương sai của phần thưởng thu được từ hành động a.",
+   "Tổng phần thưởng tích lũy qua mọi bước thời gian.",
+   "Phần thưởng tức thì nhận được sau khi thực hiện hành động a.",
+   "Phần thưởng kỳ vọng nhận được khi hành động a được chọn."
+  ]
+ },
+ "bx-e1-02": {
+  "questionVi": "Phương trình nào định nghĩa đúng ước lượng sample-average Q_t(a) của một action value?",
+  "optionsVi": [
+   "Q_{t+1}(a) = Q_t(a) + α · [R_t - Q_t(a)]",
+   "Q_t(a) = max_s V(s)",
+   "Q_t(a) = (Tổng phần thưởng khi chọn hành động a trước thời điểm t) / (Số lần chọn hành động a trước thời điểm t)",
+   "Q_t(a) = argmax_a Q(s, a)"
+  ]
+ },
+ "bx-e1-03": {
+  "questionVi": "Hạn chế chính của chiến lược chọn hành động thuần greedy là gì?",
+  "optionsVi": [
+   "Nó không bao giờ chọn hành động có giá trị ước lượng cao nhất.",
+   "Nó cần biết trước phân phối phần thưởng thật.",
+   "Nó không khám phá các hành động có thể có giá trị thật cao hơn ước lượng hiện tại.",
+   "Nó tốn quá nhiều thời gian khám phá các hành động chưa tối ưu."
+  ]
+ },
+ "bx-e1-04": {
+  "questionVi": "Trong chiến lược chọn hành động ε-greedy, điều gì xảy ra khi ε tiến về 0?",
+  "optionsVi": [
+   "Agent chọn hành động ngẫu nhiên 100% thời gian.",
+   "Hành vi của agent tiến gần chiến lược thuần greedy.",
+   "Agent khám phá mọi hành động với xác suất bằng nhau.",
+   "Step-size tăng lên."
+  ]
+ },
+ "bx-e1-05": {
+  "questionVi": "Trong bài toán bandit không dừng, vì sao step-size cố định α (0 < α ≤ 1) được ưu tiên hơn phương pháp sample-average?",
+  "optionsVi": [
+   "Nó loại bỏ nhu cầu khám phá.",
+   "Nó đặt trọng số như nhau cho mọi phần thưởng trong quá khứ bất kể thời điểm.",
+   "Nó đảm bảo hội tụ chính xác về giá trị tối ưu trong môi trường không dừng.",
+   "Nó đặt trọng số lớn hơn cho phần thưởng gần đây so với phần thưởng đã lâu."
+  ]
+ },
+ "bx-e1-06": {
+  "questionVi": "Nguyên lý chính của cách chọn hành động Upper Confidence Bound (UCB) là gì?",
+  "optionsVi": [
+   "Bỏ qua các hành động chưa được thử thường xuyên.",
+   "Chọn hành động dựa trên giá trị ước lượng cộng với một cận bất định.",
+   "Chọn hành động bằng gradient ascent trên các preference dạng số.",
+   "Chọn hành động hoàn toàn ngẫu nhiên với xác suất ε."
+  ]
+ },
+ "bx-e1-07": {
+  "questionVi": "Điều gì định nghĩa Markov Property trong Markov Decision Process?",
+  "optionsVi": [
+   "Agent phải ghé mọi trạng thái vô hạn lần.",
+   "Tín hiệu phần thưởng tất định và không bao giờ thay đổi.",
+   "Tương lai phụ thuộc vào toàn bộ lịch sử các trạng thái và hành động trước đó.",
+   "Trạng thái hiện tại S_t chứa mọi thông tin liên quan từ các tương tác trước để dự đoán tương lai."
+  ]
+ },
+ "bx-e1-08": {
+  "questionVi": "Trong MDP hữu hạn, hàm động lực học chuyển p(s', r | s, a) cho biết điều gì?",
+  "optionsVi": [
+   "Return dài hạn kỳ vọng từ trạng thái s dưới policy π.",
+   "Xác suất thực hiện hành động a khi ở trạng thái s.",
+   "Xác suất đồng thời chuyển sang trạng thái s' và nhận phần thưởng r khi biết trạng thái hiện tại s và hành động a.",
+   "Hàm giá trị tối ưu V*(s)."
+  ]
+ },
+ "bx-e1-09": {
+  "questionVi": "Return kỳ vọng G_t được định nghĩa thế nào cho episodic task với hệ số chiết khấu γ?",
+  "optionsVi": [
+   "G_t = γ · R_{t+1}",
+   "G_t = Σ_{k=0}^{T-t-1} γ^k · R_{t+k+1}",
+   "G_t = max_a Q(S_t, a)",
+   "G_t = R_{t+1} + R_{t+2} + ... + R_T"
+  ]
+ },
+ "bx-e1-10": {
+  "questionVi": "Vì sao hệ số chiết khấu γ (0 ≤ γ < 1) là cần thiết cho continuing task với chân trời thời gian vô hạn?",
+  "optionsVi": [
+   "Để loại bỏ tính ngẫu nhiên của chuyển trạng thái.",
+   "Để chuyển không gian hành động liên tục thành rời rạc.",
+   "Để buộc agent khám phá mọi trạng thái.",
+   "Để đảm bảo tổng vô hạn các phần thưởng vẫn hữu hạn."
+  ]
+ },
+ "bx-e1-11": {
+  "questionVi": "Hàm giá trị trạng thái V^π(s) dưới policy π là gì?",
+  "optionsVi": [
+   "Phần thưởng lớn nhất có thể nhận được trong một bước.",
+   "Xác suất đạt tới trạng thái s dưới policy π.",
+   "Return kỳ vọng khi bắt đầu từ trạng thái s và sau đó đi theo policy π.",
+   "Phần thưởng tức thì nhận được ở trạng thái s."
+  ]
+ },
+ "bx-e1-12": {
+  "questionVi": "Hàm giá trị hành động Q^π(s, a) dưới policy π là gì?",
+  "optionsVi": [
+   "Xác suất chọn hành động a ở trạng thái s.",
+   "Return kỳ vọng khi bắt đầu từ trạng thái s, thực hiện hành động a, rồi sau đó đi theo policy π.",
+   "Hệ số chiết khấu tối ưu cho hành động a.",
+   "Xác suất chuyển trung bình p(s'|s,a)."
+  ]
+ },
+ "bx-e1-13": {
+  "questionVi": "Phương trình nào là Bellman Expectation Equation cho V^π(s)?",
+  "optionsVi": [
+   "V^π(s) = γ · V^π(s)",
+   "V^π(s) = Σ_a π(a|s) Σ_{s',r} p(s',r|s,a) [r + γ · V^π(s')]",
+   "V^π(s) = max_a Σ_{s',r} p(s',r|s,a) [r + γ · V^π(s')]",
+   "V^π(s) = Σ_a π(a|s) Q(s,a) + α · δ"
+  ]
+ },
+ "bx-e1-14": {
+  "questionVi": "Điều gì phân biệt Bellman Optimality Equation cho V*(s) với Bellman Expectation Equation?",
+  "optionsVi": [
+   "Nó bỏ hoàn toàn hệ số chiết khấu γ.",
+   "Nó chỉ áp dụng cho không gian trạng thái liên tục.",
+   "Nó giả định động lực học chuyển của môi trường hoàn toàn chưa biết.",
+   "Nó dùng toán tử max_a trên các hành động thay vì lấy trung bình theo xác suất policy π(a|s)."
+  ]
+ },
+ "bx-e1-15": {
+  "questionVi": "Trong Dynamic Programming, Policy Evaluation (Prediction) là gì?",
+  "optionsVi": [
+   "Quá trình tính hàm giá trị trạng thái V^π cho một policy π cho trước.",
+   "Quá trình chọn hành động greedy mà không cập nhật giá trị.",
+   "Quá trình tìm trực tiếp policy tối ưu π* từ dữ liệu.",
+   "Quá trình sinh các quỹ đạo ngẫu nhiên trong môi trường."
+  ]
+ },
+ "bx-e1-16": {
+  "questionVi": "Iterative Policy Evaluation tính V_{k+1}(s) từ V_k(s) như thế nào?",
+  "optionsVi": [
+   "Áp dụng phương trình Bellman expectation làm quy tắc cập nhật trên mọi trạng thái cho tới khi hội tụ.",
+   "Chạy gradient descent trên tham số policy.",
+   "Chọn max_a Q(s,a) ở mỗi trạng thái.",
+   "Lấy trung bình các return mẫu G_t quan sát được."
+  ]
+ },
+ "bx-e1-17": {
+  "questionVi": "Policy Improvement trong Dynamic Programming là gì?",
+  "optionsVi": [
+   "Làm policy trở nên greedy theo hàm giá trị hiện tại V^π.",
+   "Đánh giá V^π cho một policy ngẫu nhiên.",
+   "Giảm step size α về 0.",
+   "Tăng hệ số chiết khấu γ lên 1."
+  ]
+ },
+ "bx-e1-18": {
+  "questionVi": "Theo Policy Improvement Theorem, nếu q_π(s, π'(s)) ≥ v_π(s) với mọi s thì có thể kết luận gì?",
+  "optionsVi": [
+   "Policy mới π' tốt ít nhất bằng hoặc tốt hơn policy π (v_{π'}(s) ≥ v_π(s)).",
+   "Hàm giá trị V(s) sẽ phân kỳ tới ∞.",
+   "Policy π' chắc chắn tệ hơn hẳn π.",
+   "Động lực học của môi trường phải không dừng."
+  ]
+ },
+ "bx-e1-19": {
+  "questionVi": "Một chu trình Policy Iteration hoàn chỉnh gồm những gì?",
+  "optionsVi": [
+   "Thực hiện hành động greedy ở mỗi bước mà không đánh giá giá trị.",
+   "Cập nhật giá trị bằng SARSA cho tới khi ε về 0.",
+   "Luân phiên giữa Policy Evaluation đầy đủ tới khi hội tụ và Policy Improvement cho tới khi policy không còn thay đổi.",
+   "Chạy 1 bước lấy mẫu Monte Carlo rồi tới Q-learning."
+  ]
+ },
+ "bx-e1-20": {
+  "questionVi": "Điểm nghẽn tính toán chính của Policy Iteration cổ điển là gì?",
+  "optionsVi": [
+   "Cần tỉ lệ khám phá ε vô hạn.",
+   "Không xử lý được không gian trạng thái rời rạc.",
+   "Cần lưu mọi quỹ đạo tương tác trước đó trong bộ nhớ.",
+   "Mỗi vòng lặp cần một lượt Policy Evaluation đầy đủ tới khi hội tụ chính xác."
+  ]
+ },
+ "bx-e2-01": {
+  "questionVi": "Khác biệt cơ bản giữa phương pháp Monte Carlo (MC) và Dynamic Programming (DP) là gì?",
+  "optionsVi": [
+   "MC cần mô hình đầy đủ của động lực học môi trường p(s',r|s,a).",
+   "DP cập nhật giá trị mà không bootstrapping.",
+   "MC không cần mô hình động lực học của môi trường và học trực tiếp từ các quỹ đạo mẫu.",
+   "MC chỉ áp dụng được cho không gian trạng thái liên tục."
+  ]
+ },
+ "bx-e2-02": {
+  "questionVi": "Vì sao Monte Carlo cổ điển chỉ áp dụng cho episodic task?",
+  "optionsVi": [
+   "Vì task liên tục không có chuyển trạng thái.",
+   "Vì return G_t chỉ tính được sau khi quỹ đạo đạt trạng thái kết thúc.",
+   "Vì MC cần bootstrapping ở mỗi bước.",
+   "Vì MC không dùng được hệ số chiết khấu γ."
+  ]
+ },
+ "bx-e2-03": {
+  "questionVi": "First-Visit MC và Every-Visit MC khác nhau thế nào?",
+  "optionsVi": [
+   "First-Visit MC lấy trung bình return cho lần đầu trạng thái được ghé trong episode; Every-Visit MC lấy trung bình return cho mọi lần ghé trạng thái trong episode.",
+   "First-Visit MC cần biết p(s',r|s,a); Every-Visit MC thì không.",
+   "First-Visit MC dùng bootstrapping; Every-Visit MC thì không.",
+   "First-Visit MC là off-policy; Every-Visit MC là on-policy."
+  ]
+ },
+ "bx-e2-04": {
+  "questionVi": "Trong Monte Carlo Control, vì sao đưa ra giả định Exploring Starts?",
+  "optionsVi": [
+   "Để buộc agent luôn đi theo policy greedy tất định.",
+   "Để bỏ nhu cầu tính Return G_t.",
+   "Để đảm bảo hệ số chiết khấu γ bằng 1.",
+   "Để đảm bảo mọi cặp trạng thái-hành động (s,a) đều có xác suất khác 0 được chọn làm bước đầu tiên."
+  ]
+ },
+ "bx-e2-05": {
+  "questionVi": "Loại policy nào đảm bảo π(a|s) > 0 với mọi trạng thái s và mọi hành động a?",
+  "optionsVi": [
+   "Policy epsilon-soft",
+   "Policy tối ưu π*",
+   "Policy thuần greedy",
+   "Policy tất định"
+  ]
+ },
+ "bx-e2-06": {
+  "questionVi": "Coverage Condition cần cho Off-Policy Learning là gì?",
+  "optionsVi": [
+   "Target policy π phải giống hệt behavior policy b.",
+   "Behavior policy b phải hoàn toàn tất định.",
+   "Nếu π(a|s) > 0 thì behavior policy b(a|s) cũng phải > 0 với mọi s và a.",
+   "Hệ số chiết khấu γ phải đặt bằng 0."
+  ]
+ },
+ "bx-e2-07": {
+  "questionVi": "Tỉ số Importance Sampling W (hay rho) cho một quỹ đạo từ thời điểm t tới T-1 là gì?",
+  "optionsVi": [
+   "Tỉ số giá trị trạng thái V(S_t) / V(S_{t+1}).",
+   "Tổng phần thưởng R_{t+1} + R_{t+2} + ...",
+   "Tích các tỉ số π(A_k|S_k) / b(A_k|S_k) với k từ t tới T-1.",
+   "TD error trung bình trong episode."
+  ]
+ },
+ "bx-e2-08": {
+  "questionVi": "Khác biệt chính giữa Ordinary Importance Sampling và Weighted Importance Sampling trong Off-policy MC là gì?",
+  "optionsVi": [
+   "Weighted Importance Sampling không cần coverage condition.",
+   "Ordinary Importance Sampling không lệch nhưng có thể có phương sai không bị chặn; Weighted Importance Sampling bị lệch nhưng phương sai bị chặn.",
+   "Ordinary Importance Sampling chỉ dùng được với Sarsa dạng bảng.",
+   "Ordinary Importance Sampling có phương sai thấp hơn Weighted Importance Sampling."
+  ]
+ },
+ "bx-e2-09": {
+  "questionVi": "Quy tắc cập nhật cốt lõi của TD(0) prediction cho V(S_t) là gì?",
+  "optionsVi": [
+   "V(S_t) ← Σ_{s',r} p(s',r|S_t,A_t) [r + γ · V(s')]",
+   "V(S_t) ← V(S_t) + α · [ G_t - V(S_t) ]",
+   "V(S_t) ← max_a Q(S_t, a)",
+   "V(S_t) ← V(S_t) + α · [ R_{t+1} + γ · V(S_{t+1}) - V(S_t) ]"
+  ]
+ },
+ "bx-e2-10": {
+  "questionVi": "Thành phần nào trong quy tắc cập nhật TD(0) là TD Error δ_t?",
+  "optionsVi": [
+   "δ_t = V(S_{t+1}) - V(S_t)",
+   "δ_t = R_{t+1} + γ · V(S_{t+1}) - V(S_t)",
+   "δ_t = R_{t+1} - γ · V(S_t)",
+   "δ_t = G_t - V(S_t)"
+  ]
+ },
+ "bx-e2-11": {
+  "questionVi": "Ưu điểm chính của Temporal Difference (TD) learning so với Monte Carlo (MC) là gì?",
+  "optionsVi": [
+   "TD học online ở mỗi bước mà không cần đợi episode kết thúc.",
+   "TD đảm bảo hội tụ chính xác 100% sau 1 bước.",
+   "TD không bao giờ gặp vấn đề phương sai.",
+   "TD cần biết đầy đủ động lực học của môi trường."
+  ]
+ },
+ "bx-e2-12": {
+  "questionVi": "Vì sao nói TD learning kết hợp ý tưởng của cả Dynamic Programming (DP) và Monte Carlo (MC)?",
+  "optionsVi": [
+   "Giống DP, TD cần p(s',r|s,a); giống MC, TD cần episode kết thúc hoàn toàn.",
+   "Giống MC, TD học từ kinh nghiệm mẫu mà không cần model; giống DP, TD cập nhật ước lượng dựa một phần vào các ước lượng đã học khác (bootstrapping).",
+   "Giống MC, TD không cần khám phá; giống DP, TD dùng policy gradient.",
+   "TD không có điểm chung nào với DP hay MC."
+  ]
+ },
+ "bx-e2-13": {
+  "questionVi": "Quy tắc cập nhật của Sarsa dạng bảng (On-policy TD Control) là gì?",
+  "optionsVi": [
+   "Q(S_t, A_t) ← Σ_a π(a|S_t) Q(S_t, a)",
+   "Q(S_t, A_t) ← Q(S_t, A_t) + α · [ R_{t+1} + γ · max_a Q(S_{t+1}, a) - Q(S_t, A_t) ]",
+   "Q(S_t, A_t) ← Q(S_t, A_t) + α · [ R_{t+1} + γ · Q(S_{t+1}, A_{t+1}) - Q(S_t, A_t) ]",
+   "Q(S_t, A_t) ← Q(S_t, A_t) + α · [ G_t - Q(S_t, A_t) ]"
+  ]
+ },
+ "bx-e2-14": {
+  "questionVi": "Vì sao Sarsa được xếp vào thuật toán On-policy?",
+  "optionsVi": [
+   "Vì nó cần biết model môi trường p(s',r|s,a).",
+   "Vì nó cần một behavior policy b riêng.",
+   "Vì nó dùng max_a Q(S_{t+1}, a) bất kể hành động đã chọn.",
+   "Vì nó cập nhật Q(S_t, A_t) bằng hành động A_{t+1} thực sự được chọn theo policy hiện tại π."
+  ]
+ },
+ "bx-e2-15": {
+  "questionVi": "Quy tắc cập nhật của Q-learning (Off-policy TD Control) là gì?",
+  "optionsVi": [
+   "Q(S_t, A_t) ← Q(S_t, A_t) + α · [ R_{t+1} + γ · max_a Q(S_{t+1}, a) - Q(S_t, A_t) ]",
+   "Q(S_t, A_t) ← Q(S_t, A_t) + α · [ R_{t+1} + γ · Q(S_{t+1}, A_{t+1}) - Q(S_t, A_t) ]",
+   "Q(S_t, A_t) ← G_t",
+   "Q(S_t, A_t) ← Q(S_t, A_t) + α · [ Σ_a π(a|S_{t+1}) Q(S_{t+1}, a) - Q(S_t, A_t) ]"
+  ]
+ },
+ "bx-e2-16": {
+  "questionVi": "Vì sao Q-learning được xếp vào thuật toán Off-policy?",
+  "optionsVi": [
+   "Vì nó cần chuyển trạng thái của môi trường là tất định.",
+   "Vì nó học mà không thực hiện hành động nào trong môi trường.",
+   "Vì nó không dùng được với khám phá ε-greedy.",
+   "Vì nó ước lượng Q* (giá trị của policy tối ưu) trong khi việc chọn hành động theo một behavior policy có khám phá (ví dụ ε-greedy)."
+  ]
+ },
+ "bx-e2-17": {
+  "questionVi": "Đặc điểm cập nhật chính của Expected Sarsa là gì?",
+  "optionsVi": [
+   "Chỉ cập nhật giá trị ở cuối mỗi episode.",
+   "Bỏ step-size α.",
+   "Cần biết chính xác xác suất chuyển p(s'|s,a).",
+   "Cập nhật Q(S_t, A_t) bằng giá trị kỳ vọng Σ_a π(a|S_{t+1}) Q(S_{t+1}, a) trên mọi hành động có thể ở S_{t+1}."
+  ]
+ },
+ "bx-e2-18": {
+  "questionVi": "Expected Sarsa so với Sarsa về phương sai thế nào?",
+  "optionsVi": [
+   "Phương sai của Expected Sarsa tăng theo cấp số mũ với γ.",
+   "Expected Sarsa có phương sai thấp hơn Sarsa vì loại bỏ phương sai do việc chọn ngẫu nhiên A_{t+1}.",
+   "Expected Sarsa có phương sai cao hơn nhiều so với Sarsa.",
+   "Expected Sarsa và Sarsa có phương sai như nhau trong mọi trường hợp."
+  ]
+ },
+ "bx-e2-19": {
+  "questionVi": "Trong môi trường Cliff Walking, Sarsa và Q-learning hành xử khác nhau thế nào khi khám phá ε-greedy?",
+  "optionsVi": [
+   "Sarsa học đường an toàn dài, xa mép vực; Q-learning học đường ngắn tối ưu dọc mép vực nhưng thỉnh thoảng rơi xuống khi khám phá.",
+   "Q-learning học đường an toàn hơn Sarsa.",
+   "Sarsa và Q-learning học đường đi giống hệt nhau bất kể ε.",
+   "Sarsa luôn rơi xuống vực còn Q-learning không bao giờ rơi."
+  ]
+ },
+ "bx-e2-20": {
+  "questionVi": "Điều gì xảy ra với Expected Sarsa khi policy π hoàn toàn greedy (ε = 0)?",
+  "optionsVi": [
+   "Expected Sarsa ngừng cập nhật action value hoàn toàn.",
+   "Expected Sarsa trở thành giống hệt Policy Evaluation của Dynamic Programming.",
+   "Expected Sarsa trở thành giống hệt Q-learning về mặt toán học.",
+   "Expected Sarsa biến thành Ordinary Importance Sampling."
+  ]
+ },
+ "bx-e3-01": {
+  "questionVi": "Trong Học tăng cường, 'Model' của môi trường được định nghĩa thế nào?",
+  "optionsVi": [
+   "Hệ số chiết khấu γ dùng cho continuing task.",
+   "Bất cứ thứ gì agent có thể dùng để dự đoán môi trường sẽ phản hồi thế nào với hành động của nó.",
+   "Chuỗi phần thưởng thu được trong một episode.",
+   "Kiến trúc neural network dùng để xấp xỉ Q-value."
+  ]
+ },
+ "bx-e3-02": {
+  "questionVi": "Distributional Model và Sample Model khác nhau thế nào?",
+  "optionsVi": [
+   "Chúng không khác nhau.",
+   "Sample Model dùng cho DP; Distributional Model dùng cho Q-learning.",
+   "Distributional Model cho xác suất của mọi kết quả có thể; Sample Model cho một kết quả được lấy mẫu theo các xác suất đó.",
+   "Distributional Model cần deep neural network; Sample Model cần dynamic programming."
+  ]
+ },
+ "bx-e3-03": {
+  "questionVi": "Điều gì định nghĩa 'Planning' trong Học tăng cường?",
+  "optionsVi": [
+   "Lưu các quỹ đạo cũ vào cơ sở dữ liệu mà không cập nhật giá trị.",
+   "Thực hiện cập nhật gradient descent trên tham số giá trị.",
+   "Quá trình tương tác trực tiếp với môi trường thật để thu phần thưởng.",
+   "Bất kỳ quá trình tính toán nào nhận model làm đầu vào và tạo ra hoặc cải thiện policy để tương tác với môi trường."
+  ]
+ },
+ "bx-e3-04": {
+  "questionVi": "Hai thao tác cốt lõi được tích hợp trong kiến trúc Dyna là gì?",
+  "optionsVi": [
+   "Đánh giá Monte Carlo và tối ưu Policy Gradient.",
+   "Direct RL (học từ kinh nghiệm thật) và Model-based RL (planning từ kinh nghiệm mô phỏng do model sinh ra).",
+   "Tile Coding và Radial Basis Function.",
+   "Phân loại có giám sát và phân cụm không giám sát."
+  ]
+ },
+ "bx-e3-05": {
+  "questionVi": "Dyna-Q cập nhật action value Q(s, a) như thế nào?",
+  "optionsVi": [
+   "Cập nhật Q(s,a) bằng kinh nghiệm thật (Direct RL) và còn thực hiện k cập nhật mô phỏng với các cặp trạng thái-hành động lấy mẫu từ Model đã học (Planning).",
+   "Chỉ dùng các lượt quét dynamic programming trên toàn bộ không gian trạng thái.",
+   "Chỉ cập nhật Q(s,a) ở cuối mỗi episode bằng return Monte Carlo đầy đủ.",
+   "Hoàn toàn dựa vào minh họa của chuyên gia."
+  ]
+ },
+ "bx-e3-06": {
+  "questionVi": "Vấn đề gì xảy ra với Dyna-Q khi động lực học môi trường thay đổi (ví dụ một đường bị chặn hoặc mở ra đường tắt)?",
+  "optionsVi": [
+   "Dyna-Q tự động xóa mọi Q-value cũ.",
+   "Nếu model môi trường không chính xác, planning có thể cho policy chưa tối ưu hoặc không phát hiện được đường ngắn hơn mới mở.",
+   "Dyna-Q bị lỗi ngay lập tức.",
+   "Dyna-Q chuyển thành thuật toán On-policy."
+  ]
+ },
+ "bx-e3-07": {
+  "questionVi": "Dyna-Q+ giải quyết vấn đề môi trường thay đổi hoặc đường tắt chưa được phát hiện như thế nào?",
+  "optionsVi": [
+   "Cộng exploration bonus κ · √(τ) vào phần thưởng mô phỏng cho các cặp trạng thái-hành động chưa được thử trong τ bước.",
+   "Thay Q-learning bằng Policy Evaluation.",
+   "Tăng hệ số chiết khấu γ lên 0.999.",
+   "Buộc agent hành động ngẫu nhiên 100% thời gian."
+  ]
+ },
+ "bx-e3-08": {
+  "questionVi": "Vì sao cần Value Function Approximation khi làm việc với không gian trạng thái lớn hoặc liên tục?",
+  "optionsVi": [
+   "Phương pháp dạng bảng cần lưu một giá trị riêng cho mỗi trạng thái, điều này không khả thi về bộ nhớ và tính toán khi không gian lớn/liên tục.",
+   "Xấp xỉ hàm loại bỏ nhu cầu dùng phần thưởng.",
+   "Phương pháp dạng bảng không dùng được hệ số chiết khấu.",
+   "Không gian trạng thái liên tục không có policy tối ưu."
+  ]
+ },
+ "bx-e3-09": {
+  "questionVi": "Trong On-Policy Prediction với xấp xỉ hàm, hàm mục tiêu nào được tối thiểu hóa?",
+  "optionsVi": [
+   "Cross-Entropy Loss",
+   "Kullback-Leibler Divergence của phần thưởng",
+   "Mean Absolute Error của tham số policy",
+   "Mean Squared Value Error (MSVE) / Value Error (VE)"
+  ]
+ },
+ "bx-e3-10": {
+  "questionVi": "Quy tắc cập nhật gradient descent cho vector trọng số w trong Gradient Monte Carlo prediction là gì?",
+  "optionsVi": [
+   "w_{t+1} = w_t + α · [R_{t+1} - v̂(S_t, w_t)]",
+   "w_{t+1} = w_t + α · G_t",
+   "w_{t+1} = max_w v̂(S_t, w)",
+   "w_{t+1} = w_t + α · [G_t - v̂(S_t, w_t)] · ∇ v̂(S_t, w_t)"
+  ]
+ },
+ "bx-e3-11": {
+  "questionVi": "Vì sao TD(0) với xấp xỉ hàm được gọi là phương pháp 'Semi-Gradient'?",
+  "optionsVi": [
+   "Vì mỗi bước chỉ cập nhật một nửa số thành phần của vector trọng số.",
+   "Vì nó chỉ hội tụ trong môi trường tất định.",
+   "Vì nó chỉ dùng neural network phi tuyến.",
+   "Vì TD target R_{t+1} + γ · v̂(S_{t+1}, w) phụ thuộc vào vector trọng số w, nhưng gradient của nó theo w bị bỏ qua khi cập nhật."
+  ]
+ },
+ "bx-e3-12": {
+  "questionVi": "Linear Value Function Approximation là gì?",
+  "optionsVi": [
+   "Chia không gian trạng thái thành 2 nửa rời rạc.",
+   "Đặt mọi tham số trọng số w bằng 1.",
+   "Chỉ xấp xỉ giá trị bằng deep convolutional neural network.",
+   "Xấp xỉ hàm giá trị bằng tích vô hướng của vector đặc trưng x(s) và vector trọng số w: v̂(s,w) = w^T x(s)."
+  ]
+ },
+ "bx-e3-13": {
+  "questionVi": "Gradient của hàm giá trị tuyến tính v̂(s, w) = w^T x(s) theo w là gì?",
+  "optionsVi": [
+   "∇ v̂(s, w) = 0",
+   "∇ v̂(s, w) = v̂(s, w)",
+   "∇ v̂(s, w) = x(s)",
+   "∇ v̂(s, w) = w"
+  ]
+ },
+ "bx-e3-14": {
+  "questionVi": "State Aggregation trong xây dựng đặc trưng là gì?",
+  "optionsVi": [
+   "Dạng đơn giản của xấp xỉ hàm tuyến tính, trong đó trạng thái được gom thành các tập con/nhóm, và mọi trạng thái trong một nhóm dùng chung một trọng số.",
+   "Gộp mọi phần thưởng thành một giá trị vô hướng.",
+   "Nhân mọi đặc trưng trạng thái với ∞.",
+   "Chuyển hành động rời rạc thành biến liên tục."
+  ]
+ },
+ "bx-e3-15": {
+  "questionVi": "Tile Coding trong xây dựng đặc trưng cho phương pháp tuyến tính là gì?",
+  "optionsVi": [
+   "Một dạng coarse coding dùng nhiều phân hoạch chồng lấn (tiling) của không gian trạng thái để tạo vector đặc trưng nhị phân.",
+   "Dùng một ngưỡng duy nhất để chia không gian trạng thái thành 2 vùng.",
+   "Mã hóa trạng thái bàn cờ thành điểm ảnh.",
+   "Lưu chuyển trạng thái trong ma trận 2D."
+  ]
+ },
+ "bx-e3-16": {
+  "questionVi": "Ưu điểm tính toán quan trọng của Tile Coding là gì?",
+  "optionsVi": [
+   "Không cần bộ nhớ lưu trữ.",
+   "Đảm bảo không bao giờ phải cập nhật trọng số.",
+   "Số đặc trưng được kích hoạt (bằng 1) trong vector đặc trưng của mọi trạng thái luôn cố định (bằng số tiling m), nên tính tích vô hướng cực nhanh.",
+   "Loại bỏ hoàn toàn nhu cầu dùng gradient descent."
+  ]
+ },
+ "bx-e3-17": {
+  "questionVi": "Radial Basis Function (RBF) được dùng để làm gì trong xấp xỉ hàm tuyến tính?",
+  "optionsVi": [
+   "Tính kỳ vọng Bellman chính xác mà không cần lấy mẫu.",
+   "Chuyển continuing task thành episodic task.",
+   "Tạo chỉ số nguyên rời rạc để tra bảng.",
+   "Xây dựng vector đặc trưng giá trị liên tục x_i(s) bằng các hàm phản hồi dạng Gauss trên không gian trạng thái."
+  ]
+ },
+ "bx-e3-18": {
+  "questionVi": "Đánh đổi khi dùng Radial Basis Function (RBF) so với Tile Coding là gì?",
+  "optionsVi": [
+   "RBF cho xấp xỉ hàm liên tục mượt nhưng tốn tính toán hơn vì thường mọi đặc trưng đều được kích hoạt (khác 0) ở mọi trạng thái.",
+   "RBF chỉ dùng được khi γ = 0.",
+   "RBF không dùng được với mô hình tuyến tính.",
+   "RBF cần ít bộ nhớ hơn tile coding."
+  ]
+ },
+ "bx-e3-19": {
+  "questionVi": "Trong xấp xỉ hàm tuyến tính, điều gì quyết định cách tổng quát hóa giữa các trạng thái?",
+  "optionsVi": [
+   "Random seed ban đầu của môi trường.",
+   "Cách chọn hệ số chiết khấu γ.",
+   "Tổng số episode chạy trong quá trình huấn luyện.",
+   "Mức chồng lấn giữa các vector đặc trưng tương ứng x(s_1) và x(s_2)."
+  ]
+ },
+ "bx-e3-20": {
+  "questionVi": "Nguy cơ chính khi kết hợp Function Approximation, Bootstrapping và Off-Policy learning (The Deadly Triad) là gì?",
+  "optionsVi": [
+   "Buộc tín hiệu phần thưởng phải luôn âm.",
+   "Chắc chắn làm agent làm tràn bộ nhớ máy tính.",
+   "Biến phương pháp dạng bảng thành thuật toán DP chính xác.",
+   "Có thể làm ước lượng giá trị phân kỳ và mất ổn định."
+  ]
+ },
+ "bx-e4-01": {
+  "questionVi": "Trong Episodic Semi-Gradient Sarsa với xấp xỉ hàm, action value Q̂(s, a, w) được biểu diễn thế nào?",
+  "optionsVi": [
+   "Là kỳ vọng chính xác trên mọi phần thưởng tương lai, không có tham số.",
+   "Là một bảng tra 2D cố định.",
+   "Là một giá trị vô hướng hằng số, không phụ thuộc trạng thái và hành động.",
+   "Là một hàm có tham số với vector trọng số w, ví dụ tổ hợp tuyến tính w^T x(s, a)."
+  ]
+ },
+ "bx-e4-02": {
+  "questionVi": "Quy tắc cập nhật trọng số của Episodic Semi-Gradient Sarsa tại bước t là gì?",
+  "optionsVi": [
+   "w_{t+1} = w_t + α · [ R_{t+1} + γ · Q̂(S_{t+1}, A_{t+1}, w_t) - Q̂(S_t, A_t, w_t) ] · ∇ Q̂(S_t, A_t, w_t)",
+   "w_{t+1} = w_t + α · max_a Q̂(S_{t+1}, a, w_t)",
+   "w_{t+1} = ∇ Q̂(S_t, A_t, w_t)",
+   "w_{t+1} = w_t + α · [ G_t - V(S_t) ]"
+  ]
+ },
+ "bx-e4-03": {
+  "questionVi": "Vì sao khởi tạo lạc quan truyền thống không đảm bảo khám phá lâu dài khi dùng xấp xỉ hàm?",
+  "optionsVi": [
+   "Vì mọi thuật toán xấp xỉ hàm đều yêu cầu trọng số ban đầu bằng 0.",
+   "Vì cập nhật trọng số cho một cặp trạng thái-hành động làm thay đổi Q-value của nhiều cặp chồng lấn khác, có thể phá mất độ lạc quan ban đầu trên toàn không gian.",
+   "Vì xấp xỉ hàm không dùng được với episodic task.",
+   "Vì sự lạc quan làm step size α giảm về 0."
+  ]
+ },
+ "bx-e4-04": {
+  "questionVi": "Ý tưởng cốt lõi của Count-Based Exploration / Bonus Rewards khi dùng xấp xỉ hàm là gì?",
+  "optionsVi": [
+   "Đặt giá trị mọi trạng thái chưa biết bằng âm vô cùng.",
+   "Cộng phần thưởng exploration bonus vào R_{t+1} dựa trên độ mới lạ của cặp trạng thái-hành động hoặc pseudo-count để khuyến khích ghé các vùng chưa quen.",
+   "Buộc agent chọn hành động theo lịch cố định.",
+   "Thay hệ số chiết khấu γ bằng số lần ghé."
+  ]
+ },
+ "bx-e4-05": {
+  "questionVi": "Trong continuing task không chiết khấu, Average Reward r(π) của policy π được định nghĩa thế nào?",
+  "optionsVi": [
+   "r(π) = lim_{h → ∞} (1/h) · Σ_{t=1}^h E[R_t | S_0, A_{0:t-1} ~ π]",
+   "r(π) = E[R_1 | S_0 = s]",
+   "r(π) = max_a Q(s, a)",
+   "r(π) = Σ_{t=0}^∞ γ^t · R_{t+1}"
+  ]
+ },
+ "bx-e4-06": {
+  "questionVi": "Differential Return G_t trong cách đặt Average Reward được định nghĩa thế nào?",
+  "optionsVi": [
+   "G_t = r(π) · t",
+   "G_t = R_{t+1} / r(π)",
+   "G_t = Σ_{k=0}^∞ γ^k · R_{t+k+1}",
+   "G_t = Σ_{k=1}^∞ (R_{t+k} - r(π))"
+  ]
+ },
+ "bx-e4-07": {
+  "questionVi": "Differential TD Error δ_t trong cách đặt Average Reward là gì?",
+  "optionsVi": [
+   "δ_t = G_t - r(π)",
+   "δ_t = R_{t+1} - r_bar_t + V(S_{t+1}) - V(S_t)",
+   "δ_t = R_{t+1} + γ · V(S_{t+1}) - V(S_t)",
+   "δ_t = V(S_{t+1}) - V(S_t)"
+  ]
+ },
+ "bx-e4-08": {
+  "questionVi": "Vì sao Policy Gradient phù hợp với không gian hành động liên tục?",
+  "optionsVi": [
+   "Vì nó tham số hóa trực tiếp policy (ví dụ học kỳ vọng và phương sai của phân phối Gauss), không cần tính max_a trên vô hạn hành động.",
+   "Vì nó loại bỏ hoàn toàn nhu cầu dùng hàm giá trị.",
+   "Vì nó không cần tính gradient.",
+   "Vì nó chỉ dùng được khi không gian hành động có 2 lựa chọn rời rạc."
+  ]
+ },
+ "bx-e4-09": {
+  "questionVi": "Phát biểu cốt lõi của Policy Gradient Theorem là gì?",
+  "optionsVi": [
+   "Gradient của hiệu năng luôn bằng 0 ở mọi trạng thái không kết thúc.",
+   "Có thể tính policy gradient tối ưu mà không cần quan sát chuyển trạng thái nào.",
+   "Gradient của hiệu năng J(θ) theo tham số policy θ tỉ lệ với Σ_s d^π(s) Σ_a q_π(s,a) ∇ π(a|s,θ).",
+   "Tham số policy θ tỉ lệ nghịch với hệ số chiết khấu γ."
+  ]
+ },
+ "bx-e4-10": {
+  "questionVi": "Quy tắc cập nhật của thuật toán REINFORCE (Monte Carlo Policy Gradient) là gì?",
+  "optionsVi": [
+   "θ_{t+1} = θ_t + α · γ^t · G_t · (∇ π(A_t|S_t, θ_t) / π(A_t|S_t, θ_t))",
+   "θ_{t+1} = G_t · w_t",
+   "θ_{t+1} = θ_t + max_a Q(S_t, a)",
+   "θ_{t+1} = θ_t + α · [ R_{t+1} + γ · V(S_{t+1}) - V(S_t) ]"
+  ]
+ },
+ "bx-e4-11": {
+  "questionVi": "Vai trò chính của Baseline b(s) trong REINFORCE with Baseline là gì?",
+  "optionsVi": [
+   "Buộc policy trở thành tất định.",
+   "Bỏ nhu cầu dùng return mẫu G_t.",
+   "Tự động tăng learning rate α.",
+   "Giảm phương sai của ước lượng gradient mà không gây lệch cho policy gradient."
+  ]
+ },
+ "bx-e4-12": {
+  "questionVi": "Trong kiến trúc Actor-Critic, vai trò riêng của 'Actor' và 'Critic' là gì?",
+  "optionsVi": [
+   "Actor và Critic thực hiện cập nhật giống hệt nhau trên cùng một vector trọng số.",
+   "Actor tính chuyển trạng thái của môi trường; Critic đặt tỉ lệ khám phá ε.",
+   "Actor lưu các quỹ đạo cũ; Critic sinh phần thưởng ngẫu nhiên.",
+   "Actor cập nhật tham số policy θ (chọn hành động); Critic cập nhật tham số giá trị w (đánh giá lựa chọn hành động qua TD error)."
+  ]
+ },
+ "bx-e4-13": {
+  "questionVi": "Vì sao Actor-Critic thường học nhanh hơn REINFORCE?",
+  "optionsVi": [
+   "Actor-Critic không cần khám phá.",
+   "Actor-Critic không cần tính policy gradient.",
+   "Actor-Critic dùng bootstrapping (TD error) để đánh giá hành động ở mỗi bước, giảm mạnh phương sai so với REINFORCE vốn dựa vào return của cả episode G_t.",
+   "Actor-Critic giải môi trường chỉ bằng các lượt quét dynamic programming tuyến tính."
+  ]
+ },
+ "bx-e4-14": {
+  "questionVi": "Softmax Policy Parameterization cho không gian hành động rời rạc được định nghĩa thế nào?",
+  "optionsVi": [
+   "π(a|s, θ) = θ^T x(s)",
+   "π(a|s, θ) = max_a h(s, a, θ)",
+   "π(a|s, θ) = exp(h(s, a, θ)) / Σ_b exp(h(s, b, θ)), với h(s, a, θ) là action preference.",
+   "π(a|s, θ) = 1 / |A| với mọi hành động."
+  ]
+ },
+ "bx-e4-15": {
+  "questionVi": "Gaussian Policy Parameterization cho không gian hành động liên tục được định nghĩa thế nào?",
+  "optionsVi": [
+   "Hành động a được chọn là một chỉ số nguyên từ 1 tới K.",
+   "Hành động a được lấy mẫu từ phân phối đều trong khoảng -1 tới +1.",
+   "Hành động a được lấy mẫu từ phân phối chuẩn N(μ(s, θ), σ(s, θ)^2), với kỳ vọng μ và phương sai σ^2 là các hàm có tham số của trạng thái s.",
+   "Hành động a được đặt bằng TD error δ_t."
+  ]
+ },
+ "bx-e4-16": {
+  "questionVi": "Gradient của log-likelihood grad_θ ln π(a|s, θ) cho policy Softmax với preference tuyến tính h(s,a,θ) = θ^T x(s,a) là gì?",
+  "optionsVi": [
+   "grad_θ ln π(a|s, θ) = x(s, a)",
+   "grad_θ ln π(a|s, θ) = x(s, a) - Σ_b π(b|s, θ) x(s, b)",
+   "grad_θ ln π(a|s, θ) = 0",
+   "grad_θ ln π(a|s, θ) = θ"
+  ]
+ },
+ "bx-e4-17": {
+  "questionVi": "Trong One-step Actor-Critic cho continuing task với Average Reward, quy tắc cập nhật Critic cho vector trọng số w là gì?",
+  "optionsVi": [
+   "w_{t+1} = w_t + α_w · G_t",
+   "w_{t+1} = w_t + α_w · δ_t · ∇ v̂(S_t, w_t), với δ_t = R_{t+1} - r_bar_t + v̂(S_{t+1}, w_t) - v̂(S_t, w_t).",
+   "w_{t+1} = max_a Q(S_t, a)",
+   "w_{t+1} = w_t · θ_t"
+  ]
+ },
+ "bx-e4-18": {
+  "questionVi": "Trong One-step Actor-Critic, vector tham số Actor θ được cập nhật thế nào tại bước t?",
+  "optionsVi": [
+   "θ_{t+1} = θ_t / α_θ",
+   "θ_{t+1} = θ_t + α_θ · δ_t · ∇ ln π(A_t|S_t, θ_t)",
+   "θ_{t+1} = argmax_a Q(S_t, a)",
+   "θ_{t+1} = θ_t + α_θ · [ R_{t+1} - θ_t ]"
+  ]
+ },
+ "bx-e4-19": {
+  "questionVi": "Vì sao Policy Gradient được ưu tiên hơn phương pháp Action-Value khi policy tối ưu là ngẫu nhiên?",
+  "optionsVi": [
+   "Policy Gradient không bao giờ cần tương tác với môi trường.",
+   "Phương pháp Action-Value không dùng được với hành động rời rạc.",
+   "Policy Gradient đảm bảo giá trị chính xác 100% sau 1 vòng lặp.",
+   "Policy Gradient có thể học và biểu diễn tự nhiên policy tối ưu ngẫu nhiên thật sự, còn phương pháp Action-Value (như Q-learning) thường mặc định cho policy greedy tất định."
+  ]
+ },
+ "bx-e4-20": {
+  "questionVi": "Nhược điểm chính của Policy Gradient cơ bản so với phương pháp Action-Value là gì?",
+  "optionsVi": [
+   "Chỉ áp dụng được cho môi trường có 2 trạng thái.",
+   "Thường có phương sai mẫu cao và hội tụ chậm, cần nhiều episode/mẫu để học được policy ổn định.",
+   "Không kết hợp được với neural network.",
+   "Chỉ giới hạn trong môi trường dynamic programming."
+  ]
+ },
+ "bx-e5-01": {
+  "questionVi": "Trong Học tăng cường, điều gì phân biệt RL với Supervised Learning?",
+  "optionsVi": [
+   "RL cần biết đầy đủ động lực học của môi trường trước khi học.",
+   "Supervised learning xử lý việc ra quyết định tuần tự tốt hơn RL.",
+   "RL dựa vào tín hiệu phản hồi mang tính đánh giá (phần thưởng) thay vì mục tiêu chỉ dẫn tường minh (nhãn đúng).",
+   "RL không bao giờ dùng bộ xấp xỉ hàm như neural network."
+  ]
+ },
+ "bx-e5-02": {
+  "questionVi": "Generalized Policy Iteration (GPI) biểu diễn điều gì trong Học tăng cường?",
+  "optionsVi": [
+   "Ý tưởng chung cho Policy Evaluation và Policy Improvement tương tác, vừa cạnh tranh vừa phối hợp để đạt giá trị và policy tối ưu.",
+   "Quá trình chuyển Monte Carlo thành Q-learning.",
+   "Một thư viện phần mềm cụ thể cho dynamic programming.",
+   "Thuật toán cho nghiệm chính xác của bài toán điều khiển liên tục nhiều chiều."
+  ]
+ },
+ "bx-e5-03": {
+  "questionVi": "Phát biểu nào so sánh đúng SARSA và Q-learning?",
+  "optionsVi": [
+   "SARSA là thuật toán On-policy, đánh giá chính policy đang thực thi; Q-learning là thuật toán Off-policy, đánh giá trực tiếp policy greedy tối ưu.",
+   "Q-learning chỉ dùng được khi episode Monte Carlo kết thúc hoàn toàn.",
+   "Q-learning là On-policy còn SARSA là Off-policy.",
+   "SARSA cần model p(s',r|s,a) còn Q-learning thì không."
+  ]
+ },
+ "bx-e5-04": {
+  "questionVi": "Mục đích chính của việc dùng Baseline b(s) trong Policy Gradient (ví dụ REINFORCE with Baseline) là gì?",
+  "optionsVi": [
+   "Biến policy tối ưu thành hoàn toàn tất định.",
+   "Giảm phương sai của bộ ước lượng gradient mà không gây lệch.",
+   "Bỏ nhu cầu tính gradient của log-likelihood.",
+   "Tăng learning rate α lên 10 lần."
+  ]
+ },
+ "bx-e5-05": {
+  "questionVi": "'Deadly Triad' trong Học tăng cường, có thể gây mất ổn định và phân kỳ, là gì?",
+  "optionsVi": [
+   "Sự kết hợp Function Approximation, Bootstrapping và Off-Policy Learning.",
+   "Sự kết hợp Dynamic Programming, Policy Iteration và Value Iteration.",
+   "Sự kết hợp Monte Carlo, Tile Coding và Epsilon-Greedy.",
+   "Sự kết hợp Policy Gradient, Actor-Critic và Baseline."
+  ]
+ },
+ "bx-e5-06": {
+  "questionVi": "Trong kiến trúc Actor-Critic, Critic ảnh hưởng tới cập nhật policy của Actor thế nào?",
+  "optionsVi": [
+   "Critic buộc Actor chọn hành động ngẫu nhiên đều.",
+   "Critic thay tín hiệu phần thưởng của môi trường bằng 0.",
+   "Critic ghi đè trực tiếp lên tham số policy θ của Actor.",
+   "Critic tính tín hiệu TD error δ_t, dùng để điều chỉnh độ lớn và chiều của cập nhật policy gradient cho Actor."
+  ]
+ },
+ "bx-e5-07": {
+  "questionVi": "Ưu điểm chính của Policy Parameterization dùng hàm Softmax so với phương pháp Action-Value là gì?",
+  "optionsVi": [
+   "Biểu diễn được policy tối ưu ngẫu nhiên và điều chỉnh xác suất hành động mượt, liên tục.",
+   "Đảm bảo hội tụ ngay sau 1 bước.",
+   "Bỏ nhu cầu tính policy gradient.",
+   "Không cần dùng vector đặc trưng x(s)."
+  ]
+ },
+ "bx-e5-08": {
+  "questionVi": "Vì sao cách đặt Average Reward được ưu tiên hơn Discounted Return cho continuing task không có trạng thái kết thúc?",
+  "optionsVi": [
+   "Vì average reward chỉ áp dụng cho trò chơi trên bàn cờ dạng episodic.",
+   "Vì average reward bỏ nhu cầu dùng trạng thái.",
+   "Vì không thể lập trình hệ số chiết khấu trong Python.",
+   "Vì với xấp xỉ hàm liên tục, chiết khấu có thể gây bất thường toán học và làm policy xấu đi khi chân trời thời gian vô hạn."
+  ]
+ },
+ "bx-e5-09": {
+  "questionVi": "Search Control đóng vai trò gì trong kiến trúc Dyna-Q?",
+  "optionsVi": [
+   "Thực hiện chuyển động robot vật lý ngoài thế giới thật.",
+   "Tính nghịch đảo ma trận cho hồi quy tuyến tính.",
+   "Chọn các cặp trạng thái-hành động từ Model đã học để sinh kinh nghiệm mô phỏng cho Planning.",
+   "Lọc bỏ phần thưởng âm khỏi dữ liệu huấn luyện."
+  ]
+ },
+ "bx-e5-10": {
+  "questionVi": "Khác biệt chính giữa Model-Based RL và Model-Free RL là gì?",
+  "optionsVi": [
+   "Model-Based RL dùng model tường minh của môi trường để lập kế hoạch hành động; Model-Free RL học hàm giá trị hoặc policy trực tiếp từ kinh nghiệm mà không xây dựng mô hình chuyển.",
+   "Model-Based RL không dùng được cho bài toán control.",
+   "Model-Free RL chỉ giới hạn trong môi trường dạng bảng.",
+   "Model-Free RL cần neural network còn Model-Based RL chỉ dùng cây quyết định."
+  ]
  }
 }
