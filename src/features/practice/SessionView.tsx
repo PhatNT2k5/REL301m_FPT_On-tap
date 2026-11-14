@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { MathText } from "../../components/MathText";
 import { CHAPTERS } from "../../data/chapters";
 import { LangToggle } from "../../components/LangToggle";
-import { QUESTION_BY_ID, SOURCE_LABEL, localizeQuestion } from "../../data/questions";
+import { QUESTION_BY_ID, localizeQuestion, questionOrigin, relabelExplanation } from "../../data/questions";
 import type { Question } from "../../data/types";
 import { href, navigate } from "../../router";
 import { playCue } from "../progress/sound";
@@ -292,8 +292,7 @@ export const SessionView = ({ deckId, size, index }: { deckId: string; size: num
           <section className="rounded-2xl border border-line bg-panel p-5 sm:p-7">
             <div className="flex items-start justify-between gap-3 text-sm text-muted">
               <span>
-                {SOURCE_LABEL[question.source]}
-                {question.examNo ? ` câu ${question.examNo}` : ""} · Ch.{question.chapter}
+                {questionOrigin(question)} · Ch.{question.chapter}
                 {chapter ? ` ${chapter.title}` : ""} · slide {question.sourceLesson}
               </span>
               <span className="flex shrink-0 items-center gap-2">
@@ -364,7 +363,7 @@ export const SessionView = ({ deckId, size, index }: { deckId: string; size: num
                 <p className="font-semibold">
                   {feedback.correct ? "Chính xác. +1" : "Chưa đúng. Câu này sẽ quay lại ở cuối lượt."}
                 </p>
-                <MathText as="p" text={text.explanation} className="mt-2 leading-relaxed" />
+                <MathText as="p" text={relabelExplanation(text.explanation, optionOrder)} className="mt-2 leading-relaxed" />
                 {question.answerSource === "verified-by-slides" && question.source !== "Extra" && (
                   <p className="mt-2 text-xs text-muted">Đề không kèm đáp án, đáp án này được đối chiếu với slide.</p>
                 )}

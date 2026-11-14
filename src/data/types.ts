@@ -1,4 +1,4 @@
-export type QuestionSource = "SP26-FE" | "SP26-RE" | "SU26-FE" | "Quizlet" | "Extra";
+export type QuestionSource = "SP26-FE" | "SP26-RE" | "SU26-FE" | "Quizlet" | "Extra" | "Bank300" | "BankExplained";
 
 export interface Question {
   id: string;
@@ -6,6 +6,8 @@ export interface Question {
   sourceLesson: string;
   source: QuestionSource;
   examNo?: number;
+  /** Exam number inside a multi-exam bank (Bank300, BankExplained). */
+  examSet?: number;
   question: string;
   options: string[];
   answers: number[];

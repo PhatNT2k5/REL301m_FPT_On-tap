@@ -9,7 +9,7 @@ export const TopBar = ({ route }: { route: Route }) => {
   const [settings, setSettings] = useSettings();
   const tabClass = (active: boolean): string =>
     `rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
-      active ? "bg-ink text-paper" : "text-muted hover:text-ink"
+      active ? "bg-sage text-paper" : "text-muted hover:text-ink"
     }`;
 
   return (

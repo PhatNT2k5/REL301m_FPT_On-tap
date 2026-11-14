@@ -18,7 +18,7 @@ export default {
         "penalty-soft": "var(--penalty-soft)",
       },
       fontFamily: {
-        display: ['"Fraunces"', "Georgia", "serif"],
+        display: ['"Be Vietnam Pro"', "system-ui", "sans-serif"],
         sans: ['"Be Vietnam Pro"', "system-ui", "sans-serif"],
       },
     },

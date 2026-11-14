@@ -8,69 +8,72 @@ interface SessionGridProps {
   records: (SessionRecord | undefined)[];
 }
 
-/** Sessions drawn as a grid world: the agent stands on the next unfinished cell, G is the goal. */
+type Status = "done" | "progress" | "new";
+
+const statusOf = (record: SessionRecord | undefined): Status =>
+  record?.done ? "done" : record && record.state.attempts > 0 ? "progress" : "new";
+
+const BADGE: Record<Status, string> = { new: "Đề mới", progress: "Đang làm", done: "Đã xong" };
+
+const statusLine = (status: Status, record: SessionRecord | undefined, total: number, isNext: boolean): string => {
+  if (status === "done") return record?.bestWrong ? `Xong · sai ${record.bestWrong} lần` : "Xong · không sai câu nào";
+  if (status === "progress") return `Đúng ${record?.state.solved.length ?? 0}/${total}`;
+  return isNext ? "Sẵn sàng bắt đầu" : "Chưa bắt đầu";
+};
+
+/** One card per session; the first unfinished session is highlighted as the next one to do. */
 export const SessionGrid = ({ deckId, size, sessions, records }: SessionGridProps) => {
-  const agentIndex = records.findIndex((r) => !r?.done);
-  const allDone = agentIndex === -1;
+  const nextIndex = records.findIndex((r) => !r?.done);
 
   return (
-    <ol className="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-5" aria-label="Các session">
+    <ol className="grid grid-cols-1 gap-4 min-[420px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5" aria-label="Các session">
       {sessions.map((ids, index) => {
         const record = records[index];
-        const solved = record?.state.solved.length ?? 0;
-        const isAgent = index === agentIndex;
-        const status = record?.done ? "done" : record && record.state.attempts > 0 ? "progress" : "new";
+        const status = statusOf(record);
+        const isNext = index === nextIndex;
         const from = index * size + 1;
         const to = from + ids.length - 1;
         return (
           <li key={index}>
             <a
               href={href({ name: "session", deckId, size, index })}
-              className={`relative flex aspect-[5/4] flex-col justify-between rounded-xl border p-3 transition-colors ${
-                status === "done"
-                  ? "border-sage bg-sage-soft"
-                  : isAgent
-                    ? "border-ink bg-panel shadow-[0_0_0_3px_var(--sage-soft)]"
+              aria-label={`Session ${index + 1}, câu ${from} đến ${to}`}
+              className={`group relative flex h-full flex-col rounded-2xl border p-5 transition-all hover:-translate-y-0.5 ${
+                isNext
+                  ? "border-sage bg-sage-soft shadow-[0_4px_0_0_var(--sage)]"
+                  : status === "done"
+                    ? "border-line bg-panel opacity-90"
                     : "border-line bg-panel hover:border-sage"
               }`}
             >
-              <span className="flex items-start justify-between">
-                <span className="font-display text-2xl leading-none">{index + 1}</span>
-                {status === "done" && <span className="rounded-md bg-reward px-1.5 text-sm font-semibold text-paper">+1</span>}
-                {isAgent && (
-                  <span className="grid h-7 w-7 place-items-center rounded-full bg-ink text-xs font-bold text-paper" title="Bạn đang ở đây">
-                    A
-                  </span>
-                )}
-              </span>
-              <span className="text-xs text-muted">
-                Câu {from}–{to}
-                <span className="block text-ink">
-                  {status === "done"
-                    ? record?.bestWrong
-                      ? `Xong, sai ${record.bestWrong} lần`
-                      : "Xong, không sai câu nào"
-                    : status === "progress"
-                      ? `Đúng ${solved}/${ids.length}`
-                      : isAgent
-                        ? "Bắt đầu ở đây"
-                        : "Chưa làm"}
+              {isNext && <span className="absolute inset-y-4 left-0 w-1 rounded-r bg-sage" aria-hidden />}
+              <span className="flex items-center gap-3">
+                <span className="text-sm tabular-nums text-muted">{String(index + 1).padStart(2, "0")}</span>
+                <span
+                  className={`mr-auto rounded-md px-1.5 py-0.5 text-xs font-medium ${
+                    status === "done" ? "bg-reward-soft text-reward" : "bg-sage-soft text-sage"
+                  }`}
+                >
+                  {BADGE[status]}
                 </span>
+                <span
+                  className="grid h-8 w-8 place-items-center rounded-lg bg-paper text-sm text-muted transition-colors group-hover:text-ink"
+                  aria-hidden
+                >
+                  ↗
+                </span>
+              </span>
+              <span className="mt-6 text-2xl font-bold leading-tight">Session {index + 1}</span>
+              <span className="mt-1 text-muted">
+                Câu {from}–{to}
+              </span>
+              <span className={`mt-4 text-sm font-semibold ${status === "done" ? "text-reward" : "text-sage"}`}>
+                {statusLine(status, record, ids.length, isNext)}
               </span>
             </a>
           </li>
         );
       })}
-      <li>
-        <div
-          className={`flex aspect-[5/4] flex-col justify-between rounded-xl border-2 border-dashed p-3 ${
-            allDone ? "border-reward bg-reward-soft" : "border-line"
-          }`}
-        >
-          <span className="font-display text-2xl leading-none text-reward">G</span>
-          <span className="text-xs text-muted">{allDone ? "Đã tới đích: xong cả bộ" : "Đích: hoàn thành mọi session"}</span>
-        </div>
-      </li>
     </ol>
   );
 };
